@@ -1,0 +1,33 @@
+.wrapper {
+    max-width: 312px;
+    width: 100%;
+    margin: 60px 0 0 42px;
+    padding-left: 24px;
+
+    .title {
+        color: var(--primary);
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+    .inner {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    // tablet and mobile
+    @media (max-width: 1024px) {
+        max-width: none;
+        padding: 24px;
+        margin: 0;
+    }
+
+    /* only Tablet */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .inner {
+            flex-direction: row;
+        }
+    }
+}

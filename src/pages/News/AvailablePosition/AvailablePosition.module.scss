@@ -1,0 +1,20 @@
+.jobs-list {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+// Mobile
+@media (max-width: 767px) {
+    .jobs-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1023px) {
+    .jobs-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+}

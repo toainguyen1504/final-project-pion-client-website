@@ -1,0 +1,111 @@
+.feedback-card {
+    user-select: none;
+    font-size: 1.6rem;
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--bg-primary);
+    position: relative;
+
+    .feedback-icon {
+        position: absolute;
+        top: 24px;
+        left: 16px;
+        z-index: 1;
+        color: var(--text-color);
+        opacity: 0.7;
+    }
+
+    .feedback-content {
+        display: flex;
+        align-items: start;
+        gap: 12px;
+
+        .feedback-avatar {
+            display: block;
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            margin: 20px 0 0 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .feedback-text {
+            color: var(--text-color-bold);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        span {
+            display: block;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+    }
+
+    .feedback-content-desktop {
+        display: flex;
+        min-height: 212px;
+
+        .feedback-text {
+            display: block;
+            max-height: 154px;
+            overflow-y: auto;
+        }
+    }
+
+    .feedback-content-mobile {
+        display: none;
+    }
+}
+
+// ============RESPONSIVE================
+/* Mobile */
+@media (max-width: 1024px) {
+    /* Feedback */
+    .feedback-card {
+        .feedback-content-desktop {
+            display: none;
+        }
+
+        .feedback-content-mobile {
+            display: block;
+        }
+
+        .feedback-icon {
+            left: 24px;
+        }
+
+        .feedback-content {
+            margin-top: 12px;
+            flex-direction: column;
+            gap: 4px;
+
+            .feedback-text {
+                text-align: justify;
+                text-indent: 2em;
+                padding: 0 8px;
+            }
+        }
+
+        .feedback-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 0 8px 16px 0;
+        }
+
+        .feedback-content .feedback-avatar {
+            width: 64px;
+            height: 64px;
+            margin: 0;
+        }
+    }
+}

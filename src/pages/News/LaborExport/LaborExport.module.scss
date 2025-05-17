@@ -1,0 +1,129 @@
+// common
+.list-normal {
+    padding-left: 20px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+
+    span {
+        font-weight: 600;
+    }
+
+    li {
+        margin-bottom: 4px;
+    }
+}
+
+// wrapper
+.wrapper {
+    color: var(--text-color);
+    margin-bottom: 32px;
+
+    p {
+        line-height: 1.8;
+        margin-bottom: 12px;
+    }
+
+    .heading {
+        margin-bottom: 16px;
+
+        h1 {
+            font-size: 3.6rem;
+            word-spacing: 0.06em;
+            letter-spacing: 0.02rem;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .title-wrapper {
+        margin-bottom: 12px;
+    }
+
+    counter-reset: section;
+
+    h2.title {
+        color: var(--primary);
+        font-size: 2.4rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        counter-increment: section;
+        &::before {
+            content: counter(section) '. ';
+            font-weight: 600;
+            margin-right: 4px;
+        }
+    }
+
+    .icon-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+
+        .item {
+            margin-top: 16px;
+        }
+
+        .icon-title {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+
+            .icon {
+                position: absolute;
+                top: 4px;
+                left: 0;
+                flex-shrink: 0;
+                color: var(--primary);
+                font-size: 2.4rem;
+            }
+
+            .sub-title {
+                font-size: 2rem;
+                text-indent: 1.5em;
+                margin: 0;
+                color: var(--text-color-bold);
+            }
+        }
+    }
+
+    .image-wrapper {
+        margin-top: 2rem;
+        text-align: center;
+
+        img {
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        figcaption {
+            margin-top: 0.5rem;
+            font-style: italic;
+            font-size: 14px;
+            color: #555;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 767px) {
+    .wrapper {
+        .heading h1 {
+            display: none;
+        }
+    }
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1023px) {
+}

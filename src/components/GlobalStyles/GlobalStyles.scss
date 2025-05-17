@@ -1,0 +1,204 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap');
+
+:root {
+    --primary: #ce232d;
+    --primary-light: #d2343e;
+    --black: #171717;
+    --white: #fff;
+    --text-color-bold: #343a30;
+    --text-color: #5b5b5c;
+    --bg-primary: rgba(206, 35, 45, 0.12);
+    --bg-primary-light: rgba(206, 35, 45, 0.04);
+
+    // Default Layout
+    --default-layout-header-height: 60px;
+    --default-layout-nav-top-height: 40px;
+    --default-layout-width: 1248px;
+    --default-layout-horizontal-space: 24px;
+    --carousel-height: 540px;
+    --toc-top: calc(var(--default-layout-header-height) + var(--default-layout-nav-top-height));
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// apply font global
+*,
+*::before,
+*::after {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.6;
+    text-rendering: optimizeSpeed;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    color: var(--black);
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a[href] {
+    color: var(--text-color-bold);
+    text-decoration: none;
+}
+
+[id] {
+    scroll-margin-top: var(--toc-top);
+}
+
+.breadcrumb-wrapper {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+// Heading section
+.heading-section {
+    position: relative;
+    margin: 28px 0 24px;
+
+    .title-section {
+        display: inline-block;
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: var(--white);
+        background: var(--primary);
+        line-height: 1.6;
+        padding: 6px 16px 4px 16px;
+        border-radius: 4px;
+        user-select: none;
+
+        a,
+        a[href] {
+            color: var(--white);
+        }
+
+        &::after {
+            position: absolute;
+            height: 1px;
+            content: '';
+            display: block;
+            width: 100%;
+            z-index: -1;
+            top: 18px;
+            left: 0;
+            background: linear-gradient(to right, #555, #000);
+        }
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Scrollbar css */
+html ::-webkit-scrollbar {
+    border-radius: 0px;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.2);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+// Customize
+.custom-section-layout,
+.custom-banner-layout {
+    width: 100vw;
+    height: 100%;
+    margin-left: calc(-50vw + 50%); /* pull element */
+    position: relative;
+}
+
+.custom-banner-layout {
+    height: var(--carousel-height);
+    margin-top: -32px;
+}
+
+/* Tabs customize */
+
+/* tab underline */
+.ant-tabs-ink-bar {
+    background-color: #ce232d !important;
+}
+
+// .ant-tabs-tab-active div,
+.ant-tabs-tab-active span,
+.ant-tabs-tab-active p {
+    color: var(--primary) !important;
+}
+
+// tab style bg red, color white
+.tab-label {
+    font-weight: 600;
+    font-size: 1.8rem;
+    background-color: #e5e5e5;
+    color: var(--black);
+    padding: 6px 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.ant-tabs-tab-active .tab-label {
+    background-color: #ce232d !important;
+    color: var(--white) !important;
+}
+
+/* =============== RESPONSIVE ================ */
+/* Carousel Height */
+// img should 16:6, ex: 1600px x 600px or 1920px x 720px
+// Desktop
+@media (min-width: 1025px) {
+    :root {
+        --carousel-height: var(--carousel-height, 450px);
+    }
+}
+
+// Tablet
+@media (min-width: 768px) and (max-width: 1024px) {
+    :root {
+        --carousel-height: 320px;
+    }
+}
+
+// Mobile
+@media (max-width: 767px) {
+    :root {
+        --carousel-height: 156px;
+    }
+}

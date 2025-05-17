@@ -1,0 +1,23 @@
+.carousel-img {
+    display: block;
+    width: 100%;
+    height: var(--carousel-height);
+    aspect-ratio: 16 / 6;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* Custom Dots Carousel*/
+:global {
+    .ant-carousel .slick-dots li button {
+        background: var(--text-color);
+    }
+
+    li.slick-active button {
+        background: var(--text-color-bold);
+    }
+
+    .ant-carousel .slick-dots li::after {
+        background: var(--text-color-bold);
+    }
+}

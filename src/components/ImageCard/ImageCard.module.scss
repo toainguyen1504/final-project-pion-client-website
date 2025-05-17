@@ -1,0 +1,116 @@
+.image-card {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+
+    .card-inner {
+        font-family: inherit !important;
+        font-weight: inherit !important;
+
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        //override card ant design
+        :global {
+            .ant-card-cover {
+                img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    object-position: top center;
+                }
+            }
+
+            .ant-card-meta {
+                display: block;
+                max-height: 116px;
+                overflow-y: auto;
+                padding: 0 4px;
+
+                .card-title {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    color: var(--text-color-bold);
+                    user-select: none;
+
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: wrap;
+
+                    &:hover {
+                        color: var(--primary);
+                    }
+
+                    transition: color 0.3s ease;
+                }
+
+                .ant-card-meta-description {
+                    min-height: 76px;
+                    font-size: 1.6rem;
+                    color: var(--text-color);
+                    text-align: left;
+
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .card-button {
+                display: block;
+                width: 100%;
+                max-width: 192px;
+                padding: 4px 16px;
+                margin-top: 18px;
+                text-align: center;
+                color: var(--primary);
+                background: var(--white);
+                outline: none;
+                border: 1px solid var(--primary);
+                border-radius: 0;
+                cursor: pointer;
+
+                span {
+                    display: block;
+                    max-width: 100%;
+                    overflow: hidden;
+                    color: inherit;
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                }
+
+                &:hover {
+                    color: var(--primary-light);
+                    border: 1px solid var(--primary);
+                    background: rgba(254, 44, 85, 0.06) !important;
+                }
+
+                transition: background-color 0.3s ease-in-out;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .image-card .card-inner {
+        :global {
+            .ant-card-meta {
+                max-height: none;
+                overflow-y: visible;
+            }
+        }
+    }
+}

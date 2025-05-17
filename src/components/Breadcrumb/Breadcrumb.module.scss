@@ -1,0 +1,35 @@
+// Breadcrumb
+.wrapper {
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.item {
+    display: inline;
+}
+
+.link {
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+        color: var(--primary);
+        text-shadow: 0 0 0.4px currentColor, 0 0 0.4px currentColor;
+    }
+}
+
+.link.home {
+    color: var(--primary);
+}
+
+.separator {
+    margin: 0 6px;
+    color: var(--text-color-light);
+}
+
+.current {
+    display: inline-block;
+    color: var(--black);
+}

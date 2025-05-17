@@ -1,0 +1,28 @@
+.checkbox-container {
+    cursor: pointer;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-icon {
+    overflow: visible;
+}
+
+.checkbox-path {
+    fill: none;
+    stroke: var(--text-color);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+
+    &.checked {
+        stroke: #0cc902;
+        stroke-dasharray: 70.5096664428711 9999999;
+        stroke-dashoffset: -262.2723388671875;
+    }
+}

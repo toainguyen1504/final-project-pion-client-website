@@ -1,0 +1,72 @@
+.job-wrapper {
+    span {
+        font-weight: 600;
+    }
+
+    counter-reset: section-counter;
+
+    h3 {
+        counter-increment: section-counter;
+        position: relative;
+        font-size: 2rem;
+        font-weight: 600;
+
+        &::before {
+            content: counter(section-counter) '. ';
+            font-weight: 600;
+        }
+    }
+
+    p {
+        line-height: 1.8;
+    }
+}
+
+.job-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.job-info {
+    margin-bottom: 16px;
+
+    .job-title {
+        margin-bottom: 12px;
+    }
+
+    p + p {
+        margin-top: 4px;
+    }
+}
+
+.icon-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    font-size: 1.6rem;
+
+    .item {
+        margin-top: 6px;
+    }
+
+    .text-wrapper {
+        position: relative;
+
+        .icon {
+            position: absolute;
+            top: 6px;
+            left: 0;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .text {
+            font-size: 1.6rem;
+            text-indent: 1.6em;
+            margin: 0;
+            color: var(--text-color-bold);
+        }
+    }
+}

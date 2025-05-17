@@ -1,0 +1,186 @@
+.contact {
+    .error {
+        position: absolute;
+        top: 72px;
+        left: 6px;
+        color: hsl(45, 95%, 58%);
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+
+    .form {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-bottom: 40px;
+
+        .input-wrapper {
+            position: relative;
+            flex: 1 1 calc(50% - 30px);
+            min-width: 280px;
+        }
+    }
+
+    .input,
+    .textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        font-size: 1.4rem;
+        padding-top: 30px;
+        padding-bottom: 12px;
+        border-radius: 0;
+        outline: none;
+        resize: none;
+    }
+
+    .input.email,
+    .input.textarea {
+        height: 60px;
+        padding-bottom: 12px;
+        line-height: 1.5;
+        overflow-y: auto;
+        resize: none;
+        display: block;
+        padding-top: 30px;
+    }
+
+    .captcha {
+        margin: 52px auto 16px;
+        display: flex;
+        justify-content: center;
+
+        .error {
+            left: 24px;
+        }
+
+        .captcha-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 320px;
+            padding: 28px 24px;
+            gap: 24px;
+            border-radius: 4px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+            background-color: #fff;
+        }
+
+        .captcha-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checkbox-container {
+            cursor: pointer;
+
+            .checkbox-input {
+                display: none;
+            }
+
+            .checkbox-icon {
+                overflow: visible;
+            }
+
+            .checkbox-path {
+                fill: none;
+                stroke: var(--text-color);
+                stroke-width: 4;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+                stroke-dasharray: 241 9999999;
+                stroke-dashoffset: 0;
+
+                &.checked {
+                    stroke: #0cc902;
+                    stroke-dasharray: 70.5096664428711 9999999;
+                    stroke-dashoffset: -262.2723388671875;
+                }
+            }
+        }
+
+        .captcha-text {
+            font-size: 14px;
+            color: #000;
+        }
+
+        .captcha-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+        }
+
+        .captcha-logo {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .captcha-terms a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-right: 6px;
+        }
+    }
+
+    .button {
+        font-size: 1.6rem;
+        background: #ffffff;
+        color: var(--primary);
+        text-transform: uppercase;
+        margin-top: 8px;
+        padding: 10px 32px;
+        cursor: pointer;
+
+        &:hover {
+            background: #f8f4f4;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        transition: background-color 0.3s;
+    }
+
+    .footer {
+        margin-top: 28px;
+        font-weight: 400;
+        font-size: 1.6rem;
+        letter-spacing: 0.2px;
+
+        p {
+            max-width: 508px;
+            margin: 8px auto;
+        }
+
+        span {
+            display: block;
+            color: var(--white);
+            letter-spacing: 1px;
+            font-size: 2rem;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .row {
+        .input {
+            flex: 1 1 100%;
+        }
+    }
+}
