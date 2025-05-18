@@ -264,6 +264,7 @@
             color: var(--primary);
         }
     }
+
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -320,5 +321,23 @@
 
     .search-form {
         display: none;
+    }
+}
+
+/* only Tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mobile-menu {
+        .mobile-menu-content {
+            span,
+            a::before {
+                font-size: 1.8rem;
+            }
+        }
+
+        :global {
+            .ant-menu-sub .ant-menu-title-content {
+                font-size: 1.8rem;
+            }
+        }
     }
 }

@@ -188,7 +188,7 @@ function China() {
                         <Step title="Đề xuất phương án" icon={<FiSearch size={24} className={cx('icon')} />} />
                         <Step title="Hoàn thiện hồ sơ" icon={<FiMail size={24} className={cx('icon')} />} />
                         <Step title="Chuẩn bị nhập học" icon={<FiCalendar size={24} className={cx('icon')} />} />
-                        <Step title="Tư vấn việc làm" icon={<FiSmile size={24} className={cx('icon')} s />} />
+                        <Step title="Tư vấn việc làm" icon={<FiSmile size={24} className={cx('icon')} />} />
                     </Steps>
                 </ContentItem>
             </section>

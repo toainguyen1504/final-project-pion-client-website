@@ -7,8 +7,10 @@ import Home from '@/pages/Home';
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import CourseDetail from '@/pages/CourseDetail';
+import SearchPage from '@/pages/SearchPage';
 import { StudyAbroadGerman, StudyAbroadChina, StudyAbroadKorean } from '@/pages/StudyAbroad';
 import { NewsLaborExport, NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
+
 import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
 const publicRoutes = [
@@ -56,6 +58,7 @@ const publicRoutes = [
 
     // ....
     // { path: config.routes.news, component: News, layout: BlogLayout },
+    { path: config.routes.search, component: SearchPage },
     { path: config.routes.notFound, component: NotFoundPage },
 ];
 // {note: have layout: null },

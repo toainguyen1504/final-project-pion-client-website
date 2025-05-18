@@ -1,7 +1,7 @@
 const courses = {
     english: [
         {
-            id: 'preschool',
+            id: 'en_1',
             language: 'english',
             title: 'Tiếng Anh Mầm Non',
             subTitle: 'Little - Dành cho trẻ từ 3 - 6 tuổi',
@@ -28,7 +28,7 @@ const courses = {
             slug: 'tieng-anh-mam-non',
         },
         {
-            id: 'primary',
+            id: 'en_2',
             language: 'english',
             title: 'Tiếng Anh Tiểu Học',
             subTitle: ' Junior Dành cho trẻ từ 7 - 11 tuổi',
@@ -55,7 +55,7 @@ const courses = {
             slug: 'tieng-anh-tieu-hoc',
         },
         {
-            id: 'secondary',
+            id: 'en_3',
             language: 'english',
             title: 'Tiếng Anh THCS',
             subTitle: 'Smart - Dành cho trẻ từ 12 - 15 tuổi',
@@ -83,6 +83,7 @@ const courses = {
     ],
     chinese: [
         {
+            id: 'ch_1',
             language: 'chinese',
             title: 'Tiếng Trung Giao Tiếp Ứng Dụng',
             subTitle: '',
@@ -108,6 +109,7 @@ const courses = {
             slug: 'tieng-trung-giao-tiep-ung-dung',
         },
         {
+            id: 'ch_2',
             language: 'chinese',
             title: 'Tiếng Trung Trẻ Em',
             subTitle: '',
@@ -131,6 +133,7 @@ const courses = {
             slug: 'tieng-trung-tre-em',
         },
         {
+            id: 'ch_3',
             language: 'chinese',
             title: 'Luyện Thi HSK',
             subTitle: '',
@@ -158,6 +161,7 @@ const courses = {
     ],
     german: [
         {
+            id: 'ge_1',
             language: 'german',
             title: 'Tiếng Đức Online 1 Kèm 1',
             subTitle: '',
@@ -180,6 +184,7 @@ const courses = {
             slug: 'tieng-duc-online-1-kem-1',
         },
         {
+            id: 'ge_2',
             language: 'german',
             title: 'Tiếng Đức A1',
             subTitle: '',
@@ -201,6 +206,7 @@ const courses = {
             slug: 'tieng-duc-a1',
         },
         {
+            id: 'ge_3',
             language: 'german',
             title: 'Tiếng Đức A2',
             subTitle: '',
@@ -222,6 +228,7 @@ const courses = {
             slug: 'tieng-duc-a2',
         },
         {
+            id: 'ge_4',
             language: 'german',
             title: 'Tiếng Đức B1',
             subTitle: '',
@@ -246,6 +253,7 @@ const courses = {
             slug: 'tieng-duc-b1',
         },
         {
+            id: 'ge_5',
             language: 'german',
             title: 'Tiếng Đức B2',
             subTitle: '',
@@ -272,6 +280,7 @@ const courses = {
     ],
     korean: [
         {
+            id: 'ko_1',
             language: 'korean',
             title: 'Tiếng Hàn Sơ Cấp 1',
             subTitle: '',
@@ -293,6 +302,7 @@ const courses = {
             slug: 'tieng-han-so-cap-1',
         },
         {
+            id: 'ko_2',
             language: 'korean',
             title: 'Tiếng Hàn Sơ Cấp 2',
             subTitle: '',
@@ -315,6 +325,7 @@ const courses = {
             slug: 'tieng-han-so-cap-2',
         },
         {
+            id: 'ko_3',
             language: 'korean',
             title: 'Ôn Luyện TOPIK I',
             subTitle: '',
@@ -343,6 +354,7 @@ const courses = {
             slug: 'luyen-thi-topik-i',
         },
         {
+            id: 'ko_4',
             language: 'korean',
             title: 'Ôn Luyện TOPIK II',
             subTitle: '',

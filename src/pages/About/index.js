@@ -8,7 +8,7 @@ import { GiHumanTarget } from 'react-icons/gi';
 import { FaCirclePlay } from 'react-icons/fa6';
 
 import Breadcrumb from '@/components/Breadcrumb';
-import ContactForm from '@/components/ContactForm';
+// import ContactForm from '@/components/ContactForm';
 import ZigzagSection from '@/components/ZigzagSection';
 import TeacherCard from '@/components/TeacherCard';
 import CoreValuesSlider from './CoreValuesSlider';
@@ -91,10 +91,10 @@ const coreValuesData = [
 function About() {
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const handleContactSubmit = (data) => {
-        console.log('Dữ liệu gửi đi:', data);
-        // API
-    };
+    // const handleContactSubmit = (data) => {
+    //     console.log('Dữ liệu gửi đi:', data);
+    //     // API
+    // };
 
     const handlePlay = () => {
         setTimeout(() => {
@@ -224,9 +224,9 @@ function About() {
             <section className={cx('question-wrapper')}></section>
 
             {/* Contact */}
-            <section className={cx('contact-wrapper')}>
+            {/* <section className={cx('contact-wrapper')}>
                 <ContactForm onSubmit={handleContactSubmit} />
-            </section>
+            </section> */}
         </div>
     );
 }

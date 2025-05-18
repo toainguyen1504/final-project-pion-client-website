@@ -5,7 +5,7 @@ const NotFoundPage = () => {
     return (
         <Result
             status="404"
-            title="404"
+            title="Không tồn tại!"
             subTitle="Xin lỗi, trang bạn đang tìm kiếm không tồn tại!"
             extra={
                 <Link to="/">

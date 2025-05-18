@@ -93,3 +93,13 @@
 
     transition: color 0.3s, filter 0.3s ease-in-out;
 }
+
+// Search result custom
+:global {
+    .ant-dropdown-menu {
+        max-width: 500px;
+        word-wrap: break-word;
+        max-height: 36vh;
+        overflow-y: auto;
+    }
+}
