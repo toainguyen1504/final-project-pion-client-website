@@ -1,12 +1,9 @@
-// Breadcrumb
 .wrapper {
+    display: inline-flex;
+    align-items: center;
     width: 100%;
     font-weight: 400;
-    font-size: 16px;
-}
-
-.item {
-    display: inline;
+    font-size: 1.6rem;
 }
 
 .link {
@@ -20,8 +17,19 @@
     }
 }
 
+.parent_link,
+.children_link {
+    display: inline-flex;
+    align-items: center;
+}
+
+.parent_link .link,
 .link.home {
     color: var(--primary);
+}
+
+.link.home {
+    font-weight: 500;
 }
 
 .separator {
@@ -32,4 +40,15 @@
 .current {
     display: inline-block;
     color: var(--black);
+}
+
+@media (max-width: 767px) {
+    .wrapper {
+        display: inline;
+
+        .parent_link,
+        .children_link {
+            display: inline;
+        }
+    }
 }

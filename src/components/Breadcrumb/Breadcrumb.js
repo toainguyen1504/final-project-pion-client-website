@@ -15,20 +15,22 @@ export default function Breadcrumb({ title = '', parentPath = '', parentLabel = 
             </Link>
 
             {parentPath && parentLabel && (
-                <>
+                <div className={cx('parent_link')}>
                     <span className={cx('separator')}>
                         <FaAnglesRight size={10} />
                     </span>
                     <Link to={parentPath} className={cx('link')}>
                         {parentLabel}
                     </Link>
-                </>
+                </div>
             )}
 
-            <span className={cx('separator')}>
-                <FaAnglesRight size={10} />
-            </span>
-            <p className={cx('current')}>{title}</p>
+            <div className={cx('children_link')}>
+                <span className={cx('separator')}>
+                    <FaAnglesRight size={10} />
+                </span>
+                <p className={cx('current')}>{title}</p>
+            </div>
         </nav>
     );
 }

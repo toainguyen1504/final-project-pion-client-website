@@ -25,8 +25,8 @@ const newsData = [
         title: 'Du Học Đức - Cơ Hội Mở Rộng Tương Lai',
         desc: 'Trong những năm gần đây, việc sang Đức học nghề đã thu hút sự quan tâm mạnh mẽ từ giới trẻ Việt Nam. Lý do không chỉ nằm ở cơ hội tiếp cận nền giáo dục chất lượng cao mà còn ở trải nghiệm cuộc sống tại một quốc gia hiện đại và giàu bản sắc văn hóa.',
         image: '/assets/img/du_hoc/german2.jpg',
-        link: '/du-hoc-duc',
-        slug: 'du-hoc-duc',
+        link: '/du-hoc-nghe-duc',
+        slug: 'du-hoc-nghe-duc',
     },
     {
         id: 'news_03',

@@ -110,7 +110,6 @@
 .ceo {
     padding: 24px 0;
     background-color: var(--white);
-    font-family: 'Poppins', sans-serif !important;
 
     .title-wrapper {
         margin-bottom: 24px;
@@ -272,6 +271,7 @@
     .summary {
         display: -webkit-box;
         -webkit-line-clamp: 3;
+        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -442,6 +442,7 @@
 
         .summary {
             -webkit-line-clamp: 10;
+            line-clamp: 10;
         }
     }
 
@@ -498,6 +499,7 @@
 
         .summary {
             -webkit-line-clamp: 8;
+            line-clamp: 8;
         }
     }
 }

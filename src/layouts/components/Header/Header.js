@@ -36,7 +36,7 @@ const items = [
                 label: 'Tiếng Anh',
                 children: [
                     {
-                        key: 'english-preschool',
+                        key: 'en_1',
                         label: (
                             <Link to="/tieng-anh-mam-non" className="menu-normal">
                                 Tiếng Anh mầm non
@@ -44,7 +44,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'english-primary',
+                        key: 'en_2',
                         label: (
                             <Link to="/tieng-anh-tieu-hoc" className="menu-normal">
                                 Tiếng Anh tiểu học
@@ -52,9 +52,9 @@ const items = [
                         ),
                     },
                     {
-                        key: 'english-secondary',
+                        key: 'en_3',
                         label: (
-                            <Link to="/tieng-anh-trung-hoc-co-so" className="menu-normal">
+                            <Link to="/tieng-anh-thcs" className="menu-normal">
                                 Tiếng Anh trung học cơ sở
                             </Link>
                         ),
@@ -66,15 +66,15 @@ const items = [
                 label: 'Tiếng Trung',
                 children: [
                     {
-                        key: 'chinese-communication',
+                        key: 'ch_1',
                         label: (
-                            <Link to="/giao-tiep-ung-dung" className="menu-normal">
+                            <Link to="/tieng-trung-giao-tiep-ung-dung" className="menu-normal">
                                 Giao tiếp ứng dụng
                             </Link>
                         ),
                     },
                     {
-                        key: 'chinese-kids',
+                        key: 'ch_2',
                         label: (
                             <Link to="/tieng-trung-tre-em" className="menu-normal">
                                 Tiếng Trung trẻ em
@@ -82,7 +82,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'chinese-hsk',
+                        key: 'ch_3',
                         label: (
                             <Link to="/luyen-thi-hsk" className="menu-normal">
                                 Luyện thi HSK
@@ -96,7 +96,7 @@ const items = [
                 label: 'Tiếng Hàn',
                 children: [
                     {
-                        key: 'korean-basic-1',
+                        key: 'ko_1',
                         label: (
                             <Link to="/tieng-han-so-cap-1" className="menu-normal">
                                 Tiếng Hàn sơ cấp 1
@@ -104,7 +104,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'korean-basic-2',
+                        key: 'ko_2',
                         label: (
                             <Link to="/tieng-han-so-cap-2" className="menu-normal">
                                 Tiếng Hàn sơ cấp 2
@@ -112,7 +112,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'korean-topik-1',
+                        key: 'ko_3',
                         label: (
                             <Link to="/luyen-thi-topik-i" className="menu-normal">
                                 Luyện thi TOPIK I
@@ -120,7 +120,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'korean-topik-2',
+                        key: 'ko_4',
                         label: (
                             <Link to="/luyen-thi-topik-ii" className="menu-normal">
                                 Luyện thi TOPIK II
@@ -134,7 +134,7 @@ const items = [
                 label: 'Tiếng Đức',
                 children: [
                     {
-                        key: 'german-online-1on1',
+                        key: 'ge_1',
                         label: (
                             <Link to="/tieng-duc-online-1-kem-1" className="menu-normal">
                                 Tiếng Đức online 1 kèm 1
@@ -142,7 +142,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'german-a1',
+                        key: 'ge_2',
                         label: (
                             <Link to="/tieng-duc-a1" className="menu-normal">
                                 Tiếng Đức A1
@@ -150,7 +150,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'german-a2',
+                        key: 'ge_3',
                         label: (
                             <Link to="/tieng-duc-a2" className="menu-normal">
                                 Tiếng Đức A2
@@ -158,7 +158,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'german-b1',
+                        key: 'ge_4',
                         label: (
                             <Link to="/tieng-duc-b1" className="menu-normal">
                                 Tiếng Đức B1
@@ -166,7 +166,7 @@ const items = [
                         ),
                     },
                     {
-                        key: 'german-b2',
+                        key: 'ge_5',
                         label: (
                             <Link to="/tieng-duc-b2" className="menu-normal">
                                 Tiếng Đức B2
@@ -201,13 +201,6 @@ const items = [
             { key: 'news-question', label: <Link to="/cau-hoi-thuong-gap">Câu hỏi thường gặp</Link> },
         ],
     },
-    // {
-    //     type: 'divider',
-    // },
-    // {
-    //     key: 'register',
-    //     label: <Link to="/dang-ky-tu-van">Đăng ký tư vấn</Link>,
-    // },
     {
         type: 'divider',
     },
@@ -250,27 +243,30 @@ export default function Header({ visible }) {
 
     // Portal content : Mobile and tablet menu
     const mobileMenu = (
-        <div className={cx('mobile-menu', { show: menuVisible })}>
-            <div className={cx('mobile-menu-content')}>
-                <button className={cx('close-button')} onClick={handleCloseMenu}>
-                    ✖
-                </button>
-                <Menu
-                    mode="inline"
-                    items={items}
-                    openKeys={openKeys}
-                    style={{
-                        borderRight: 0,
-                        backgroundColor: 'transparent',
-                        color: 'white',
-                        itemSelectedBg: '#ce232d0a',
-                        itemHoverBg: '#ce232d0a',
-                        itemHoverColor: '#ce232d',
-                        itemSelectedColor: '#ce232d',
-                    }}
-                    onOpenChange={onOpenChange}
-                    onClick={handleCloseMenu}
-                />
+        <div className={cx('mobile-menu-wrapper')}>
+            {menuVisible && <div className={cx('overlay')} />}
+            <div className={cx('mobile-menu', { show: menuVisible })}>
+                <div className={cx('mobile-menu-content')}>
+                    <button className={cx('close-button')} onClick={handleCloseMenu}>
+                        ✖
+                    </button>
+                    <Menu
+                        mode="inline"
+                        items={items}
+                        openKeys={openKeys}
+                        style={{
+                            borderRight: 0,
+                            backgroundColor: 'transparent',
+                            color: 'white',
+                            itemSelectedBg: '#ce232d0a',
+                            itemHoverBg: '#ce232d0a',
+                            itemHoverColor: '#ce232d',
+                            itemSelectedColor: '#ce232d',
+                        }}
+                        onOpenChange={onOpenChange}
+                        onClick={handleCloseMenu}
+                    />
+                </div>
             </div>
         </div>
     );
