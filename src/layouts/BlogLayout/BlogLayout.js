@@ -47,7 +47,7 @@ function BlogLayout({ children, tocData = [], breadcrumbTitle = '' }) {
                     </div>
                     <div className={cx('content')}>{children}</div>
                     <FloatingButtons
-                        zaloUrl="https://zalo.me/0899398383"
+                        zaloUrl="https://zalo.me/0899363369"
                         phoneNumber="0899363369"
                         facebookPages={[
                             { name: 'Trung tâm tư vấn du học', url: 'https://www.facebook.com/duhocpionglobal/' },

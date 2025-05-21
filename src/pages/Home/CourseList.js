@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import React, { useState } from 'react';
+import { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 

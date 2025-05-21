@@ -2,9 +2,9 @@
     display: block;
     width: 100%;
     height: var(--carousel-height);
-    aspect-ratio: 16 / 6;
-    object-fit: cover;
-    object-position: top center;
+    // aspect-ratio: 16 / 6;
+    object-fit: contain;
+    object-position: center;
 }
 
 /* Custom Dots Carousel*/
