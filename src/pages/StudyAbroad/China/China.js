@@ -5,7 +5,7 @@ import { Steps } from 'antd';
 import { FiUser, FiSearch, FiMail, FiCalendar, FiSmile } from 'react-icons/fi';
 import { HiOutlineClipboardList } from 'react-icons/hi';
 
-import RelatedContent from '@/components/RelatedContent';
+// import RelatedContent from '@/components/RelatedContent';
 import { slugify } from '@/utils';
 import styles from '../StudyAbroad.module.scss'; // Css
 
@@ -192,7 +192,7 @@ function China() {
                     </Steps>
                 </ContentItem>
             </section>
-            <RelatedContent />
+            {/* <RelatedContent /> */}
         </div>
     );
 }

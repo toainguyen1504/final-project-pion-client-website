@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './NavTop.module.scss'; // Import CSS module
-import { FaPhoneSquareAlt, FaFacebookF, FaEnvelope } from 'react-icons/fa';
+import { FaPhoneSquareAlt, FaEnvelope } from 'react-icons/fa';
 const cx = classNames.bind(styles);
 
 export default function NavTop({ hidden }) {
@@ -31,7 +31,7 @@ export default function NavTop({ hidden }) {
                         <FaPhoneSquareAlt size={20} /> <span>0899 363 369</span>
                     </div>
                     {/* Should optimize = Button component */}
-                    <div className={cx('contact-fanpage')}>
+                    {/* <div className={cx('contact-fanpage')}>
                         <a
                             href="https://www.facebook.com/duhocpionglobal/"
                             target="_blank"
@@ -40,7 +40,7 @@ export default function NavTop({ hidden }) {
                         >
                             <FaFacebookF />
                         </a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>

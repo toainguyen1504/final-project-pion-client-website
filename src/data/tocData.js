@@ -87,10 +87,10 @@ export const tocDataChina = [
         href: '#!',
         children: [],
     },
-    {
-        text: '4. Nội dung liên quan',
-        href: '#!',
-    },
+    // {
+    //     text: '4. Nội dung liên quan',
+    //     href: '#!',
+    // },
 ];
 
 export const tocDataKorean = [
