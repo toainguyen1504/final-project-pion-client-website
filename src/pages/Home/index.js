@@ -36,7 +36,7 @@ const whyChooseData = [
     {
         icon: <GiBookmarklet size={48} />,
         title: 'Các khóa học đạt chuẩn quốc tế',
-        description: 'Cung cấp các khóa học tiếng Anh, tiếng Đức, tiếng Hàn và tiếng Trung giúp bạn sẵn sàng hội nhập.',
+        description: 'Cung cấp các khóa học tiếng Anh và tiếng Trung giúp bạn sẵn sàng hội nhập.',
     },
     {
         icon: <FaBookAtlas size={48} />,
@@ -46,9 +46,9 @@ const whyChooseData = [
     },
     {
         icon: <FaPlaneDeparture size={48} />,
-        title: 'Chương trình du học & XKLĐ uy tín',
+        title: 'Chương trình du học uy tín',
         description:
-            'Đối tác với các trường đại học danh tiếng tại Đức, Hàn Quốc, Trung Quốc. Cung cấp cơ hội việc làm sau tốt nghiệp với mức thu nhập hấp dẫn.',
+            'Đối tác với các trường đại học danh tiếng tại Đài Loan và Trung Quốc. Cung cấp cơ hội việc làm sau tốt nghiệp với mức thu nhập hấp dẫn.',
     },
     {
         icon: <MdHandshake size={48} />,
@@ -59,8 +59,7 @@ const whyChooseData = [
     {
         icon: <IoMdTrendingUp size={48} />,
         title: 'Cơ hội phát triển sự nghiệp bền vững',
-        description:
-            'Không chỉ đơn thuần là du học hay xuất khẩu lao động, PION giúp bạn xây dựng sự nghiệp quốc tế vững chắc.',
+        description: 'Không chỉ đơn thuần là du học, PION giúp bạn xây dựng sự nghiệp quốc tế vững chắc.',
     },
 ];
 
@@ -100,13 +99,13 @@ const feedbackData = [
         feedback:
             'Tôi thật sự hài lòng với khóa học tiếng Anh tại PION dành cho trẻ. Bé nhà tôi vốn nhút nhát, ngại giao tiếp nhưng sau một thời gian học tại trung tâm, con đã trở nên tự tin hơn, có thể chủ động nói những câu tiếng Anh đơn giản mà không e ngại. Giáo viên luôn tận tâm, kiên nhẫn và có phương pháp giảng dạy sinh động, giúp bé thích thú học tập mỗi ngày. Đặc biệt, các hoạt động ngoại khóa và trò chơi tương tác đã giúp con học tiếng Anh một cách tự nhiên và hiệu quả. Xin cảm ơn trung tâm đã giúp con tiến bộ rõ rệt!',
     },
-    {
-        avatar: '/assets/img/students/thu_huyen.jpg',
-        name: 'Bạn Nguyễn Thu Huyền',
-        university: 'Sinh viên Đại học Hankuk',
-        feedback:
-            'Em từng trượt ở 1 trung tâm khác và đã quyết định gửi lại hồ sơ vào PION. Cảm ơn trung tâm đã giúp đỡ em rất nhiều. Bởi với em khoảng thời gian đó thực sự khó khăn, em mất niềm tin vào bản thân và từng nghĩ mình là kẻ thất bại. Cảm ơn cô giáo, cảm ơn chị Nhung và chị sale đã luôn động viên em ạ!',
-    },
+    // {
+    //     avatar: '/assets/img/students/thu_huyen.jpg',
+    //     name: 'Bạn Nguyễn Thu Huyền',
+    //     university: 'Sinh viên Đại học Hankuk',
+    //     feedback:
+    //         'Em từng trượt ở 1 trung tâm khác và đã quyết định gửi lại hồ sơ vào PION. Cảm ơn trung tâm đã giúp đỡ em rất nhiều. Bởi với em khoảng thời gian đó thực sự khó khăn, em mất niềm tin vào bản thân và từng nghĩ mình là kẻ thất bại. Cảm ơn cô giáo, cảm ơn chị Nhung và chị sale đã luôn động viên em ạ!',
+    // },
 ];
 
 const MAX_FEEDBACK_VISIBLE = 4;
@@ -168,8 +167,8 @@ function Home() {
 
                                 <div className={cx('content')}>
                                     <p>
-                                        Tại <span>Pion Corporation</span>, chúng tôi tin rằng giáo dục là chìa khóa để
-                                        mở ra cánh cửa tương lai. Với mô hình
+                                        Tại <span>Pion</span>, chúng tôi tin rằng giáo dục là chìa khóa để mở ra cánh
+                                        cửa tương lai. Với mô hình
                                         <em>&nbsp;"Đào tạo ngôn ngữ - Du học - Hệ thống chuỗi"</em>, chúng tôi cam kết
                                         mang đến cho học viên không chỉ kiến thức ngôn ngữ vững chắc mà còn cơ hội phát
                                         triển toàn diện trên nền tảng quốc tế. Chúng tôi tập trung vào hai mô hình trọng
@@ -198,8 +197,8 @@ function Home() {
                                     <p>
                                         Chúng tôi tự hào với những thành tựu đã đạt được và luôn nỗ lực không ngừng để
                                         mang đến cho học viên những cơ hội tốt nhất.
-                                        <span> Pion Corporation </span> luôn đồng hành cùng bạn trong hành trình chinh
-                                        phục tri thức và phát triển sự nghiệp toàn cầu.
+                                        <span> Pion</span> luôn đồng hành cùng bạn trong hành trình chinh phục tri thức
+                                        và phát triển sự nghiệp toàn cầu.
                                     </p>
                                 </div>
                             </Col>

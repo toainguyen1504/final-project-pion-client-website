@@ -50,8 +50,11 @@ function BlogLayout({ children, tocData = [], breadcrumbTitle = '' }) {
                         zaloUrl="https://zalo.me/0899363369"
                         phoneNumber="0899363369"
                         facebookPages={[
-                            { name: 'Trung tâm tư vấn du học', url: 'https://www.facebook.com/duhocpionglobal/' },
-                            { name: 'Trung tâm ngoại ngữ', url: 'https://www.facebook.com/ngoaingupionacademy/' },
+                            {
+                                name: 'Trung tâm tiếng Trung Pion',
+                                url: 'https://www.facebook.com/tiengtrungpionbinhdinh/',
+                            },
+                            { name: 'Trung tâm tiếng Anh Pion', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
                         ]}
                     />
                     <FloatButton.BackTop visibilityHeight={1000} duration={200} style={{ bottom: 72, right: 16 }} />

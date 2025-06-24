@@ -12,30 +12,30 @@ import styles from './Home.module.scss';
 const cx = classNames.bind(styles);
 
 const newsData = [
-    {
-        id: 'news_01',
-        title: 'Xuất khẩu lao động: Nên chọn quốc gia nào?',
-        desc: 'Gần đây, Châu Âu tiếp tục khẳng định vị thế là điểm đến hấp dẫn đối với lao động Việt Nam nhờ cơ hội việc làm dồi dào, mức thu nhập cao cùng với chất lượng cuộc sống vượt trội. ',
-        image: '/assets/img/xkld/plane.jpg',
-        link: '/xuat-khau-lao-dong',
-        slug: 'xuat-khau-lao-dong',
-    },
-    {
-        id: 'news_02',
-        title: 'Du Học Đức - Cơ Hội Mở Rộng Tương Lai',
-        desc: 'Trong những năm gần đây, việc sang Đức học nghề đã thu hút sự quan tâm mạnh mẽ từ giới trẻ Việt Nam. Lý do không chỉ nằm ở cơ hội tiếp cận nền giáo dục chất lượng cao mà còn ở trải nghiệm cuộc sống tại một quốc gia hiện đại và giàu bản sắc văn hóa.',
-        image: '/assets/img/du_hoc/german2.jpg',
-        link: '/du-hoc-nghe-duc',
-        slug: 'du-hoc-nghe-duc',
-    },
-    {
-        id: 'news_03',
-        title: 'Du Học Hàn Quốc - Cánh Cửa Hội Nhập Quốc Tế',
-        desc: 'Hiện nay, Hàn Quốc vẫn là một trong những lựa chọn ưu tiên của nhiều học sinh, sinh viên Việt Nam khi quyết định du học. Không chỉ nổi bật với nền giáo dục tiên tiến, xứ sở Kim Chi còn mang đến nhiều triển vọng nghề nghiệp và thu nhập ổn định sau khi hoàn thành chương trình học.',
-        image: '/assets/img/du_hoc/korean2.jpg',
-        link: '/du-hoc-han-quoc',
-        slug: 'du-hoc-han-quoc',
-    },
+    // {
+    //     id: 'news_01',
+    //     title: 'Xuất khẩu lao động: Nên chọn quốc gia nào?',
+    //     desc: 'Gần đây, Châu Âu tiếp tục khẳng định vị thế là điểm đến hấp dẫn đối với lao động Việt Nam nhờ cơ hội việc làm dồi dào, mức thu nhập cao cùng với chất lượng cuộc sống vượt trội. ',
+    //     image: '/assets/img/xkld/plane.jpg',
+    //     link: '/xuat-khau-lao-dong',
+    //     slug: 'xuat-khau-lao-dong',
+    // },
+    // {
+    //     id: 'news_02',
+    //     title: 'Du Học Đức - Cơ Hội Mở Rộng Tương Lai',
+    //     desc: 'Trong những năm gần đây, việc sang Đức học nghề đã thu hút sự quan tâm mạnh mẽ từ giới trẻ Việt Nam. Lý do không chỉ nằm ở cơ hội tiếp cận nền giáo dục chất lượng cao mà còn ở trải nghiệm cuộc sống tại một quốc gia hiện đại và giàu bản sắc văn hóa.',
+    //     image: '/assets/img/du_hoc/german2.jpg',
+    //     link: '/du-hoc-nghe-duc',
+    //     slug: 'du-hoc-nghe-duc',
+    // },
+    // {
+    //     id: 'news_03',
+    //     title: 'Du Học Hàn Quốc - Cánh Cửa Hội Nhập Quốc Tế',
+    //     desc: 'Hiện nay, Hàn Quốc vẫn là một trong những lựa chọn ưu tiên của nhiều học sinh, sinh viên Việt Nam khi quyết định du học. Không chỉ nổi bật với nền giáo dục tiên tiến, xứ sở Kim Chi còn mang đến nhiều triển vọng nghề nghiệp và thu nhập ổn định sau khi hoàn thành chương trình học.',
+    //     image: '/assets/img/du_hoc/korean2.jpg',
+    //     link: '/du-hoc-han-quoc',
+    //     slug: 'du-hoc-han-quoc',
+    // },
     {
         id: 'news_04',
         title: 'Du Học Trung Quốc - Trải Nghiệm Nền Văn Hóa Độc Đáo',
@@ -69,7 +69,7 @@ const NewsList = () => {
         {
             key: 'tab_2',
             shortLabel: 'Du Học',
-            fullLabel: 'Thông Tin Du Học - XKLĐ',
+            fullLabel: 'Thông Tin Du Học',
             icon: <MdAirplaneTicket size={32} />,
             data: newsData,
         },

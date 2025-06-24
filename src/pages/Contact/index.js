@@ -48,22 +48,22 @@ function Contact() {
                     <ul>
                         <li>
                             <a
-                                href="https://www.facebook.com/duhocpionglobal/"
+                                href="https://www.facebook.com/tiengtrungpionbinhdinh/"
                                 className={cx('link')}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Trung tâm tư vấn du học Pion Global
+                                Trung tâm tiếng Trung Pion
                             </a>
                         </li>
                         <li>
                             <a
-                                href="https://www.facebook.com/ngoaingupionacademy/"
+                                href="https://www.facebook.com/tienganhpionhoainhon/"
                                 className={cx('link')}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Trung tâm ngoại ngữ Pion Academy Bồng Sơn
+                                Trung tâm tiếng Anh Pion
                             </a>
                         </li>
                     </ul>

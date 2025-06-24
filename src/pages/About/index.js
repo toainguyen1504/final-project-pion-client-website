@@ -119,7 +119,7 @@ function About() {
     return (
         <div className={cx('about')}>
             <div className={cx('breadcrumb-wrapper')}>
-                <Breadcrumb title={'Về Pion Corporation'} />
+                <Breadcrumb title={'Về Pion'} />
             </div>
 
             <section className={cx('about-desc')}>
@@ -129,7 +129,7 @@ function About() {
                             <div className={cx('video-thumbnail')} onClick={handlePlay}>
                                 <img
                                     src="/assets/img/about/thumbnail.jpg"
-                                    alt="Pion Corporation"
+                                    alt="Pion"
                                     className={cx('media-thumb')}
                                     loading="lazy"
                                 />
@@ -152,11 +152,9 @@ function About() {
                     <div className={cx('about-content')} data-aos="fade-right" data-aos-delay="200">
                         <h1>Về Chúng Tôi</h1>
                         <p className={cx('desc')}>
-                            <span>Pion Corporation</span> là một công ty giáo dục chuyên cung cấp các dịch vụ đào tạo
-                            ngôn ngữ chất lượng cao và tư vấn du học. Dưới hai mô hình chính của mình:
-                            <span> Trung tâm ngoại ngữ Pion Academy </span> và
-                            <span> Trung tâm Tư vấn Du học Pion Global</span>. Công ty kết hợp đào tạo ngôn ngữ với định
-                            hướng du học chuyên nghiệp, mang lại một lợi thế cạnh tranh độc đáo.
+                            <span>Pion</span> là một công ty giáo dục chuyên cung cấp các dịch vụ đào tạo ngôn ngữ chất
+                            lượng cao và tư vấn du học. Công ty kết hợp đào tạo ngôn ngữ với định hướng du học chuyên
+                            nghiệp, mang lại một lợi thế cạnh tranh độc đáo.
                         </p>
                         <p className={cx('desc')}>
                             Trung tâm ngoại ngữ Pion Academy được thành lập vào năm 2022 và đã được Sở giáo dục và Đào
@@ -164,10 +162,9 @@ function About() {
                         </p>
                         <p className={cx('desc')}>
                             Sau 3 năm nỗ lực không ngừng nghỉ, công ty đã đạt được nhiều thành tựu quan trọng. Đặc biệt,
-                            vào năm 2025, chúng tôi đã chính thức thành lập Trung tâm Tư vấn Du học Pion Global, được
-                            cấp phép hoạt động bởi Sở Giáo dục và Đào tạo với mã số 628/QĐ-SGDĐT. Đồng thời, công ty
-                            cũng đã trở thành đối tác tin cậy hàng đầu của nhiều trường đại học danh tiếng tại Trung
-                            Quốc, Hàn Quốc và Đức, mở ra nhiều cơ hội học tập và phát triển cho học viên.
+                            vào năm 2025, chúng tôi đã mở rộng thêm lĩnh vực du học tại Trung Quốc và Đài Loan, đồng
+                            thời trở thành đối tác tin cậy của nhiều trường đại học danh tiếng tại hai quốc gia này, mở
+                            ra nhiều cơ hội học tập và phát triển cho học viên.
                         </p>
                     </div>
                 </div>

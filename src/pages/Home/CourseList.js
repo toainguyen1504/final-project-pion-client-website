@@ -9,8 +9,8 @@ import styles from './Home.module.scss';
 
 const enFlag = '/assets/icons/flags/en.svg';
 const zhFlag = '/assets/icons/flags/zh-CN.svg';
-const gerFlag = '/assets/icons/flags/ger.svg';
-const koFlag = '/assets/icons/flags/ko.svg';
+// const gerFlag = '/assets/icons/flags/ger.svg';
+// const koFlag = '/assets/icons/flags/ko.svg';
 
 const cx = classNames.bind(styles);
 
@@ -27,10 +27,10 @@ const CourseList = () => {
     };
 
     const tabs = [
-        { key: '1', shortLabel: 'Anh', fullLabel: 'Tiếng Anh', icon: enFlag, data: courses.english },
-        { key: '2', shortLabel: 'Trung', fullLabel: 'Tiếng Trung', icon: zhFlag, data: courses.chinese },
-        { key: '3', shortLabel: 'Đức', fullLabel: 'Tiếng Đức', icon: gerFlag, data: courses.german },
-        { key: '4', shortLabel: 'Hàn', fullLabel: 'Tiếng Hàn', icon: koFlag, data: courses.korean },
+        { key: '1', shortLabel: 'Tiếng Anh', fullLabel: 'Tiếng Anh', icon: enFlag, data: courses.english },
+        { key: '2', shortLabel: 'Tiếng Trung', fullLabel: 'Tiếng Trung', icon: zhFlag, data: courses.chinese },
+        // { key: '3', shortLabel: 'Đức', fullLabel: 'Tiếng Đức', icon: gerFlag, data: courses.german },
+        // { key: '4', shortLabel: 'Hàn', fullLabel: 'Tiếng Hàn', icon: koFlag, data: courses.korean },
     ];
 
     const items = tabs.map((tab) => ({

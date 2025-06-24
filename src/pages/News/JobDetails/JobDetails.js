@@ -23,7 +23,7 @@ const JobDetails = () => {
 
             {/* Info job basic */}
             <div className={cx('job-info')}>
-                <h2 className={cx('job-title')}>PION CORPORATION</h2>
+                <h2 className={cx('job-title')}>PION</h2>
                 <p className={cx('job-position')}>
                     <span>Vị trí: </span>
                     {job?.position || 'Đang cập nhật...'}

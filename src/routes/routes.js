@@ -8,10 +8,11 @@ import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import CourseDetail from '@/pages/CourseDetail';
 import SearchPage from '@/pages/SearchPage';
-import { StudyAbroadGerman, StudyAbroadChina, StudyAbroadKorean } from '@/pages/StudyAbroad';
-import { NewsLaborExport, NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
-
-import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
+// import { StudyAbroadGerman, StudyAbroadChina, StudyAbroadKorean } from '@/pages/StudyAbroad';
+import { StudyAbroadChina } from '@/pages/StudyAbroad';
+import { NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
+import { tocDataChina } from '@/data';
+// import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -22,16 +23,16 @@ const publicRoutes = [
     { path: config.routes.courseSlug, component: CourseDetail, layout: SidebarRightLayout },
 
     // Study Abroad
-    {
-        path: config.routes.studyAbroadGerman,
-        component: StudyAbroadGerman,
-        layout: (props) => <BlogLayout {...props} tocData={tocDataGerman} breadcrumbTitle="Du học nghề Đức" />,
-    },
-    {
-        path: config.routes.studyAbroadKorean,
-        component: StudyAbroadKorean,
-        layout: (props) => <BlogLayout {...props} tocData={tocDataKorean} breadcrumbTitle="Du học Hàn Quốc" />,
-    },
+    // {
+    //     path: config.routes.studyAbroadGerman,
+    //     component: StudyAbroadGerman,
+    //     layout: (props) => <BlogLayout {...props} tocData={tocDataGerman} breadcrumbTitle="Du học nghề Đức" />,
+    // },
+    // {
+    //     path: config.routes.studyAbroadKorean,
+    //     component: StudyAbroadKorean,
+    //     layout: (props) => <BlogLayout {...props} tocData={tocDataKorean} breadcrumbTitle="Du học Hàn Quốc" />,
+    // },
     {
         path: config.routes.studyAbroadChina,
         component: StudyAbroadChina,
@@ -39,13 +40,13 @@ const publicRoutes = [
     },
 
     // News
-    {
-        path: config.routes.newsLaborExport,
-        component: NewsLaborExport,
-        layout: (props) => (
-            <BlogLayout {...props} tocData={tocDataLaborExport} breadcrumbTitle="Thông tin về xuất khẩu lao động" />
-        ),
-    },
+    // {
+    //     path: config.routes.newsLaborExport,
+    //     component: NewsLaborExport,
+    //     layout: (props) => (
+    //         <BlogLayout {...props} tocData={tocDataLaborExport} breadcrumbTitle="Thông tin về xuất khẩu lao động" />
+    //     ),
+    // },
     {
         path: config.routes.newsAvailablePosition,
         component: NewsAvailablePosition,

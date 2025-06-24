@@ -11,15 +11,15 @@ export default function NavTop({ hidden }) {
             <div className={cx('inner')}>
                 {/* Navigation Links */}
                 <ul className={cx('nav-links')}>
-                    <li>
+                    {/* <li>
                         <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/du-hoc-trung-quoc">Du học Trung Quốc</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link>
-                    </li>
+                    </li> */}
                 </ul>
 
                 {/* Contact Info */}

@@ -10,13 +10,19 @@ const cx = classNames.bind(styles);
 function Footer() {
     return (
         <footer className={cx('footer')}>
-            <div className={cx('top')}>
+            {/* class 'top' and 'top-row-second' */}
+            <div className={cx('top-row-second')}>
                 <div className={cx('column')}>
-                    <h4>PION CORPORATION</h4>
+                    <h4>PION</h4>
                     <ul>
                         <li>
                             <Link to="/gioi-thieu" className={cx('link')}>
                                 Về chúng tôi
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/cau-hoi-thuong-gap" className={cx('link')}>
+                                Câu hỏi thường gặp
                             </Link>
                         </li>
                         <li>
@@ -25,11 +31,50 @@ function Footer() {
                             </Link>
                         </li>
                     </ul>
-                    <p className={cx('highlight')}>
-                        Pion Corporation được đánh giá là tập đoàn uy tín về mảng du học và giáo dục.
-                    </p>
+                    <p className={cx('highlight')}>PION được đánh giá là tập đoàn uy tín về mảng du học và giáo dục.</p>
                 </div>
                 <div className={cx('column')}>
+                    <h4>Khóa học Tiếng Anh</h4>
+                    <ul>
+                        <li>
+                            <Link to="/tieng-anh-mam-non" className={cx('link')}>
+                                Tiếng anh mầm non
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/tieng-anh-tieu-hoc" className={cx('link')}>
+                                Tiếng anh tiểu học
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/tieng-anh-thcs" className={cx('link')}>
+                                Tiếng Anh trung học cơ sở
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className={cx('column')}>
+                    <h4>Khóa học Tiếng Trung</h4>
+                    <ul>
+                        <li>
+                            <Link to="/tieng-trung-giao-tiep-ung-dung" className={cx('link')}>
+                                Giao tiếp ứng dụng
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/tieng-trung-tre-em" className={cx('link')}>
+                                Tiếng Trung trẻ em
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link to="/luyen-thi-hsk" className={cx('link')}>
+                                Luyện thi HSK
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+                {/* <div className={cx('column')}>
                     <h4>Thông tin khóa học</h4>
                     <ul>
                         <li>
@@ -54,8 +99,8 @@ function Footer() {
                             </Link>
                         </li>
                     </ul>
-                </div>
-                <div className={cx('column')}>
+                </div> */}
+                {/* <div className={cx('column')}>
                     <h4>Thông tin du học</h4>
                     <ul>
                         <li>
@@ -75,13 +120,18 @@ function Footer() {
                             </Link>
                         </li>
                     </ul>
-                </div>
+                </div> */}
                 <div className={cx('column')}>
                     <h4>Tin tức</h4>
                     <ul>
-                        <li>
+                        {/* <li>
                             <Link to="/xuat-khau-lao-dong" className={cx('link')}>
                                 Xuất khẩu lao động
+                            </Link>
+                        </li> */}
+                        <li>
+                            <Link to="/du-hoc-trung-quoc" className={cx('link')}>
+                                Du học Trung Quốc
                             </Link>
                         </li>
                         <li>
@@ -90,14 +140,30 @@ function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/cau-hoi-thuong-gap" className={cx('link')}>
-                                Câu hỏi thường gặp
+                            <Link to="#!" className={cx('link')}>
+                                Lịch khai giảng
+                            </Link>
+                        </li>
+                        {/* <li>
+                            <Link to="#!" className={cx('link')}>
+                                Học phí
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link to="#!" className={cx('link')}>
+                                Ưu đãi
+                            </Link>
+                        </li> */}
+                        <li>
+                            <Link to="#!" className={cx('link')}>
+                                Phương pháp học
                             </Link>
                         </li>
                     </ul>
                 </div>
             </div>
-
+            {/* 
             <div className={cx('top-row-second')}>
                 <div className={cx('column')}>
                     <h4>Khóa học Tiếng Anh</h4>
@@ -195,7 +261,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
 
             <div className={cx('contact')}>
                 <div>
@@ -212,20 +278,20 @@ function Footer() {
                     <FaFacebookSquare size={28} className={cx('icon')} />
                     <div className={cx('inner')}>
                         <a
-                            href="https://www.facebook.com/duhocpionglobal/"
+                            href="https://www.facebook.com/tiengtrungpionbinhdinh/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Trung tâm tư vấn du học
+                            Trung tâm tiếng Trung Pion
                         </a>
                         <a
-                            href="https://www.facebook.com/ngoaingupionacademy/"
+                            href="https://www.facebook.com/tienganhpionhoainhon/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Trung tâm ngoại ngữ
+                            Trung tâm tiếng Anh Pion
                         </a>
                     </div>
                 </div>

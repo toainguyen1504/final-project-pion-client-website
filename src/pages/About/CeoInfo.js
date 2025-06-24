@@ -48,8 +48,8 @@ const CeoInfo = () => {
                                         <li>Giảng viên tại nhiều trường cao đẳng/đại học tại TP.HCM.</li>
                                         <li>Kinh nghiệm học tập và làm việc tại Trung Quốc và Thụy Sĩ.</li>
                                         <li>
-                                            Giám đốc điều hành Công ty Cổ phần Pion – với các lĩnh vực đào tạo (Pion
-                                            Academy) và tư vấn du học (Pion Global).
+                                            Giám đốc điều hành Công ty Cổ phần Pion - với lĩnh vực đào tạo tiếng Anh,
+                                            tiếng Trung & Du học Trung Quốc
                                         </li>
                                     </ul>
                                 </li>

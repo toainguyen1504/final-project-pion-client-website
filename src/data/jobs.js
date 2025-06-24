@@ -260,7 +260,7 @@ const jobs = [
         requirements: [
             'Từ 22 - 35 tuổi, sức khỏe tốt.',
             'Tốt nghiệp đại học hoặc cao đẳng, ưu tiên ngành ngoại ngữ, quản trị kinh doanh, hoặc giáo dục.',
-            'Biết tiếng Anh, Tiếng Trung, Tiếng Đức là lợi thế.',
+            'Biết tiếng Anh, Tiếng Trung là lợi thế.',
             'Sử dụng thành thạo công cụ văn phòng (Word, Excel, PowerPoint).',
             'Kỹ năng giao tiếp tốt, thuyết phục và giải quyết vấn đề linh hoạt.',
             'Ưu tiên có kinh nghiệm 1 năm trong lĩnh vực tư vấn khóa học hoặc du học.',
@@ -311,7 +311,7 @@ const jobs = [
         requirements: [
             'Từ 22 - 35 tuổi, không yêu cầu giới tính, sức khỏe tốt.',
             'Tốt nghiệp đại học hoặc cao đẳng, ưu tiên ngành ngoại ngữ, quản trị kinh doanh, hoặc giáo dục.',
-            'Thành thạo tiếng Anh, Tiếng Trung, Tiếng Đức là lợi thế.',
+            'Thành thạo tiếng Anh, Tiếng Trung là lợi thế.',
             'Sử dụng thành thạo các công cụ văn phòng (Word, Excel, PowerPoint).',
             'Kỹ năng giao tiếp tốt, thuyết phục và giải quyết vấn đề linh hoạt.',
             'Ưu tiên có kinh nghiệm tối thiểu 1 năm trong lĩnh vực tư vấn du học hoặc XKLĐ.',

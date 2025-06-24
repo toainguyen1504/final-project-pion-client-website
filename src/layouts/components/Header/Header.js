@@ -20,7 +20,7 @@ const items = [
         key: 'about',
         label: (
             <Link to="/gioi-thieu" className="menu-uppercase">
-                VỀ PION CORPORATION
+                VỀ PION
             </Link>
         ),
     },
@@ -91,90 +91,90 @@ const items = [
                     },
                 ],
             },
-            {
-                key: 'courses-korean',
-                label: 'Tiếng Hàn',
-                children: [
-                    {
-                        key: 'ko_1',
-                        label: (
-                            <Link to="/tieng-han-so-cap-1" className="menu-normal">
-                                Tiếng Hàn sơ cấp 1
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ko_2',
-                        label: (
-                            <Link to="/tieng-han-so-cap-2" className="menu-normal">
-                                Tiếng Hàn sơ cấp 2
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ko_3',
-                        label: (
-                            <Link to="/luyen-thi-topik-i" className="menu-normal">
-                                Luyện thi TOPIK I
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ko_4',
-                        label: (
-                            <Link to="/luyen-thi-topik-ii" className="menu-normal">
-                                Luyện thi TOPIK II
-                            </Link>
-                        ),
-                    },
-                ],
-            },
-            {
-                key: 'courses-german',
-                label: 'Tiếng Đức',
-                children: [
-                    {
-                        key: 'ge_1',
-                        label: (
-                            <Link to="/tieng-duc-online-1-kem-1" className="menu-normal">
-                                Tiếng Đức online 1 kèm 1
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ge_2',
-                        label: (
-                            <Link to="/tieng-duc-a1" className="menu-normal">
-                                Tiếng Đức A1
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ge_3',
-                        label: (
-                            <Link to="/tieng-duc-a2" className="menu-normal">
-                                Tiếng Đức A2
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ge_4',
-                        label: (
-                            <Link to="/tieng-duc-b1" className="menu-normal">
-                                Tiếng Đức B1
-                            </Link>
-                        ),
-                    },
-                    {
-                        key: 'ge_5',
-                        label: (
-                            <Link to="/tieng-duc-b2" className="menu-normal">
-                                Tiếng Đức B2
-                            </Link>
-                        ),
-                    },
-                ],
-            },
+            // {
+            //     key: 'courses-korean',
+            //     label: 'Tiếng Hàn',
+            //     children: [
+            //         {
+            //             key: 'ko_1',
+            //             label: (
+            //                 <Link to="/tieng-han-so-cap-1" className="menu-normal">
+            //                     Tiếng Hàn sơ cấp 1
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ko_2',
+            //             label: (
+            //                 <Link to="/tieng-han-so-cap-2" className="menu-normal">
+            //                     Tiếng Hàn sơ cấp 2
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ko_3',
+            //             label: (
+            //                 <Link to="/luyen-thi-topik-i" className="menu-normal">
+            //                     Luyện thi TOPIK I
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ko_4',
+            //             label: (
+            //                 <Link to="/luyen-thi-topik-ii" className="menu-normal">
+            //                     Luyện thi TOPIK II
+            //                 </Link>
+            //             ),
+            //         },
+            //     ],
+            // },
+            // {
+            //     key: 'courses-german',
+            //     label: 'Tiếng Đức',
+            //     children: [
+            //         {
+            //             key: 'ge_1',
+            //             label: (
+            //                 <Link to="/tieng-duc-online-1-kem-1" className="menu-normal">
+            //                     Tiếng Đức online 1 kèm 1
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ge_2',
+            //             label: (
+            //                 <Link to="/tieng-duc-a1" className="menu-normal">
+            //                     Tiếng Đức A1
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ge_3',
+            //             label: (
+            //                 <Link to="/tieng-duc-a2" className="menu-normal">
+            //                     Tiếng Đức A2
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ge_4',
+            //             label: (
+            //                 <Link to="/tieng-duc-b1" className="menu-normal">
+            //                     Tiếng Đức B1
+            //                 </Link>
+            //             ),
+            //         },
+            //         {
+            //             key: 'ge_5',
+            //             label: (
+            //                 <Link to="/tieng-duc-b2" className="menu-normal">
+            //                     Tiếng Đức B2
+            //                 </Link>
+            //             ),
+            //         },
+            //     ],
+            // },
         ],
     },
     {
@@ -184,8 +184,8 @@ const items = [
         key: 'study-abroad',
         label: 'Du học',
         children: [
-            { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
-            { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
+            // { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
+            // { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
             { key: 'abroad-china', label: <Link to="/du-hoc-trung-quoc">Du học Trung Quốc</Link> },
         ],
     },
@@ -196,7 +196,7 @@ const items = [
         key: 'news',
         label: 'Tin tức',
         children: [
-            { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
+            // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
             { key: 'news-recruitment', label: <Link to="/tuyen-dung">Tuyển dụng</Link> },
             { key: 'news-question', label: <Link to="/cau-hoi-thuong-gap">Câu hỏi thường gặp</Link> },
         ],
@@ -295,7 +295,7 @@ export default function Header({ visible }) {
                         to={config.routes.about}
                         className={({ isActive }) => cx('nav-link', { active: isActive })}
                     >
-                        VỀ PION CORPORATION
+                        VỀ PION
                     </NavLink>
 
                     {/* Khóa học */}
@@ -334,7 +334,7 @@ export default function Header({ visible }) {
                                     </li>
                                 </ul>
                             </div>
-                            <div className={cx('dropdown-column')}>
+                            {/* <div className={cx('dropdown-column')}>
                                 <h4>Khóa học Tiếng Đức</h4>
                                 <ul>
                                     <li>
@@ -370,7 +370,7 @@ export default function Header({ visible }) {
                                         <Link to="/luyen-thi-topik-ii">Luyện thi TOPIK II</Link>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
@@ -381,12 +381,12 @@ export default function Header({ visible }) {
                             <RiArrowDropDownLine size={24} />
                         </div>
                         <div className={cx('dropdown-menu')}>
-                            <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
+                            {/* <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
                                 Du học nghề Đức
                             </Link>
                             <Link to="/du-hoc-han-quoc" className={cx('dropdown-item')}>
                                 Du học Hàn Quốc
-                            </Link>
+                            </Link> */}
                             <Link to="/du-hoc-trung-quoc" className={cx('dropdown-item')}>
                                 Du học Trung Quốc
                             </Link>
@@ -400,9 +400,9 @@ export default function Header({ visible }) {
                             <RiArrowDropDownLine size={24} />
                         </div>
                         <div className={cx('dropdown-menu')}>
-                            <Link to="/xuat-khau-lao-dong" className={cx('dropdown-item')}>
+                            {/* <Link to="/xuat-khau-lao-dong" className={cx('dropdown-item')}>
                                 Xuất khẩu lao động
-                            </Link>
+                            </Link> */}
                             <Link to="/tuyen-dung" className={cx('dropdown-item')}>
                                 Tuyển dụng
                             </Link>

@@ -4,68 +4,67 @@ import classNames from 'classnames/bind';
 import { Row, Col } from 'antd';
 
 import styles from './About.module.scss';
-// import { BookOutlined, GlobalOutlined, RocketOutlined, TeamOutlined } from '@ant-design/icons';
-import { MdFlightTakeoff, MdGavel, MdSchool } from 'react-icons/md';
-import { LiaSchoolSolid } from 'react-icons/lia';
+
+import { FaBookOpen, FaHandshake, FaFileInvoiceDollar } from 'react-icons/fa';
+import { GiOpenBook } from 'react-icons/gi';
 
 const cx = classNames.bind(styles);
 
 const departments = [
     {
-        title: 'Trung Tâm Đào Tạo',
-        subTitle: 'Kiến tạo tri thức – Chắp cánh tương lai',
+        title: 'PHÒNG HỌC THUẬT – TIẾNG ANH',
+        subTitle: 'Xây dựng nền tảng tiếng Anh chuẩn quốc tế',
         description:
-            'Trung tâm đào tạo bao gồm ba bộ phận chuyên trách, hoạt động đồng bộ để mang lại trải nghiệm học tập hoàn hảo cho học viên:',
+            'Phòng Học Thuật – Tiếng Anh chịu trách nhiệm thiết kế và triển khai chương trình đào tạo tiếng Anh chất lượng cao, đảm bảo học viên đạt kết quả tốt nhất.',
         points: [
-            'Giáo viên: Đội ngũ giảng viên giàu kinh nghiệm, chuyên môn vững vàng, luôn sáng tạo và tận tâm trong từng bài giảng, giúp học viên tiếp thu kiến thức một cách hiệu quả và sâu sắc.',
-            'Giáo vụ: Bộ phận giáo vụ đảm nhiệm việc quản lý học viên, tổ chức lịch học hợp lý và hỗ trợ giải quyết mọi vấn đề trong quá trình học tập, đảm bảo tiến độ và chất lượng đào tạo.',
-            'Tư vấn tuyển sinh - Chăm sóc khách hàng: Chuyên viên tư vấn cung cấp thông tin chi tiết về các khóa học, giúp học viên lựa chọn chương trình phù hợp, đồng thời hỗ trợ với các chương trình ưu đãi và dịch vụ chăm sóc chu đáo, mang lại sự hài lòng tối đa.',
+            'Trưởng bộ môn Tiếng Anh: Chịu trách nhiệm định hướng chương trình đào tạo, quản lý đội ngũ giáo viên và đảm bảo chất lượng giảng dạy.',
+            'Giáo viên: Giảng dạy theo chương trình chuẩn quốc tế, luôn đổi mới phương pháp nhằm mang đến hiệu quả học tập tối ưu.',
+            'Trợ giảng: Hỗ trợ giáo viên trong quá trình giảng dạy, theo dõi tiến độ học tập và hỗ trợ học viên trong quá trình học.',
         ],
-        icon: <LiaSchoolSolid size={36} />,
+        icon: <FaBookOpen size={36} />,
         summary:
-            'Chúng tôi cam kết mang đến môi trường học tập chuyên nghiệp, chất lượng cao và luôn nỗ lực đáp ứng mọi nhu cầu học viên, giúp họ vững bước trên con đường phát triển tương lai.',
+            'Chúng tôi cam kết mang đến chương trình học tiếng Anh chuyên nghiệp, giúp học viên tự tin hội nhập và phát triển.',
     },
     {
-        title: 'Phòng Du Học',
-        subTitle: 'Mở rộng cơ hội, chắp cánh ước mơ!',
+        title: 'PHÒNG HỌC THUẬT – TIẾNG TRUNG',
+        subTitle: 'Chương trình đào tạo tiếng Trung chuẩn du học – nghề nghiệp',
         description:
-            'Phòng du học mang đến những cơ hội học tập quốc tế hàng đầu, với đội ngũ chuyên gia giàu kinh nghiệm, tận tâm đồng hành cùng bạn trên hành trình chinh phục ước mơ học tập và phát triển bản thân. Các bộ phận chuyên trách:',
+            'Phòng Học Thuật – Tiếng Trung thiết kế và triển khai các chương trình học sát thực tế, đáp ứng nhu cầu du học và làm việc của học viên.',
         points: [
-            'Chuyên viên tư vấn du học: Tư vấn chuyên sâu, giúp bạn lựa chọn chương trình học và điểm đến du học phù hợp với nguyện vọng, khả năng tài chính và mục tiêu nghề nghiệp.',
-            'Chuyên viên xử lý hồ sơ du học: Đảm bảo hồ sơ du học của bạn được chuẩn bị đầy đủ, chính xác, từ thủ tục visa đến các yêu cầu từ các trường quốc tế.',
-            'Chuyên viên phát triển thị trường ngoại: Nghiên cứu và mở rộng mạng lưới đối tác quốc tế, mang đến nhiều lựa chọn học tập tại các tổ chức giáo dục uy tín toàn cầu.',
+            'Trưởng bộ môn Tiếng Trung: Định hướng và quản lý chất lượng chương trình giảng dạy tiếng Trung.',
+            'Giáo viên: Giảng dạy theo phương pháp hiện đại, giúp học viên nhanh chóng đạt trình độ tiếng Trung mục tiêu.',
+            'Trợ giảng: Hỗ trợ giảng dạy, kèm cặp học viên và đảm bảo tiến độ học tập.',
         ],
-        icon: <MdSchool size={36} />,
+        icon: <GiOpenBook size={36} />,
         summary:
-            'Chúng tôi cam kết mang lại cho bạn một hành trình du học thành công và hỗ trợ tối đa, giúp bạn xây dựng tương lai với những cơ hội học tập quốc tế đẳng cấp.',
+            'Chúng tôi mang đến giải pháp học tiếng Trung hiệu quả, sát thực tế, giúp học viên tự tin chinh phục mục tiêu học tập và nghề nghiệp.',
     },
     {
-        title: 'Xuất Khẩu Lao Động',
-        subTitle: 'Vươn xa, chạm đỉnh tương lai!',
+        title: 'PHÒNG KINH DOANH',
+        subTitle: 'Phát triển thị trường – Nâng tầm dịch vụ',
         description:
-            'Phòng xuất khẩu lao động mang đến cơ hội làm việc tại các thị trường quốc tế, với đội ngũ chuyên gia giàu kinh nghiệm, luôn đồng hành cùng bạn trong hành trình xuất khẩu lao động. Các bộ phận chuyên trách:',
+            'Phòng Kinh Doanh lên kế hoạch phát triển thị trường, tư vấn khóa học và chương trình du học, phối hợp các phòng ban nhằm nâng cao trải nghiệm học viên.',
         points: [
-            'Chuyên viên tư vấn – sales: Tư vấn chi tiết về cơ hội việc làm, ngành nghề và mức lương tại các quốc gia, giúp bạn chọn công việc phù hợp với kỹ năng và mục tiêu.',
-            'Chuyên viên xử lý hồ sơ: Hỗ trợ hoàn thiện hồ sơ, thủ tục visa, hợp đồng lao động và các giấy tờ pháp lý, đảm bảo hồ sơ của bạn chính xác và đầy đủ.',
-            'Chuyên viên phát triển thị trường ngoại: Tìm kiếm và phát triển đối tác quốc tế, mở rộng cơ hội làm việc tại các thị trường lao động uy tín.',
+            'Trưởng phòng Kinh doanh: Quản lý, điều phối và chịu trách nhiệm về hoạt động kinh doanh của trung tâm.',
+            'Chuyên viên tư vấn khóa học: Tư vấn chương trình tiếng Anh, tiếng Trung phù hợp với nhu cầu học viên.',
+            'Chuyên viên tư vấn du học: Giới thiệu và tư vấn các chương trình du học phù hợp.',
         ],
-        icon: <MdFlightTakeoff size={36} />,
-        summary:
-            'Với mạng lưới đối tác rộng khắp và quy trình hỗ trợ chuyên nghiệp, chúng tôi giúp bạn chinh phục thị trường lao động quốc tế, mở ra cơ hội phát triển sự nghiệp toàn cầu.',
+        icon: <FaHandshake size={36} />,
+        summary: 'Chúng tôi luôn nỗ lực mang lại dịch vụ tư vấn tận tâm và giải pháp học tập tối ưu cho học viên.',
     },
     {
-        title: 'Hành Chính Tổng Hợp',
-        subTitle: 'Nền tảng vững mạnh, phát triển bền vững!',
+        title: 'PHÒNG HÀNH CHÍNH – KẾ TOÁN',
+        subTitle: 'Hậu phương vững chắc – Vận hành hiệu quả',
         description:
-            'Phòng Hành chính tổng hợp đảm nhận các nhiệm vụ quan trọng, tạo nền tảng vững chắc cho sự phát triển và hoạt động hiệu quả của công ty. Các bộ phận chuyên trách:',
+            'Phòng Hành chính – Kế toán chịu trách nhiệm quản lý công tác hành chính, tài chính và nhân sự, tạo nền tảng ổn định cho sự phát triển của trung tâm.',
         points: [
-            'Kế toán: Quản lý tài chính, lập báo cáo định kỳ, đảm bảo giao dịch tài chính và kê khai thuế chính xác, kịp thời. Giám sát và kiểm soát thu chi nội bộ công ty, đảm bảo sự minh bạch và hiệu quả tài chính.',
-            'Hành chính nhân sự: Quản lý các hoạt động hành chính, tuyển dụng và phát triển nhân sự. Đảm bảo quyền lợi cho nhân viên, xây dựng và triển khai kế hoạch đào tạo định kỳ, nâng cao năng lực cho đội ngũ nhân sự.',
-            'Pháp chế - pháp lý: Đảm bảo hoạt động của công ty tuân thủ đúng quy định pháp luật, tư vấn và giải quyết các vấn đề pháp lý.',
+            'Trưởng phòng Hành chính – Kế toán: Điều phối các hoạt động hành chính, kế toán và nhân sự.',
+            'Chuyên viên xử lý hồ sơ: Quản lý hồ sơ, thủ tục và văn bản nội bộ.',
+            'Hành chính – Nhân sự: Thực hiện công tác tuyển dụng, quản lý chế độ và đào tạo nội bộ.',
         ],
-        icon: <MdGavel size={36} />,
+        icon: <FaFileInvoiceDollar size={36} />,
         summary:
-            'Chúng tôi không ngừng nâng cao chất lượng quản lý và tối ưu hóa quy trình làm việc, tạo điều kiện thuận lợi để doanh nghiệp phát triển bền vững.',
+            'Chúng tôi cam kết mang đến sự minh bạch, chính xác trong quản lý tài chính và hiệu quả trong công tác nhân sự – hành chính.',
     },
 ];
 
