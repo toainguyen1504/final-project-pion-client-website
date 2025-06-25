@@ -20,10 +20,11 @@ import styles from './Home.module.scss';
 const cx = classNames.bind(styles);
 
 const bannerImages = [
-    '/assets/img/banner/banner_1.jpg',
-    '/assets/img/banner/banner_2.jpg',
-    '/assets/img/banner/banner_3.jpg',
-    '/assets/img/banner/banner_4.jpg',
+    '/assets/img/banner/banner_1.png',
+    '/assets/img/banner/banner_2.png',
+    '/assets/img/banner/banner_3.png',
+    '/assets/img/banner/banner_4.png',
+    '/assets/img/banner/banner_5.png',
 ];
 
 const whyChooseData = [

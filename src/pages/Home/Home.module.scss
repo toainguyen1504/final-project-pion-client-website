@@ -358,6 +358,8 @@
 @media (max-width: 767px) {
     /* CEO message */
     .message {
+        padding: 36px 0;
+
         .message-inner {
             .img-col {
                 order: 1;
@@ -456,6 +458,8 @@
 @media (min-width: 768px) and (max-width: 1023px) {
     /* CEO message */
     .message {
+        padding: 72px 0 48px;
+
         .badge {
             font-size: 3.2rem;
         }

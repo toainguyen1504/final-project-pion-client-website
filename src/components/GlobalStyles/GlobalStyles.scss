@@ -188,23 +188,24 @@ html *::-webkit-scrollbar-track {
 /* =============== RESPONSIVE ================ */
 /* Carousel Height */
 // img should 16:6, ex: 1600px x 600px or 1920px x 720px
-// Desktop
-@media (min-width: 1025px) {
+
+// >=ipad pro - desktop
+@media (min-width: 1024px) {
     :root {
-        --carousel-height: var(--carousel-height, 450px);
+        --carousel-height: var(--carousel-height, 448px); /* 7/16 * 1024 */
     }
 }
 
 // Tablet
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     :root {
-        --carousel-height: 320px;
+        --carousel-height: 336px; /* 7/16 * 768 */
     }
 }
 
 // Mobile
 @media (max-width: 767px) {
     :root {
-        --carousel-height: 156px;
+        --carousel-height: 210px; /* 7/16 * 480 (hoặc chiều rộng khác tùy ý) */
     }
 }

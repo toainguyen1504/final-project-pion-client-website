@@ -1,8 +1,8 @@
 .carousel-img {
     display: block;
     width: 100%;
-    height: var(--carousel-height);
-    // aspect-ratio: 16 / 6;
+    height: 100%;
+    aspect-ratio: 16 / 7;
     object-fit: contain;
     object-position: center;
 }
