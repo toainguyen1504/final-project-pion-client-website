@@ -21,7 +21,7 @@ const cx = classNames.bind(styles);
 
 const teacherData = [
     {
-        image: '/assets/img/about/teacher_01.jpg',
+        image: '/assets/img/about/teacher_01.png',
         name: 'Cô Melinda',
         qualifications: [
             'Cử nhân giáo dục Tiểu học  & TESOL',
@@ -30,12 +30,17 @@ const teacherData = [
         ],
     },
     {
-        image: '/assets/img/about/teacher_02.jpg',
+        image: '/assets/img/about/teacher_02.png',
         name: 'Cô Madina',
         qualifications: ['Cử nhân ngôn ngữ học và giảng dạy tiếng Anh', 'Kinh nghiệm: 9 năm', 'Giáo viên nước ngoài'],
     },
     {
-        image: '/assets/img/about/teacher_03.jpg',
+        image: '/assets/img/about/teacher_05.png',
+        name: 'Cô Rita',
+        qualifications: ['IELTS Speaking & lớp thiếu nhi', 'Kinh nghiệm: 10 năm', 'Giáo viên nước ngoài'],
+    },
+    {
+        image: '/assets/img/about/teacher_03.png',
         name: 'Cô Phạm Thị Út Ảnh',
         qualifications: [
             'Cử nhân ngôn ngữ Anh, chuyên ngành giảng dạy tiếng Anh cho bậc Tiểu học',
@@ -44,7 +49,7 @@ const teacherData = [
         ],
     },
     {
-        image: '/assets/img/about/teacher_04.jpg',
+        image: '/assets/img/about/teacher_04.png',
         name: 'Cô Huỳnh Thị Thanh Quý',
         qualifications: ['Cử nhân ngôn ngữ Anh, nghiệp vụ sư phạm', 'Kinh nghiệm: 1 năm', 'Giáo viên Việt Nam'],
     },

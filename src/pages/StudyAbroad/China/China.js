@@ -97,7 +97,7 @@ function China() {
                     ưa chuộng trên thế giới.
                 </p>
                 <figure className={cx('image-wrapper')}>
-                    <img src="/assets/img/du_hoc/china_01.jpeg" alt="" className={cx('content-image')} loading="lazy" />
+                    <img src="/assets/img/du_hoc/china_01.jpg" alt="" className={cx('content-image')} loading="lazy" />
                     <figcaption>
                         Sinh viên quốc tế tại Trung Quốc – Hành trình học tập và khám phá văn hóa phương Đông
                     </figcaption>
