@@ -53,6 +53,15 @@ const teacherData = [
         name: 'Cô Huỳnh Thị Thanh Quý',
         qualifications: ['Cử nhân ngôn ngữ Anh, nghiệp vụ sư phạm', 'Kinh nghiệm: 1 năm', 'Giáo viên Việt Nam'],
     },
+    {
+        image: '/assets/img/about/teacher_06.png',
+        name: 'Cô Đỗ Thị Uyên',
+        qualifications: [
+            'Giáo viên tiếng Trung',
+            'Tốt nghiệp đại học - chuyên ngành ngôn ngữ TQ, Trường ĐH Mở TPHCM',
+            'Kinh nghiệm: 2 năm',
+        ],
+    },
 ];
 
 const visionMissionData = [

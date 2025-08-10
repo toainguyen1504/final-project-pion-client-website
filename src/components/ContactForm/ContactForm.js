@@ -1,19 +1,145 @@
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+// import ReCAPTCHA from 'react-google-recaptcha';
 import { message } from 'antd';
-
 import HeadingStar from '@/components/HeadingStar';
 import styles from './ContactForm.module.scss';
 
 const cx = classNames.bind(styles);
 
+// 100 bad word in VietNam
+const badWords = [
+    'địt',
+    'cặc',
+    'lồn',
+    'buồi',
+    'đụ',
+    'đéo',
+    'đcm',
+    'đmm',
+    'loz',
+    'clgt',
+    'đm',
+    'clm',
+    'vl',
+    'địt mẹ',
+    'cặc mẹ',
+    'lồn mẹ',
+    'buồi mẹ',
+    'đụ mẹ',
+    'địt con',
+    'địt cái',
+    'đéo mẹ',
+    'địt mày',
+    'cặc cụ',
+    'lồn cụ',
+    'đm mẹ',
+    'đcm mẹ',
+    'địt bố',
+    'địt bố mày',
+    'địt ông',
+    'địt cha',
+    'đéo con',
+    'đéo cái',
+    'lồn lợn',
+    'địt lợn',
+    'cặc lợn',
+    'buồi lợn',
+    'đụ lợn',
+    'đm con',
+    'đm cái',
+    'đéo bố',
+    'đéo cha',
+    'đéo ông',
+    'đm ông',
+    'đéo mợ',
+    'đéo dì',
+    'đéo dượng',
+    'địt dượng',
+    'cặc dượng',
+    'buồi dượng',
+    'đm dượng',
+    'đéo thằng',
+    'đéo con chó',
+    'địt con chó',
+    'địt con đĩ',
+    'đéo con đĩ',
+    'địt mẹ mày',
+    'địt con mẹ',
+    'địt mẹ con',
+    'địt con mày',
+    'cặc chó',
+    'lồn chó',
+    'buồi chó',
+    'đụ chó',
+    'đéo chó',
+    'địt chó',
+    'đm chó',
+    'clgt mẹ',
+    'đm mày',
+    'đm tao',
+    'đm chúng mày',
+    'đm chúng tao',
+    'đéo chúng mày',
+    'đéo chúng tao',
+    'địt lồn',
+    'địt mẹ lồn',
+    'địt mẹ lồn mày',
+    'cặc mẹ lồn',
+    'đm mẹ lồn',
+    'đm con lồn',
+    'đm con cặc',
+    'đm con buồi',
+    'đm con đĩ',
+    'đm con đực',
+    'đéo con đực',
+    'đéo con đĩ',
+    'đéo con buồi',
+    'đéo con cặc',
+    'địt đực',
+    'cặc đực',
+    'lồn đực',
+    'buồi đực',
+    'đụ đực',
+    'đéo đực',
+    'đm đực',
+    'clgt đực',
+    'đéo clgt',
+    'đéo clgm',
+    'clgm',
+    'đéo clgm',
+    'đéo clgt mẹ',
+    'địt clgt',
+    'địt clgm',
+    'đéo mẹ mày',
+    'địt mẹ mày',
+    'địt con mẹ mày',
+    'địt mẹ con mày',
+];
+
+// Check bad word
+function containsBadWords(text) {
+    const lowerText = text.toLowerCase();
+    return badWords.some((bw) => lowerText.includes(bw));
+}
+
+// convert code html to avoid XSS at FE
+// function sanitizeInput(input) {
+//     return input
+//         .replace(/&/g, '&amp;')
+//         .replace(/</g, '&lt;')
+//         .replace(/>/g, '&gt;')
+//         .replace(/"/g, '&quot;')
+//         .replace(/'/g, '&#039;');
+// }
+
 const ContactForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
-        fullName: '',
-        phone: '',
-        email: '',
-        content: '',
+        guestName: '',
+        guestEmail: '',
+        guestPhone: '',
+        requestContent: '',
         captchaChecked: false,
     });
 
@@ -28,69 +154,106 @@ const ContactForm = ({ onSubmit }) => {
         setFormData({ ...formData, captchaChecked: !formData.captchaChecked });
     };
 
-    //     const { fullName, phone, email, captchaChecked } = formData;
-    //     if (!fullName || !phone || !email) {
-    //         alert('Vui lòng điền đầy đủ thông tin!');
-    //         return false;
-    //     }
-    //     if (!captchaChecked) {
-    //         alert('Vui lòng xác nhận CAPTCHA!');
-    //         return false;
-    //     }
-    //     return true;
-    // };
     const validateForm = () => {
         let newErrors = {};
 
         if (
-            !formData.fullName.trim() ||
-            formData.fullName.length < 2 ||
-            !/^[a-zA-ZÀ-Ỹà-ỹ\s]+$/.test(formData.fullName)
+            !formData.guestName.trim() ||
+            formData.guestName.length < 2 ||
+            formData.guestName.length > 100 ||
+            !/^[a-zA-ZÀ-Ỹà-ỹ\s]+$/.test(formData.guestName)
         ) {
-            newErrors.fullName = 'Tên phải có ít nhất 2 ký tự và không chứa số hoặc ký tự đặc biệt!';
+            newErrors.guestName = 'Tên phải từ 2-100 ký tự và không chứa số hoặc ký tự đặc biệt!';
+        } else if (containsBadWords(formData.guestName)) {
+            newErrors.guestName = 'Tên không được chứa từ ngữ không phù hợp!';
         }
 
-        if (!/^0\d{9}$/.test(formData.phone)) {
-            newErrors.phone = 'Số điện thoại phải có đúng 10 chữ số và bắt đầu bằng số 0! (VD: 0912345678)';
+        if (!/^0\d{9}$/.test(formData.guestPhone)) {
+            newErrors.guestPhone = 'Số điện thoại phải có đúng 10 chữ số và bắt đầu bằng số 0! (VD: 0912345678)';
         }
 
-        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
-            newErrors.email = 'Email không hợp lệ! VD: abc@gmail.com';
+        if (!formData.guestEmail) {
+            newErrors.guestEmail = 'Vui lòng nhập email!';
+        } else if (formData.guestEmail.length > 254) {
+            newErrors.guestEmail = 'Email không được vượt quá 255 ký tự';
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.guestEmail)) {
+            newErrors.guestEmail = 'Email không hợp lệ! VD: abc@gmail.com';
         }
 
-        if (formData.content.length > 200) {
-            newErrors.content = 'Nội dung không được quá 200 ký tự!';
+        if (formData.requestContent.length < 10 || formData.requestContent.length > 500) {
+            newErrors.requestContent = 'Nội dung tư vấn phải từ 10-500 ký tự!';
+        } else if (containsBadWords(formData.requestContent)) {
+            newErrors.requestContent = 'Nội dung tư vấn không được chứa từ ngữ không phù hợp!';
         }
 
         if (!formData.captchaChecked) {
             newErrors.captchaChecked = 'Bạn cần xác nhận CAPTCHA!';
         }
+        // if (!formData.recaptchaToken) {
+        //     newErrors.recaptchaToken = 'Bạn cần xác nhận CAPTCHA!';
+        // }
 
         setErrors(newErrors);
-
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (isSubmitting) {
-            return; // Done allow send if having err
-        }
+        if (isSubmitting) return;
 
         if (!validateForm()) {
             message.error('Vui lòng kiểm tra lại thông tin!');
-            setIsSubmitting(true); //block spam send data
+            setIsSubmitting(true);
             setTimeout(() => setIsSubmitting(false), 4000);
             return;
         }
 
-        onSubmit?.(formData);
-        localStorage.setItem('contactData', JSON.stringify(formData));
+        const payload = {
+            guest_name: formData.guestName,
+            guest_email: formData.guestEmail,
+            guest_phone: formData.guestPhone,
+            request_content: formData.requestContent,
+        };
+        // request_content: sanitizeInput(formData.requestContent),
+        // recaptcha_token: formData.recaptchaToken,
 
-        message.success('Thông tin của bạn đã được gửi thành công!');
-        setFormData({ fullName: '', phone: '', email: '', content: '', captchaChecked: false });
-        setErrors({});
+        try {
+            setIsSubmitting(true);
+            // `${process.env.REACT_APP_API_BASE_URL}/consultations`
+            const response = await fetch('http://localhost:8000/api/consultations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Accept: 'application/json',
+                    // Sanctum or Passport --- Authorization
+                    // 'Authorization': 'Bearer your_token',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Gửi dữ liệu thất bại!');
+            }
+
+            localStorage.setItem('contactData', JSON.stringify(payload));
+            message.success('Thông tin của bạn đã được gửi thành công!');
+
+            // Reset form
+            setFormData({
+                guestName: '',
+                guestEmail: '',
+                guestPhone: '',
+                requestContent: '',
+                captchaChecked: false,
+            });
+            setErrors({});
+        } catch (error) {
+            message.error(error.message || 'Đã xảy ra lỗi khi gửi!');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -100,54 +263,52 @@ const ContactForm = ({ onSubmit }) => {
                 <div className={cx('row')}>
                     <div className={cx('input-wrapper')}>
                         <input
-                            name="fullName"
+                            name="guestName"
                             className={cx('input')}
                             placeholder="Họ và tên (*)"
-                            value={formData.fullName}
+                            value={formData.guestName}
                             onChange={handleChange}
                             required
                         />
-                        {errors.fullName && <p className={cx('error')}>{errors.fullName}</p>}
+                        {errors.guestName && <p className={cx('error')}>{errors.guestName}</p>}
                     </div>
                     <div className={cx('input-wrapper')}>
                         <input
-                            name="phone"
+                            name="guestPhone"
                             className={cx('input')}
                             placeholder="Số điện thoại (*)"
-                            value={formData.phone}
+                            value={formData.guestPhone}
                             onChange={handleChange}
                             required
                         />
-                        {errors.phone && <p className={cx('error')}>{errors.phone}</p>}
+                        {errors.guestPhone && <p className={cx('error')}>{errors.guestPhone}</p>}
                     </div>
                 </div>
-
                 <div className={cx('row')}>
                     <div className={cx('input-wrapper', 'custom')}>
                         <input
-                            name="email"
+                            name="guestEmail"
                             className={cx('input', 'email')}
                             placeholder="Email (*)"
                             value={formData.email}
                             onChange={handleChange}
                             required
                         />
-                        {errors.email && <p className={cx('error')}>{errors.email}</p>}
+                        {errors.guestEmail && <p className={cx('error')}>{errors.guestEmail}</p>}
                     </div>
                     <div className={cx('input-wrapper', 'custom')}>
                         <textarea
-                            name="content"
+                            name="requestContent"
                             className={cx('input', 'textarea')}
                             placeholder="Nội dung cần tư vấn"
-                            value={formData.content}
+                            value={formData.requestContent}
                             onChange={handleChange}
                             rows={2}
-                            maxLength={250}
+                            maxLength={500}
                         />
-                        {errors.content && <p className={cx('error')}>{errors.content}</p>}
+                        {errors.requestContent && <p className={cx('error')}>{errors.requestContent}</p>}
                     </div>
                 </div>
-
                 <div className={cx('captcha')}>
                     <div className={cx('captcha-box')}>
                         <div className={cx('captcha-left')}>
@@ -186,13 +347,23 @@ const ContactForm = ({ onSubmit }) => {
                     </div>
                 </div>
 
+                {/* <div className={cx('captcha')}>
+                    <ReCAPTCHA
+                        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+                        onChange={(token) => setFormData({ ...formData, recaptchaToken: token })}
+                    />
+                    {errors.recaptchaToken && <p className={cx('error')}>{errors.recaptchaToken}</p>}
+                </div> */}
+
                 <button type="submit" className={cx('button')}>
                     <span> GỬI THÔNG TIN </span>
                 </button>
-
                 <div className={cx('footer')}>
-                    <p> Vui lòng liên hệ Hotline/Zalo để được hỗ trợ tư vấn nhanh chóng và chính xác nhất!</p>
-                    <span>0899.363.369</span>
+                    <p>Nhớ kiểm tra lại thông tin trước khi gửi nhé!</p>
+                    <p>
+                        Cần&nbsp;gấp? Gọi&nbsp;ngay&nbsp; <span className={cx('highlight')}>0899.363.369</span>
+                        (Hotline/Zalo) để được tư&nbsp;vấn nhanh!
+                    </p>
                 </div>
             </form>
         </section>

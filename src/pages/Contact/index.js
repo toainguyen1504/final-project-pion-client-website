@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-// import ContactForm from '@/components/ContactForm';
+import ContactForm from '@/components/ContactForm';
 import Breadcrumb from '@/components/Breadcrumb';
 import styles from './Contact.module.scss';
 
@@ -83,7 +83,7 @@ function Contact() {
                     />
                 </article>
 
-                {/* <ContactForm /> */}
+                <ContactForm />
             </div>
         </div>
     );
