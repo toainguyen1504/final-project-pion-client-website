@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 // import ReCAPTCHA from 'react-google-recaptcha';
-import { message } from 'antd';
+import { message, Button } from 'antd';
 import HeadingStar from '@/components/HeadingStar';
 import styles from './ContactForm.module.scss';
 
@@ -205,7 +206,7 @@ const ContactForm = ({ onSubmit }) => {
         if (!validateForm()) {
             message.error('Vui lòng kiểm tra lại thông tin!');
             setIsSubmitting(true);
-            setTimeout(() => setIsSubmitting(false), 4000);
+            setTimeout(() => setIsSubmitting(false), 2000);
             return;
         }
 
@@ -220,24 +221,15 @@ const ContactForm = ({ onSubmit }) => {
 
         try {
             setIsSubmitting(true);
-            // `${process.env.REACT_APP_API_BASE_URL}/consultations`
-            const response = await fetch('http://localhost:8000/api/consultations', {
-                method: 'POST',
+
+            const response = await axios.post('http://localhost:8000/api/consultations', payload, {
                 headers: {
                     'Content-Type': 'application/json',
-                    // Accept: 'application/json',
-                    // Sanctum or Passport --- Authorization
+                    // Use this if you're working with Sanctum or Passport
                     // 'Authorization': 'Bearer your_token',
                 },
-                body: JSON.stringify(payload),
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Gửi dữ liệu thất bại!');
-            }
-
-            localStorage.setItem('contactData', JSON.stringify(payload));
             message.success('Thông tin của bạn đã được gửi thành công!');
 
             // Reset form
@@ -250,7 +242,12 @@ const ContactForm = ({ onSubmit }) => {
             });
             setErrors({});
         } catch (error) {
-            message.error(error.message || 'Đã xảy ra lỗi khi gửi!');
+            // Basic error handling for now — can be improved later
+            if (error.response && error.response.status === 429) {
+                message.error('Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau!');
+            } else {
+                message.error(error.message || 'Gửi thất bại, vui lòng thử lại!');
+            }
         } finally {
             setIsSubmitting(false);
         }
@@ -290,7 +287,7 @@ const ContactForm = ({ onSubmit }) => {
                             name="guestEmail"
                             className={cx('input', 'email')}
                             placeholder="Email (*)"
-                            value={formData.email}
+                            value={formData.guestEmail}
                             onChange={handleChange}
                             required
                         />
@@ -354,10 +351,19 @@ const ContactForm = ({ onSubmit }) => {
                     />
                     {errors.recaptchaToken && <p className={cx('error')}>{errors.recaptchaToken}</p>}
                 </div> */}
-
-                <button type="submit" className={cx('button')}>
-                    <span> GỬI THÔNG TIN </span>
-                </button>
+                {/* 
+                <button type="submit" className={cx('button', 'btn-form')}>
+                    GỬI THÔNG TIN
+                </button> */}
+                <Button
+                    type="default"
+                    htmlType="submit"
+                    loading={isSubmitting}
+                    className={cx('button', 'btn-form')}
+                    disabled={isSubmitting}
+                >
+                    GỬI THÔNG TIN
+                </Button>
                 <div className={cx('footer')}>
                     <p>Nhớ kiểm tra lại thông tin trước khi gửi nhé!</p>
                     <p>
