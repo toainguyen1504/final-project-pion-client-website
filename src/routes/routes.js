@@ -10,7 +10,7 @@ import CourseDetail from '@/pages/CourseDetail';
 import SearchPage from '@/pages/SearchPage';
 // import { StudyAbroadGerman, StudyAbroadChina, StudyAbroadKorean } from '@/pages/StudyAbroad';
 import { StudyAbroadChina } from '@/pages/StudyAbroad';
-import { NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
+import { NewsList, NewsDetail, NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
 import { tocDataChina } from '@/data';
 // import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
@@ -54,6 +54,15 @@ const publicRoutes = [
     {
         path: config.routes.jobDetails,
         component: JobDetails,
+    },
+    {
+        path: config.routes.newsList,
+        component: NewsList,
+    },
+    {
+        path: config.routes.newsDetail,
+        component: NewsDetail,
+        layout: null,
     },
     { path: config.routes.faq, component: NewsFAQ },
 

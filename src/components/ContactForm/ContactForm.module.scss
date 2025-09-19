@@ -1,4 +1,6 @@
 .contact {
+    margin: 24px 0;
+
     .error {
         position: absolute;
         top: 72px;
@@ -163,6 +165,12 @@
     .button.btn-form {
         font-weight: 600;
         color: var(--text-color-bold);
+        transition: color 0.3s;
+
+        &:hover {
+            color: var(--primary);
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
     }
 
     .footer {

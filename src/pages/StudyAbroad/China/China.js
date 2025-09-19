@@ -7,6 +7,7 @@ import { HiOutlineClipboardList } from 'react-icons/hi';
 
 // import RelatedContent from '@/components/RelatedContent';
 import { slugify } from '@/utils';
+import ContactForm from '@/components/ContactForm';
 import styles from '../StudyAbroad.module.scss'; // Css
 
 const cx = classNames.bind(styles);
@@ -46,9 +47,9 @@ const benefitItems = [
         content:
             'Du học tại Trung Quốc không chỉ là cơ hội học tập mà còn là dịp để bạn khám phá một nền văn hóa lâu đời và phong phú. Trung Quốc, với lịch sử hơn 5.000 năm, sở hữu một kho tàng di sản văn hóa vô cùng đa dạng, từ những công trình kiến trúc nổi tiếng như Tử Cấm Thành, đến những lễ hội truyền thống đầy sắc màu. Việc sống và học tập tại đây sẽ giúp bạn không chỉ hiểu thêm về nền văn minh cổ xưa mà còn trải nghiệm các giá trị văn hóa đương đại. Hơn nữa, việc học tiếng Trung trong môi trường bản xứ sẽ là một lợi thế lớn trong công việc sau này, đặc biệt trong bối cảnh Trung Quốc ngày càng đóng vai trò quan trọng trên trường quốc tế.',
         image: {
-            src: '/assets/img/du_hoc/china_03.jpg',
-            alt: ' Vạn Lý Trường Thành – một trong những công trình kiến trúc vĩ đại nhất thế giới',
-            caption: ' Vạn Lý Trường Thành – một trong những công trình kiến trúc vĩ đại nhất thế giới',
+            src: '/assets/img/du_hoc/china_07.jpg',
+            alt: 'Trải nghiệm văn hóa và nông nghiệp Trung Quốc cùng sinh viên quốc tế',
+            caption: 'Trải nghiệm văn hóa và nông nghiệp Trung Quốc cùng sinh viên quốc tế',
         },
     },
 ];
@@ -97,7 +98,7 @@ function China() {
                     ưa chuộng trên thế giới.
                 </p>
                 <figure className={cx('image-wrapper')}>
-                    <img src="/assets/img/du_hoc/china_01.jpg" alt="" className={cx('content-image')} loading="lazy" />
+                    <img src="/assets/img/du_hoc/china_05.jpg" alt="" className={cx('content-image')} loading="lazy" />
                     <figcaption>
                         Sinh viên quốc tế tại Trung Quốc – Hành trình học tập và khám phá văn hóa phương Đông
                     </figcaption>
@@ -142,13 +143,14 @@ function China() {
                 >
                     <figure className={cx('image-wrapper')}>
                         <img
-                            src="/assets/img/du_hoc/china_04.jpg"
+                            src="/assets/img/du_hoc/china_06.jpg"
                             alt=""
                             className={cx('content-image')}
                             loading="lazy"
                         />
                         <figcaption>
-                            Khuôn viên Đại học Nhân dân Trung Quốc – một trong những ngôi trường hàng đầu tại Trung Quốc
+                            Guilin University of Technology (桂林理工大学) – Trường Đại học Công nghệ Quế Lâm, Trung
+                            Quốc
                         </figcaption>
                     </figure>
                     <ul className={cx('factors-list', 'icon-list')}>
@@ -193,6 +195,7 @@ function China() {
                 </ContentItem>
             </section>
             {/* <RelatedContent /> */}
+            <ContactForm />
         </div>
     );
 }

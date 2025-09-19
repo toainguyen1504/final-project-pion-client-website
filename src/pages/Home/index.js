@@ -87,8 +87,8 @@ const feedbackData = [
             'Tôi rất vui khi thấy con hào hứng mỗi khi đến lớp học tiếng Anh tại PION! Giáo viên luôn sử dụng phương pháp giảng dạy trực quan, kết hợp bài hát, trò chơi và hoạt động tương tác giúp bé dễ tiếp thu từ vựng. Chỉ sau vài tuần, bé đã có thể nhận diện và nói một số từ cơ bản. Tôi cảm thấy yên tâm vì con đang có một nền tảng tốt để phát triển khả năng ngoại ngữ sau này!',
     },
     {
-        avatar: '/assets/img/students/tuan_anh.jpg',
-        name: 'Tuấn Anh',
+        avatar: '/assets/img/students/bao_long.jpg',
+        name: 'Trương Nhật Bảo Long',
         university: 'Học sinh THCS',
         feedback:
             'Ban đầu mình khá lo lắng vì không tự tin với khả năng nói tiếng Anh, nhưng sau khi học tại PION, mình đã cải thiện đáng kể! Các thầy cô không chỉ dạy ngữ pháp mà còn giúp học viên luyện tập giao tiếp thực tế, phản xạ nhanh và phát âm chuẩn. Nhờ các buổi thực hành và tương tác liên tục, mình thấy tiếng Anh không còn khó như trước. Cảm ơn PION đã giúp mình có động lực học tập hơn!',

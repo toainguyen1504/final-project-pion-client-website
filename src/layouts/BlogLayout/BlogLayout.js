@@ -13,7 +13,7 @@ import styles from './BlogLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-function BlogLayout({ children, tocData = [], breadcrumbTitle = '' }) {
+function BlogLayout({ children, tocData = [], breadcrumbTitle = '', parentPath = '', parentLabel = '' }) {
     const { hideNavTop, showHeader } = useScrollHeader();
 
     const updatedTocData = tocData.map((item) => {
@@ -39,7 +39,11 @@ function BlogLayout({ children, tocData = [], breadcrumbTitle = '' }) {
 
             <main className={cx('main')}>
                 <div className={cx('breadcrumb-wrapper')}>
-                    <Breadcrumb title={breadcrumbTitle} />
+                    <Breadcrumb
+                        title={breadcrumbTitle}
+                        parentPath={parentPath || undefined}
+                        parentLabel={parentLabel || undefined}
+                    />
                 </div>
                 <div className={cx('container')}>
                     <div className={cx('sidebar')}>
@@ -51,10 +55,10 @@ function BlogLayout({ children, tocData = [], breadcrumbTitle = '' }) {
                         phoneNumber="0899363369"
                         facebookPages={[
                             {
-                                name: 'Trung tâm tiếng Trung Pion',
-                                url: 'https://www.facebook.com/tiengtrungpionbinhdinh/',
+                                name: 'Trung tâm tiếng Trung',
+                                url: 'https://www.facebook.com/duhocpion',
                             },
-                            { name: 'Trung tâm tiếng Anh Pion', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
+                            { name: 'Trung tâm tiếng Anh', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
                         ]}
                     />
                     <FloatButton.BackTop visibilityHeight={1000} duration={200} style={{ bottom: 72, right: 16 }} />

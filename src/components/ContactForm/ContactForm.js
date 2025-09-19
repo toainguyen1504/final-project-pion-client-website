@@ -221,12 +221,12 @@ const ContactForm = ({ onSubmit }) => {
 
         try {
             setIsSubmitting(true);
-
-            const response = await axios.post('http://localhost:8000/api/consultations', payload, {
+            // `${process.env.REACT_APP_API_BASE_URL}/api/consultations`
+            const response = await axios.post('https://admin.pion.edu.vn/api/consultations', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                     // Use this if you're working with Sanctum or Passport
-                    // 'Authorization': 'Bearer your_token',
+                    //'Authorization': 'Bearer your_token',
                 },
             });
 

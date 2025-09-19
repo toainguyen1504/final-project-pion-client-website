@@ -40,6 +40,7 @@ function Contact() {
                     </p>
                     <p>
                         <span>Địa chỉ văn phòng: </span> 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định
+                        (Địa chỉ mới: 125 Lê Lợi, Phường Bồng Sơn, Gia Lai)
                     </p>
                 </article>
 
@@ -48,12 +49,12 @@ function Contact() {
                     <ul>
                         <li>
                             <a
-                                href="https://www.facebook.com/tiengtrungpionbinhdinh/"
+                                href="https://www.facebook.com/duhocpion"
                                 className={cx('link')}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Trung tâm tiếng Trung Pion
+                                Trung tâm tiếng Trung
                             </a>
                         </li>
                         <li>
@@ -63,7 +64,7 @@ function Contact() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Trung tâm tiếng Anh Pion
+                                Trung tâm tiếng Anh
                             </a>
                         </li>
                     </ul>

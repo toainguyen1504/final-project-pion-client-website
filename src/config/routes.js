@@ -14,6 +14,8 @@ const routes = {
     //news
     newsLaborExport: '/xuat-khau-lao-dong',
     newsAvailablePosition: '/tuyen-dung',
+    newsList: '/tin-tuc',
+    newsDetail: '/tin-tuc/:slug',
     jobDetails: '/tuyen-dung/:slug',
     faq: '/cau-hoi-thuong-gap',
 };

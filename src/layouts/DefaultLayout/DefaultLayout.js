@@ -25,10 +25,10 @@ function DefaultLayout({ children }) {
                     phoneNumber="0899363369"
                     facebookPages={[
                         {
-                            name: 'Trung tâm tiếng Trung Pion',
-                            url: 'https://www.facebook.com/tiengtrungpionbinhdinh/',
+                            name: 'Trung tâm tiếng Trung',
+                            url: 'https://www.facebook.com/duhocpion',
                         },
-                        { name: 'Trung tâm tiếng Anh Pion', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
+                        { name: 'Trung tâm tiếng Anh', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
                     ]}
                 />
                 <FloatButton.BackTop visibilityHeight={1000} duration={200} style={{ bottom: 72, right: 16 }} />

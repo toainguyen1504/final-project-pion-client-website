@@ -8,7 +8,7 @@ import { GiHumanTarget } from 'react-icons/gi';
 import { FaCirclePlay } from 'react-icons/fa6';
 
 import Breadcrumb from '@/components/Breadcrumb';
-// import ContactForm from '@/components/ContactForm';
+import ContactForm from '@/components/ContactForm';
 import ZigzagSection from '@/components/ZigzagSection';
 import TeacherCard from '@/components/TeacherCard';
 import CoreValuesSlider from './CoreValuesSlider';
@@ -235,9 +235,9 @@ function About() {
             <section className={cx('question-wrapper')}></section>
 
             {/* Contact */}
-            {/* <section className={cx('contact-wrapper')}>
-                <ContactForm onSubmit={handleContactSubmit} />
-            </section> */}
+            <section className={cx('contact-wrapper')}>
+                <ContactForm />
+            </section>
         </div>
     );
 }

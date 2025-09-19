@@ -177,18 +177,18 @@ const items = [
             // },
         ],
     },
-    {
-        type: 'divider',
-    },
-    {
-        key: 'study-abroad',
-        label: 'Du học',
-        children: [
-            // { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
-            // { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
-            { key: 'abroad-china', label: <Link to="/du-hoc-trung-quoc">Du học Trung Quốc</Link> },
-        ],
-    },
+    // {
+    //     type: 'divider',
+    // },
+    // {
+    //     key: 'study-abroad',
+    //     label: 'Du học',
+    //     children: [
+    //         // { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
+    //         // { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
+    //         { key: 'abroad-china', label: <Link to="/du-hoc-trung-quoc">Du học Trung Quốc</Link> },
+    //     ],
+    // },
     {
         type: 'divider',
     },
@@ -197,7 +197,9 @@ const items = [
         label: 'Tin tức',
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
+            { key: 'news-list', label: <Link to="/tin-tuc">Tất cả tin tức</Link> },
             { key: 'news-recruitment', label: <Link to="/tuyen-dung">Tuyển dụng</Link> },
+            // { key: 'abroad-china', label: <Link to="/du-hoc-trung-quoc">Du học Trung Quốc</Link> },
             { key: 'news-question', label: <Link to="/cau-hoi-thuong-gap">Câu hỏi thường gặp</Link> },
         ],
     },
@@ -207,6 +209,17 @@ const items = [
     {
         key: 'contact',
         label: <Link to="/lien-he">Liên hệ</Link>,
+    },
+    {
+        type: 'divider',
+    },
+    {
+        key: 'abroad-china',
+        label: (
+            <Link to="/du-hoc-trung-quoc" className="menu-uppercase">
+                Du học Trung Quốc
+            </Link>
+        ),
     },
 ];
 
@@ -375,23 +388,23 @@ export default function Header({ visible }) {
                     </div>
 
                     {/* Du học */}
-                    <div className={cx('dropdown')}>
+                    {/* <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
+                        Du học nghề Đức
+                    </Link>
+                    <Link to="/du-hoc-han-quoc" className={cx('dropdown-item')}>
+                        Du học Hàn Quốc
+                    </Link> */}
+                    {/* <div className={cx('dropdown')}>
                         <div className={cx('dropdown-toggle')}>
                             <span>Du học</span>
                             <RiArrowDropDownLine size={24} />
                         </div>
                         <div className={cx('dropdown-menu')}>
-                            {/* <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
-                                Du học nghề Đức
-                            </Link>
-                            <Link to="/du-hoc-han-quoc" className={cx('dropdown-item')}>
-                                Du học Hàn Quốc
-                            </Link> */}
                             <Link to="/du-hoc-trung-quoc" className={cx('dropdown-item')}>
                                 Du học Trung Quốc
                             </Link>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Tin tức */}
                     <div className={cx('dropdown')}>
@@ -403,8 +416,14 @@ export default function Header({ visible }) {
                             {/* <Link to="/xuat-khau-lao-dong" className={cx('dropdown-item')}>
                                 Xuất khẩu lao động
                             </Link> */}
+                            <Link to="/tin-tuc" className={cx('dropdown-item')}>
+                                Tất cả tin tức
+                            </Link>
                             <Link to="/tuyen-dung" className={cx('dropdown-item')}>
                                 Tuyển dụng
+                            </Link>
+                            <Link to="/du-hoc-trung-quoc" className={cx('dropdown-item')}>
+                                Du học Trung Quốc
                             </Link>
                             <Link to="/cau-hoi-thuong-gap" className={cx('dropdown-item')}>
                                 Câu hỏi thường gặp

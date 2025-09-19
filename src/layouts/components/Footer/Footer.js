@@ -265,8 +265,7 @@ function Footer() {
 
             <div className={cx('contact')}>
                 <div>
-                    <FaMapMarkerAlt size={28} className={cx('icon')} /> 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn,
-                    Tỉnh Bình Định
+                    <FaMapMarkerAlt size={28} className={cx('icon')} /> 125 Lê Lợi, Phường Bồng Sơn, Tỉnh Gia Lai
                 </div>
                 <div>
                     <FaPhoneAlt size={28} className={cx('icon')} /> Hotline: 0899.363.369
@@ -278,12 +277,12 @@ function Footer() {
                     <FaFacebookSquare size={28} className={cx('icon')} />
                     <div className={cx('inner')}>
                         <a
-                            href="https://www.facebook.com/tiengtrungpionbinhdinh/"
+                            href="https://www.facebook.com/duhocpion"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Trung tâm tiếng Trung Pion
+                            Trung tâm tiếng Trung
                         </a>
                         <a
                             href="https://www.facebook.com/tienganhpionhoainhon/"
@@ -291,7 +290,7 @@ function Footer() {
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Trung tâm tiếng Anh Pion
+                            Trung tâm tiếng Anh
                         </a>
                     </div>
                 </div>
