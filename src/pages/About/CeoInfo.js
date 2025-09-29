@@ -30,7 +30,7 @@ const CeoInfo = () => {
                                     <span>Học vấn:</span>
                                     <ul className={cx('sub-list')}>
                                         <li>Cử nhân giáo dục Hán ngữ quốc tế, Đại học Tô Châu, Trung Quốc.</li>
-                                        <li>Thạc sĩ Ngôn ngữ Trung Quốc, Đại học ngoại ngữ Huế.</li>
+                                        {/* <li>Thạc sĩ giáo dục Hán Ngữ - Trường đại học sư phạm Quảng Tây</li> */}
                                         <li>Thạc sĩ Quản trị Kinh doanh (MBA), Đại học UBIS, Thụy Sĩ.</li>
                                     </ul>
                                 </li>

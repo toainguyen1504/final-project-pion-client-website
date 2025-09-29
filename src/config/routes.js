@@ -2,6 +2,7 @@ const routes = {
     home: '/',
     about: '/gioi-thieu',
     contact: '/lien-he',
+    registerProgram: '/dang-ky-tham-gia-chuong-trinh',
     search: '/tim-kiem',
     notFound: '/404',
     courseSlug: '/:slug', // course
