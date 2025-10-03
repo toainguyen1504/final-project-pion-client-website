@@ -41,8 +41,8 @@ const newsData = [
         title: 'Du Học Trung Quốc - Trải Nghiệm Nền Văn Hóa Độc Đáo',
         desc: 'Lựa chọn du học tại Trung Quốc mang lại cho sinh viên nhiều lợi ích vượt trội. Không chỉ được tiếp cận với hệ thống giáo dục tiên tiến cùng cơ sở vật chất hiện đại, bạn còn có cơ hội khám phá nền văn hóa lâu đời, đa dạng và giàu bản sắc.',
         image: '/assets/img/du_hoc/china_09.jpg',
-        link: '/du-hoc-trung-quoc',
-        slug: 'du-hoc-trung-quoc',
+        link: '/dieu-kien-du-hoc-trung-quoc-2025',
+        slug: 'dieu-kien-du-hoc-trung-quoc-2025',
     },
 ];
 

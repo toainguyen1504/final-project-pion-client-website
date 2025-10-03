@@ -15,7 +15,7 @@ export default function NavTop({ hidden }) {
                         <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link>
                     </li> */}
                     <li>
-                        <Link to="/du-hoc-trung-quoc">Du học Trung Quốc</Link>
+                        <Link to="/dieu-kien-du-hoc-trung-quoc-2025">Du học Trung Quốc</Link>
                     </li>
                     {/* <li>
                         <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link>

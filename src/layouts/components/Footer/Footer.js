@@ -31,7 +31,7 @@ function Footer() {
                             </Link>
                         </li>
                     </ul>
-                    <p className={cx('highlight')}>PION được đánh giá là tập đoàn uy tín về mảng du học và giáo dục.</p>
+                    <p className={cx('highlight')}>PION được đánh giá là công ty uy tín về mảng du học và giáo dục.</p>
                 </div>
                 <div className={cx('column')}>
                     <h4>Khóa học Tiếng Anh</h4>
@@ -115,7 +115,7 @@ function Footer() {
                         </li>
 
                         <li>
-                            <Link to="/du-hoc-trung-quoc" className={cx('link')}>
+                            <Link to="/dieu-kien-du-hoc-trung-quoc-2025" className={cx('link')}>
                                 Du học Trung Quốc
                             </Link>
                         </li>
@@ -130,7 +130,7 @@ function Footer() {
                             </Link>
                         </li> */}
                         <li>
-                            <Link to="/du-hoc-trung-quoc" className={cx('link')}>
+                            <Link to="/dieu-kien-du-hoc-trung-quoc-2025" className={cx('link')}>
                                 Du học Trung Quốc
                             </Link>
                         </li>
@@ -268,7 +268,7 @@ function Footer() {
                     <FaMapMarkerAlt size={28} className={cx('icon')} /> 125 Lê Lợi, Phường Bồng Sơn, Tỉnh Gia Lai
                 </div>
                 <div>
-                    <FaPhoneAlt size={28} className={cx('icon')} /> Hotline: 0899.363.369
+                    <FaPhoneAlt size={28} className={cx('icon')} /> Hotline: 089.9363.369 | 090.1900.677
                 </div>
                 <div>
                     <FaEnvelope size={28} className={cx('icon')} /> info@pion.edu.vn

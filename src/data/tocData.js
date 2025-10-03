@@ -62,35 +62,40 @@ export const tocDataGerman = [
 
 export const tocDataChina = [
     {
-        text: '1. Bốn lý do nên chọn du học tại Trung Quốc',
+        text: '1. Du học Trung Quốc mở ra cơ hội nghề nghiệp triển vọng',
         href: '#!',
         children: [
-            { text: '1.1. Hệ thống giáo dục đẳng cấp quốc tế', href: '#!' },
-            { text: '1.2. Học bổng hấp dẫn, chi phí tiết kiệm', href: '#!' },
-            { text: '1.3. Mở rộng tương lai nghề nghiệp', href: '#!' },
-            { text: '1.4. Khám phá nền văn hóa đặc sắc', href: '#!' },
+            { text: '1.1. Chất lượng giáo dục đẳng cấp quốc tế', href: '#!' },
+            { text: '1.2. Chi phí hợp lý và cơ hội học bổng dồi dào', href: '#!' },
+            { text: '1.3. Mở rộng cơ hội nghề nghiệp', href: '#!' },
+            { text: '1.4. Khám phá nền văn hóa đa dạng và phong phú', href: '#!' },
         ],
     },
     {
-        text: '2. Điều kiện du học Trung Quốc, bạn cần chuẩn bị gì?',
+        text: '2. Điều kiện du học Trung Quốc 2025 cho sinh viên Việt Nam',
         href: '#!',
         children: [
-            { text: '2.1. Trình độ học vấn phù hợp', href: '#!' },
-            { text: '2.2. Năng lực ngoại ngữ', href: '#!' },
-            { text: '2.3. Điều kiện sức khỏe', href: '#!' },
-            { text: '2.4. Hồ sơ cá nhân rõ ràng', href: '#!' },
-            { text: '2.5. Khả năng tài chính', href: '#!' },
+            { text: '2.1. Điều kiện chung', href: '#!' },
+            { text: '2.2. Điều kiện về học vấn và điểm số', href: '#!' },
+            { text: '2.3. Điều kiện về ngôn ngữ', href: '#!' },
+            { text: '2.4. Điều kiện tài chính', href: '#!' },
         ],
     },
     {
-        text: '3. Quy trình tư vấn',
+        text: '3. Những điều cần chuẩn bị cho hồ sơ du học 2025',
         href: '#!',
         children: [],
     },
-    // {
-    //     text: '4. Nội dung liên quan',
-    //     href: '#!',
-    // },
+    {
+        text: '4. Quy trình tư vấn',
+        href: '#!',
+        children: [],
+    },
+    {
+        text: '5. Kết luận',
+        href: '#!',
+        children: [],
+    },
 ];
 
 export const tocDataKorean = [

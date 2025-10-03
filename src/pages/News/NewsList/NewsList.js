@@ -21,8 +21,8 @@ function NewsList() {
                 const [postsRes, mediaRes] = await Promise.all([
                     axios.get(`https://admin.pion.edu.vn/api/posts`),
                     axios.get(`https://admin.pion.edu.vn/api/media`),
-                    // axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/posts`),
-                    // axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/media`),
+                    // axios.get(`${process.env.REACT_APP_PROD_URL}/api/posts`),
+                    // axios.get(`${process.env.REACT_APP_PROD_URL}/api/media`),
                 ]);
 
                 const postsData = postsRes.data.data || postsRes.data;
@@ -43,7 +43,7 @@ function NewsList() {
                     const imageUrl = imagePath
                         ? `https://admin.pion.edu.vn/storage/${imagePath}`
                         : '/assets/img/default.jpg';
-                    // ? `${process.env.REACT_APP_API_BASE_URL}/storage/${imagePath}`
+                    // ? `${process.env.REACT_APP_PROD_URL}/storage/${imagePath}`
 
                     return {
                         ...post,

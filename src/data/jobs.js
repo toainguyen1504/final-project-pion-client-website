@@ -7,7 +7,7 @@ const jobs = [
         link: '/tuyen-dung/giao-vien-viet-nam',
         position: 'Giáo viên Việt Nam',
         location:
-            '125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định (Địa chỉ mới: 125 Lê Lợi, Phường Bồng Sơn, Gia Lai)',
+            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
         salary: 'Lương theo Thỏa thuận',
         quantity: '02',
         experience: 'Tối thiểu 1 năm kinh nghiệm giảng dạy',
@@ -60,7 +60,7 @@ const jobs = [
         link: '/tuyen-dung/foreign-teacher',
         position: 'Foreign Teacher',
         location:
-            '125 Le Loi Street, Bong Son Ward, Hoai Nhon Town, Binh Dinh Province (New address: 125 Le Loi Street, Bong Son Ward, Gia Lai)',
+            '125 Le Loi Street, Bong Son Ward, Gia Lai (Old address: 125 Le Loi Street, Bong Son Ward, Hoai Nhon Town, Binh Dinh Province)',
         salary: 'Negotiable',
         quantity: '02',
         experience: 'Minimum 1 year of teaching experience',
@@ -122,7 +122,7 @@ const jobs = [
         link: '/tuyen-dung/chuyen-vien-tu-van-tuyen-sinh-kiem-le-tan',
         position: 'Chuyên viên tư vấn tuyển sinh kiêm lễ tân',
         location:
-            '125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định (Địa chỉ mới: 125 Lê Lợi, Phường Bồng Sơn, Gia Lai)',
+            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
         salary: 'Lương theo Thỏa thuận',
         quantity: '02',
         experience: 'Không yêu cầu kinh nghiệm, ưu tiên có kinh nghiệm chăm sóc khách hàng.',
@@ -179,7 +179,7 @@ const jobs = [
         link: '/tuyen-dung/ke-toan-kiem-hanh-chinh-nhan-su',
         position: 'Kế toán - Hành chính nhân sự',
         location:
-            '125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định (Địa chỉ mới: 125 Lê Lợi, Phường Bồng Sơn, Gia Lai)',
+            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
         salary: 'Lương theo thỏa thuận',
         quantity: '01',
         experience: 'Tối thiểu 1 năm kinh nghiệm làm kế toán.',
@@ -237,7 +237,7 @@ const jobs = [
         link: '/tuyen-dung/chuyen-vien-tu-van-tuyen-sinh-khoa-hoc-va-du-hoc',
         position: 'Chuyên viên tư vấn tuyển sinh (Khóa học + Du học)',
         location:
-            '125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định (Địa chỉ mới: 125 Lê Lợi, Phường Bồng Sơn, Gia Lai)',
+            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
         salary: 'Lương theo thỏa thuận',
         quantity: '02',
         experience: 'Ưu tiên có kinh nghiệm 1 năm trong lĩnh vực tư vấn du học hoặc khóa học.',
@@ -296,7 +296,7 @@ const jobs = [
     //     title: 'Chuyên viên tư vấn du học - XKLĐ',
     //     link: '/tuyen-dung/chuyen-vien-tu-van-du-hoc-xkld',
     //     position: 'Chuyên viên tư vấn du học - XKLĐ',
-    //     location: '125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định (Địa chỉ mới: 125 Lê Lợi, Phường Bồng Sơn, Gia Lai)',
+    //     location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
     //     salary: 'Lương theo thỏa thuận',
     //     quantity: '02',
     //     experience: 'Ưu tiên có kinh nghiệm tối thiểu 1 năm trong lĩnh vực tư vấn du học hoặc XKLĐ.',

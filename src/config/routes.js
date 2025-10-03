@@ -10,7 +10,7 @@ const routes = {
     // study abroad
     studyAbroadGerman: '/du-hoc-nghe-duc',
     studyAbroadKorean: '/du-hoc-han-quoc',
-    studyAbroadChina: '/du-hoc-trung-quoc',
+    studyAbroadChina: '/dieu-kien-du-hoc-trung-quoc-2025',
 
     //news
     newsLaborExport: '/xuat-khau-lao-dong',

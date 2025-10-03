@@ -221,7 +221,7 @@ const ContactForm = ({ onSubmit }) => {
 
         try {
             setIsSubmitting(true);
-            // `${process.env.REACT_APP_API_BASE_URL}/api/consultations`
+            // `${process.env.REACT_APP_PROD_URL}/api/consultations`
             const response = await axios.post('https://admin.pion.edu.vn/api/consultations', payload, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -367,7 +367,8 @@ const ContactForm = ({ onSubmit }) => {
                 <div className={cx('footer')}>
                     <p>Nhớ kiểm tra lại thông tin trước khi gửi nhé!</p>
                     <p>
-                        Cần&nbsp;gấp? Gọi&nbsp;ngay&nbsp; <span className={cx('highlight')}>0899.363.369</span>
+                        Cần&nbsp;gấp? Gọi&nbsp;ngay&nbsp; <span className={cx('highlight')}>089.9363.369</span> hoặc
+                        <span className={cx('highlight')}> 090.1900.677</span>
                         (Hotline/Zalo) để được tư&nbsp;vấn nhanh!
                     </p>
                 </div>

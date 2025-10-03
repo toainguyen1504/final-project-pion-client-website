@@ -19,7 +19,7 @@ const processContentAndGenerateToc = async (html) => {
     // handle img
     const imgTags = doc.querySelectorAll('img');
     if (imgTags.length > 0) {
-        // `${process.env.REACT_APP_API_BASE_URL}/api/media`
+        // `${process.env.REACT_APP_PROD_URL}/api/media`
         const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
         const mediaList = mediaRes.data.data || mediaRes.data;
 
@@ -129,11 +129,9 @@ const NewsDetail = () => {
                     const ogPath = media?.meta?.variants?.og?.path;
 
                     // ogImageUrl = ogPath
-                    //     ? `${process.env.REACT_APP_API_BASE_URL}/storage/${ogPath}`
+                    //     ? `${process.env.REACT_APP_PROD_URL}/storage/${ogPath}`
                     //     : '/assets/img/default.jpg';
-                    ogImageUrl = ogPath
-                        ? `https://admin.pion.edu.vn/storage/${ogPath}`
-                        : '/assets/img/default.jpg';
+                    ogImageUrl = ogPath ? `https://admin.pion.edu.vn/storage/${ogPath}` : '/assets/img/default.jpg';
                 }
 
                 setPost({
