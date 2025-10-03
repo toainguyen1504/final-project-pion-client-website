@@ -1,8 +1,6 @@
 import classNames from 'classnames/bind';
 import { RiQuillPenFill } from 'react-icons/ri';
-// import { FaFacebook, FaPhoneAlt, FaGlobe, FaEnvelope } from 'react-icons/fa';
 import { Steps } from 'antd';
-// import { Link } from 'react-router-dom';
 
 import { FiUser, FiSearch, FiMail, FiCalendar, FiSmile } from 'react-icons/fi';
 import { HiOutlineClipboardList } from 'react-icons/hi';
@@ -309,7 +307,7 @@ function China() {
                     </ul>
                 </ContentItem>
 
-                {/* Item 3 - Những điều cần chuẩn bị cho hồ sơ du học 2025 */}
+                {/* Item 3 */}
                 <ContentItem
                     title="Những điều cần chuẩn bị cho hồ sơ du học 2025"
                     description="Để đảm bảo hồ sơ của bạn nổi bật và có cơ hội cao nhận được học bổng, hãy chuẩn bị các giấy tờ sau:"

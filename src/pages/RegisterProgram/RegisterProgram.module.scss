@@ -148,8 +148,6 @@
             gap: 24px;
             height: 100%;
             max-width: 100%;
-            // width: 350px;
-            // min-width: 360px;
             padding: 20px 0;
             text-align: center;
             border-radius: 16px;
@@ -164,20 +162,15 @@
             }
 
             @media (min-width: 768px) and (max-width: 1024px) {
-                // min-width: 0;
                 :global(.ant-card-body) {
-                    // width: 340px;
                     padding: 20px;
                     gap: 24px;
                 }
             }
 
             @media (max-width: 767px) {
-                // min-width: 0;
-
                 :global(.ant-card-body) {
                     padding: 16px;
-                    // width: auto;
                     gap: 16px;
                 }
             }
@@ -190,7 +183,7 @@
                 position: relative;
                 width: 172px;
                 height: 172px;
-                margin: 0 auto 10px; // khoảng cách dưới ảnh
+                margin: 0 auto 10px;
             }
 
             .speaker-img {
@@ -210,7 +203,7 @@
 
             .speaker-degree {
                 position: absolute;
-                bottom: -12px; // đè nhẹ lên dưới khung ảnh
+                bottom: -12px;
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: rgba(255, 255, 255, 0.9);
@@ -358,7 +351,6 @@
     .register-form {
         width: 440px;
         padding: 32px 24px;
-        // margin: 90px 24px;
         background: var(--white);
         border-radius: 18px;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);

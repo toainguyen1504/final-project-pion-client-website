@@ -31,7 +31,9 @@ function Footer() {
                             </Link>
                         </li>
                     </ul>
-                    <p className={cx('highlight')}>PION được đánh giá là công ty uy tín về mảng du học và giáo dục.</p>
+                    <p className={cx('highlight')}>
+                        PION được đánh giá là công ty uy tín về lĩnh vực đào tạo ngoại ngữ và du học quốc tế.
+                    </p>
                 </div>
                 <div className={cx('column')}>
                     <h4>Khóa học Tiếng Anh</h4>
