@@ -68,8 +68,8 @@ const items = [
                     {
                         key: 'ch_1',
                         label: (
-                            <Link to="/tieng-trung-giao-tiep-ung-dung" className="menu-normal">
-                                Giao tiếp ứng dụng
+                            <Link to="/tieng-trung-giao-tiep" className="menu-normal">
+                                Tiếng Trung giao tiếp
                             </Link>
                         ),
                     },
@@ -339,7 +339,7 @@ export default function Header({ visible }) {
                                 <h4>Khóa học Tiếng Trung</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-trung-giao-tiep-ung-dung">Giao tiếp ứng dụng</Link>
+                                        <Link to="/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
                                     </li>
                                     <li>
                                         <Link to="/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>

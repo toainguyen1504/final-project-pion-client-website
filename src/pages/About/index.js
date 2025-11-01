@@ -62,6 +62,15 @@ const teacherData = [
             'Kinh nghiệm: 2 năm',
         ],
     },
+    {
+        image: '/assets/img/about/teacher_07.png',
+        name: 'Cô Cleo Edelyn Larot',
+        qualifications: [
+            'Giáo viên nước ngoài Philippines',
+            'Cử nhân Giáo dục Tiểu học, chuyên ngành Giáo dục học & TESOL',
+            'Kinh nghiệm: 3 năm',
+        ],
+    },
 ];
 
 const visionMissionData = [

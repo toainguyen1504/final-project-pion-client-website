@@ -59,8 +59,8 @@ function Footer() {
                     <h4>Khóa học Tiếng Trung</h4>
                     <ul>
                         <li>
-                            <Link to="/tieng-trung-giao-tiep-ung-dung" className={cx('link')}>
-                                Giao tiếp ứng dụng
+                            <Link to="/tieng-trung-giao-tiep" className={cx('link')}>
+                                Tiếng Trung giao tiếp
                             </Link>
                         </li>
                         <li>
@@ -191,8 +191,8 @@ function Footer() {
                     <h4>Khóa học Tiếng Trung</h4>
                     <ul>
                         <li>
-                            <Link to="/tieng-trung-giao-tiep-ung-dung" className={cx('link')}>
-                                Giao tiếp ứng dụng
+                            <Link to="/tieng-trung-giao-tiep" className={cx('link')}>
+                               Tiếng Trung giao tiếp
                             </Link>
                         </li>
                         <li>
