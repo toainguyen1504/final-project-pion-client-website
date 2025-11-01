@@ -84,8 +84,16 @@ const items = [
                     {
                         key: 'ch_3',
                         label: (
-                            <Link to="/luyen-thi-hsk" className="menu-normal">
-                                Luyện thi HSK
+                            <Link to="/hskk-tai-pion" className="menu-normal">
+                                HSK(K) tại Pion
+                            </Link>
+                        ),
+                    },
+                    {
+                        key: 'ch_4',
+                        label: (
+                            <Link to="/csca-tai-pion" className="menu-normal">
+                                CSCA tại Pion
                             </Link>
                         ),
                     },
@@ -198,10 +206,10 @@ const items = [
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
             // { key: 'news-list', label: <Link to="/tin-tuc">Tất cả tin tức</Link> },
-            {
-                key: 'abroad-china',
-                label: <Link to="/dieu-kien-du-hoc-trung-quoc-2025">Điều kiện du học Trung Quốc 2025</Link>,
-            },
+            // {
+            //     key: 'abroad-china',
+            //     label: <Link to="/dieu-kien-du-hoc-trung-quoc-2025">Điều kiện du học Trung Quốc 2025</Link>,
+            // },
             { key: 'news-recruitment', label: <Link to="/tuyen-dung">Tuyển dụng</Link> },
             { key: 'news-question', label: <Link to="/cau-hoi-thuong-gap">Câu hỏi thường gặp</Link> },
         ],
@@ -344,9 +352,11 @@ export default function Header({ visible }) {
                                     <li>
                                         <Link to="/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
                                     </li>
-
                                     <li>
-                                        <Link to="/luyen-thi-hsk">Luyện thi HSK</Link>
+                                        <Link to="/hskk-tai-pion">HSK(K) tại Pion</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/csca-tai-pion">CSCA tại Pion</Link>
                                     </li>
                                 </ul>
                             </div>

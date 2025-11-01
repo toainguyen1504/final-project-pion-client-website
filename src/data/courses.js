@@ -94,23 +94,23 @@ const courses = {
             id: 'ch_1',
             language: 'chinese',
             title: 'Tiếng Trung Giao Tiếp',
-            subTitle: '',
-            desc: 'Khóa học phù hợp cho nhiều đối tượng, giúp học viên nắm bắt kỹ năng nghe nói nhanh để đi công tác, du lịch, làm việc và định cư tại Trung Quốc hoặc Đài Loan.',
+            subTitle: 'Phù hợp với học sinh, sinh viên, người đi làm',
+            desc: 'Tiếng Trung Thực Chiến – học thực hành 100%, phản xạ nhanh, giao tiếp tự tin chỉ sau vài buổi học.',
             descDetail:
-                'Khóa học tiếng Trung giao tiếp ứng dụng có điểm đặc biệt phù hợp cho nhiều đối tượng. Học viên cần nắm bắt kỹ năng nghe nói nhanh để đi công tác, du lịch, mua bán tại Trung Quốc, hay làm việc trong nhà hàng, khách sạn. Người có chồng, vợ là người Đài Loan, Trung Quốc và sẽ đi định cư. Học sinh, sinh viên đa ngôn ngữ muốn có nhiều cơ hội công việc trong tương lai. Ngoài ra, khóa học còn lý tưởng cho những người yêu thích tiếng Trung nhưng có lịch trình bận rộn.',
+                'Giáo trình độc quyền “Tiếng Trung Thực Chiến” – do Pion Team biên soạn, bám sát nhu cầu thực tế, giúp học viên ứng dụng được ngay sau mỗi buổi học. Phương pháp học thực hành 100%, tập trung vào nghe – nói – phản xạ, giúp học viên tự tin giao tiếp trong thời gian ngắn. Giảng viên bản ngữ và Việt Nam phối hợp giảng dạy, đảm bảo phát âm chuẩn, hiểu sâu văn hóa và sử dụng ngôn ngữ tự nhiên. Lộ trình rõ ràng, phù hợp cho người mới bắt đầu hoặc đã có nền tảng cơ bản.',
             content: [
-                'Cấp 1: Học 100% cùng giáo viên Việt Nam.',
-                'Cấp 2: Học 100% cùng giáo viên Việt Nam.',
-                'Cấp 3: Học 90% cùng giáo viên Việt Nam & 10% giáo viên bản xứ.',
-                'Cấp 4: Học 70% cùng giáo viên Việt Nam & 30% cùng giáo viên bản xứ.',
-                'Cấp 5: Học 50% cùng giáo viên Việt Nam & 50% cùng giáo viên bản xứ.',
-                'Cấp 6: Học 100% cùng giáo viên bản xứ.',
+                'Luyện phát âm chuẩn Bắc Kinh và ngữ điệu tự nhiên.',
+                'Rèn phản xạ nghe – nói qua hội thoại thực tế.',
+                'Thực hành tình huống giao tiếp thật: chào hỏi, giới thiệu bản thân, mua sắm, đi du lịch, làm việc với người Trung Quốc…',
+                'Học qua video, trò chơi, hoạt động nhóm giúp ghi nhớ nhanh và sử dụng linh hoạt.',
+                'Ôn luyện và kiểm tra định kỳ để đánh giá tiến bộ và củng cố kỹ năng.',
+                'Lộ trình gồm 5 module từ cơ bản đến nâng cao, giúp học viên từng bước kỹ năng giao tiếp phù hợp cho công việc sau này:',
             ],
             goals: [
-                'Giúp học viên rèn luyện kỹ năng nghe, nói tiếng Trung một cách nhanh nhất.',
-                'Tăng khả năng phản xạ, phát âm chuẩn.',
-                'Học viên được chuẩn bị số lượng từ vựng phù hợp và có thể nhận biết được Hán tự nhiều hơn.',
-                'Soạn thảo Hán tự nhằm mục đích gửi tin nhắn, văn bản trên điện thoại, máy tính bảng, máy tính...',
+                'Giao tiếp tự nhiên trong các tình huống hàng ngày.',
+                'Hiểu và phản xạ nhanh khi trò chuyện với người Trung Quốc.',
+                'Phát âm chuẩn, nói tiếng Trung trôi chảy và tự tin.',
+                'Ứng dụng được tiếng Trung trong công việc, du học, du lịch hoặc giao tiếp đời sống.',
             ],
             image: '/assets/img/courses/ch_giao_tiep.png',
             link: '/tieng-trung-giao-tiep',
@@ -120,20 +120,24 @@ const courses = {
             id: 'ch_2',
             language: 'chinese',
             title: 'Tiếng Trung Trẻ Em',
-            subTitle: '',
-            desc: 'Khóa học giúp trẻ làm quen với tiếng Trung qua trò chơi, bài hát, câu chuyện và hoạt động tương tác, phù hợp cho trẻ từ 6 đến 12 tuổi.',
+            subTitle: 'Phù hợp với trẻ em từ 4-12 tuổi',
+            desc: 'Khóa học giúp trẻ làm quen với tiếng Trung qua trò chơi, bài hát, câu chuyện và hoạt động tương tác, phù hợp cho trẻ từ 4 đến 12 tuổi.',
             descDetail:
-                'Khoá học tiếng Trung cho trẻ em giúp bé làm quen với ngôn ngữ một cách tự nhiên, vui vẻ thông qua tranh ảnh, bài hát, câu chuyện và hoạt động thú vị. Chương trình phù hợp cho trẻ từ 6 đến 12 tuổi, từ nhập môn đến cao cấp. Bé có thể học với giáo viên người Việt hoặc giáo viên bản xứ để nâng cao phản xạ giao tiếp. Ngoài các lớp nhóm, khoá học còn có lớp kèm 1-1 theo nhu cầu, đảm bảo lộ trình học tập phù hợp và hiệu quả nhất cho từng bé.',
+                'Khóa học Tiếng Trung Trẻ Em được thiết kế dành cho học sinh từ 4–12 tuổi, giúp các em làm quen và phát triển khả năng nghe – nói – đọc – viết tiếng Trung một cách tự nhiên và hứng thú. Chương trình học theo giáo trình YCT (Youth Chinese Test) – bộ giáo trình quốc tế chuẩn hóa do Hanban/Confucius Institute biên soạn, giúp học viên từng bước đạt được năng lực ngôn ngữ tương ứng các cấp độ thi YCT 1 → YCT 4. Các buổi học được thiết kế sinh động với trò chơi, hình ảnh, bài hát và hội thoại ngắn, giúp trẻ học dễ – nhớ lâu – nói tự nhiên, tạo nền tảng vững chắc cho việc học tiếng Trung lâu dài.',
             content: [
-                'Sử dụng nhiều phương pháp như tranh ảnh, hoạt động, bài tập, bài hát và các câu chuyện xoay quanh chủ đề bài học để thúc đẩy sự phát triển trí tuệ của bé.',
-                'Nội dung kết hợp giảng dạy và kiểm tra hướng đến mục tiêu phát triển toàn diện nhất cho bé.',
-                'Thời gian học là 90 phút mỗi buổi nhằm giúp các bé dễ tiếp thu, nhớ lâu mà không quá nhồi nhét kiến thức.',
+                'Giáo trình YCT quốc tế – bám sát nội dung thi thật, phù hợp độ tuổi thiếu nhi.',
+                'Phương pháp học qua trải nghiệm – kết hợp nghe, nói, hát, kể chuyện, đóng vai giúp bé phản xạ tự nhiên và yêu thích tiếng Trung.',
+                'Giáo viên chuyên môn cao, phát âm chuẩn – tạo môi trường học giao tiếp đúng chuẩn.',
+                'Tài liệu trực quan, sinh động – hình ảnh, thẻ từ, video, bảng tương tác và hoạt động nhóm giúp trẻ dễ tiếp thu.',
+                'Báo cáo tiến độ học tập hàng tháng gửi tới phụ huynh.',
+                'Lộ trình rõ ràng – kết quả cụ thể – hướng đến đạt chứng chỉ YCT 1–4, nền tảng cho HSK sau này. Chương trình gồm 4 cấp độ chính, tương ứng với các kỳ thi YCT:',
             ],
             goals: [
-                'Ứng dụng ngay các chủ đề đã học sau mỗi buổi học.',
-                'Giao tiếp thành thạo xoay quanh các chủ đề đã học.',
-                'Có được phản xạ nghe nói nhanh ở mức độ cơ bản.',
-                'Việc đưa các chủ đề, tình huống sát với tình huống hàng ngày, các bài học về văn hóa đạo đức vào chương trình học tại Pion sẽ giúp Trẻ phát triển và hoàn thiện các kỹ năng mềm, phẩm chất đạo đức của Công dân toàn cầu.',
+                'Phát âm chuẩn, nghe – nói tự tin trong các chủ đề quen thuộc.',
+                'Nhận biết và sử dụng được 400–600 từ vựng tiếng Trung cơ bản.',
+                'Viết được chữ Hán phổ biến, câu ngắn, đoạn hội thoại đơn giản.',
+                'Đạt trình độ tương đương YCT 4, sẵn sàng luyện thi HSK 3 hoặc học các khóa tiếng Trung nâng cao.',
+                'Hình thành tình yêu với ngôn ngữ và văn hóa Trung Hoa, phát triển tư duy ngôn ngữ thứ hai tự nhiên.',
                 'Tự tin giao tiếp với người bản xứ.',
             ],
             image: '/assets/img/courses/ch_tre_em.png',
@@ -143,54 +147,85 @@ const courses = {
         {
             id: 'ch_3',
             language: 'chinese',
-            title: 'Luyện Thi HSK',
-            subTitle: '',
-            desc: 'Khóa học luyện thi HSK với lộ trình rõ ràng từ HSK 1 đến HSK 6, giúp học viên nắm vững kiến thức và kỹ năng làm bài thi một cách hiệu quả.',
+            title: 'HSK(K) tại Pion',
+            subTitle: 'Lộ trình học từ số 0',
+            desc: 'Khóa học HSK với lộ trình rõ ràng từ HSK 1 đến HSK 6, giúp học viên nắm vững kiến thức và kỹ năng làm bài thi một cách hiệu quả.',
             descDetail:
-                'Khoá học luyện thi HSK giúp học viên chuẩn bị vững vàng cho kỳ thi đánh giá năng lực tiếng Trung với lộ trình rõ ràng, từ HSK 1 đến HSK 6. Chương trình giảng dạy bám sát cấu trúc đề thi, tập trung vào các kỹ năng nghe, nói, đọc, viết, kết hợp chiến lược làm bài hiệu quả. Học viên sẽ được hướng dẫn bởi đội ngũ giáo viên giàu kinh nghiệm, thực hành với đề thi thử và nhận phản hồi chi tiết để cải thiện điểm số. Khoá học phù hợp cho những ai muốn đạt chứng chỉ HSK để du học, làm việc hoặc nâng cao trình độ tiếng Trung.',
+                'Khoá học HSK giúp học viên chuẩn bị vững vàng cho kỳ thi đánh giá năng lực tiếng Trung với lộ trình rõ ràng, từ HSK 1 đến HSK 6. Chương trình giảng dạy bám sát cấu trúc đề thi, tập trung vào các kỹ năng nghe, nói, đọc, viết, kết hợp chiến lược làm bài hiệu quả. Học viên sẽ được hướng dẫn bởi đội ngũ giáo viên giàu kinh nghiệm, thực hành với đề thi thử và nhận phản hồi chi tiết để cải thiện điểm số. Khoá học phù hợp cho những ai muốn đạt chứng chỉ HSK để du học, làm việc hoặc nâng cao trình độ tiếng Trung.',
             content: [
-                'Giáo trình cập nhật theo tiêu chuẩn HSK mới nhất.',
+                'Các khóa học tiếng Trung tại Pion được thiết kế bám sát cấu trúc đề thi quốc tế, giúp học viên vừa thi đỗ chứng chỉ, vừa ứng dụng được trong công việc và giao tiếp thực tế.',
+                'Pion mang đến chương trình luyện thi HSK(K) chuyên sâu, kết hợp giữa kiến thức chuẩn quốc tế và ứng dụng thực tế, giúp học viên không chỉ đạt chứng chỉ mà còn sử dụng tiếng Trung thành thạo trong học tập và công việc.',
+                'Giáo trình cập nhật theo tiêu chuẩn HSK/HSKK mới nhất.',
                 'Giáo viên giàu kinh nghiệm, hỗ trợ học viên trong suốt khóa học.',
                 'Môi trường học tập tương tác, thực hành trực tiếp qua bài tập và bài kiểm tra.',
                 'Luyện tập với đề thi thật và thi thử định kỳ.',
                 'Hướng dẫn kỹ năng làm bài thi hiệu quả, quản lý thời gian.',
+                'Lớp học sĩ số thấp: đảm bảo tương tác cao và được kèm cặp sát sao.',
+                'Lộ trình linh hoạt : lớp học offline & online linh hoạt, có đánh giá tiến độ định kỳ.',
+                'Hỗ trợ học bổng & định hướng nghề nghiệp:  học bổng CSC, CIS, tỉnh, trường; hỗ trợ phỏng vấn du học và kết nối doanh nghiệp Trung Quốc để mở rộng cơ hội việc làm.',
             ],
             goals: [
-                'Xây dựng nền tảng ngữ âm, chữ Hán, từ vựng, ngữ pháp vững chắc.',
-                'Có khả năng tư duy phản xạ nghe nói lưu loát trong giao tiếp thực tế.',
-                'Đọc hiểu các dạng văn bản và viết đúng hành văn theo cấp độ.',
-                'Có thể dịch, hành văn đúng cấu trúc ngữ pháp, văn phong phù hợp.',
-                'Luyện kỹ năng thi qua thực hành giải các đề thi mẫu HSK, HSKK.',
+                <>
+                    <span>HSK 1: </span>
+                    Làm quen tiếng Trung, phát âm chuẩn giọng Bắc Kinh. Giao tiếp cơ bản như chào hỏi, giới thiệu, hỏi –
+                    đáp đơn giản. Tự tin ứng dụng hằng ngày, tạo nền tảng vững chắc để học HSK 2.
+                </>,
+                <>
+                    <span>HSK 2: </span>
+                    Củng cố ngữ pháp và phản xạ nghe – nói. Diễn đạt cảm xúc, nhu cầu, hoạt động quen thuộc. Giao tiếp
+                    tự nhiên trong sinh hoạt và du lịch, sẵn sàng thi HSK 2 đạt điểm cao.
+                </>,
+                <>
+                    <span>HSK 3: </span>
+                    Sử dụng câu phức, đọc hiểu đoạn văn trung bình. Viết câu hoàn chỉnh, trình bày ý kiến rõ ràng. Giao
+                    tiếp hiệu quả trong học tập và công việc cơ bản, đạt 70–80% kỳ thi HSK 3.
+                </>,
+                <>
+                    <span>HSK 4: </span>
+                    Tư duy và diễn đạt tiếng Trung lưu loát. Viết đoạn văn, bày tỏ quan điểm cá nhân. Đủ năng lực phỏng
+                    vấn học bổng hoặc làm việc với người Trung Quốc, thi HSK 4 đạt chuẩn du học.
+                </>,
+                <>
+                    <span>HSK 5: </span>
+                    Đọc hiểu báo chí, văn bản học thuật. Giao tiếp chuyên sâu, sử dụng tiếng Trung trong công việc. Đủ
+                    năng lực apply học bổng toàn phần tại các trường đại học lớn ở Trung Quốc, làm việc trong môi trường
+                    song ngữ.
+                </>,
+                <>
+                    <span>HSK 6: </span>
+                    Làm chủ ngôn ngữ học thuật và biện luận. Viết, thuyết trình, phản biện như người bản ngữ. Đủ năng
+                    lực apply học bổng CIS, CSC toàn phần, đạt chuẩn học bổng tiến sĩ, làm việc quốc tế hoặc định cư tại
+                    Trung Quốc.
+                </>,
             ],
+
             image: '/assets/img/courses/ch_hskk.png',
-            link: '/luyen-thi-hsk',
-            slug: 'luyen-thi-hsk',
+            link: '/hskk-tai-pion',
+            slug: 'hskk-tai-pion',
         },
         {
-            id: 'ch_3',
+            id: 'ch_4',
             language: 'chinese',
-            title: 'CSCA tại Pion Global',
-            subTitle: '',
-            desc: 'Khóa học luyện thi HSK với lộ trình rõ ràng từ HSK 1 đến HSK 6, giúp học viên nắm vững kiến thức và kỹ năng làm bài thi một cách hiệu quả.',
+            title: 'CSCA tại Pion',
+            subTitle: 'Phù hợp với học sinh dự thi hệ đại học tại Trung Quốc',
+            desc: 'Luyện thi CSCA chuyên sâu cùng chuyên gia HSK6+, tối ưu hồ sơ học bổng CSC, CIS và du học Trung Quốc hiệu quả.',
             descDetail:
-                'Khoá học luyện thi HSK giúp học viên chuẩn bị vững vàng cho kỳ thi đánh giá năng lực tiếng Trung với lộ trình rõ ràng, từ HSK 1 đến HSK 6. Chương trình giảng dạy bám sát cấu trúc đề thi, tập trung vào các kỹ năng nghe, nói, đọc, viết, kết hợp chiến lược làm bài hiệu quả. Học viên sẽ được hướng dẫn bởi đội ngũ giáo viên giàu kinh nghiệm, thực hành với đề thi thử và nhận phản hồi chi tiết để cải thiện điểm số. Khoá học phù hợp cho những ai muốn đạt chứng chỉ HSK để du học, làm việc hoặc nâng cao trình độ tiếng Trung.',
+                'CSCA là kỳ thi đánh giá năng lực tiếng Trung toàn diện do Trung tâm Ngôn ngữ & Giáo dục Trung Quốc (CLEC) phát hành – hiện là chuẩn bắt buộc cho ứng viên xin học bổng du học Trung Quốc. Pion Global là đơn vị tiên phong tại Việt Nam triển khai khóa luyện thi CSCA chuyên sâu, giúp học viên nắm vững cấu trúc đề thi, rèn kỹ năng làm bài và tối ưu hồ sơ học bổng CSC, CIS và học bổng trường. Chương trình được thiết kế bởi giảng viên HSK6+ và chuyên gia học bổng Trung Quốc, kết hợp phương pháp học – luyện – thi thực chiến mang lại hiệu quả cao.',
             content: [
-                'Giáo trình cập nhật theo tiêu chuẩn HSK mới nhất.',
-                'Giáo viên giàu kinh nghiệm, hỗ trợ học viên trong suốt khóa học.',
-                'Môi trường học tập tương tác, thực hành trực tiếp qua bài tập và bài kiểm tra.',
-                'Luyện tập với đề thi thật và thi thử định kỳ.',
-                'Hướng dẫn kỹ năng làm bài thi hiệu quả, quản lý thời gian.',
+                'Học online tương tác 2 chiều, sử dụng bảng điện tử, đề mô phỏng thật.',
+                'Rèn phản xạ và phát âm qua nhóm nhỏ (dưới 10 học viên).',
+                'Phương pháp “Học theo tình huống – Luyện theo đề thật”, bám sát kỹ năng nghe – nói – phản biện – viết luận.',
+                'Kiểm tra định kỳ và thi thử CSCA có chấm điểm, phản hồi chi tiết.',
             ],
             goals: [
-                'Xây dựng nền tảng ngữ âm, chữ Hán, từ vựng, ngữ pháp vững chắc.',
-                'Có khả năng tư duy phản xạ nghe nói lưu loát trong giao tiếp thực tế.',
-                'Đọc hiểu các dạng văn bản và viết đúng hành văn theo cấp độ.',
-                'Có thể dịch, hành văn đúng cấu trúc ngữ pháp, văn phong phù hợp.',
-                'Luyện kỹ năng thi qua thực hành giải các đề thi mẫu HSK, HSKK.',
+                'Hiểu rõ cấu trúc & yêu cầu kỳ thi CSCA, thành thạo kỹ năng làm bài.',
+                'Nâng cao tư duy học thuật và năng lực tiếng Trung chuyên ngành.',
+                'Đạt chuẩn năng lực apply học bổng CSC, CIS và học bổng các trường.',
+                'Sẵn sàng học tập tại các đại học Trung Quốc với nền tảng học thuật vững chắc.',
             ],
             image: '/assets/img/courses/ch_csca.png',
-            link: '/csca',
-            slug: 'csca',
+            link: '/csca-tai-pion',
+            slug: 'csca-tai-pion',
         },
     ],
     // german: [

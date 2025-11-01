@@ -13,9 +13,15 @@ const CustomTable = ({ title, columns, data }) => {
     const isMobile = !screens.md; // md = 768px, lg = 992px, xl = 1200px
 
     // Tách cột chính và phụ
-    const mainColumns = columns.filter((col) => ['level', 'curriculum', 'equivalent'].includes(col.dataIndex));
+    const mainColumns = columns.filter((col) =>
+        ['level', 'title', 'curriculum', 'equivalent', 'shortContent', 'teacher'].includes(col.dataIndex),
+    );
 
-    const extraColumns = columns.filter((col) => ['duration', 'objective'].includes(col.dataIndex));
+    const extraColumns = columns.filter((col) =>
+        ['duration', 'objective', 'method', 'content', 'sessions', 'hoursPerSession', 'subjectDetail'].includes(
+            col.dataIndex,
+        ),
+    );
 
     // Cột cuối cùng là nút mở Popover
     const actionColumn = {

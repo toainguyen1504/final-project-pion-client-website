@@ -9,6 +9,8 @@ import { DEFAULT_IMAGE } from '@/constants';
 import { courses } from '@/data';
 import Breadcrumb from '@/components/Breadcrumb';
 import EnglishCourseTable from './EnglishCourseTable';
+import ChinaCourseTable from './ChinaCourseTable';
+import ChinaCSCATable from './ChinaCSCATable';
 
 import styles from './CourseDetail.module.scss';
 
@@ -43,6 +45,8 @@ function CourseDetail() {
                         ))}
                     </ul>
                     <EnglishCourseTable slug={course.slug} />
+                    <ChinaCourseTable slug={course.slug} />
+                    <ChinaCSCATable slug={course.slug} />
                 </>
             ),
         },
