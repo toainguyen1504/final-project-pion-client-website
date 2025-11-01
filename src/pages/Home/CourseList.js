@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
-// import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 
 import { courses } from '@/data';
@@ -16,7 +15,7 @@ const cx = classNames.bind(styles);
 
 const CourseList = () => {
     const [loading, setLoading] = useState(false);
-    const [activeTab, setActiveTab] = useState('1');
+    const [activeTab, setActiveTab] = useState('2');
 
     const handleTabChange = (key) => {
         setActiveTab(key);
@@ -69,13 +68,7 @@ const CourseList = () => {
         ),
     }));
 
-    return <Tabs defaultActiveKey="1" className={cx('tabs')} centered onChange={handleTabChange} items={items} />;
+    return <Tabs defaultActiveKey="2" className={cx('tabs')} centered onChange={handleTabChange} items={items} />;
 };
-
-// CourseList.propTypes = {
-//     title: PropTypes.string,
-//     desc: PropTypes.string,
-//     link: PropTypes.string,
-// };
 
 export default CourseList;

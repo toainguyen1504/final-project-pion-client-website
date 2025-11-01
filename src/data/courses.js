@@ -147,7 +147,7 @@ const courses = {
         {
             id: 'ch_3',
             language: 'chinese',
-            title: 'HSK(K) tại Pion',
+            title: 'HSK(K) Tại Pion',
             subTitle: 'Lộ trình học từ số 0',
             desc: 'Khóa học HSK với lộ trình rõ ràng từ HSK 1 đến HSK 6, giúp học viên nắm vững kiến thức và kỹ năng làm bài thi một cách hiệu quả.',
             descDetail:
@@ -206,7 +206,7 @@ const courses = {
         {
             id: 'ch_4',
             language: 'chinese',
-            title: 'CSCA tại Pion',
+            title: 'CSCA Tại Pion',
             subTitle: 'Phù hợp với học sinh dự thi hệ đại học tại Trung Quốc',
             desc: 'Luyện thi CSCA chuyên sâu cùng chuyên gia HSK6+, tối ưu hồ sơ học bổng CSC, CIS và du học Trung Quốc hiệu quả.',
             descDetail:
