@@ -71,12 +71,12 @@ function Footer() {
 
                         <li>
                             <Link to="/hskk-tai-pion" className={cx('link')}>
-                                HSK(K) tại Pion
+                                HSK(K) Tại Pion
                             </Link>
                         </li>
                         <li>
                             <Link to="/csca-tai-pion" className={cx('link')}>
-                                CSCA tại Pion
+                                CSCA Tại Pion
                             </Link>
                         </li>
                     </ul>
@@ -208,7 +208,7 @@ function Footer() {
 
                         <li>
                             <Link to="/hskk-tai-pion" className={cx('link')}>
-                               HSK(K) tại Pion
+                               HSK(K) Tại Pion
                             </Link>
                         </li>
                     </ul>

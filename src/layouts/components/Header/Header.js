@@ -85,7 +85,7 @@ const items = [
                         key: 'ch_3',
                         label: (
                             <Link to="/hskk-tai-pion" className="menu-normal">
-                                HSK(K) tại Pion
+                                HSK(K) Tại Pion
                             </Link>
                         ),
                     },
@@ -93,7 +93,7 @@ const items = [
                         key: 'ch_4',
                         label: (
                             <Link to="/csca-tai-pion" className="menu-normal">
-                                CSCA tại Pion
+                                CSCA Tại Pion
                             </Link>
                         ),
                     },
@@ -353,10 +353,10 @@ export default function Header({ visible }) {
                                         <Link to="/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
                                     </li>
                                     <li>
-                                        <Link to="/hskk-tai-pion">HSK(K) tại Pion</Link>
+                                        <Link to="/hskk-tai-pion">HSK(K) Tại Pion</Link>
                                     </li>
                                     <li>
-                                        <Link to="/csca-tai-pion">CSCA tại Pion</Link>
+                                        <Link to="/csca-tai-pion">CSCA Tại Pion</Link>
                                     </li>
                                 </ul>
                             </div>
