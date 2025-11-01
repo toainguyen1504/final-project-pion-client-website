@@ -54,8 +54,8 @@ const items = [
                     {
                         key: 'en_3',
                         label: (
-                            <Link to="/tieng-anh-thcs" className="menu-normal">
-                                Tiếng Anh trung học cơ sở
+                            <Link to="/tieng-anh-giao-tiep" className="menu-normal">
+                                Tiếng Anh giao tiếp
                             </Link>
                         ),
                     },
@@ -331,7 +331,7 @@ export default function Header({ visible }) {
                                         <Link to="/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-thcs">Tiếng Anh trung học cơ sở</Link>
+                                        <Link to="/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
                                     </li>
                                 </ul>
                             </div>

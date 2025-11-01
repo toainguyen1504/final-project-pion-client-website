@@ -1,0 +1,30 @@
+.table-wrapper {
+    padding: 24px;
+    background-color: #fff7f4;
+    border-radius: 16px;
+    margin: 24px 0;
+    transition: background-color 0.3s ease;
+
+    @media (max-width: 1023px) {
+        padding: 16px;
+    }
+}
+
+.even-row {
+    background-color: #fff;
+}
+
+.odd-row {
+    background-color: #ffe1db;
+}
+
+.popover-content {
+    p {
+        margin-bottom: 8px;
+        font-size: 1.4rem;
+
+        strong {
+            color: var(--primary);
+        }
+    }
+}

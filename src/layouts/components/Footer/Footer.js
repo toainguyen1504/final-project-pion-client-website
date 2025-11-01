@@ -49,8 +49,8 @@ function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-anh-thcs" className={cx('link')}>
-                                Tiếng Anh trung học cơ sở
+                            <Link to="/tieng-anh-giao-tiep" className={cx('link')}>
+                                Tiếng Anh giao tiếp
                             </Link>
                         </li>
                     </ul>
@@ -181,8 +181,8 @@ function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-anh-thcs" className={cx('link')}>
-                                Tiếng Anh trung học cơ sở
+                            <Link to="/tieng-anh-giao-tiep" className={cx('link')}>
+                                Tiếng Anh giao tiếp
                             </Link>
                         </li>
                     </ul>

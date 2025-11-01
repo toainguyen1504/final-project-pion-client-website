@@ -85,8 +85,8 @@ const courses = {
                 'Sẵn sàng bước vào các chương trình học quốc tế hoặc luyện thi IELTS nâng cao.',
             ],
             image: '/assets/img/courses/en_giao_tiep.png',
-            link: '/tieng-anh-thcs',
-            slug: 'tieng-anh-thcs',
+            link: '/tieng-anh-giao-tiep',
+            slug: 'tieng-anh-giao-tiep',
         },
     ],
     chinese: [

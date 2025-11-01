@@ -3,7 +3,7 @@ const searchData = [
     // Khóa học
     { id: 1, slug: 'tieng-anh-mam-non', title: 'Tiếng Anh mầm non' },
     { id: 2, slug: 'tieng-anh-tieu-hoc', title: 'Tiếng Anh tiểu học' },
-    { id: 3, slug: 'tieng-anh-thcs', title: 'Tiếng Anh trung học cơ sở' },
+    { id: 3, slug: 'tieng-anh-giao-tiep', title: 'Tiếng Anh giao tiếp' },
     { id: 4, slug: 'tieng-trung-giao-tiep', title: 'Tiếng Trung giao tiếp' },
     { id: 5, slug: 'tieng-trung-tre-em', title: 'Tiếng Trung trẻ em' },
     { id: 6, slug: 'luyen-thi-hsk', title: 'Luyện thi HSK' },
