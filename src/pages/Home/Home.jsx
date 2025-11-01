@@ -75,20 +75,32 @@ function Home() {
     const [hasExpanded, setHasExpanded] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    // handle "xem thêm cảm nhận" - feedback button
     const handleShowMore = () => {
         setLoading(true);
         setTimeout(() => {
-            setVisibleCount((prev) => prev + 6);
+            setVisibleCount((prev) => prev + 18);
             setHasExpanded(true);
             setLoading(false);
         }, 300);
     };
 
+    // handle thu gọn
     const handleCollapse = () => {
         setVisibleCount(MAX_FEEDBACK_VISIBLE);
         setHasExpanded(false);
+
+        // Cuộn mượt lên phần feedback
+        const feedbackSection = document.getElementById('cam-nhan-ve-hoc-vien');
+        if (feedbackSection) {
+            feedbackSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
     };
 
+    // animation
     useEffect(() => {
         AOS.init({
             duration: 800,
