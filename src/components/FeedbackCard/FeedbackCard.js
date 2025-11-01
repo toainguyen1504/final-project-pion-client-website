@@ -6,7 +6,7 @@ import styles from './FeedbackCard.module.scss';
 
 const cx = classNames.bind(styles);
 
-const FeedbackCard = ({ avatar, name, university, feedback }) => {
+const FeedbackCard = ({ avatar, name, info, feedback }) => {
     return (
         <article className={cx('feedback-card')}>
             <div className={cx('feedback-icon')}>
@@ -25,7 +25,7 @@ const FeedbackCard = ({ avatar, name, university, feedback }) => {
                     <figcaption>
                         <blockquote className={cx('feedback-text')}>{feedback}</blockquote>
                         <span>{name}</span>
-                        <p>{university}</p>
+                        <p>{info}</p>
                     </figcaption>
                 </figure>
             </div>
@@ -43,7 +43,7 @@ const FeedbackCard = ({ avatar, name, university, feedback }) => {
                         />
                         <figcaption>
                             <span>{name}</span>
-                            <p>{university}</p>
+                            <p>{info}</p>
                         </figcaption>
                     </div>
                 </figure>
@@ -55,7 +55,7 @@ const FeedbackCard = ({ avatar, name, university, feedback }) => {
 FeedbackCard.propTypes = {
     avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    university: PropTypes.string.isRequired,
+    info: PropTypes.string.isRequired,
     feedback: PropTypes.string.isRequired,
 };
 

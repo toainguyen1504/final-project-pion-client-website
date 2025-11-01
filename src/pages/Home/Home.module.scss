@@ -234,6 +234,13 @@
 
     .show-more-wrapper {
         margin-bottom: 8px;
+        display: inline-flex;
+        gap: 12px;
+
+        .collapse-btn {
+            color: var(--primary);
+        }
+
         :global {
             .ant-btn-icon {
                 margin-top: 4px;
