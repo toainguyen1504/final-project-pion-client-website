@@ -12,6 +12,12 @@ import styles from './NewsDetail.module.scss';
 
 const cx = classNames.bind(styles);
 
+// 🔹 Cấu hình BASE_URL và TOKEN theo môi trường
+const BASE_URL =
+    process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_URL + '/api' : process.env.REACT_APP_PROD_URL;
+
+const TOKEN = process.env.REACT_APP_API_TOKEN;
+
 const processContentAndGenerateToc = async (html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
@@ -20,7 +26,10 @@ const processContentAndGenerateToc = async (html) => {
     const imgTags = doc.querySelectorAll('img');
     if (imgTags.length > 0) {
         // `${process.env.REACT_APP_PROD_URL}/api/media`
-        const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
+        // const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
+        const mediaRes = await axios.get(`${BASE_URL}/media`, {
+            headers: { Authorization: `Bearer ${TOKEN}` },
+        });
         const mediaList = mediaRes.data.data || mediaRes.data;
 
         const mediaMap = {};
@@ -40,9 +49,12 @@ const processContentAndGenerateToc = async (html) => {
                 return;
             }
 
+            // if (mediumPath) {
+            //     const fullUrl = `https://admin.pion.edu.vn/storage/${mediumPath}`;
+            //     img.setAttribute('src', fullUrl);
+            // }
             if (mediumPath) {
-                const fullUrl = `https://admin.pion.edu.vn/storage/${mediumPath}`;
-                img.setAttribute('src', fullUrl);
+                img.setAttribute('src', `${BASE_URL.replace('/api', '/storage')}/${mediumPath}`);
             }
         });
     }
@@ -97,7 +109,11 @@ const NewsDetail = () => {
     useEffect(() => {
         const fetchPostBySlug = async () => {
             try {
-                const res = await axios.get('https://admin.pion.edu.vn/api/posts');
+                // const res = await axios.get('https://admin.pion.edu.vn/api/posts');
+                const res = await axios.get(`${BASE_URL}/posts`, {
+                    headers: { Authorization: `Bearer ${TOKEN}` },
+                });
+
                 const posts = res.data.data || res.data;
                 const found = posts.find((item) => item.slug === slug);
 
@@ -107,17 +123,27 @@ const NewsDetail = () => {
                     return;
                 }
 
-                const detailRes = await axios.get(`https://admin.pion.edu.vn/api/posts/${found.id}`);
+                // const detailRes = await axios.get(`https://admin.pion.edu.vn/api/posts/${found.id}`);
+                // Lấy chi tiết bài viết
+                const detailRes = await axios.get(`${BASE_URL}/posts/${found.id}`, {
+                    headers: { Authorization: `Bearer ${TOKEN}` },
+                });
                 const rawPost = detailRes.data.data || detailRes.data;
                 const rawHtml = rawPost.content?.content_html || '';
 
                 const { processedHtml, tocData } = await processContentAndGenerateToc(rawHtml);
 
-                let ogImageUrl = null;
+                // let ogImageUrl = null;
+
+                // Xử lý ảnh đại diện og:image
+                let ogImageUrl = '/assets/img/default.jpg';
 
                 // Lấy media từ featured_media_id
                 if (rawPost.featured_media_id) {
-                    const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
+                    // const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
+                    const mediaRes = await axios.get(`${BASE_URL}/media`, {
+                        headers: { Authorization: `Bearer ${TOKEN}` },
+                    });
                     const mediaList = mediaRes.data.data || mediaRes.data;
 
                     const mediaMap = {};
@@ -131,7 +157,10 @@ const NewsDetail = () => {
                     // ogImageUrl = ogPath
                     //     ? `${process.env.REACT_APP_PROD_URL}/storage/${ogPath}`
                     //     : '/assets/img/default.jpg';
-                    ogImageUrl = ogPath ? `https://admin.pion.edu.vn/storage/${ogPath}` : '/assets/img/default.jpg';
+                    // ogImageUrl = ogPath ? `https://admin.pion.edu.vn/storage/${ogPath}` : '/assets/img/default.jpg';
+                    if (ogPath) {
+                        ogImageUrl = `${BASE_URL.replace('/api', '/storage')}/${ogPath}`;
+                    }
                 }
 
                 setPost({

@@ -205,7 +205,7 @@ const items = [
         label: 'Tin tức',
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
-            // { key: 'news-list', label: <Link to="/tin-tuc">Tất cả tin tức</Link> },
+            { key: 'news-list', label: <Link to="/tin-tuc">Tất cả tin tức</Link> },
             // {
             //     key: 'abroad-china',
             //     label: <Link to="/dieu-kien-du-hoc-trung-quoc-2025">Điều kiện du học Trung Quốc 2025</Link>,
@@ -429,9 +429,9 @@ export default function Header({ visible }) {
                             {/* <Link to="/xuat-khau-lao-dong" className={cx('dropdown-item')}>
                                 Xuất khẩu lao động
                             </Link> */}
-                            {/* <Link to="/tin-tuc" className={cx('dropdown-item')}>
+                            <Link to="/tin-tuc" className={cx('dropdown-item')}>
                                 Tất cả tin tức
-                            </Link> */}
+                            </Link>
                             <Link to="/dieu-kien-du-hoc-trung-quoc-2025" className={cx('dropdown-item')}>
                                 Điều kiện du học Trung Quốc 2025
                             </Link>
