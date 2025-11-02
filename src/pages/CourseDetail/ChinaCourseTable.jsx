@@ -23,7 +23,7 @@ const tableConfigs = {
                 title: 'YCT 1',
                 duration: '24 buổi (03 tháng)',
                 content:
-                    'Giới thiệu từ vựng và cấu trúc câu đơn giản. Làm quen giao tiếp hàng ngày như chào hỏi, mua bán, hỏi thăm, miêu tả người, đồ vật, sở thích.',
+                    'Giới thiệu các từ vựng và cấu trúc câu đơn giản. Tạo nền tảng tiếng Trung cơ bản, làm quen với các tình huống giao tiếp hằng ngày như chào hỏi, giới thiệu bản thân, miêu tả gia đình, trường học, và sở thích.',
             },
             {
                 key: 2,

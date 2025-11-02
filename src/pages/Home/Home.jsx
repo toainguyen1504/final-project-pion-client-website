@@ -23,11 +23,9 @@ const cx = classNames.bind(styles);
 const bannerImages = [
     '/assets/img/banner/new_banner_1.jpg',
     '/assets/img/banner/new_banner_2.jpg',
-    '/assets/img/banner/banner_1.png',
-    '/assets/img/banner/banner_2.png',
-    '/assets/img/banner/banner_3.png',
-    '/assets/img/banner/banner_4.png',
     '/assets/img/banner/banner_5.png',
+    '/assets/img/banner/banner_4.png',
+    '/assets/img/banner/banner_3.png',
 ];
 
 const whyChooseData = [

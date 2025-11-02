@@ -12,7 +12,7 @@ function BannerCarousel({ images = [] }) {
 
     return (
         <div className={cx('custom-banner-layout')}>
-            <Carousel autoplay autoplaySpeed={2000} dots>
+            <Carousel autoplay autoplaySpeed={6000} dots>
                 {imageList.map((url, index) => (
                     <img
                         key={index}
