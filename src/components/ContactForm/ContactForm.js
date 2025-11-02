@@ -135,6 +135,10 @@ function containsBadWords(text) {
 //         .replace(/'/g, '&#039;');
 // }
 
+// 🔹 Cấu hình BASE_URL theo môi trường
+const BASE_URL =
+    process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_URL + '/api' : process.env.REACT_APP_PROD_URL;
+
 const ContactForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
         guestName: '',
@@ -221,12 +225,12 @@ const ContactForm = ({ onSubmit }) => {
 
         try {
             setIsSubmitting(true);
-            // `${process.env.REACT_APP_PROD_URL}/api/consultations`
-            const response = await axios.post('https://admin.pion.edu.vn/api/consultations', payload, {
+            // `${BASE_URL}/consultations` 'https://api.pion.edu.vn/api/consultations'
+            const response = await axios.post(`${BASE_URL}/consultations`, payload, {
                 headers: {
                     'Content-Type': 'application/json',
                     // Use this if you're working with Sanctum or Passport
-                    //'Authorization': 'Bearer your_token',
+                    //'Authorization': 'Bearer your_token', không sử dụng vì user chưa đăng nhập vẫn submit được
                 },
             });
 

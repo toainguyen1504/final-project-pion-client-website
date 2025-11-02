@@ -47,9 +47,22 @@ function NewsList() {
                 });
 
                 // 🔹 Lọc bài viết công khai
-                const filteredPosts = postsData.filter(
-                    (post) => post.visibility === 'public' || post.visibility === 'scheduled_public',
-                );
+                // const filteredPosts = postsData.filter(
+                //     (post) => post.visibility === 'public' || post.visibility === 'scheduled_public',
+                // );
+                // 🔹 Lọc bài viết: chỉ hiển thị public + scheduled_public đã đến giờ
+                const now = new Date(); // thời gian hiện tại
+
+                const filteredPosts = postsData.filter((post) => {
+                    if (post.visibility === 'public') return true;
+
+                    if (post.visibility === 'scheduled_public') {
+                        const publishTime = new Date(post.published_at || post.schedule_time);
+                        return publishTime <= now; // chỉ render nếu đã đến thời gian công khai
+                    }
+
+                    return false;
+                });
 
                 // 🔹 Ghép media vào post tương ứng
                 const enrichedPosts = filteredPosts.map((post) => {
