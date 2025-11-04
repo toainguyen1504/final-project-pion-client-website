@@ -18,8 +18,13 @@ const BASE_URL =
         ? `${process.env.REACT_APP_LOCAL_URL}/api`
         : `${process.env.REACT_APP_PROD_URL}/api`;
 
-const TOKEN = process.env.REACT_APP_API_TOKEN;
+// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
+const MEDIA_BASE_URL =
+    process.env.NODE_ENV === 'development'
+        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
+        : `${process.env.REACT_APP_PROD_URL}/storage`;
 
+// Hàm xử lý nội dung HTML và sinh TOC
 const processContentAndGenerateToc = async (html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
@@ -29,9 +34,7 @@ const processContentAndGenerateToc = async (html) => {
     if (imgTags.length > 0) {
         // `${process.env.REACT_APP_PROD_URL}/api/media`
         // const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
-        const mediaRes = await axios.get(`${BASE_URL}/media`, {
-            headers: { Authorization: `Bearer ${TOKEN}` },
-        });
+        const mediaRes = await axios.get(`${BASE_URL}/media`);
         const mediaList = mediaRes.data.data || mediaRes.data;
 
         const mediaMap = {};
@@ -51,12 +54,9 @@ const processContentAndGenerateToc = async (html) => {
                 return;
             }
 
-            // if (mediumPath) {
-            //     const fullUrl = `https://admin.pion.edu.vn/storage/${mediumPath}`;
-            //     img.setAttribute('src', fullUrl);
-            // }
             if (mediumPath) {
-                img.setAttribute('src', `${BASE_URL.replace('/api', '/storage')}/${mediumPath}`);
+                const fullUrl = `${MEDIA_BASE_URL}/${mediumPath}`;
+                img.setAttribute('src', fullUrl);
             }
         });
     }

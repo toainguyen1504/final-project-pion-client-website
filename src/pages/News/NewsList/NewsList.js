@@ -17,7 +17,11 @@ const BASE_URL =
         ? `${process.env.REACT_APP_LOCAL_URL}/api`
         : `${process.env.REACT_APP_PROD_URL}/api`;
 
-// const TOKEN = process.env.REACT_APP_API_TOKEN;
+// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
+const MEDIA_BASE_URL =
+    process.env.NODE_ENV === 'development'
+        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
+        : `${process.env.REACT_APP_PROD_URL}/storage`;
 
 function NewsList() {
     const [loading, setLoading] = useState(true);
@@ -74,9 +78,7 @@ function NewsList() {
                     const imagePath = media?.meta?.variants?.thumbnail?.path || media?.url;
 
                     // Lấy đường dẫn ảnh từ storage
-                    const imageUrl = imagePath
-                        ? `${BASE_URL.replace('/api', '/storage')}/${imagePath}`
-                        : '/assets/img/default.jpg';
+                    const imageUrl = imagePath ? `${MEDIA_BASE_URL}/${imagePath}` : '/assets/img/default.jpg';
                     // const imageUrl = imagePath
                     // ? `https://admin.pion.edu.vn/storage/${imagePath}`
                     // : '/assets/img/default.jpg';
