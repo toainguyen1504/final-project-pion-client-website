@@ -18,7 +18,7 @@ const feedbacks = [
         name: 'Bạn Thanh Tùng',
         info: 'Hải Phòng – Tham gia trại hè',
         feedback:
-            'Trại hè là cuyến đi giúp mình trưởng thành hơn rất nhiều. Sau trải nghiệm này, mình càng có động lực theo đuổi ước mơ du học và sẽ nhờ Pion tư vấn để xin học bổng phù hợp cho mình.',
+            'Trại hè là chuyến đi giúp mình trưởng thành hơn rất nhiều. Sau trải nghiệm này, mình càng có động lực theo đuổi ước mơ du học và sẽ nhờ Pion tư vấn để xin học bổng phù hợp cho mình.',
     },
     {
         avatar: '/assets/img/feedbacks/feedback_ch9.jpg',

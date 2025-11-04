@@ -137,7 +137,9 @@ function containsBadWords(text) {
 
 // 🔹 Cấu hình BASE_URL theo môi trường
 const BASE_URL =
-    process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_URL + '/api' : process.env.REACT_APP_PROD_URL;
+    process.env.NODE_ENV === 'development'
+        ? process.env.REACT_APP_LOCAL_URL + '/api'
+        : process.env.REACT_APP_PROD_URL + '/api';
 
 const ContactForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({

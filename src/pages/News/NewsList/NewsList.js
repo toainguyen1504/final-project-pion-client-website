@@ -11,11 +11,13 @@ import styles from './NewsList.module.scss';
 
 const cx = classNames.bind(styles);
 
-// 🔹 Cấu hình BASE_URL và TOKEN theo môi trường
+// 🔹 Cấu hình BASE_URL theo môi trường
 const BASE_URL =
-    process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_URL + '/api' : process.env.REACT_APP_PROD_URL;
+    process.env.NODE_ENV === 'development'
+        ? `${process.env.REACT_APP_LOCAL_URL}/api`
+        : `${process.env.REACT_APP_PROD_URL}/api`;
 
-const TOKEN = process.env.REACT_APP_API_TOKEN;
+// const TOKEN = process.env.REACT_APP_API_TOKEN;
 
 function NewsList() {
     const [loading, setLoading] = useState(true);
@@ -29,12 +31,14 @@ function NewsList() {
                     // axios.get(`https://admin.pion.edu.vn/api/media`),
                     // axios.get(`${process.env.REACT_APP_PROD_URL}/api/posts`),
                     // axios.get(`${process.env.REACT_APP_PROD_URL}/api/media`),
-                    axios.get(`${BASE_URL}/posts`, {
-                        headers: { Authorization: `Bearer ${TOKEN}` },
-                    }),
-                    axios.get(`${BASE_URL}/media`, {
-                        headers: { Authorization: `Bearer ${TOKEN}` },
-                    }),
+                    // axios.get(`${BASE_URL}/posts`, {
+                    //     headers: { Authorization: `Bearer ${TOKEN}` },
+                    // }),
+                    // axios.get(`${BASE_URL}/media`, {
+                    //     headers: { Authorization: `Bearer ${TOKEN}` },
+                    // }),
+                    axios.get(`${BASE_URL}/posts`),
+                    axios.get(`${BASE_URL}/media`),
                 ]);
 
                 const postsData = postsRes.data.data || postsRes.data;

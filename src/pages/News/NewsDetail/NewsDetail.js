@@ -12,9 +12,11 @@ import styles from './NewsDetail.module.scss';
 
 const cx = classNames.bind(styles);
 
-// 🔹 Cấu hình BASE_URL và TOKEN theo môi trường
+// 🔹 Cấu hình BASE_URL theo môi trường
 const BASE_URL =
-    process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_URL + '/api' : process.env.REACT_APP_PROD_URL;
+    process.env.NODE_ENV === 'development'
+        ? `${process.env.REACT_APP_LOCAL_URL}/api`
+        : `${process.env.REACT_APP_PROD_URL}/api`;
 
 const TOKEN = process.env.REACT_APP_API_TOKEN;
 
@@ -110,9 +112,10 @@ const NewsDetail = () => {
         const fetchPostBySlug = async () => {
             try {
                 // const res = await axios.get('https://admin.pion.edu.vn/api/posts');
-                const res = await axios.get(`${BASE_URL}/posts`, {
-                    headers: { Authorization: `Bearer ${TOKEN}` },
-                });
+                // const res = await axios.get(`${BASE_URL}/posts`, {
+                //     headers: { Authorization: `Bearer ${TOKEN}` },
+                // });
+                const res = await axios.get(`${BASE_URL}/posts`);
 
                 const posts = res.data.data || res.data;
                 const found = posts.find((item) => item.slug === slug);
@@ -125,9 +128,10 @@ const NewsDetail = () => {
 
                 // const detailRes = await axios.get(`https://admin.pion.edu.vn/api/posts/${found.id}`);
                 // Lấy chi tiết bài viết
-                const detailRes = await axios.get(`${BASE_URL}/posts/${found.id}`, {
-                    headers: { Authorization: `Bearer ${TOKEN}` },
-                });
+                const detailRes = await axios.get(`${BASE_URL}/posts/${found.id}`);
+                // const detailRes = await axios.get(`${BASE_URL}/posts/${found.id}`, {
+                //     headers: { Authorization: `Bearer ${TOKEN}` },
+                // });
                 const rawPost = detailRes.data.data || detailRes.data;
                 const rawHtml = rawPost.content?.content_html || '';
 
@@ -141,9 +145,10 @@ const NewsDetail = () => {
                 // Lấy media từ featured_media_id
                 if (rawPost.featured_media_id) {
                     // const mediaRes = await axios.get('https://admin.pion.edu.vn/api/media');
-                    const mediaRes = await axios.get(`${BASE_URL}/media`, {
-                        headers: { Authorization: `Bearer ${TOKEN}` },
-                    });
+                    // const mediaRes = await axios.get(`${BASE_URL}/media`, {
+                    //     headers: { Authorization: `Bearer ${TOKEN}` },
+                    // });
+                    const mediaRes = await axios.get(`${BASE_URL}/media`);
                     const mediaList = mediaRes.data.data || mediaRes.data;
 
                     const mediaMap = {};
