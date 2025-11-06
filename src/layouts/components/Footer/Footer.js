@@ -306,7 +306,7 @@ function Footer() {
             <div className={cx('bottom')}>
                 <p>
                     Giấy phép hoạt động: 538/QĐ-SGDĐT & 628/QĐ-SGDĐT <br />
-                    Made by ToaiCDev
+                    Made by Pion
                 </p>
             </div>
         </footer>

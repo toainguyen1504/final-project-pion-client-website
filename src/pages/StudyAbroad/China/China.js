@@ -185,6 +185,11 @@ const prepItems2025 = [
 const { Step } = Steps;
 
 function China() {
+    const handleImageError = (e) => {
+        e.target.onerror = null; // tránh vòng lặp vô hạn nếu placeholder lỗi
+        e.target.src = '/assets/img/placeholder_img.png';
+    };
+
     return (
         <div className={cx('wrapper')}>
             <Helmet>
@@ -240,6 +245,7 @@ function China() {
                                             alt={item.image.alt}
                                             className={cx('content-image')}
                                             loading="lazy"
+                                            onError={handleImageError}
                                         />
                                         <figcaption>{item.image.caption}</figcaption>
                                     </figure>
@@ -298,6 +304,7 @@ function China() {
                                             alt={item.image.alt}
                                             className={cx('content-image')}
                                             loading="lazy"
+                                            onError={handleImageError}
                                         />
                                         <figcaption>{item.image.caption}</figcaption>
                                     </figure>
