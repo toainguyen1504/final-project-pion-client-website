@@ -57,7 +57,7 @@ const benefitItems = [
         content:
             'Với tốc độ phát triển kinh tế mạnh mẽ, Trung Quốc đã trở thành đối tác thương mại quan trọng của nhiều quốc gia, trong đó có Việt Nam. Việc thành thạo tiếng Trung và có bằng cấp từ một trường đại học danh tiếng tại Trung Quốc sẽ là một lợi thế cạnh tranh rất lớn trên thị trường lao động. Bạn không chỉ có cơ hội làm việc cho các tập đoàn đa quốc gia của Trung Quốc mà còn có thể làm việc tại Việt Nam trong các công ty có vốn đầu tư từ Trung Quốc.',
         image: {
-            src: '/assets/img/du_hoc/du-hoc-trung-quoc-da-dang-van-hoa.jpg',
+            src: '/assets/img/du_hoc/du_hoc_trung_quoc_da_dang_van_hoa.jpg',
             alt: 'Du học 2025 là sự hòa nhập văn hóa từ nhiều quốc gia',
             caption: 'Du học 2025 là sự hòa nhập văn hóa từ nhiều quốc gia',
         },

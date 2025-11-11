@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 import classNames from 'classnames/bind';
@@ -11,33 +12,24 @@ import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
 
-const newsData = [
-    // {
-    //     id: 'news_01',
-    //     title: 'Xuất khẩu lao động: Nên chọn quốc gia nào?',
-    //     desc: 'Gần đây, Châu Âu tiếp tục khẳng định vị thế là điểm đến hấp dẫn đối với lao động Việt Nam nhờ cơ hội việc làm dồi dào, mức thu nhập cao cùng với chất lượng cuộc sống vượt trội. ',
-    //     image: '/assets/img/xkld/plane.jpg',
-    //     link: '/xuat-khau-lao-dong',
-    //     slug: 'xuat-khau-lao-dong',
-    // },
-    // {
-    //     id: 'news_02',
-    //     title: 'Du Học Đức - Cơ Hội Mở Rộng Tương Lai',
-    //     desc: 'Trong những năm gần đây, việc sang Đức học nghề đã thu hút sự quan tâm mạnh mẽ từ giới trẻ Việt Nam. Lý do không chỉ nằm ở cơ hội tiếp cận nền giáo dục chất lượng cao mà còn ở trải nghiệm cuộc sống tại một quốc gia hiện đại và giàu bản sắc văn hóa.',
-    //     image: '/assets/img/du_hoc/german2.jpg',
-    //     link: '/du-hoc-nghe-duc',
-    //     slug: 'du-hoc-nghe-duc',
-    // },
-    // {
-    //     id: 'news_03',
-    //     title: 'Du Học Hàn Quốc - Cánh Cửa Hội Nhập Quốc Tế',
-    //     desc: 'Hiện nay, Hàn Quốc vẫn là một trong những lựa chọn ưu tiên của nhiều học sinh, sinh viên Việt Nam khi quyết định du học. Không chỉ nổi bật với nền giáo dục tiên tiến, xứ sở Kim Chi còn mang đến nhiều triển vọng nghề nghiệp và thu nhập ổn định sau khi hoàn thành chương trình học.',
-    //     image: '/assets/img/du_hoc/korean2.jpg',
-    //     link: '/du-hoc-han-quoc',
-    //     slug: 'du-hoc-han-quoc',
-    // },
+// const MAX_NEWS = 6;
+
+// 🔹 Cấu hình BASE_URL theo môi trường
+const BASE_URL =
+    process.env.NODE_ENV === 'development'
+        ? `${process.env.REACT_APP_LOCAL_URL}/api`
+        : `${process.env.REACT_APP_PROD_URL}/api`;
+
+// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
+const MEDIA_BASE_URL =
+    process.env.NODE_ENV === 'development'
+        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
+        : `${process.env.REACT_APP_PROD_URL}/storage`;
+
+// new nổi bật -> đổi name
+const featuredNews = [
     {
-        id: 'news_04',
+        id: 'news_01',
         title: 'Du Học Trung Quốc - Trải Nghiệm Nền Văn Hóa Độc Đáo',
         desc: 'Lựa chọn du học tại Trung Quốc mang lại cho sinh viên nhiều lợi ích vượt trội. Không chỉ được tiếp cận với hệ thống giáo dục tiên tiến cùng cơ sở vật chất hiện đại, bạn còn có cơ hội khám phá nền văn hóa lâu đời, đa dạng và giàu bản sắc.',
         image: '/assets/img/du_hoc/china_09.jpg',
@@ -46,9 +38,64 @@ const newsData = [
     },
 ];
 
+// Thêm data -> lấy từ api thêm 5 tin tức mới nhất -> lấy = created_at -> sau đó tạo thành 1 list LatestNews
 const NewsList = () => {
     const [loading, setLoading] = useState(false);
-    const [activeTab, setActiveTab] = useState('1');
+    const [activeTab, setActiveTab] = useState('2');
+    const [latestNews, setLatestNews] = useState([]);
+
+    useEffect(() => {
+        const fetchLatestNews = async () => {
+            try {
+                const [postsRes, mediaRes] = await Promise.all([
+                    axios.get(`${BASE_URL}/posts`),
+                    axios.get(`${BASE_URL}/media`),
+                ]);
+
+                const postsData = postsRes.data.data || postsRes.data;
+                const mediaData = mediaRes.data.data || mediaRes.data;
+
+                const mediaMap = {};
+                mediaData.forEach((media) => {
+                    mediaMap[media.id] = media;
+                });
+
+                const now = new Date();
+                const filteredPosts = postsData.filter((post) => {
+                    if (post.visibility === 'public') return true;
+                    if (post.visibility === 'scheduled_public') {
+                        const publishTime = new Date(post.published_at || post.schedule_time);
+                        return publishTime <= now;
+                    }
+                    return false;
+                });
+
+                const enrichedPosts = filteredPosts.map((post) => {
+                    const media = mediaMap[post.featured_media_id];
+                    const imagePath = media?.meta?.variants?.thumbnail?.path || media?.url;
+                    const imageUrl = imagePath ? `${MEDIA_BASE_URL}/${imagePath}` : '/assets/img/placeholder_img.png';
+
+                    return {
+                        id: post.id,
+                        title: post.seo_title || post.title,
+                        desc: post.seo_description || 'Xem thông tin chi tiết tại đây...',
+                        image: imageUrl,
+                        link: `/${post.slug}`,
+                        created_at: new Date(post.created_at),
+                    };
+                });
+
+                // Sắp xếp theo created_at giảm dần và lấy 5 bài mới nhất
+                const sortedPosts = enrichedPosts.sort((a, b) => b.created_at - a.created_at).slice(0, 5);
+
+                setLatestNews(sortedPosts);
+            } catch (error) {
+                console.error('Lỗi khi lấy tin tức mới nhất:', error);
+            }
+        };
+
+        fetchLatestNews();
+    }, []);
 
     const handleTabChange = (key) => {
         setActiveTab(key);
@@ -60,18 +107,18 @@ const NewsList = () => {
 
     const tabs = [
         {
-            key: 'tab_1',
+            key: '1',
             shortLabel: 'Tuyển Dụng',
             fullLabel: 'Vị Trí Tuyển Dụng',
             icon: <GiHumanTarget size={32} />,
             data: jobs,
         },
         {
-            key: 'tab_2',
-            shortLabel: 'Du Học',
-            fullLabel: 'Thông Tin Du Học',
+            key: '2',
+            shortLabel: 'Tin Tức',
+            fullLabel: 'Tin Tức Mới Nhất',
             icon: <MdAirplaneTicket size={32} />,
-            data: newsData,
+            data: [featuredNews[0], ...latestNews], // Ghép bài nổi bật + 5 bài mới nhất
         },
     ];
 
@@ -111,7 +158,7 @@ const NewsList = () => {
         ),
     }));
 
-    return <Tabs defaultActiveKey="1" className={cx('tabs')} centered onChange={handleTabChange} items={items} />;
+    return <Tabs defaultActiveKey="2" className={cx('tabs')} centered onChange={handleTabChange} items={items} />;
 };
 
 NewsList.propTypes = {

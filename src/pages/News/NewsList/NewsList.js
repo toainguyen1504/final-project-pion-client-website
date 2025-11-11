@@ -6,7 +6,6 @@ import { Empty } from 'antd';
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
 import ImageCard from '@/components/ImageCard';
-// import { posts } from '@/data';
 import styles from './NewsList.module.scss';
 
 const cx = classNames.bind(styles);
@@ -31,21 +30,12 @@ function NewsList() {
         const fetchData = async () => {
             try {
                 const [postsRes, mediaRes] = await Promise.all([
-                    // axios.get(`https://admin.pion.edu.vn/api/posts`),
-                    // axios.get(`https://admin.pion.edu.vn/api/media`),
-                    // axios.get(`${process.env.REACT_APP_PROD_URL}/api/posts`),
-                    // axios.get(`${process.env.REACT_APP_PROD_URL}/api/media`),
-                    // axios.get(`${BASE_URL}/posts`, {
-                    //     headers: { Authorization: `Bearer ${TOKEN}` },
-                    // }),
-                    // axios.get(`${BASE_URL}/media`, {
-                    //     headers: { Authorization: `Bearer ${TOKEN}` },
-                    // }),
                     axios.get(`${BASE_URL}/posts`),
                     axios.get(`${BASE_URL}/media`),
                 ]);
 
                 const postsData = postsRes.data.data || postsRes.data;
+                console.log(postsRes.data.data);
                 const mediaData = mediaRes.data.data || mediaRes.data;
 
                 // 🔹 Tạo map media để dễ truy cập
@@ -78,12 +68,7 @@ function NewsList() {
                     const imagePath = media?.meta?.variants?.thumbnail?.path || media?.url;
 
                     // Lấy đường dẫn ảnh từ storage
-                    const imageUrl = imagePath ? `${MEDIA_BASE_URL}/${imagePath}` : '/assets/img/default.jpg';
-                    // const imageUrl = imagePath
-                    // ? `https://admin.pion.edu.vn/storage/${imagePath}`
-                    // : '/assets/img/default.jpg';
-
-                    // ? `${process.env.REACT_APP_PROD_URL}/storage/${imagePath}`
+                    const imageUrl = imagePath ? `${MEDIA_BASE_URL}/${imagePath}` : '/assets/img/placeholder_img.png';
 
                     return {
                         ...post,
@@ -113,10 +98,11 @@ function NewsList() {
 
             <div className={cx('news-list')}>
                 {(loading ? Array.from({ length: 6 }) : posts).map((post, index) => (
+                    // cần tạo biến để lấy 200 kí tự đầu của nội dung bài viết để làm fallback cho desc
                     <ImageCard
                         key={index}
-                        title={post?.title}
-                        desc={post?.sapo_text}
+                        title={post?.seo_title || post?.title}
+                        desc={post?.seo_description || 'Xem thông tin chi tiết tại đây...'}
                         link={post?.link}
                         image={post?.image}
                         button="Xem chi tiết"
