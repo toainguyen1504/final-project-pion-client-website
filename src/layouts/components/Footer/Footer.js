@@ -122,7 +122,7 @@ function Footer() {
                         </li>
 
                         <li>
-                            <Link to="/dieu-kien-du-hoc-trung-quoc-2025" className={cx('link')}>
+                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('link')}>
                                 Du học Trung Quốc
                             </Link>
                         </li>
@@ -137,7 +137,7 @@ function Footer() {
                             </Link>
                         </li> */}
                         <li>
-                            <Link to="/dieu-kien-du-hoc-trung-quoc-2025" className={cx('link')}>
+                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('link')}>
                                 Du học Trung Quốc
                             </Link>
                         </li>

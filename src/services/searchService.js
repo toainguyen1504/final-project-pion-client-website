@@ -16,7 +16,7 @@ const searchData = [
     // Du học
     // { id: 8, slug: 'du-hoc-nghe-duc', title: 'Du học nghề Đức' },
     // { id: 9, slug: 'du-hoc-han-quoc', title: 'Du học Hàn Quốc' },
-    { id: 10, slug: 'dieu-kien-du-hoc-trung-quoc-2025', title: 'Điều kiện du học Trung Quốc năm 2025' },
+    { id: 10, slug: 'tin-tuc/dieu-kien-du-hoc-trung-quoc-2025', title: 'Điều kiện du học Trung Quốc năm 2025' },
 
     // Tin tức
     // { id: 11, slug: 'xuat-khau-lao-dong', title: 'Xuất khẩu lao động' },
