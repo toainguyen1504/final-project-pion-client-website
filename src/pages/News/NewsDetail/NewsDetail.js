@@ -213,25 +213,30 @@ const NewsDetail = () => {
         <>
             {post.ogImageUrl && (
                 <Helmet>
-                    <meta property="og:title" content={post.title} />
-                    <meta property="og:description" content={post.sapo_text || post.title} />
-                    <meta property="og:image" content={post.ogImageUrl} />
+                    <meta property="og:title" content={post?.seo_title || post?.title} />
+                    <meta property="og:description" content={post?.seo_description || post?.seo_title} />
+                    <meta property="og:image" content={post?.ogImageUrl} />
                     <meta property="og:type" content="article" />
-                    <meta property="og:url" content={window.location.href} />
+                    <meta property="og:url" content={window?.location.href} />
                     <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:image" content={post.ogImageUrl} />
+                    <meta name="twitter:image" content={post?.ogImageUrl} />
                 </Helmet>
             )}
-            <BlogLayout tocData={post.tocData} breadcrumbTitle={post.title} parentPath="/tin-tuc" parentLabel="Tin tức">
+            <BlogLayout
+                tocData={post.tocData}
+                breadcrumbTitle={post?.title}
+                parentPath="/tin-tuc"
+                parentLabel="Tin tức"
+            >
                 <div className={cx('post-wrapper')}>
                     <div className={cx('post-content')}>
                         <h1 className={cx('post-title')}>{post.title}</h1>
 
-                        {post.sapo_text && (
+                        {/* {post?.sapo_text && (
                             <div className={cx('post-sapo')}>
-                                <p>{post.sapo_text}</p>
+                                <p>{post?.sapo_text}</p>
                             </div>
-                        )}
+                        )} */}
 
                         {post.content?.content_html && (
                             <div

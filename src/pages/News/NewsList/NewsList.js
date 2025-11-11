@@ -35,7 +35,7 @@ function NewsList() {
                 ]);
 
                 const postsData = postsRes.data.data || postsRes.data;
-                console.log(postsRes.data.data);
+                // console.log(postsRes.data.data);
                 const mediaData = mediaRes.data.data || mediaRes.data;
 
                 // 🔹 Tạo map media để dễ truy cập

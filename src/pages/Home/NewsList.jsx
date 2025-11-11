@@ -80,7 +80,7 @@ const NewsList = () => {
                         title: post.seo_title || post.title,
                         desc: post.seo_description || 'Xem thông tin chi tiết tại đây...',
                         image: imageUrl,
-                        link: `/${post.slug}`,
+                        link: `/tin-tuc/${post.slug}`,
                         created_at: new Date(post.created_at),
                     };
                 });
