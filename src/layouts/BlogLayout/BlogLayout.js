@@ -51,7 +51,7 @@ function BlogLayout({ children, tocData = [], breadcrumbTitle = '', parentPath =
                     </div>
                     <div className={cx('content')}>{children}</div>
                     <FloatingButtons
-                        zaloUrl="https://zalo.me/0899363369"
+                        zaloUrl="https://zalo.me/3594539674294848476"
                         phoneNumber="0899363369"
                         facebookPages={[
                             {
