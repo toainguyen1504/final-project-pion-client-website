@@ -19,13 +19,15 @@ function Contact() {
                 <article className={cx('contact-info')}>
                     <h3>Thông tin liên hệ</h3>
                     <p>
-                        <span>Hotline / Zalo: </span>
+                        <span>Hotline đào tạo: </span>
                         <a href="tel:0899363369" className={cx('link')}>
-                            089.9363.369
+                            0899.363.369
                         </a>
-                        <span> hoặc </span>
+                    </p>
+                    <p>
+                        <span>Hotline du học: </span>
                         <a href="tel:0901900677" className={cx('link')}>
-                            090.1900.677
+                            0901.900.677
                         </a>
                     </p>
                     <p>
@@ -43,8 +45,10 @@ function Contact() {
                         <span>Email: </span> <a href="mailto:info@pion.edu.vn">info@pion.edu.vn</a>
                     </p>
                     <p>
-                        <span>Địa chỉ văn phòng: </span> 125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi,
-                        Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )
+                        <span>Trụ sở chính: </span> 125 Lê Lợi, P. Bồng Sơn, Tỉnh Gia Lai
+                    </p>
+                    <p>
+                        <span>Văn phòng HCM: </span> Tòa BS9 Vinhomes Grand Park, Thủ Đức, TP.HCM
                     </p>
                 </article>
 

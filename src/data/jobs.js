@@ -7,8 +7,7 @@ const jobs = [
         title: 'Giáo viên Việt Nam',
         link: '/tuyen-dung/giao-vien-viet-nam',
         position: 'Giáo viên Việt Nam',
-        location:
-            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
+        location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai',
         salary: 'Lương theo Thỏa thuận',
         quantity: '02',
         experience: 'Tối thiểu 1 năm kinh nghiệm giảng dạy',
@@ -124,8 +123,7 @@ const jobs = [
         title: 'Tư vấn tuyển sinh và du học',
         link: '/tuyen-dung/tu-van-tuyen-sinh-va-du-hoc',
         position: 'Chuyên viên tư vấn tuyển sinh và du học',
-        location:
-            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
+        location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai',
         salary: 'Cơ bản  + Lương hiệu quả + Hoa hồng tuyển sinh',
         quantity: '02',
         experience: 'Ưu tiên có kinh nghiệm trong lĩnh vực tư vấn giáo dục / du học.',
@@ -166,8 +164,7 @@ const jobs = [
         title: 'Nhân viên hành chính – kế toán',
         link: '/tuyen-dung/nhan-vien-hanh-chinh-ke-toan',
         position: 'Nhân viên hành chính – kế toán',
-        location:
-            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
+        location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai',
         salary: 'Lương theo thỏa thuận',
         quantity: '01',
         experience: 'Tối thiểu 1 năm làm kế toán / hành chính.',
@@ -206,8 +203,7 @@ const jobs = [
         title: 'Nhân viên Marketing',
         link: '/tuyen-dung/nhan-vien-marketing',
         position: 'Nhân viên Marketing',
-        location:
-            '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
+        location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai',
         salary: 'Cơ bản + Lương hiệu quả + Thưởng KPI',
         quantity: '02',
         experience: 'Ưu tiên có kinh nghiệm trong ngành giáo dục hoặc marketing số.',
@@ -247,7 +243,7 @@ const jobs = [
     //     title: 'Chuyên viên tư vấn du học - XKLĐ',
     //     link: '/tuyen-dung/chuyen-vien-tu-van-du-hoc-xkld',
     //     position: 'Chuyên viên tư vấn du học - XKLĐ',
-    //     location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai (Địa chỉ cũ: 125 Lê Lợi, Phường Bồng Sơn, Thị xã Hoài Nhơn, Tỉnh Bình Định )',
+    //     location: '125 Lê Lợi, Phường Bồng Sơn, Gia Lai',
     //     salary: 'Lương theo thỏa thuận',
     //     quantity: '02',
     //     experience: 'Ưu tiên có kinh nghiệm tối thiểu 1 năm trong lĩnh vực tư vấn du học hoặc XKLĐ.',

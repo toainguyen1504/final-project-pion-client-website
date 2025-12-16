@@ -24,7 +24,10 @@ function SidebarRightLayout({ children }) {
                 </div>
                 <FloatingButtons
                     zaloUrl="https://zalo.me/3594539674294848476"
-                    phoneNumber="0899363369"
+                    phoneNumbers={[
+                        { label: 'Hotline đào tạo', number: '0899363369' },
+                        { label: 'Hotline du học', number: '0901900677' },
+                    ]}
                     facebookPages={[
                         {
                             name: 'Trung tâm tiếng Trung',

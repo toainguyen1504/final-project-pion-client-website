@@ -272,13 +272,25 @@ function Footer() {
 
             <div className={cx('contact')}>
                 <div>
-                    <FaMapMarkerAlt size={28} className={cx('icon')} /> 125 Lê Lợi, Phường Bồng Sơn, Tỉnh Gia Lai
+                    <FaMapMarkerAlt size={28} className={cx('icon')} />
+                    <p>
+                        Trụ sở chính: <br />
+                        125 Lê Lợi, P. Bồng Sơn, Tỉnh Gia Lai
+                    </p>
                 </div>
                 <div>
-                    <FaPhoneAlt size={28} className={cx('icon')} /> Hotline: 089.9363.369 | 090.1900.677
+                    <FaPhoneAlt size={28} className={cx('icon')} />
+                    <p>
+                        Hotline đào tạo: 0899.363.369 <br />
+                        Hotline du học: 0901.900.677
+                    </p>
                 </div>
                 <div>
-                    <FaEnvelope size={28} className={cx('icon')} /> info@pion.edu.vn
+                    <FaEnvelope size={28} className={cx('icon')} />
+                    <p>
+                        Email: <br />
+                        info@pion.edu.vn
+                    </p>
                 </div>
                 <div className={cx('socials')}>
                     <FaFacebookSquare size={28} className={cx('icon')} />

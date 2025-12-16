@@ -8,7 +8,7 @@ import styles from './FloatingButtons.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function FloatingButtons({ zaloUrl, facebookPages, phoneNumber }) {
+export default function FloatingButtons({ zaloUrl, facebookPages, phoneNumbers }) {
     const [isPhoneModalVisible, setIsPhoneModalVisible] = useState(false);
     const [isFacebookModalVisible, setIsFacebookModalVisible] = useState(false);
 
@@ -61,12 +61,17 @@ export default function FloatingButtons({ zaloUrl, facebookPages, phoneNumber })
                 <p className={cx('modal-desc')}>
                     Hãy gọi ngay cho chúng tôi để nhận được những ưu đãi mới nhất và tư vấn của chuyên gia.
                 </p>
-                <div className={cx('phone-info')}>
-                    <span>Hotline: </span>
-                    <a href={`tel:${phoneNumber}`} className={cx('phone-link')}>
-                        {phoneNumber.replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3')}
-                    </a>
-                </div>
+
+                <ul className={cx('modal-list')}>
+                    {phoneNumbers.map(({ label, number }, index) => (
+                        <li key={index} className={cx('phone-info')}>
+                            <span>{label}: </span>
+                            <a href={`tel:${number}`} className={cx('phone-link')}>
+                                {number.replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3')}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
             </Modal>
         </div>
     );
@@ -80,5 +85,10 @@ FloatingButtons.propTypes = {
             name: PropTypes.string.isRequired,
         }),
     ).isRequired,
-    phoneNumber: PropTypes.string.isRequired,
+    phoneNumbers: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
 };
