@@ -4,6 +4,7 @@ import { Tabs } from 'antd';
 import { useParams, Navigate } from 'react-router-dom';
 import { RiQuillPenFill } from 'react-icons/ri';
 import { SiTicktick } from 'react-icons/si';
+import { Helmet } from 'react-helmet-async';
 
 import { DEFAULT_IMAGE } from '@/constants';
 import { courses } from '@/data';
@@ -74,6 +75,11 @@ function CourseDetail() {
 
     return (
         <div>
+            <Helmet>
+                <title>{`Khóa Học - ${course?.title ?? 'Đang cập nhật'}`} | PION</title>
+                <meta name="description" content={course?.descDetail || 'Thông tin khóa học tại PION'} />
+            </Helmet>
+
             <div className={cx('breadcrumb-wrapper')}>
                 <Breadcrumb title={`Khóa Học - ${course?.title ?? 'Đang cập nhật...'}`} />
             </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
+import { Helmet } from 'react-helmet-async';
 
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -18,27 +19,32 @@ function AvailablePosition() {
     }, []);
 
     return (
-        <section className={cx('wrapper')}>
-            <div className={cx('breadcrumb-wrapper')}>
-                <Breadcrumb title={'Tin tuyển dụng'} />
-            </div>
+        <>
+            <Helmet>
+                <title>Vị trí tuyển dụng | PION</title>
+            </Helmet>
+            <section className={cx('wrapper')}>
+                <div className={cx('breadcrumb-wrapper')}>
+                    <Breadcrumb title={'Tin tuyển dụng'} />
+                </div>
 
-            <HeadingStar title="Vị trí tuyển dụng" color="var(--primary)" />
+                <HeadingStar title="Vị trí tuyển dụng" color="var(--primary)" />
 
-            <div className={cx('jobs-list')}>
-                {jobs.map((job, index) => (
-                    <ImageCard
-                        key={index}
-                        title={job.title}
-                        desc={job.desc}
-                        link={job.slug}
-                        image={job.image || '/assets/img/default.jpg'}
-                        button="Xem chi tiết"
-                        loading={loading}
-                    />
-                ))}
-            </div>
-        </section>
+                <div className={cx('jobs-list')}>
+                    {jobs.map((job, index) => (
+                        <ImageCard
+                            key={index}
+                            title={job.title}
+                            desc={job.desc}
+                            link={job.slug}
+                            image={job.image || '/assets/img/default.jpg'}
+                            button="Xem chi tiết"
+                            loading={loading}
+                        />
+                    ))}
+                </div>
+            </section>
+        </>
     );
 }
 

@@ -213,6 +213,8 @@ const NewsDetail = () => {
         <>
             {post.ogImageUrl && (
                 <Helmet>
+                    <title>{post?.seo_title || post?.title} | PION</title>
+                    <meta name="description" content={post?.seo_description || post?.seo_title} />
                     <meta property="og:title" content={post?.seo_title || post?.title} />
                     <meta property="og:description" content={post?.seo_description || post?.seo_title} />
                     <meta property="og:image" content={post?.ogImageUrl} />

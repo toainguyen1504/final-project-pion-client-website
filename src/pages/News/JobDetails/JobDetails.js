@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { RiQuillPenFill } from 'react-icons/ri';
+import { Helmet } from 'react-helmet-async';
 
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -15,6 +16,9 @@ const JobDetails = () => {
 
     return job ? (
         <div className={cx('job-wrapper')}>
+            <Helmet>
+                <title>{`Tuyển dụng - ${job.title}`} | PION</title>
+            </Helmet>
             <div className={cx('breadcrumb-wrapper')}>
                 <Breadcrumb parentPath="/tuyen-dung" parentLabel="Tin tuyển dụng" title={job.title} />
             </div>

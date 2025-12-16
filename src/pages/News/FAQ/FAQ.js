@@ -1,5 +1,6 @@
 import { Collapse } from 'antd';
 import classNames from 'classnames/bind';
+import { Helmet } from 'react-helmet-async';
 
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -129,13 +130,22 @@ const faqItems = [
 
 function FAQ() {
     return (
-        <section className={cx('wrapper')}>
-            <div className={cx('breadcrumb-wrapper')}>
-                <Breadcrumb title={'Câu hỏi thường gặp'} />
-            </div>
-            <HeadingStar title="Câu hỏi thường gặp" color="var(--primary)" />
-            <Collapse accordion className={cx('faq-list')} size="large" items={faqItems} />
-        </section>
+        <>
+            <Helmet>
+                <title>Câu hỏi thường gặp | PION</title>
+                <meta
+                    name="description"
+                    content="Các câu hỏi thường gặp về khóa học Tiếng Anh, Tiếng Trung và du học Trung Quốc tại PION."
+                />
+            </Helmet>
+            <section className={cx('wrapper')}>
+                <div className={cx('breadcrumb-wrapper')}>
+                    <Breadcrumb title={'Câu hỏi thường gặp'} />
+                </div>
+                <HeadingStar title="Câu hỏi thường gặp" color="var(--primary)" />
+                <Collapse accordion className={cx('faq-list')} size="large" items={faqItems} />
+            </section>
+        </>
     );
 }
 

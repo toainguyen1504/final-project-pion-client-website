@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { FaHandshake, FaBalanceScale, FaHandHoldingHeart } from 'react-icons/fa';
 import { GiHumanTarget } from 'react-icons/gi';
 import { FaCirclePlay } from 'react-icons/fa6';
+import { Helmet } from 'react-helmet-async';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import ContactForm from '@/components/ContactForm';
@@ -140,114 +141,119 @@ function About() {
     }, []);
 
     return (
-        <div className={cx('about')}>
-            <div className={cx('breadcrumb-wrapper')}>
-                <Breadcrumb title={'Về Pion'} />
-            </div>
+        <>
+            <Helmet>
+                <title>Giới thiệu | PION</title>
+            </Helmet>
+            <div className={cx('about')}>
+                <div className={cx('breadcrumb-wrapper')}>
+                    <Breadcrumb title={'Về Pion'} />
+                </div>
 
-            <section className={cx('about-desc')}>
-                <div className={cx('about-wrapper')}>
-                    <figure className={cx('about-media')} data-aos="fade-left" data-aos-delay="200">
-                        {!isPlaying ? (
-                            <div className={cx('video-thumbnail')} onClick={handlePlay}>
-                                <img
-                                    src="/assets/img/about/thumbnail.jpg"
-                                    alt="Pion"
-                                    className={cx('media-thumb')}
-                                    loading="lazy"
+                <section className={cx('about-desc')}>
+                    <div className={cx('about-wrapper')}>
+                        <figure className={cx('about-media')} data-aos="fade-left" data-aos-delay="200">
+                            {!isPlaying ? (
+                                <div className={cx('video-thumbnail')} onClick={handlePlay}>
+                                    <img
+                                        src="/assets/img/about/thumbnail.jpg"
+                                        alt="Pion"
+                                        className={cx('media-thumb')}
+                                        loading="lazy"
+                                    />
+                                    <button className={cx('btn-play')}>
+                                        <FaCirclePlay size={60} />
+                                    </button>
+                                </div>
+                            ) : (
+                                <video
+                                    id="about-video"
+                                    src="/assets/video/about_us.mp4"
+                                    controls
+                                    autoPlay
+                                    loop
+                                    playsInline
+                                    className={cx('video-element')}
                                 />
-                                <button className={cx('btn-play')}>
-                                    <FaCirclePlay size={60} />
-                                </button>
-                            </div>
-                        ) : (
-                            <video
-                                id="about-video"
-                                src="/assets/video/about_us.mp4"
-                                controls
-                                autoPlay
-                                loop
-                                playsInline
-                                className={cx('video-element')}
-                            />
-                        )}
-                    </figure>
-                    <div className={cx('about-content')} data-aos="fade-right" data-aos-delay="200">
-                        <h1>Về Chúng Tôi</h1>
-                        <p className={cx('desc')}>
-                            <span>Pion</span> là một công ty giáo dục chuyên cung cấp các dịch vụ đào tạo ngôn ngữ chất
-                            lượng cao và tư vấn du học. Công ty kết hợp đào tạo ngôn ngữ với định hướng du học chuyên
-                            nghiệp, mang lại một lợi thế cạnh tranh độc đáo.
-                        </p>
-                        <p className={cx('desc')}>
-                            Trung tâm ngoại ngữ Pion Academy được thành lập vào năm 2022 và đã được Sở giáo dục và Đào
-                            tạo cấp phép hoạt động số 538/QĐ-SGDĐT
-                        </p>
-                        <p className={cx('desc')}>
-                            Sau 3 năm nỗ lực không ngừng nghỉ, công ty đã đạt được nhiều thành tựu quan trọng. Đặc biệt,
-                            vào năm 2025, chúng tôi đã mở rộng thêm lĩnh vực du học tại Trung Quốc và Đài Loan, đồng
-                            thời trở thành đối tác tin cậy của nhiều trường đại học danh tiếng tại hai quốc gia này, mở
-                            ra nhiều cơ hội học tập và phát triển cho học viên.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* CEO Info*/}
-            <section className={cx('ceo-info')}>
-                <div className={cx('heading-section')}>
-                    <h2 className={cx('title-section', 'uppercase')}>CEO</h2>
-                </div>
-                <CeoInfo />
-            </section>
-
-            {/* Teachers*/}
-            <section className={cx('teachers')}>
-                <div className={cx('heading-section')}>
-                    <h2 className={cx('title-section', 'uppercase')}>Đội ngũ giáo viên</h2>
-                </div>
-
-                <div className={cx('teacher-list')}>
-                    {teacherData.map((teacher, index) => (
-                        <div key={index} data-aos="fade-up" data-aos-delay={index * 100}>
-                            <TeacherCard
-                                image={teacher.image || '/assets/img/default.jpg'}
-                                name={teacher.name}
-                                qualifications={teacher.qualifications}
-                            />
+                            )}
+                        </figure>
+                        <div className={cx('about-content')} data-aos="fade-right" data-aos-delay="200">
+                            <h1>Về Chúng Tôi</h1>
+                            <p className={cx('desc')}>
+                                <span>Pion</span> là một công ty giáo dục chuyên cung cấp các dịch vụ đào tạo ngôn ngữ
+                                chất lượng cao và tư vấn du học. Công ty kết hợp đào tạo ngôn ngữ với định hướng du học
+                                chuyên nghiệp, mang lại một lợi thế cạnh tranh độc đáo.
+                            </p>
+                            <p className={cx('desc')}>
+                                Trung tâm ngoại ngữ Pion Academy được thành lập vào năm 2022 và đã được Sở giáo dục và
+                                Đào tạo cấp phép hoạt động số 538/QĐ-SGDĐT
+                            </p>
+                            <p className={cx('desc')}>
+                                Sau 3 năm nỗ lực không ngừng nghỉ, công ty đã đạt được nhiều thành tựu quan trọng. Đặc
+                                biệt, vào năm 2025, chúng tôi đã mở rộng thêm lĩnh vực du học tại Trung Quốc và Đài
+                                Loan, đồng thời trở thành đối tác tin cậy của nhiều trường đại học danh tiếng tại hai
+                                quốc gia này, mở ra nhiều cơ hội học tập và phát triển cho học viên.
+                            </p>
                         </div>
-                    ))}
-                </div>
-            </section>
+                    </div>
+                </section>
 
-            {/* Departments */}
-            <Departments />
+                {/* CEO Info*/}
+                <section className={cx('ceo-info')}>
+                    <div className={cx('heading-section')}>
+                        <h2 className={cx('title-section', 'uppercase')}>CEO</h2>
+                    </div>
+                    <CeoInfo />
+                </section>
 
-            {/*  VisionMission */}
-            <section>
-                <div className={cx('heading-section')}>
-                    <h2 className={cx('title-section', 'uppercase')}>Tầm Nhìn và Sứ mệnh</h2>
-                </div>
-                <ZigzagSection items={visionMissionData} />
-            </section>
+                {/* Teachers*/}
+                <section className={cx('teachers')}>
+                    <div className={cx('heading-section')}>
+                        <h2 className={cx('title-section', 'uppercase')}>Đội ngũ giáo viên</h2>
+                    </div>
 
-            {/* Core Values */}
-            <section className={cx('slider-wrapper')}>
-                <div className={cx('heading-section')}>
-                    <h2 className={cx('title-section', 'uppercase')}>Giá trị cốt lõi</h2>
-                </div>
+                    <div className={cx('teacher-list')}>
+                        {teacherData.map((teacher, index) => (
+                            <div key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+                                <TeacherCard
+                                    image={teacher.image || '/assets/img/default.jpg'}
+                                    name={teacher.name}
+                                    qualifications={teacher.qualifications}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
-                <CoreValuesSlider data={coreValuesData} interval={6000} />
-            </section>
+                {/* Departments */}
+                <Departments />
 
-            {/* Question */}
-            <section className={cx('question-wrapper')}></section>
+                {/*  VisionMission */}
+                <section>
+                    <div className={cx('heading-section')}>
+                        <h2 className={cx('title-section', 'uppercase')}>Tầm Nhìn và Sứ mệnh</h2>
+                    </div>
+                    <ZigzagSection items={visionMissionData} />
+                </section>
 
-            {/* Contact */}
-            <section className={cx('contact-wrapper')}>
-                <ContactForm />
-            </section>
-        </div>
+                {/* Core Values */}
+                <section className={cx('slider-wrapper')}>
+                    <div className={cx('heading-section')}>
+                        <h2 className={cx('title-section', 'uppercase')}>Giá trị cốt lõi</h2>
+                    </div>
+
+                    <CoreValuesSlider data={coreValuesData} interval={6000} />
+                </section>
+
+                {/* Question */}
+                <section className={cx('question-wrapper')}></section>
+
+                {/* Contact */}
+                <section className={cx('contact-wrapper')}>
+                    <ContactForm />
+                </section>
+            </div>
+        </>
     );
 }
 

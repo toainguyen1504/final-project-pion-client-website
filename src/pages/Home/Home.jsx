@@ -9,6 +9,7 @@ import { MdHandshake } from 'react-icons/md';
 import { FaPlaneDeparture } from 'react-icons/fa';
 import { IoMdTrendingUp } from 'react-icons/io';
 import { Row, Col, Image, Button, Spin } from 'antd';
+import { Helmet } from 'react-helmet-async';
 
 import { feedbacks } from '@/data';
 import BannerCarousel from '@/components/BannerCarousel';
@@ -109,138 +110,147 @@ function Home() {
     }, []);
 
     return (
-        <div className={cx('wrapper')}>
-            <div className="inner">
-                {/* Banner */}
-                <BannerCarousel images={bannerImages} />
+        <>
+            <Helmet>
+                <title>PION - GIÁO DỤC VÌ TƯƠNG LAI</title>
+                <meta
+                    name="description"
+                    content="Tại Pion, chúng tôi tin rằng giáo dục là chìa khóa để mở ra cánh cửa tương lai."
+                />
+            </Helmet>
 
-                {/* CEO message*/}
-                <section className={cx('message')}>
-                    <div className={cx('message-inner')}>
-                        <Row gutter={16} align="middle">
-                            <Col
-                                xs={24}
-                                md={15}
-                                lg={14}
-                                className={cx('content-col')}
-                                data-aos="fade-left"
-                                data-aos-delay="400"
-                            >
-                                <div className={cx('title-wrapper')}>
-                                    <figure className={cx('title-box')}>
-                                        <Image
-                                            src="/assets/img/home/thong_diep.png"
-                                            alt="Thông điệp"
-                                            height={80}
-                                            preview={false}
-                                        />
-                                        <span className={cx('badge')}>CEO</span>
-                                    </figure>
-                                    <div className={cx('sub-title')}>
-                                        Pion là nơi nuôi dưỡng <br />
-                                        <span style={{ marginTop: 8, display: 'block' }}>tương lai của bạn</span>
+            <div className={cx('wrapper')}>
+                <div className="inner">
+                    {/* Banner */}
+                    <BannerCarousel images={bannerImages} />
+
+                    {/* CEO message*/}
+                    <section className={cx('message')}>
+                        <div className={cx('message-inner')}>
+                            <Row gutter={16} align="middle">
+                                <Col
+                                    xs={24}
+                                    md={15}
+                                    lg={14}
+                                    className={cx('content-col')}
+                                    data-aos="fade-left"
+                                    data-aos-delay="400"
+                                >
+                                    <div className={cx('title-wrapper')}>
+                                        <figure className={cx('title-box')}>
+                                            <Image
+                                                src="/assets/img/home/thong_diep.png"
+                                                alt="Thông điệp"
+                                                height={80}
+                                                preview={false}
+                                            />
+                                            <span className={cx('badge')}>CEO</span>
+                                        </figure>
+                                        <div className={cx('sub-title')}>
+                                            Pion là nơi nuôi dưỡng <br />
+                                            <span style={{ marginTop: 8, display: 'block' }}>tương lai của bạn</span>
+                                        </div>
                                     </div>
+
+                                    <div className={cx('content')}>
+                                        <p>
+                                            Tại <span>Pion</span>, chúng tôi tin rằng giáo dục là chìa khóa để mở ra
+                                            cánh cửa tương lai. Với mô hình
+                                            <em>&nbsp;"Đào tạo ngôn ngữ - Du học - Hệ thống chuỗi"</em>, chúng tôi cam
+                                            kết mang đến cho học viên không chỉ kiến thức ngôn ngữ vững chắc mà còn cơ
+                                            hội phát triển toàn diện trên nền tảng quốc tế. Chúng tôi tập trung vào hai
+                                            mô hình trọng yếu:
+                                        </p>
+
+                                        <ul className={cx('content-list')}>
+                                            <li className={cx('content-item')}>
+                                                <p>
+                                                    <span>Đào tạo ngôn ngữ chất lượng cao:</span> Cung cấp các khóa học
+                                                    tiếng Anh và tiếng Trung chuẩn quốc tế, áp dụng phương pháp giảng
+                                                    dạy hiện đại, giúp học viên tự tin giao tiếp và phát triển kỹ năng
+                                                    ngôn ngữ, hỗ trợ việc làm tại các doanh nghiệp nước ngoài.
+                                                </p>
+                                            </li>
+                                            <li className={cx('content-item')}>
+                                                <p>
+                                                    <span>Đào tạo toàn diện:</span> Hỗ trợ học viên từ việc chọn trường,
+                                                    ngành học cho đến đào tạo tiếng, chuẩn bị hồ sơ, visa và giúp họ hòa
+                                                    nhập với môi trường học tập tại các trường đại học, cao đẳng uy tín
+                                                    trên toàn cầu.
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <p>
+                                            Chúng tôi tự hào với những thành tựu đã đạt được và luôn nỗ lực không ngừng
+                                            để mang đến cho học viên những cơ hội tốt nhất.
+                                            <span> Pion</span> luôn đồng hành cùng bạn trong hành trình chinh phục tri
+                                            thức và phát triển sự nghiệp toàn cầu.
+                                        </p>
+                                    </div>
+                                </Col>
+
+                                <Col
+                                    xs={24}
+                                    md={9}
+                                    lg={10}
+                                    className={cx('img-col')}
+                                    data-aos="fade-right"
+                                    data-aos-delay="400"
+                                >
+                                    <figure className={cx('ceo')}>
+                                        <Image
+                                            src="/assets/img/home/ceo.jpg"
+                                            alt="Nguyễn Thị Kim Danh"
+                                            preview={false}
+                                            className={cx('ceo-image')}
+                                        />
+                                        <figcaption className={cx('ceo-info')}>
+                                            CEO:
+                                            <span className={cx('ceo-name')}> Nguyễn Thị Kim Danh</span>
+                                        </figcaption>
+                                    </figure>
+                                </Col>
+                            </Row>
+                        </div>
+                    </section>
+
+                    {/* Why choose Pion Academy */}
+                    <section className={cx('why-choose')}>
+                        <div className={cx('heading-section')}>
+                            <h2 className={cx('title-section', 'uppercase')}>
+                                <a href="#!">Vì sao nên chọn PION?</a>
+                            </h2>
+                        </div>
+                        <div className={cx('grid', 'why-choose-inner')}>
+                            {whyChooseData.map((item, index) => (
+                                <div key={index} data-aos="fade-up" data-aos-delay={index * 120}>
+                                    <WhyChooseItem icon={item.icon} title={item.title} description={item.description} />
                                 </div>
+                            ))}
+                        </div>
+                    </section>
 
-                                <div className={cx('content')}>
-                                    <p>
-                                        Tại <span>Pion</span>, chúng tôi tin rằng giáo dục là chìa khóa để mở ra cánh
-                                        cửa tương lai. Với mô hình
-                                        <em>&nbsp;"Đào tạo ngôn ngữ - Du học - Hệ thống chuỗi"</em>, chúng tôi cam kết
-                                        mang đến cho học viên không chỉ kiến thức ngôn ngữ vững chắc mà còn cơ hội phát
-                                        triển toàn diện trên nền tảng quốc tế. Chúng tôi tập trung vào hai mô hình trọng
-                                        yếu:
-                                    </p>
+                    {/* Courses */}
+                    <section className={cx('courses')}>
+                        <div className={cx('heading-section')}>
+                            <h2 className={cx('title-section', 'uppercase')}>
+                                <a href="#!">Khóa học nổi bật</a>
+                            </h2>
+                        </div>
 
-                                    <ul className={cx('content-list')}>
-                                        <li className={cx('content-item')}>
-                                            <p>
-                                                <span>Đào tạo ngôn ngữ chất lượng cao:</span> Cung cấp các khóa học
-                                                tiếng Anh và tiếng Trung chuẩn quốc tế, áp dụng phương pháp giảng dạy
-                                                hiện đại, giúp học viên tự tin giao tiếp và phát triển kỹ năng ngôn ngữ,
-                                                hỗ trợ việc làm tại các doanh nghiệp nước ngoài.
-                                            </p>
-                                        </li>
-                                        <li className={cx('content-item')}>
-                                            <p>
-                                                <span>Đào tạo toàn diện:</span> Hỗ trợ học viên từ việc chọn trường,
-                                                ngành học cho đến đào tạo tiếng, chuẩn bị hồ sơ, visa và giúp họ hòa
-                                                nhập với môi trường học tập tại các trường đại học, cao đẳng uy tín trên
-                                                toàn cầu.
-                                            </p>
-                                        </li>
-                                    </ul>
+                        <CourseList />
+                    </section>
 
-                                    <p>
-                                        Chúng tôi tự hào với những thành tựu đã đạt được và luôn nỗ lực không ngừng để
-                                        mang đến cho học viên những cơ hội tốt nhất.
-                                        <span> Pion</span> luôn đồng hành cùng bạn trong hành trình chinh phục tri thức
-                                        và phát triển sự nghiệp toàn cầu.
-                                    </p>
-                                </div>
-                            </Col>
-
-                            <Col
-                                xs={24}
-                                md={9}
-                                lg={10}
-                                className={cx('img-col')}
-                                data-aos="fade-right"
-                                data-aos-delay="400"
-                            >
-                                <figure className={cx('ceo')}>
-                                    <Image
-                                        src="/assets/img/home/ceo.jpg"
-                                        alt="Nguyễn Thị Kim Danh"
-                                        preview={false}
-                                        className={cx('ceo-image')}
-                                    />
-                                    <figcaption className={cx('ceo-info')}>
-                                        CEO:
-                                        <span className={cx('ceo-name')}> Nguyễn Thị Kim Danh</span>
-                                    </figcaption>
-                                </figure>
-                            </Col>
-                        </Row>
-                    </div>
-                </section>
-
-                {/* Why choose Pion Academy */}
-                <section className={cx('why-choose')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>
-                            <a href="#!">Vì sao nên chọn PION?</a>
-                        </h2>
-                    </div>
-                    <div className={cx('grid', 'why-choose-inner')}>
-                        {whyChooseData.map((item, index) => (
-                            <div key={index} data-aos="fade-up" data-aos-delay={index * 120}>
-                                <WhyChooseItem icon={item.icon} title={item.title} description={item.description} />
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* Courses */}
-                <section className={cx('courses')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>
-                            <a href="#!">Khóa học nổi bật</a>
-                        </h2>
-                    </div>
-
-                    <CourseList />
-                </section>
-
-                {/* Student feedback */}
-                <section id="cam-nhan-ve-hoc-vien" className={cx('feedback')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>
-                            <a href="#!">Cảm nhận về học viên</a>
-                        </h2>
-                    </div>
-                    <div className={cx('feedback-inner')}>
-                        {/* <figure className={cx('feedback-media')}>
+                    {/* Student feedback */}
+                    <section id="cam-nhan-ve-hoc-vien" className={cx('feedback')}>
+                        <div className={cx('heading-section')}>
+                            <h2 className={cx('title-section', 'uppercase')}>
+                                <a href="#!">Cảm nhận về học viên</a>
+                            </h2>
+                        </div>
+                        <div className={cx('feedback-inner')}>
+                            {/* <figure className={cx('feedback-media')}>
                             <div
                                 className={cx('media-wrapper')}
                                 data-aos="fade-up"
@@ -276,64 +286,65 @@ function Home() {
                             </div>
                         </figure> */}
 
-                        <div className={cx('feedback-body')}>
-                            {/* Card feedback */}
-                            {feedbacks.slice(0, visibleCount).map((item, index) => (
-                                <div
-                                    key={index}
-                                    data-aos="fade-up"
-                                    data-aos-delay={index * 100} // delay động
-                                    data-aos-once="true"
-                                >
-                                    <FeedbackCard {...item} />
+                            <div className={cx('feedback-body')}>
+                                {/* Card feedback */}
+                                {feedbacks.slice(0, visibleCount).map((item, index) => (
+                                    <div
+                                        key={index}
+                                        data-aos="fade-up"
+                                        data-aos-delay={index * 100} // delay động
+                                        data-aos-once="true"
+                                    >
+                                        <FeedbackCard {...item} />
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Button More */}
+                            {loading ? (
+                                <div className={cx('feedback-spin')}>
+                                    <Spin size="large" />
                                 </div>
-                            ))}
+                            ) : visibleCount < feedbacks.length || hasExpanded ? (
+                                <div className={cx('show-more-wrapper')}>
+                                    {visibleCount < feedbacks.length && (
+                                        <Button
+                                            color="default"
+                                            variant="text"
+                                            icon={<FaAnglesRight size={22} />}
+                                            className={cx('show-more-btn')}
+                                            onClick={handleShowMore}
+                                        >
+                                            Xem thêm cảm nhận
+                                        </Button>
+                                    )}
+                                    {hasExpanded && (
+                                        <Button
+                                            danger
+                                            color="default"
+                                            className={cx('collapse-btn')}
+                                            onClick={handleCollapse}
+                                        >
+                                            Thu gọn
+                                        </Button>
+                                    )}
+                                </div>
+                            ) : null}
                         </div>
+                    </section>
 
-                        {/* Button More */}
-                        {loading ? (
-                            <div className={cx('feedback-spin')}>
-                                <Spin size="large" />
-                            </div>
-                        ) : visibleCount < feedbacks.length || hasExpanded ? (
-                            <div className={cx('show-more-wrapper')}>
-                                {visibleCount < feedbacks.length && (
-                                    <Button
-                                        color="default"
-                                        variant="text"
-                                        icon={<FaAnglesRight size={22} />}
-                                        className={cx('show-more-btn')}
-                                        onClick={handleShowMore}
-                                    >
-                                        Xem thêm cảm nhận
-                                    </Button>
-                                )}
-                                {hasExpanded && (
-                                    <Button
-                                        danger
-                                        color="default"
-                                        className={cx('collapse-btn')}
-                                        onClick={handleCollapse}
-                                    >
-                                        Thu gọn
-                                    </Button>
-                                )}
-                            </div>
-                        ) : null}
-                    </div>
-                </section>
-
-                {/* News */}
-                <section className={cx('news')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>
-                            <a href="#!">Tin tức mới nhất</a>
-                        </h2>
-                    </div>
-                    <NewsList />
-                </section>
+                    {/* News */}
+                    <section className={cx('news')}>
+                        <div className={cx('heading-section')}>
+                            <h2 className={cx('title-section', 'uppercase')}>
+                                <a href="#!">Tin tức mới nhất</a>
+                            </h2>
+                        </div>
+                        <NewsList />
+                    </section>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
