@@ -234,6 +234,19 @@ const items = [
     },
 ];
 
+function AuthButtons() {
+    return (
+        <div className={cx('auth-buttons')}>
+            <Link to="/dang-ky" className={cx('btn', 'btn-outline')}>
+                Đăng ký
+            </Link>
+            <Link to="/dang-nhap" className={cx('btn', 'btn-primary')}>
+                Đăng nhập
+            </Link>
+        </div>
+    );
+}
+
 export default function Header({ visible }) {
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
@@ -290,6 +303,9 @@ export default function Header({ visible }) {
                         onOpenChange={onOpenChange}
                         onClick={handleCloseMenu}
                     />
+
+                    {/* Auth buttons mobile */}
+                    <AuthButtons />
                 </div>
             </div>
         </div>
@@ -305,14 +321,12 @@ export default function Header({ visible }) {
                         </figure>
                     </Link>
                 </div>
-
                 {/* Button MENU */}
                 <div className={cx('menu-toggle')}>
                     <button className={cx('menu-icon')} onClick={handleMenuToggle}>
                         <span>MENU</span> <BiSolidFoodMenu size={22} color="white" />
                     </button>
                 </div>
-
                 {/* MENU Desktop */}
                 <nav className={cx('nav')}>
                     <NavLink
@@ -452,7 +466,9 @@ export default function Header({ visible }) {
                 <div className={cx('search-form')}>
                     <Search />
                 </div>
-                {/* Hero */}
+
+                {/* Auth buttons desktop */}
+                <AuthButtons />
             </div>
 
             {/* Render Menu mobile */}
