@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Menu } from 'antd';
+import { Dropdown, Menu, Avatar, Badge, Space } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { BiSolidFoodMenu } from 'react-icons/bi';
-import { RiArrowDropDownLine } from 'react-icons/ri';
+import { RiArrowDropDownLine, RiLogoutBoxRLine } from 'react-icons/ri';
+import { IoMdNotifications } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
 import Search from '@/layouts/components/Search';
@@ -12,6 +13,20 @@ import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
+function AuthButtons() {
+    return (
+        <div className={cx('auth-buttons')}>
+            <Link to="/dang-ky" className={cx('btn', 'btn-outline')}>
+                Đăng ký
+            </Link>
+            <Link to="/dang-nhap" className={cx('btn', 'btn-primary')}>
+                Đăng nhập
+            </Link>
+        </div>
+    );
+}
+
+// Menu items for Header
 const items = [
     {
         type: 'divider',
@@ -234,22 +249,56 @@ const items = [
     },
 ];
 
-function AuthButtons() {
-    return (
-        <div className={cx('auth-buttons')}>
-            <Link to="/dang-ky" className={cx('btn', 'btn-outline')}>
-                Đăng ký
-            </Link>
-            <Link to="/dang-nhap" className={cx('btn', 'btn-primary')}>
-                Đăng nhập
-            </Link>
-        </div>
-    );
-}
+// User modal for desktop - Mockup data
+const userDropdownItems = [
+    {
+        key: 'profile',
+        label: <Link to="/trang-ca-nhan">Trang cá nhân</Link>,
+    },
+    {
+        key: 'blog',
+        label: <Link to="/viet-blog">Viết blog</Link>,
+    },
+    {
+        key: 'posts',
+        label: <Link to="/bai-viet-cua-toi">Bài viết của tôi</Link>,
+    },
+    {
+        key: 'saved',
+        label: <Link to="/bai-viet-da-luu">Bài viết đã lưu</Link>,
+    },
+    {
+        key: 'settings',
+        label: <Link to="/cai-dat">Cài đặt</Link>,
+    },
+    {
+        type: 'divider',
+    },
+    {
+        key: 'logout',
+        label: <span style={{ color: '#ce232d' }}>Đăng xuất</span>,
+    },
+];
+
+// Handle lại menu mobile để cần thiết với khi đã đăng nhập
 
 export default function Header({ visible }) {
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
+
+    //  Fake user data
+    const fakeUser = {
+        name: 'Nguyễn Toại',
+        username: '@5140',
+        avatar: '/assets/img/avatar_default.jpg',
+    };
+    const isAuthenticated = true; // sau này lấy từ context / redux / API
+
+    // for mobile logout button
+    const handleLogout = () => {
+        console.log('logout');
+        // sau này gọi logout API ở đây
+    };
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent
@@ -305,7 +354,19 @@ export default function Header({ visible }) {
                     />
 
                     {/* Auth buttons mobile */}
-                    <AuthButtons />
+                    {isAuthenticated ? (
+                        <Dropdown>
+                            <div className={cx('user-info-mobile')}>
+                                <img src={fakeUser.avatar} alt="Avatar" className={cx('avatar')} />
+                                <div className={cx('user-name')}>{fakeUser.name}</div>
+                                <button className={cx('logout-icon')} onClick={handleLogout}>
+                                    <RiLogoutBoxRLine size={20} />
+                                </button>
+                            </div>
+                        </Dropdown>
+                    ) : (
+                        <AuthButtons />
+                    )}
                 </div>
             </div>
         </div>
@@ -468,7 +529,31 @@ export default function Header({ visible }) {
                 </div>
 
                 {/* Auth buttons desktop */}
-                <AuthButtons />
+                <div className={cx('auth-desktop')}>
+                    {isAuthenticated ? (
+                        <div className={cx('auth-inner')}>
+                            <div className={cx('notification')}>
+                                <Badge count={1000} overflowCount={99}>
+                                    <IoMdNotifications
+                                        size={28}
+                                        style={{ cursor: 'pointer', color: 'var(--bg-gray)' }}
+                                    />
+                                </Badge>
+                            </div>
+
+                            <Dropdown
+                                menu={{ items: userDropdownItems, onClick: handleLogout }}
+                                trigger={['click']}
+                                placement="bottomRight"
+                                overlayClassName={cx('custom-dropdown')}
+                            >
+                                <Avatar src={fakeUser.avatar} size={40} style={{ cursor: 'pointer' }} />
+                            </Dropdown>
+                        </div>
+                    ) : (
+                        <AuthButtons />
+                    )}
+                </div>
             </div>
 
             {/* Render Menu mobile */}
