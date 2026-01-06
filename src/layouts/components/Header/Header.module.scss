@@ -335,7 +335,7 @@
 // overide antd dropdown menu padding
 :global {
     .custom-dropdown .ant-dropdown-menu {
-        padding: 8px 16px !important;
+        padding: 16px !important;
     }
 }
 
@@ -357,7 +357,7 @@
 
         span {
             font-size: 14px;
-            color: gray;
+            color: var(--text-color);
         }
     }
 
@@ -368,7 +368,7 @@
 
         a {
             text-decoration: none;
-            color: var(--primary);
+            color: var(--text-color);
             font-weight: 500;
 
             &:hover {
@@ -378,7 +378,7 @@
 
         .logout-btn {
             margin-top: 8px;
-            background: var(--primary);
+            background: var(--text-color);
             color: white;
             border: none;
             padding: 8px;
@@ -406,35 +406,80 @@
     width: 36px;
 }
 
-/* ================= USER Info mobile ================= */
-.user-info-mobile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
+/* ================= USER collapse for mobile ================= */
+.user-collapse {
+    background-color: transparent;
+    margin-bottom: 20px;
 
-    .avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit: cover;
+    // overide antd collapse icon position
+    :global {
+        .ant-collapse-expand-icon {
+            margin: auto 0 !important;
+        }
     }
 
-    .user-name {
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--text-primary);
-        flex: 1;
+    .user-info-mobile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            font-size: 18px;
+            text-transform: capitalize;
+            font-weight: 500;
+            color: var(--text-primary);
+            flex: 1;
+        }
     }
 
-    .logout-icon {
-        background: none;
-        border: none;
-        color: var(--primary);
-        cursor: pointer;
+    .user-menu {
+        list-style: none;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
-        &:hover {
-            opacity: 0.8;
+        li {
+            font-size: 16px;
+            padding: 6px 0;
+            font-weight: 500;
+            color: var(--text-color);
+
+            a {
+                color: var(--text-color);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            // nếu dùng Link thay vì button thì xóa phần này
+            button {
+                display: block;
+                all: unset;
+                width: 100%;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                margin-top: 8px;
+                padding-top: 12px;
+
+                color: var(--text-color);
+                font-weight: 500;
+                font-size: 16px;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
         }
     }
 }
@@ -493,7 +538,7 @@
             // flex-direction: column;
             justify-content: center;
             gap: 16px;
-            margin-top: 16px;
+            margin: 16px 0;
             padding: 16px 24px;
         }
     }

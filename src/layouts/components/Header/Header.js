@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Dropdown, Menu, Avatar, Badge, Space } from 'antd';
+import { Dropdown, Menu, Avatar, Badge, Collapse } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { BiSolidFoodMenu } from 'react-icons/bi';
-import { RiArrowDropDownLine, RiLogoutBoxRLine } from 'react-icons/ri';
+import { RiArrowDropDownLine } from 'react-icons/ri';
 import { IoMdNotifications } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
@@ -12,6 +12,8 @@ import config from '@/config';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
+
+const { Panel } = Collapse; // for mobile menu accordion (users details)
 
 function AuthButtons() {
     return (
@@ -249,34 +251,23 @@ const items = [
     },
 ];
 
+// for mobile logout button
+const handleLogout = () => {
+    console.log('logout');
+    // sau này gọi logout API ở đây
+};
+
 // User modal for desktop - Mockup data
 const userDropdownItems = [
-    {
-        key: 'profile',
-        label: <Link to="/trang-ca-nhan">Trang cá nhân</Link>,
-    },
-    {
-        key: 'blog',
-        label: <Link to="/viet-blog">Viết blog</Link>,
-    },
-    {
-        key: 'posts',
-        label: <Link to="/bai-viet-cua-toi">Bài viết của tôi</Link>,
-    },
-    {
-        key: 'saved',
-        label: <Link to="/bai-viet-da-luu">Bài viết đã lưu</Link>,
-    },
-    {
-        key: 'settings',
-        label: <Link to="/cai-dat">Cài đặt</Link>,
-    },
+    { key: 'profile', label: <Link to="/profile">Trang cá nhân</Link> },
+    { key: 'learning', label: <Link to="/learning">Vào học</Link> },
+
     {
         type: 'divider',
     },
     {
         key: 'logout',
-        label: <span style={{ color: '#ce232d' }}>Đăng xuất</span>,
+        label: <Link onClick={handleLogout}>Đăng xuất</Link>,
     },
 ];
 
@@ -292,13 +283,8 @@ export default function Header({ visible }) {
         username: '@5140',
         avatar: '/assets/img/avatar_default.jpg',
     };
-    const isAuthenticated = true; // sau này lấy từ context / redux / API
 
-    // for mobile logout button
-    const handleLogout = () => {
-        console.log('logout');
-        // sau này gọi logout API ở đây
-    };
+    const isAuthenticated = true; // sau này lấy từ context / redux / API
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent
@@ -336,6 +322,35 @@ export default function Header({ visible }) {
                     <button className={cx('close-button')} onClick={handleCloseMenu}>
                         ✖
                     </button>
+                    {/* Auth buttons mobile */}
+                    {isAuthenticated ? (
+                        <Collapse bordered={false} expandIconPosition="end" className={cx('user-collapse')}>
+                            <Panel
+                                header={
+                                    <div className={cx('user-info-mobile')}>
+                                        <img src={fakeUser.avatar} alt="Avatar" className={cx('avatar')} />
+                                        <p className={cx('user-name')}>{fakeUser.name}</p>
+                                    </div>
+                                }
+                                key="1"
+                            >
+                                <ul className={cx('user-menu')}>
+                                    <li>
+                                        <Link to="/profile">Trang cá nhân</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/learning">Vào học</Link>
+                                    </li>
+                                    <li>
+                                        <Link onClick={handleLogout}>Đăng xuất</Link>
+                                    </li>
+                                </ul>
+                            </Panel>
+                        </Collapse>
+                    ) : (
+                        <AuthButtons />
+                    )}
+
                     <Menu
                         mode="inline"
                         items={items}
@@ -352,21 +367,6 @@ export default function Header({ visible }) {
                         onOpenChange={onOpenChange}
                         onClick={handleCloseMenu}
                     />
-
-                    {/* Auth buttons mobile */}
-                    {isAuthenticated ? (
-                        <Dropdown>
-                            <div className={cx('user-info-mobile')}>
-                                <img src={fakeUser.avatar} alt="Avatar" className={cx('avatar')} />
-                                <div className={cx('user-name')}>{fakeUser.name}</div>
-                                <button className={cx('logout-icon')} onClick={handleLogout}>
-                                    <RiLogoutBoxRLine size={20} />
-                                </button>
-                            </div>
-                        </Dropdown>
-                    ) : (
-                        <AuthButtons />
-                    )}
                 </div>
             </div>
         </div>
@@ -388,6 +388,7 @@ export default function Header({ visible }) {
                         <span>MENU</span> <BiSolidFoodMenu size={22} color="white" />
                     </button>
                 </div>
+
                 {/* MENU Desktop */}
                 <nav className={cx('nav')}>
                     <NavLink
