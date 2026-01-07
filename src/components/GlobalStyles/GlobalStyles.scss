@@ -11,6 +11,7 @@
     --bg-gray: #707070;
     --bg-primary: rgba(206, 35, 45, 0.12);
     --bg-primary-light: rgba(206, 35, 45, 0.04);
+    --bg-black-light: rgba(160, 156, 156, 0.04);
 
     // Default Layout
     --default-layout-header-height: 56px;
@@ -160,7 +161,7 @@ html *::-webkit-scrollbar-track {
 
 /* tab underline */
 .ant-tabs-ink-bar {
-    background-color: #ce232d !important;
+    background-color: var(--primary) !important;
 }
 
 // .ant-tabs-tab-active div,
@@ -182,8 +183,40 @@ html *::-webkit-scrollbar-track {
 }
 
 .ant-tabs-tab-active .tab-label {
-    background-color: #ce232d !important;
+    background-color: var(--primary) !important;
     color: var(--white) !important;
+}
+
+// overide ant design input
+.ant-input-outlined,
+.ant-input-password {
+    &:hover {
+        border-color: var(--black) !important;
+    }
+    &:focus,
+    &:focus-within {
+        border-color: var(--black) !important;
+        box-shadow: 0 0 0 2px var(--bg-black-light) !important;
+    }
+}
+
+// overide ant design checkbox
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--black) !important;
+    border-color: var(--black) !important;
+}
+.ant-checkbox-inner {
+    border-color: var(--black) !important;
+}
+.ant-checkbox-checked::after {
+    border: 1px solid var(--black) !important;
+}
+
+// overide ant design form label
+.ant-form-item-label > label,
+.ant-checkbox-label {
+    font-weight: 500 !important;
+    font-size: 1.4rem;
 }
 
 /* =============== RESPONSIVE ================ */
