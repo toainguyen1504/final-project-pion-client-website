@@ -14,7 +14,7 @@ export default function ForgotPasswordPage() {
     };
 
     return (
-        <div className={cx('auth-wrapper')}>
+        <div className={cx('auth-wrapper', 'forgot-password-page')}>
             {/* Logo Pion linking to home page */}
             <div className={cx('logo')}>
                 <Link to={config.routes.home}>
@@ -31,14 +31,19 @@ export default function ForgotPasswordPage() {
                         <Input size="large" placeholder="Nhập email hoặc số điện thoại" />
                     </Form.Item>
 
-                    <Button type="primary" htmlType="submit" block>
-                        Gửi thông tin khôi phục mật khẩu
+                    {/* Nút Gửi thông tin*/}
+                    <Button primary full>
+                        Gửi thông tin
                     </Button>
                 </Form>
-                <div className={cx('footer')}>
-                    <a href="/forgot">Quên mật khẩu?</a>
-                    <span> | </span>
-                    <a href="/register">Đăng ký ngay</a>
+                <div className={cx('options-actions')}>
+                    <Link to={config.routes.login} className={cx('login-text')}>
+                        Đăng nhập
+                    </Link>
+                    <p className={cx('register-text')}>
+                        Bạn chưa có tài khoản?
+                        <Link to={config.routes.register}>Đăng ký ngay</Link>
+                    </p>
                 </div>
             </div>
         </div>
