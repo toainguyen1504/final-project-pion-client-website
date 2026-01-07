@@ -284,7 +284,7 @@ export default function Header({ visible }) {
         avatar: '/assets/img/avatar_default.jpg',
     };
 
-    const isAuthenticated = true; // sau này lấy từ context / redux / API
+    const isAuthenticated = false; // sau này lấy từ context / redux / API
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent

@@ -1,5 +1,8 @@
 const routes = {
     home: '/',
+    register: '/dang-ky',
+    login: '/dang-nhap',
+    forgotPassword: '/quen-mat-khau',
     about: '/gioi-thieu',
     contact: '/lien-he',
     registerProgram: '/dang-ky-tham-gia-chuong-trinh',
