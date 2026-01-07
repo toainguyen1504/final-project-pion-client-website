@@ -1,4 +1,4 @@
-import { Form, Input, Checkbox } from 'antd';
+import { Form, Input } from 'antd';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className={cx('auth-wrapper')}>
+        <div className={cx('auth-wrapper', 'register-page')}>
             {/* Logo Pion linking to home page */}
             <div className={cx('logo')}>
                 <Link to={config.routes.home}>
@@ -30,19 +30,40 @@ export default function RegisterPage() {
             <div className={cx('auth-box')}>
                 <h2 className={cx('title')}>Đăng ký</h2>
                 <Form layout="vertical" onFinish={onFinish}>
-                    <Form.Item label="Email / Số điện thoại" name="email" rules={[{ required: true }]}>
-                        <Input placeholder="Nhập email hoặc số điện thoại" />
+                    <Form.Item label="Họ tên" name="name" rules={[{ required: true }]}>
+                        <Input size="large" placeholder="Nhập họ tên" />
                     </Form.Item>
 
-                    <Form.Item label="Mật khẩu" name="password" rules={[{ required: true }]}>
-                        <Input.Password placeholder="Nhập mật khẩu" />
+                    <Form.Item label="Email" name="email" rules={[{ required: true }]}>
+                        <Input size="large" placeholder="Nhập email" />
                     </Form.Item>
+
+                    <Form.Item label="Số điện thoại" name="phone" rules={[{ required: true }]}>
+                        <Input size="large" placeholder="Nhập số điện thoại" />
+                    </Form.Item>
+
+                    <div className={cx('password-group')}>
+                        <Form.Item label="Mật khẩu" name="password" rules={[{ required: true }]}>
+                            <Input.Password size="large" placeholder="Nhập mật khẩu" />
+                        </Form.Item>
+
+                        <Form.Item label="Nhập lại mật khẩu" name="confirmPassword" rules={[{ required: true }]}>
+                            <Input.Password size="large" placeholder="Nhập lại mật khẩu" />
+                        </Form.Item>
+                    </div>
 
                     {/* Nút đăng ký*/}
                     <Button primary full>
                         Đăng ký
                     </Button>
                 </Form>
+
+                <div className={cx('options-actions')}>
+                    <Link to={config.routes.forgotPassword}>Quên mật khẩu?</Link>
+                    <Link to={config.routes.login} className={cx('login-text')}>
+                        Đăng nhập
+                    </Link>
+                </div>
 
                 {/* Hoặc đăng nhập với Google hoặc Facebook */}
                 <div className={cx('footer-actions')}>

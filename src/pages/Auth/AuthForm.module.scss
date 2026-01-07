@@ -14,6 +14,12 @@
         img {
             height: 56px;
         }
+
+        @media (max-width: 767px) {
+            img {
+                height: 50px;
+            }
+        }
     }
 }
 
@@ -68,10 +74,11 @@
     text-align: center;
     p {
         margin-bottom: 12px;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         font-weight: 500;
         color: #333;
     }
+
     button {
         margin: 0 8px;
         min-width: 120px;
@@ -79,8 +86,10 @@
 }
 
 // Custom style when used with login-page
-.login-page {
-    .options {
+.login-page,
+.register-page {
+    .options-actions {
+        height: 40px;
         user-select: none;
         display: flex;
         justify-content: space-between;
@@ -102,7 +111,7 @@
         @media (max-width: 767px) {
             a {
                 font-size: 1.3rem;
-                margin-top: 8px;
+                margin-top: 6px;
             }
         }
     }
@@ -127,6 +136,29 @@
             a {
                 font-size: 1.3rem;
             }
+        }
+    }
+}
+
+// Register page specific styles
+.register-page {
+    .password-group {
+        display: flex;
+        gap: 16px;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+
+    .options-actions {
+        margin: 8px 0;
+    }
+
+    @media (max-width: 767px) {
+        .title {
+            margin-bottom: 16px;
         }
     }
 }

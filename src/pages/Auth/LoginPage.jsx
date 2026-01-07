@@ -38,12 +38,12 @@ export default function LoginPage() {
                         <Input.Password size="large" placeholder="Nhập mật khẩu" />
                     </Form.Item>
 
-                    <div className={cx('options')}>
+                    <div className={cx('options-actions')}>
                         <Form.Item name="remember" valuePropName="checked">
                             <Checkbox>Ghi nhớ đăng nhập</Checkbox>
                         </Form.Item>
 
-                        <a href="/quen-mat-khau">Quên mật khẩu?</a>
+                        <Link to={config.routes.forgotPassword}>Quên mật khẩu?</Link>
                     </div>
 
                     {/* Nút đăng nhập*/}
@@ -53,7 +53,7 @@ export default function LoginPage() {
 
                     <p className={cx('register-text')}>
                         Bạn chưa có tài khoản?
-                        <a href="/dang-ky">Đăng ký ngay</a>
+                        <Link to={config.routes.register}>Đăng ký ngay</Link>
                     </p>
                 </Form>
 
