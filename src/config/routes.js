@@ -6,6 +6,8 @@ const routes = {
     forgotPassword: '/quen-mat-khau',
     changePassword: '/doi-mat-khau',
     profile: '/thong-tin-ca-nhan',
+    verifyEmail: '/xac-thuc-email',
+    verifyPhone: '/xac-thuc-so-dien-thoai',
 
     // Page
     home: '/',

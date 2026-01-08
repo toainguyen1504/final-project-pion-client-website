@@ -149,6 +149,21 @@
     }
 }
 
+.button-spacing {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    // >= tablet
+    @media (min-width: 768px) {
+        button,
+        a {
+            // min-width: 88px;
+            padding: 8px 24px;
+        }
+    }
+}
+
 // End common styles
 
 // Custom style when used with login-page
@@ -200,7 +215,8 @@
     }
 }
 
-.forgot-password-page {
+.forgot-password-page,
+.verify-page {
     .options-actions {
         display: flex;
         justify-content: space-between;
@@ -339,12 +355,6 @@
         }
     }
 
-    .button-spacing {
-        display: flex;
-        gap: 16px;
-        justify-content: space-between;
-    }
-
     .form-group.grid-2x2 {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -379,6 +389,13 @@
                 grid-column: 1;
             }
         }
+    }
+}
+
+// Verify page specific styles
+.verify-page {
+    .title {
+        font-size: 1.8rem;
     }
 }
 

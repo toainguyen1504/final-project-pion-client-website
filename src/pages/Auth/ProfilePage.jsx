@@ -77,7 +77,7 @@ export default function ProfilePage() {
                             <Input size="large" placeholder="Nhập email" style={{ paddingRight: '120px' }} />
 
                             {/* to link : xac-minh-email */}
-                            <Link className={cx('verify-btn')}>
+                            <Link to={config.routes.verifyEmail} className={cx('verify-btn')}>
                                 Xác minh
                                 <MdOutlineVerified />
                             </Link>
@@ -94,7 +94,7 @@ export default function ProfilePage() {
                             <Input size="large" placeholder="Nhập số điện thoại" style={{ paddingRight: '120px' }} />
 
                             {/* to link : xac-minh-so-dien-thoai */}
-                            <Link className={cx('verify-btn')}>
+                            <Link to={config.routes.verifyPhone} className={cx('verify-btn')}>
                                 Xác minh
                                 <MdOutlineVerified />
                             </Link>
