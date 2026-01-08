@@ -12,27 +12,28 @@
 
     .logo {
         img {
-            height: 56px;
+            height: 52px;
         }
 
         @media (max-width: 767px) {
             img {
-                height: 50px;
+                height: 40px !important;
             }
         }
     }
 }
 
-.auth-box {
+.auth-box,
+.nav {
     width: 100%;
     max-width: 480px;
     background: #f7f5f5;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    padding: 36px;
+    padding: 24px 36px;
 
     @media (max-width: 767px) {
-        padding: 24px;
+        padding: 16px 24px;
     }
 }
 
@@ -55,7 +56,7 @@
     text-align: center;
 
     a {
-        color: #ce232d;
+        color: var(--primary) !important;
         font-weight: 500;
         font-size: 1.6rem;
         text-decoration: none;
@@ -91,7 +92,7 @@
     text-align: center;
 
     a {
-        color: var(--primary);
+        color: var(--primary) !important;
         font-weight: 500;
         font-size: 1.4rem;
         text-decoration: none;
@@ -108,6 +109,7 @@
         }
     }
 }
+// End common styles
 
 // Custom style when used with login-page
 .login-page,
@@ -195,6 +197,105 @@
         a {
             font-size: 1.3rem;
             // margin-top: 0px;
+        }
+    }
+}
+
+// Profile page specific styles
+.profile-page {
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 36px;
+
+        @media (max-width: 767px) {
+            padding: 16px 24px;
+        }
+    }
+
+    .nav-actions {
+        display: flex;
+        width: 220px;
+        padding: 4px 0;
+        gap: 4px;
+        overflow-x: auto;
+        scrollbar-width: thin; // Firefox
+        scrollbar-color: var(--bg-gray) transparent;
+
+        &::-webkit-scrollbar {
+            height: 4px; // độ dày thanh cuộn ngang
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--bg-gray);
+            border-radius: 999px;
+        }
+
+        a {
+            background: #f7f5f5;
+            min-width: 60px;
+            padding: 4px 12px;
+            color: var(--text-color-bold) !important;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            flex-shrink: 0;
+
+            &:hover {
+                background: var(--bg-primary-light);
+            }
+
+            &.active {
+                background: var(--bg-primary-light);
+                color: var(--primary) !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            min-width: 160px;
+            margin-left: 20px;
+        }
+    }
+
+    .avatar-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 24px;
+
+        .camera-button {
+            position: absolute;
+            bottom: 0;
+            right: calc(50% - 40px); // căn theo avatar 80px
+            transform: translateX(50%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+            background: #fff;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+
+            svg {
+                font-size: 18px;
+                color: #999;
+                transition: all 0.3s;
+            }
+
+            &:hover svg {
+                color: var(--primary);
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ import classNames from 'classnames/bind';
 
 import Search from '@/layouts/components/Search';
 import config from '@/config';
+import { FAKE_USER } from '@/constants';
+import { getInitial } from '@/utils';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
@@ -18,10 +20,10 @@ const { Panel } = Collapse; // for mobile menu accordion (users details)
 function AuthButtons() {
     return (
         <div className={cx('auth-buttons')}>
-            <Link to="/dang-ky" className={cx('btn', 'btn-outline')}>
+            <Link to={config.routes.register} className={cx('btn', 'btn-outline')}>
                 Đăng ký
             </Link>
-            <Link to="/dang-nhap" className={cx('btn', 'btn-primary')}>
+            <Link to={config.routes.login} className={cx('btn', 'btn-primary')}>
                 Đăng nhập
             </Link>
         </div>
@@ -259,8 +261,8 @@ const handleLogout = () => {
 
 // User modal for desktop - Mockup data
 const userDropdownItems = [
-    { key: 'profile', label: <Link to="/profile">Trang cá nhân</Link> },
-    { key: 'learning', label: <Link to="/learning">Vào học</Link> },
+    { key: 'learning', label: <Link to={config.routes.learning}>Vào học</Link> },
+    { key: 'profile', label: <Link to={config.routes.profile}>Cập nhật hồ sơ</Link> },
 
     {
         type: 'divider',
@@ -277,14 +279,7 @@ export default function Header({ visible }) {
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
 
-    //  Fake user data
-    const fakeUser = {
-        name: 'Nguyễn Toại',
-        username: '@5140',
-        avatar: '/assets/img/avatar_default.jpg',
-    };
-
-    const isAuthenticated = false; // sau này lấy từ context / redux / API
+    const isAuthenticated = true; // sau này lấy từ context / redux / API
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent
@@ -328,19 +323,35 @@ export default function Header({ visible }) {
                             <Panel
                                 header={
                                     <div className={cx('user-info-mobile')}>
-                                        <img src={fakeUser.avatar} alt="Avatar" className={cx('avatar')} />
-                                        <p className={cx('user-name')}>{fakeUser.name}</p>
+                                        {FAKE_USER.avatarUrl ? (
+                                            <Avatar src={FAKE_USER.avatarUrl} size={40} style={{ cursor: 'pointer' }} />
+                                        ) : (
+                                            <Avatar
+                                                size={40}
+                                                style={{
+                                                    backgroundColor: 'var(--primary)',
+                                                    fontSize: '20px',
+                                                    cursor: 'pointer',
+                                                }}
+                                            >
+                                                {getInitial(FAKE_USER.name)}
+                                            </Avatar>
+                                        )}
+
+                                        <p className={cx('user-name')}>{FAKE_USER.name}</p>
                                     </div>
                                 }
                                 key="1"
                             >
                                 <ul className={cx('user-menu')}>
                                     <li>
-                                        <Link to="/profile">Trang cá nhân</Link>
+                                        <Link to={config.routes.learning}>Vào học</Link>
                                     </li>
+
                                     <li>
-                                        <Link to="/learning">Vào học</Link>
+                                        <Link to={config.routes.profile}>Cập nhật hồ sơ</Link>
                                     </li>
+
                                     <li>
                                         <Link onClick={handleLogout}>Đăng xuất</Link>
                                     </li>
@@ -548,7 +559,20 @@ export default function Header({ visible }) {
                                 placement="bottomRight"
                                 overlayClassName={cx('custom-dropdown')}
                             >
-                                <Avatar src={fakeUser.avatar} size={40} style={{ cursor: 'pointer' }} />
+                                {FAKE_USER.avatarUrl ? (
+                                    <Avatar src={FAKE_USER.avatarUrl} size={40} style={{ cursor: 'pointer' }} />
+                                ) : (
+                                    <Avatar
+                                        size={40}
+                                        style={{
+                                            backgroundColor: 'var(--primary)',
+                                            fontSize: '20px',
+                                            cursor: 'pointer',
+                                        }}
+                                    >
+                                        {getInitial(FAKE_USER.name)}
+                                    </Avatar>
+                                )}
                             </Dropdown>
                         </div>
                     ) : (
