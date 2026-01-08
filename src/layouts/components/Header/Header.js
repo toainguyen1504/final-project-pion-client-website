@@ -279,7 +279,7 @@ export default function Header({ visible }) {
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
 
-    const isAuthenticated = true; // sau này lấy từ context / redux / API
+    const isAuthenticated = false; // sau này lấy từ context / redux / API
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent

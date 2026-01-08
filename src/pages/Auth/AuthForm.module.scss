@@ -109,6 +109,46 @@
         }
     }
 }
+
+.verify-group .verify-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .ant-input {
+        flex: 1;
+    }
+
+    .verify-btn {
+        position: absolute;
+        right: 4px;
+        top: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 0 12px;
+        height: 40px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border-radius: 6px;
+        background: transparent;
+        border: none;
+        color: var(--text-color-bold);
+        text-decoration: underline;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        svg {
+            font-size: 16px;
+        }
+
+        &:hover {
+            background: var(--bg-primary-light);
+        }
+    }
+}
+
 // End common styles
 
 // Custom style when used with login-page
@@ -295,6 +335,48 @@
 
             &:hover svg {
                 color: var(--primary);
+            }
+        }
+    }
+
+    .button-spacing {
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+    }
+
+    .form-group.grid-2x2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 16px;
+        margin-bottom: 24px;
+
+        :global {
+            .ant-form-item {
+                margin-bottom: 0;
+            }
+
+            .ant-radio-group {
+                display: flex;
+                gap: 16px;
+            }
+        }
+
+        .col-left {
+            grid-column: 1;
+        }
+
+        .col-right {
+            grid-column: 2;
+        }
+
+        @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto auto;
+            .col-left,
+            .col-right {
+                grid-column: 1;
             }
         }
     }

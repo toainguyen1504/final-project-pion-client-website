@@ -1,5 +1,6 @@
-import { Form, Input, Avatar } from 'antd';
+import { Form, Input, Avatar, Checkbox, DatePicker, Select, Radio } from 'antd';
 import { CameraOutlined } from '@ant-design/icons';
+import { MdOutlineVerified } from 'react-icons/md';
 import classNames from 'classnames/bind';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -71,28 +72,105 @@ export default function ProfilePage() {
                         <Input size="large" placeholder="Nhập họ tên" />
                     </Form.Item>
 
-                    <Form.Item label="Email" name="email" rules={[{ required: true }]}>
-                        <Input size="large" placeholder="Nhập email" />
+                    <Form.Item label="Email" name="email" rules={[{ required: true }]} className={cx('verify-group')}>
+                        <div className={cx('verify-wrapper')}>
+                            <Input size="large" placeholder="Nhập email" style={{ paddingRight: '120px' }} />
+
+                            {/* to link : xac-minh-email */}
+                            <Link className={cx('verify-btn')}>
+                                Xác minh
+                                <MdOutlineVerified />
+                            </Link>
+                        </div>
                     </Form.Item>
 
-                    <Form.Item label="Số điện thoại" name="phone" rules={[{ required: true }]}>
-                        <Input size="large" placeholder="Nhập số điện thoại" />
+                    <Form.Item
+                        label="Số điện thoại"
+                        name="phone"
+                        rules={[{ required: true }]}
+                        className={cx('verify-group')}
+                    >
+                        <div className={cx('verify-wrapper')}>
+                            <Input size="large" placeholder="Nhập số điện thoại" style={{ paddingRight: '120px' }} />
+
+                            {/* to link : xac-minh-so-dien-thoai */}
+                            <Link className={cx('verify-btn')}>
+                                Xác minh
+                                <MdOutlineVerified />
+                            </Link>
+                        </div>
                     </Form.Item>
 
-                    <div className={cx('password-group')}>
-                        <Form.Item label="Mật khẩu" name="password" rules={[{ required: true }]}>
-                            <Input.Password size="large" placeholder="Nhập mật khẩu" />
+                    <div className={cx('form-group', 'grid-2x2')}>
+                        {/* Cột trái */}
+                        <Form.Item
+                            label="Quốc gia"
+                            name="country"
+                            rules={[{ required: true }]}
+                            className={cx('col-left')}
+                        >
+                            <Select size="large" placeholder="Chọn quốc gia">
+                                <Select.Option value="vn">Việt Nam</Select.Option>
+                                <Select.Option value="us">Hoa Kỳ</Select.Option>
+                                <Select.Option value="jp">Nhật Bản</Select.Option>
+                            </Select>
                         </Form.Item>
 
-                        <Form.Item label="Nhập lại mật khẩu" name="confirmPassword" rules={[{ required: true }]}>
-                            <Input.Password size="large" placeholder="Nhập lại mật khẩu" />
+                        {/* Cột phải */}
+                        <Form.Item
+                            label="Tỉnh thành"
+                            name="province"
+                            rules={[{ required: true }]}
+                            className={cx('col-right')}
+                        >
+                            <Select size="large" placeholder="Chọn tỉnh thành">
+                                <Select.Option value="hcm">TP. Hồ Chí Minh</Select.Option>
+                                <Select.Option value="hn">Hà Nội</Select.Option>
+                                <Select.Option value="dn">Đà Nẵng</Select.Option>
+                            </Select>
+                        </Form.Item>
+
+                        {/* Cột trái */}
+                        <Form.Item label="Ngày sinh" name="dob" rules={[{ required: true }]} className={cx('col-left')}>
+                            <DatePicker
+                                size="large"
+                                format="DD/MM/YYYY"
+                                placeholder="dd/mm/yyyy"
+                                style={{ width: '100%' }}
+                            />
+                        </Form.Item>
+
+                        {/* Cột phải */}
+                        <Form.Item
+                            label="Giới tính"
+                            name="gender"
+                            rules={[{ required: true }]}
+                            className={cx('col-right')}
+                        >
+                            <Radio.Group>
+                                <Radio value="male">Nam</Radio>
+                                <Radio value="female">Nữ</Radio>
+                                <Radio value="other">Khác</Radio>
+                            </Radio.Group>
                         </Form.Item>
                     </div>
 
-                    {/* Nút đăng ký*/}
-                    <Button primary full>
-                        Đăng ký
-                    </Button>
+                    <div className={cx('options-actions')}>
+                        <Form.Item name="skip" valuePropName="checked">
+                            <Checkbox>Bỏ qua, tôi sẽ cập nhật sau</Checkbox>
+                        </Form.Item>
+                    </div>
+
+                    {/* Nút Cập nhật và Truy cập*/}
+                    <div className={cx('button-spacing')}>
+                        {/* submit */}
+                        <Button primary>Cập nhật </Button>
+
+                        {/* Sau này đổi thành /learning */}
+                        <Button primary to={config.routes.home}>
+                            Truy cập
+                        </Button>
+                    </div>
                 </Form>
             </div>
         </div>
