@@ -429,7 +429,8 @@
 }
 
 /* User info header */
-.user-info-desktop {
+.user-info-desktop,
+.user-info-mobile {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -442,15 +443,17 @@
     }
 
     .display-name {
+        font-size: 1.6rem;
         font-weight: 600;
-        color: var(--text-color);
-        margin: 0;
+        color: var(--text-color-bold);
         line-height: 1.2;
     }
 
     .username {
-        font-size: 13px;
-        color: var(--text-light);
+        padding-top: 4px;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--text-color);
         margin: 0;
     }
 }
@@ -468,18 +471,9 @@
     }
 
     .user-info-mobile {
-        display: flex;
-        align-items: center;
         gap: 12px;
         padding: 0 16px;
-
-        .user-name {
-            font-size: 18px;
-            text-transform: capitalize;
-            font-weight: 500;
-            color: var(--text-primary);
-            flex: 1;
-        }
+        text-transform: capitalize;
     }
 
     .user-menu {
