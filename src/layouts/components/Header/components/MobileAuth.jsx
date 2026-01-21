@@ -20,7 +20,11 @@ export default function MobileAuth({ user, onLogout }) {
                                 {!user.profile_image && getInitial(user.display_name)}
                             </Avatar>
                         </div>
-                        <p className={cx('user-name')}>{user.display_name}</p>
+
+                        <div className={cx('user-text')}>
+                            <p className={cx('display-name')}>{user.display_name}</p>
+                            <p className={cx('username')}>@{user.username}</p>
+                        </div>
                     </div>
                 }
                 key="1"
