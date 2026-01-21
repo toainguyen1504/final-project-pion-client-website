@@ -1,23 +1,43 @@
-import { Form, Input, Checkbox } from 'antd';
+import { Form, Input, Checkbox, message } from 'antd';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { FcGoogle } from 'react-icons/fc';
+import { FaFacebook } from 'react-icons/fa';
 
 import Button from '@/components/Button'; // import Button custom
 import config from '@/config';
-import styles from './AuthForm.module.scss';
+import { login } from '@/services/authService';
 
-import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook } from 'react-icons/fa';
+import styles from './AuthForm.module.scss';
 
 const cx = classNames.bind(styles);
 
 export default function LoginPage() {
-    const onFinish = (values) => {
-        console.log('Login:', values);
+    const navigate = useNavigate();
+
+    const onFinish = async (values) => {
+        try {
+            await login({ login: values.login, password: values.password });
+
+            message.success('Đăng nhập thành công!');
+            // chuyển hướng sang home
+            navigate(config.routes.home);
+        } catch (err) {
+            if (err.response?.status === 401) {
+                message.error('Sai email/username hoặc mật khẩu.');
+            } else {
+                message.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            }
+        }
     };
 
     return (
         <div className={cx('auth-wrapper', 'login-page')}>
+            <Helmet>
+                <title>Đăng nhập | PION</title>
+            </Helmet>
+
             {/* Logo Pion linking to home page */}
             <div className={cx('logo')}>
                 <Link to={config.routes.home}>
@@ -30,8 +50,8 @@ export default function LoginPage() {
             <div className={cx('auth-box')}>
                 <h2 className={cx('title')}>Đăng nhập</h2>
                 <Form layout="vertical" onFinish={onFinish}>
-                    <Form.Item label="Email / Số điện thoại" name="email" rules={[{ required: true }]}>
-                        <Input size="large" placeholder="Nhập email hoặc số điện thoại" />
+                    <Form.Item label="Email / Username" name="login" rules={[{ required: true }]}>
+                        <Input size="large" placeholder="Nhập email hoặc username" />
                     </Form.Item>
 
                     <Form.Item label="Mật khẩu" name="password" rules={[{ required: true }]}>
@@ -47,7 +67,7 @@ export default function LoginPage() {
                     </div>
 
                     {/* Nút đăng nhập*/}
-                    <Button primary full>
+                    <Button primary full htmlType="submit">
                         Đăng nhập
                     </Button>
 

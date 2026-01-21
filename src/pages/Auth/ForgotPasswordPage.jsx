@@ -27,8 +27,8 @@ export default function ForgotPasswordPage() {
             <div className={cx('auth-box')}>
                 <h2 className={cx('title')}>Quên mật khẩu</h2>
                 <Form layout="vertical" onFinish={onFinish}>
-                    <Form.Item label="Email / Số điện thoại" name="email" rules={[{ required: true }]}>
-                        <Input size="large" placeholder="Nhập email hoặc số điện thoại" />
+                    <Form.Item label="Email / Username" name="email" rules={[{ required: true }]}>
+                        <Input size="large" placeholder="Nhập email hoặc username" />
                     </Form.Item>
 
                     {/* Nút Gửi thông tin*/}

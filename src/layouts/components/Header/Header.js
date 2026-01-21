@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dropdown, Menu, Avatar, Badge, Collapse } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
 import { createPortal } from 'react-dom';
@@ -11,6 +11,8 @@ import Search from '@/layouts/components/Search';
 import config from '@/config';
 import { FAKE_USER } from '@/constants';
 import { getInitial } from '@/utils';
+import { getCurrentUser, isAuthenticated, logout } from '@/services/authService';
+
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
@@ -253,33 +255,22 @@ const items = [
     },
 ];
 
-// for mobile logout button
-const handleLogout = () => {
-    console.log('logout');
-    // sau này gọi logout API ở đây
-};
-
-// User modal for desktop - Mockup data
-const userDropdownItems = [
-    { key: 'learning', label: <Link to={config.routes.learning}>Vào học</Link> },
-    { key: 'profile', label: <Link to={config.routes.profile}>Cập nhật hồ sơ</Link> },
-
-    {
-        type: 'divider',
-    },
-    {
-        key: 'logout',
-        label: <Link onClick={handleLogout}>Đăng xuất</Link>,
-    },
-];
-
-// Handle lại menu mobile để cần thiết với khi đã đăng nhập
-
 export default function Header({ visible }) {
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
 
-    const isAuthenticated = true; // sau này lấy từ context / redux / API
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        if (isAuthenticated()) {
+            setUser(getCurrentUser());
+        }
+    }, []);
+
+    // logout
+    const handleLogout = () => {
+        logout();
+        window.location.href = config.routes.login;
+    };
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent
@@ -318,13 +309,13 @@ export default function Header({ visible }) {
                         ✖
                     </button>
                     {/* Auth buttons mobile */}
-                    {isAuthenticated ? (
+                    {isAuthenticated() && user ? (
                         <Collapse bordered={false} expandIconPosition="end" className={cx('user-collapse')}>
                             <Panel
                                 header={
                                     <div className={cx('user-info-mobile')}>
-                                        {FAKE_USER.avatarUrl ? (
-                                            <Avatar src={FAKE_USER.avatarUrl} size={40} style={{ cursor: 'pointer' }} />
+                                        {user.profile_image ? (
+                                            <Avatar src={user.profile_image} size={40} style={{ cursor: 'pointer' }} />
                                         ) : (
                                             <Avatar
                                                 size={40}
@@ -334,11 +325,10 @@ export default function Header({ visible }) {
                                                     cursor: 'pointer',
                                                 }}
                                             >
-                                                {getInitial(FAKE_USER.name)}
+                                                {getInitial(user.display_name)}
                                             </Avatar>
                                         )}
-
-                                        <p className={cx('user-name')}>{FAKE_USER.name}</p>
+                                        <p className={cx('user-name')}>{user.display_name}</p>
                                     </div>
                                 }
                                 key="1"
@@ -347,11 +337,9 @@ export default function Header({ visible }) {
                                     <li>
                                         <Link to={config.routes.learning}>Vào học</Link>
                                     </li>
-
                                     <li>
                                         <Link to={config.routes.profile}>Cập nhật hồ sơ</Link>
                                     </li>
-
                                     <li>
                                         <Link onClick={handleLogout}>Đăng xuất</Link>
                                     </li>
@@ -541,8 +529,9 @@ export default function Header({ visible }) {
                 </div>
 
                 {/* Auth buttons desktop */}
+                {/* Auth buttons desktop */}
                 <div className={cx('auth-desktop')}>
-                    {isAuthenticated ? (
+                    {isAuthenticated() && user ? (
                         <div className={cx('auth-inner')}>
                             <div className={cx('notification')}>
                                 <Badge count={1000} overflowCount={99}>
@@ -554,13 +543,22 @@ export default function Header({ visible }) {
                             </div>
 
                             <Dropdown
-                                menu={{ items: userDropdownItems, onClick: handleLogout }}
+                                menu={{
+                                    items: [
+                                        { key: 'learning', label: <Link to={config.routes.learning}>Vào học</Link> },
+                                        {
+                                            key: 'profile',
+                                            label: <Link to={config.routes.profile}>Cập nhật hồ sơ</Link>,
+                                        },
+                                        { key: 'logout', label: <span onClick={handleLogout}>Đăng xuất</span> },
+                                    ],
+                                }}
                                 trigger={['click']}
                                 placement="bottomRight"
                                 overlayClassName={cx('custom-dropdown')}
                             >
-                                {FAKE_USER.avatarUrl ? (
-                                    <Avatar src={FAKE_USER.avatarUrl} size={40} style={{ cursor: 'pointer' }} />
+                                {user.profile_image ? (
+                                    <Avatar src={user.profile_image} size={40} style={{ cursor: 'pointer' }} />
                                 ) : (
                                     <Avatar
                                         size={40}
@@ -570,7 +568,7 @@ export default function Header({ visible }) {
                                             cursor: 'pointer',
                                         }}
                                     >
-                                        {getInitial(FAKE_USER.name)}
+                                        {getInitial(user.display_name)}
                                     </Avatar>
                                 )}
                             </Dropdown>
