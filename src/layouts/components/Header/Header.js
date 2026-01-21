@@ -9,7 +9,6 @@ import classNames from 'classnames/bind';
 
 import Search from '@/layouts/components/Search';
 import config from '@/config';
-import { FAKE_USER } from '@/constants';
 import { getInitial } from '@/utils';
 import { getCurrentUser, isAuthenticated, logout } from '@/services/authService';
 

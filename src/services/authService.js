@@ -6,7 +6,7 @@ import axiosInstance from '@/utils/axiosInstance';
 
 // Đăng nhập
 export async function login({ login, password }) {
-    const response = await axiosInstance.post('/login', { login, password });
+    const response = await axiosInstance.post('/api/login', { login, password });
     const { token, user } = response.data;
 
     // Lưu thông tin vào localStorage
@@ -18,7 +18,7 @@ export async function login({ login, password }) {
 
 // Đăng ký
 export async function register({ username, email, password }) {
-    const response = await axiosInstance.post('/register', {
+    const response = await axiosInstance.post('/api/register', {
         username,
         email,
         password,
@@ -41,12 +41,12 @@ export function getCurrentUser() {
     }
 }
 
-// 🔹 Lấy token hiện tại
+// Lấy token hiện tại
 export function getToken() {
     return localStorage.getItem('authToken');
 }
 
-// 🔹 Kiểm tra đã đăng nhập chưa
+// Kiểm tra đã đăng nhập chưa
 export function isAuthenticated() {
     return !!getToken();
 }
