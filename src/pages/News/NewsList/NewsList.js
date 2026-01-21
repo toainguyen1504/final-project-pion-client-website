@@ -7,21 +7,11 @@ import { Empty } from 'antd';
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
 import ImageCard from '@/components/ImageCard';
+import { BASE_URL, MEDIA_BASE_URL } from '@/constants';
+
 import styles from './NewsList.module.scss';
 
 const cx = classNames.bind(styles);
-
-// 🔹 Cấu hình BASE_URL theo môi trường
-const BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/api`
-        : `${process.env.REACT_APP_PROD_URL}/api`;
-
-// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
-const MEDIA_BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
-        : `${process.env.REACT_APP_PROD_URL}/storage`;
 
 function NewsList() {
     const [loading, setLoading] = useState(true);

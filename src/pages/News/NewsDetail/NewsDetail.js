@@ -7,22 +7,12 @@ import { Empty, Spin } from 'antd';
 
 import { slugify } from '@/utils';
 import BlogLayout from '@/layouts/BlogLayout';
+import { BASE_URL, MEDIA_BASE_URL } from '@/constants';
 // import Breadcrumb from '@/components/Breadcrumb';
+
 import styles from './NewsDetail.module.scss';
 
 const cx = classNames.bind(styles);
-
-// 🔹 Cấu hình BASE_URL theo môi trường
-const BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/api`
-        : `${process.env.REACT_APP_PROD_URL}/api`;
-
-// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
-const MEDIA_BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
-        : `${process.env.REACT_APP_PROD_URL}/storage`;
 
 // Hàm xử lý nội dung HTML và sinh TOC
 const processContentAndGenerateToc = async (html) => {

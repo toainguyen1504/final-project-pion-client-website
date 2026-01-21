@@ -8,24 +8,13 @@ import { MdAirplaneTicket } from 'react-icons/md';
 
 import { jobs } from '@/data';
 import ImageCard from '@/components/ImageCard';
+import { BASE_URL, MEDIA_BASE_URL } from '@/constants';
+
 import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
 
 // const MAX_NEWS = 6;
-
-// 🔹 Cấu hình BASE_URL theo môi trường
-const BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/api`
-        : `${process.env.REACT_APP_PROD_URL}/api`;
-
-// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
-const MEDIA_BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
-        : `${process.env.REACT_APP_PROD_URL}/storage`;
-
 // new nổi bật -> đổi name
 const featuredNews = [
     {
