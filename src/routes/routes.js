@@ -3,7 +3,17 @@ import config from '@/config';
 // Layout
 import NotFoundPage from '@/components/NotFoundPage';
 import { BlogLayout, SidebarRightLayout } from '@/layouts';
+
 import Home from '@/pages/Home';
+import {
+    LoginPage,
+    RegisterPage,
+    ForgotPasswordPage,
+    ProfilePage,
+    EmailVerifyPage,
+    PhoneVerifyPage,
+} from '@/pages/Auth';
+
 import About from '@/pages/About';
 import Contact from '@/pages/Contact';
 import CourseDetail from '@/pages/CourseDetail';
@@ -16,6 +26,15 @@ import { tocDataChina } from '@/data';
 // import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
 const publicRoutes = [
+    // Auth
+    { path: config.routes.login, component: LoginPage, layout: null },
+    { path: config.routes.register, component: RegisterPage, layout: null },
+    { path: config.routes.forgotPassword, component: ForgotPasswordPage, layout: null },
+    { path: config.routes.profile, component: ProfilePage, layout: null },
+    { path: config.routes.verifyEmail, component: EmailVerifyPage, layout: null },
+    { path: config.routes.verifyPhone, component: PhoneVerifyPage, layout: null },
+
+    // Info Pages
     { path: config.routes.home, component: Home },
     { path: config.routes.about, component: About },
     { path: config.routes.contact, component: Contact },

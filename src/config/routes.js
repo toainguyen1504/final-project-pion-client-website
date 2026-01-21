@@ -1,4 +1,15 @@
 const routes = {
+    // Auth
+    register: '/dang-ky',
+    login: '/dang-nhap',
+    logout: '/dang-xuat',
+    forgotPassword: '/quen-mat-khau',
+    changePassword: '/doi-mat-khau',
+    profile: '/thong-tin-ca-nhan',
+    verifyEmail: '/xac-thuc-email',
+    verifyPhone: '/xac-thuc-so-dien-thoai',
+
+    // Page
     home: '/',
     about: '/gioi-thieu',
     contact: '/lien-he',
@@ -19,6 +30,9 @@ const routes = {
     newsDetail: '/tin-tuc/:slug',
     jobDetails: '/tuyen-dung/:slug',
     faq: '/cau-hoi-thuong-gap',
+
+    // learning
+    learning: '/hoc-tap',
 };
 
 export default routes;

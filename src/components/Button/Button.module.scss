@@ -10,6 +10,7 @@
     background: var(--white);
     transition: color 0.3s, background-color 0.3s;
     border: 1px solid transparent;
+    flex-shrink: 0;
 
     + .wrapper {
         margin-left: 8px;
@@ -27,6 +28,13 @@
     margin-left: 8px;
 }
 
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
 // Button Types
 .text {
     &:hover {
@@ -36,6 +44,8 @@
 }
 
 .rounded {
+    color: var(--black);
+    font-weight: 500;
     border-radius: 999px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
     border-color: rgba(22, 24, 35, 0.12);
@@ -48,7 +58,7 @@
 }
 
 .primary {
-    color: var(--white);
+    color: var(--white) !important;
     background: var(--primary);
     border-color: var(--primary);
 
@@ -78,5 +88,10 @@
 
 .large {
     min-width: 148px;
+    padding: 14px 16px;
+}
+
+.full {
+    width: 100%;
     padding: 14px 16px;
 }
