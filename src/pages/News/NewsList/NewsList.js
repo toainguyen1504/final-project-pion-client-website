@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import classNames from 'classnames/bind';
 import { Helmet } from 'react-helmet-async';
 
@@ -7,7 +6,7 @@ import { Empty } from 'antd';
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
 import ImageCard from '@/components/ImageCard';
-import { BASE_URL, MEDIA_BASE_URL } from '@/constants';
+import { getAllNews } from '@/services/newsService';
 
 import styles from './NewsList.module.scss';
 
@@ -20,62 +19,14 @@ function NewsList() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [postsRes, mediaRes] = await Promise.all([
-                    axios.get(`${BASE_URL}/posts`),
-                    axios.get(`${BASE_URL}/media`),
-                ]);
-
-                const postsData = postsRes.data.data || postsRes.data;
-                // console.log(postsRes.data.data);
-                const mediaData = mediaRes.data.data || mediaRes.data;
-
-                // 🔹 Tạo map media để dễ truy cập
-                const mediaMap = {};
-                mediaData.forEach((media) => {
-                    mediaMap[media.id] = media;
-                });
-
-                // 🔹 Lọc bài viết công khai
-                // const filteredPosts = postsData.filter(
-                //     (post) => post.visibility === 'public' || post.visibility === 'scheduled_public',
-                // );
-                // 🔹 Lọc bài viết: chỉ hiển thị public + scheduled_public đã đến giờ
-                const now = new Date(); // thời gian hiện tại
-
-                const filteredPosts = postsData.filter((post) => {
-                    if (post.visibility === 'public') return true;
-
-                    if (post.visibility === 'scheduled_public') {
-                        const publishTime = new Date(post.published_at || post.schedule_time);
-                        return publishTime <= now; // chỉ render nếu đã đến thời gian công khai
-                    }
-
-                    return false;
-                });
-
-                // 🔹 Ghép media vào post tương ứng
-                const enrichedPosts = filteredPosts.map((post) => {
-                    const media = mediaMap[post.featured_media_id];
-                    const imagePath = media?.meta?.variants?.thumbnail?.path || media?.url;
-
-                    // Lấy đường dẫn ảnh từ storage
-                    const imageUrl = imagePath ? `${MEDIA_BASE_URL}/${imagePath}` : '/assets/img/placeholder_img.png';
-
-                    return {
-                        ...post,
-                        image: imageUrl,
-                        link: post.slug,
-                    };
-                });
-
-                setPosts(enrichedPosts);
+                const news = await getAllNews();
+                setPosts(news);
             } catch (error) {
-                console.error('Lỗi khi lấy dữ liệu:', error);
+                console.error(error);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchData();
     }, []);
 
