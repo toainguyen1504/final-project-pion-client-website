@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 const BASE_API_URL =
-    process.env.NODE_ENV === 'development'
-        ? process.env.REACT_APP_API_URL_LOCAL
-        : process.env.REACT_APP_API_URL_PRODUCTION;
+    process.env.NODE_ENV === 'development' ? process.env.REACT_APP_LOCAL_URL : process.env.REACT_APP_PROD_URL;
 
 const axiosInstance = axios.create({
     baseURL: BASE_API_URL,
