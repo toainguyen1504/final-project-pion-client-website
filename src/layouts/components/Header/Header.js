@@ -1,17 +1,38 @@
-import { useState } from 'react';
-import { Menu } from 'antd';
+import { useState, useEffect } from 'react';
+import { Dropdown, Menu, Avatar, Badge, Collapse } from 'antd';
 import { Link, NavLink } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { BiSolidFoodMenu } from 'react-icons/bi';
 import { RiArrowDropDownLine } from 'react-icons/ri';
+import { IoMdNotifications } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
 import Search from '@/layouts/components/Search';
 import config from '@/config';
+import { FAKE_USER } from '@/constants';
+import { getInitial } from '@/utils';
+import { getCurrentUser, isAuthenticated, logout } from '@/services/authService';
+
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
+const { Panel } = Collapse; // for mobile menu accordion (users details)
+
+function AuthButtons() {
+    return (
+        <div className={cx('auth-buttons')}>
+            <Link to={config.routes.register} className={cx('btn', 'btn-outline')}>
+                Đăng ký
+            </Link>
+            <Link to={config.routes.login} className={cx('btn', 'btn-primary')}>
+                Đăng nhập
+            </Link>
+        </div>
+    );
+}
+
+// Menu items for Header
 const items = [
     {
         type: 'divider',
@@ -238,9 +259,22 @@ export default function Header({ visible }) {
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
 
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        if (isAuthenticated()) {
+            setUser(getCurrentUser());
+        }
+    }, []);
+
+    // logout
+    const handleLogout = () => {
+        logout();
+        window.location.href = config.routes.login;
+    };
+
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent
-        const latestOpenKey = keys.find((key) => !openKeys.includes(key)); // find new key
+        const latestOpenKey = keys.find((key) => !openKeys.includes(key)); // find new key`
 
         if (latestOpenKey) {
             if (parentKeys.includes(latestOpenKey)) {
@@ -274,6 +308,48 @@ export default function Header({ visible }) {
                     <button className={cx('close-button')} onClick={handleCloseMenu}>
                         ✖
                     </button>
+                    {/* Auth buttons mobile */}
+                    {isAuthenticated() && user ? (
+                        <Collapse bordered={false} expandIconPosition="end" className={cx('user-collapse')}>
+                            <Panel
+                                header={
+                                    <div className={cx('user-info-mobile')}>
+                                        {user.profile_image ? (
+                                            <Avatar src={user.profile_image} size={40} style={{ cursor: 'pointer' }} />
+                                        ) : (
+                                            <Avatar
+                                                size={40}
+                                                style={{
+                                                    backgroundColor: 'var(--primary)',
+                                                    fontSize: '20px',
+                                                    cursor: 'pointer',
+                                                }}
+                                            >
+                                                {getInitial(user.display_name)}
+                                            </Avatar>
+                                        )}
+                                        <p className={cx('user-name')}>{user.display_name}</p>
+                                    </div>
+                                }
+                                key="1"
+                            >
+                                <ul className={cx('user-menu')}>
+                                    <li>
+                                        <Link to={config.routes.learning}>Vào học</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={config.routes.profile}>Cập nhật hồ sơ</Link>
+                                    </li>
+                                    <li>
+                                        <Link onClick={handleLogout}>Đăng xuất</Link>
+                                    </li>
+                                </ul>
+                            </Panel>
+                        </Collapse>
+                    ) : (
+                        <AuthButtons />
+                    )}
+
                     <Menu
                         mode="inline"
                         items={items}
@@ -305,7 +381,6 @@ export default function Header({ visible }) {
                         </figure>
                     </Link>
                 </div>
-
                 {/* Button MENU */}
                 <div className={cx('menu-toggle')}>
                     <button className={cx('menu-icon')} onClick={handleMenuToggle}>
@@ -452,7 +527,56 @@ export default function Header({ visible }) {
                 <div className={cx('search-form')}>
                     <Search />
                 </div>
-                {/* Hero */}
+
+                {/* Auth buttons desktop */}
+                {/* Auth buttons desktop */}
+                <div className={cx('auth-desktop')}>
+                    {isAuthenticated() && user ? (
+                        <div className={cx('auth-inner')}>
+                            <div className={cx('notification')}>
+                                <Badge count={1000} overflowCount={99}>
+                                    <IoMdNotifications
+                                        size={28}
+                                        style={{ cursor: 'pointer', color: 'var(--bg-gray)' }}
+                                    />
+                                </Badge>
+                            </div>
+
+                            <Dropdown
+                                menu={{
+                                    items: [
+                                        { key: 'learning', label: <Link to={config.routes.learning}>Vào học</Link> },
+                                        {
+                                            key: 'profile',
+                                            label: <Link to={config.routes.profile}>Cập nhật hồ sơ</Link>,
+                                        },
+                                        { key: 'logout', label: <span onClick={handleLogout}>Đăng xuất</span> },
+                                    ],
+                                }}
+                                trigger={['click']}
+                                placement="bottomRight"
+                                overlayClassName={cx('custom-dropdown')}
+                            >
+                                {user.profile_image ? (
+                                    <Avatar src={user.profile_image} size={40} style={{ cursor: 'pointer' }} />
+                                ) : (
+                                    <Avatar
+                                        size={40}
+                                        style={{
+                                            backgroundColor: 'var(--primary)',
+                                            fontSize: '20px',
+                                            cursor: 'pointer',
+                                        }}
+                                    >
+                                        {getInitial(user.display_name)}
+                                    </Avatar>
+                                )}
+                            </Dropdown>
+                        </div>
+                    ) : (
+                        <AuthButtons />
+                    )}
+                </div>
             </div>
 
             {/* Render Menu mobile */}
