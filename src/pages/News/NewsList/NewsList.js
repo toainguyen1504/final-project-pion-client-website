@@ -6,7 +6,7 @@ import { Empty } from 'antd';
 import HeadingStar from '@/components/HeadingStar';
 import Breadcrumb from '@/components/Breadcrumb';
 import ImageCard from '@/components/ImageCard';
-import { getAllNews } from '@/services/newsService';
+import { getAllNews } from '@/services';
 
 import styles from './NewsList.module.scss';
 

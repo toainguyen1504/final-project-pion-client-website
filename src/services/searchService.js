@@ -1,4 +1,4 @@
-import { getAllNews } from '@/services/newsService';
+import { getAllNews } from '@/services';
 
 // Dữ liệu mặc định (khóa học, trang tĩnh…)
 const defaultSearchData = [
