@@ -40,9 +40,7 @@ export async function getAllNews() {
                 image: imageUrl,
                 link: post.slug,
                 // fallback cho description: lấy 200 ký tự đầu từ content nếu seo_description không có
-                // description:
-                //     post.seo_description ||
-                //     (post.content ? post.content.slice(0, 200) + '...' : 'Xem thông tin chi tiết tại đây...'),
+                description: post.seo_description || 'Xem thông tin chi tiết tại đây...',
             };
         });
 
@@ -100,9 +98,7 @@ export async function getNewsWithPagination(page = 1, perPage = 12, sort = 'publ
                 ...post,
                 image: imageUrl,
                 link: post.slug,
-                description:
-                    post.seo_description ||
-                    (post.content ? post.content.slice(0, 200) + '...' : 'Xem thông tin chi tiết tại đây...'),
+                description: post.seo_description || 'Xem thông tin chi tiết tại đây...',
             };
         });
 
