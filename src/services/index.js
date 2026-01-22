@@ -1,2 +1,2 @@
 export { searchItems } from './searchService';
-export { getAllNews, getNewsWithPagination } from './newsService';
+export { getAllNews, getNewsWithPagination, getNewsBySlug } from './newsService';
