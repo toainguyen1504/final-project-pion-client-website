@@ -1,8 +1,9 @@
 import { Form, Input, Button, message, Row, Col, Modal, Card } from 'antd';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-
 import classNames from 'classnames/bind';
+
+import { BASE_URL } from '@/constants';
 import styles from './RegisterProgram.module.scss';
 
 const cx = classNames.bind(styles);
@@ -60,8 +61,7 @@ function RegisterProgram() {
             values.phone = phone;
 
             // Fetch
-            // production: REACT_APP_PROD_URL, local:  REACT_APP_LOCAL_URL
-            const res = await fetch(`${process.env.REACT_APP_PROD_URL}/api/form`, {
+            const res = await fetch(`${BASE_URL}/form`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values),

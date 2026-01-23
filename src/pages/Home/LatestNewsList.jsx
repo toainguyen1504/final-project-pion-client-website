@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 import classNames from 'classnames/bind';
 import { GiHumanTarget } from 'react-icons/gi';
@@ -8,24 +7,13 @@ import { MdAirplaneTicket } from 'react-icons/md';
 
 import { jobs } from '@/data';
 import ImageCard from '@/components/ImageCard';
+import { BASE_URL, MEDIA_BASE_URL } from '@/constants';
+
 import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
 
 // const MAX_NEWS = 6;
-
-// 🔹 Cấu hình BASE_URL theo môi trường
-const BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/api`
-        : `${process.env.REACT_APP_PROD_URL}/api`;
-
-// 🔹 Cấu hình MEDIA_BASE_URL (trỏ tới thư mục storage)
-const MEDIA_BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? `${process.env.REACT_APP_LOCAL_URL}/storage`
-        : `${process.env.REACT_APP_PROD_URL}/storage`;
-
 // new nổi bật -> đổi name
 const featuredNews = [
     {
@@ -39,7 +27,7 @@ const featuredNews = [
 ];
 
 // Thêm data -> lấy từ api thêm 5 tin tức mới nhất -> lấy = created_at -> sau đó tạo thành 1 list LatestNews
-const NewsList = () => {
+const LatestNewsList = () => {
     const [loading, setLoading] = useState(false);
     const [activeTab, setActiveTab] = useState('2');
     const [latestNews, setLatestNews] = useState([]);
@@ -161,10 +149,4 @@ const NewsList = () => {
     return <Tabs defaultActiveKey="2" className={cx('tabs')} centered onChange={handleTabChange} items={items} />;
 };
 
-NewsList.propTypes = {
-    title: PropTypes.string,
-    desc: PropTypes.string,
-    link: PropTypes.string,
-};
-
-export default NewsList;
+export default LatestNewsList;

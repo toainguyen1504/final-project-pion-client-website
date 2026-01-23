@@ -76,7 +76,9 @@
     font-size: 1.6rem;
     color: var(--text-color-bold);
     text-decoration: none;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
 
     &:hover {
         color: var(--primary);
@@ -99,7 +101,9 @@
     font-size: 1.6rem;
     color: var(--text-color-bold);
     cursor: default;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
 
     &:hover {
         color: var(--primary);
@@ -123,7 +127,10 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .dropdown-menu::after {
@@ -152,7 +159,9 @@
     flex-shrink: 0;
     white-space: nowrap;
     padding: 8px 16px;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
 }
 
 .dropdown-item + .dropdown-item {
@@ -276,7 +285,9 @@
         }
     }
 
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 .close-button {
@@ -334,76 +345,117 @@
 
 // overide antd dropdown menu padding
 :global {
-    .custom-dropdown .ant-dropdown-menu {
-        padding: 16px !important;
+    .custom-dropdown .ant-dropdown-menu,
+    .ant-dropdown-menu {
+        margin-top: 12px !important;
+        padding: 8px 12px 16px !important;
+        border-radius: 12px;
     }
-}
 
-.user-modal {
-    position: absolute;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    z-index: 100;
+    /* Dropdown container for auth component */
+    .auth-dropdown {
+        min-width: 260px;
 
-    .user-info {
-        margin-bottom: 12px;
-
-        strong {
-            display: block;
-            font-size: 16px;
-        }
-
-        span {
+        .ant-dropdown-menu-item {
+            padding: 10px 12px;
             font-size: 14px;
-            color: var(--text-color);
-        }
-    }
-
-    .user-links {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-
-            &:hover {
-                text-decoration: underline;
-            }
         }
 
-        .logout-btn {
-            margin-top: 8px;
-            background: var(--text-color);
-            color: white;
-            border: none;
-            padding: 8px;
-            border-radius: 4px;
-            cursor: pointer;
-
-            &:hover {
-                opacity: 0.85;
-            }
+        .link {
+            margin: 0 6px !important;
         }
     }
 }
 
-.auth-inner {
+.avatar-border {
     display: flex;
     align-items: center;
-    gap: 24px;
+    justify-content: center;
+    padding: 4px; // độ dày viền
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #ea4335,
+        #ea4335 90deg,
+        #4285f4 90deg,
+        #4285f4 180deg,
+        #34a853 180deg,
+        #34a853 270deg,
+        #fbbc04 270deg,
+        #fbbc04 360deg
+    );
+}
+
+/* Avatar trigger */
+.trigger-avatar {
+    cursor: pointer;
+    background-color: var(--primary);
+    box-shadow: 0 0 0 2px #fff; // đảm bảo viền trắng rõ ràng
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: var(--primary);
+    box-shadow: 0 0 0 2px #fff; // đảm bảo viền trắng rõ ràng
+}
+
+/* Logout */
+.logout {
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .notification {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    color: var(--bg-gray);
+    margin-top: 12px;
     height: 36px;
     width: 36px;
+}
+
+/* ================= USER info desktop ================= */
+.auth-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* User info header */
+.user-info-desktop,
+.user-info-mobile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 4px;
+
+    .user-text {
+        display: flex;
+        flex-direction: column;
+        padding: 0 6px;
+    }
+
+    .display-name {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--text-color-bold);
+        line-height: 1.2;
+    }
+
+    .username {
+        padding-top: 4px;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--text-color);
+        margin: 0;
+    }
 }
 
 /* ================= USER collapse for mobile ================= */
@@ -419,25 +471,9 @@
     }
 
     .user-info-mobile {
-        display: flex;
-        align-items: center;
         gap: 12px;
         padding: 0 16px;
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .user-name {
-            font-size: 18px;
-            text-transform: capitalize;
-            font-weight: 500;
-            color: var(--text-primary);
-            flex: 1;
-        }
+        text-transform: capitalize;
     }
 
     .user-menu {
