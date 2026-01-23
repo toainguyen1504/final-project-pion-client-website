@@ -1,0 +1,99 @@
+.image-card {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+
+    .card-inner {
+        font-family: inherit;
+        font-weight: inherit;
+        overflow: hidden;
+        border-radius: 10px;
+        // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fafafa;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        :global {
+            .ant-card-cover img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                object-position: top center;
+            }
+
+            .ant-card-meta {
+                display: block;
+                padding: 0 4px;
+
+                .card-title {
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    color: var(--text-color-bold);
+                    user-select: none;
+
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+
+                    &:hover {
+                        color: var(--primary);
+                    }
+
+                    transition: color 0.3s ease;
+                }
+
+                .ant-card-meta-description {
+                    font-size: 1.6rem;
+                    color: var(--text-color);
+                    text-align: left;
+
+                    .course-price {
+                        font-weight: 600;
+                        margin-bottom: 8px;
+
+                        &.free {
+                            color: var(--primary);
+                        }
+                    }
+
+                    .course-stats {
+                        margin-top: 16px;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        gap: 12px;
+                        font-size: 1.5rem;
+                        color: var(--text-color);
+
+                        li {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        }
+
+                        svg {
+                            font-size: 1.4rem;
+                            color: var(--text-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .image-card .card-inner :global {
+        .ant-card-meta {
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+}
