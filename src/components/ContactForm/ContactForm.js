@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 // import ReCAPTCHA from 'react-google-recaptcha';
 import { message, Button } from 'antd';
 import HeadingStar from '@/components/HeadingStar';
+import { BASE_URL } from '@/constants';
 import styles from './ContactForm.module.scss';
 
 const cx = classNames.bind(styles);
@@ -134,12 +135,6 @@ function containsBadWords(text) {
 //         .replace(/"/g, '&quot;')
 //         .replace(/'/g, '&#039;');
 // }
-
-// 🔹 Cấu hình BASE_URL theo môi trường
-const BASE_URL =
-    process.env.NODE_ENV === 'development'
-        ? process.env.REACT_APP_LOCAL_URL + '/api'
-        : process.env.REACT_APP_PROD_URL + '/api';
 
 const ContactForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({

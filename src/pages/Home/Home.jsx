@@ -16,7 +16,7 @@ import BannerCarousel from '@/components/BannerCarousel';
 import FeedbackCard from '@/components/FeedbackCard';
 import WhyChooseItem from './WhyChooseItem';
 import CourseList from './CourseList';
-import NewsList from './NewsList';
+import LatestNewsList from './LatestNewsList';
 import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
@@ -340,7 +340,7 @@ function Home() {
                                 <a href="#!">Tin tức mới nhất</a>
                             </h2>
                         </div>
-                        <NewsList />
+                        <LatestNewsList />
                     </section>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Dropdown } from 'antd';
 import { ImSpinner } from 'react-icons/im';
@@ -18,46 +18,62 @@ function Search() {
     const inputRef = useRef();
     const navigate = useNavigate();
 
+    // Debounce: chỉ gọi searchItems sau 500ms kể từ lần gõ cuối
+    useEffect(() => {
+        if (!searchValue.trim()) {
+            setResults([]);
+            return;
+        }
+
+        setLoading(true);
+        const handler = setTimeout(async () => {
+            const data = await searchItems(searchValue);
+            setResults(data);
+            setLoading(false);
+        }, 500);
+
+        return () => clearTimeout(handler); // clear timeout khi user gõ tiếp
+    }, [searchValue]);
+
     const handleClear = () => {
         setSearchValue('');
-        setResults([]); // clear result when clear input
+        setResults([]);
         inputRef.current.focus();
-    };
-
-    const handleChange = (e) => {
-        const value = e.target.value;
-        if (!value.startsWith(' ')) {
-            setSearchValue(value);
-            setLoading(true);
-
-            setTimeout(() => {
-                setResults(searchItems(value));
-                setLoading(false);
-            }, 800); // set mock time loading
-        }
     };
 
     const handleSearch = () => {
         if (!searchValue.trim()) return;
-
         navigate(`/tim-kiem?q=${encodeURIComponent(searchValue)}`);
     };
 
-    const menuItems = results.map((item) => ({
-        key: item.id,
-        label: (
-            <Link to={`/${item.slug}`} className={cx('link')}>
-                {item.title}
-            </Link>
-        ),
-    }));
+    let menuItems = [];
+
+    if (results.length > 0) {
+        // Có kết quả tìm kiếm
+        menuItems = results.map((item) => ({
+            key: item.id,
+            label: (
+                <Link to={`/${item.slug}`} className={cx('link')}>
+                    {item.title}
+                </Link>
+            ),
+        }));
+    } else if (!loading && searchValue.trim()) {
+        // Không có kết quả, đã debounce xong và có query
+        menuItems = [
+            {
+                key: 'no-result',
+                label: <span className={cx('no-result')}>Không tìm thấy kết quả</span>,
+            },
+        ];
+    }
 
     return (
         <div className={cx('search-container')}>
             <Dropdown
                 menu={{ items: menuItems }}
                 trigger={['click']}
-                open={searchValue.length > 0 && results.length > 0}
+                open={searchValue.length > 0 && (results.length > 0 || (!loading && menuItems.length > 0))} // Mở dropdown khi có input và có dữ liệu hiển thị
             >
                 <div className={cx('search')}>
                     <input
@@ -65,7 +81,7 @@ function Search() {
                         value={searchValue}
                         placeholder="Tìm kiếm..."
                         spellCheck={false}
-                        onChange={handleChange}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         onKeyDown={(e) => {
                             if (e.key === 'Enter') {
                                 handleSearch();
