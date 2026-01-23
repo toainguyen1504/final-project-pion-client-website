@@ -17,7 +17,7 @@ import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
-// Menu items for Header
+// Menu items for Header mobile
 const items = [
     {
         type: 'divider',
@@ -191,18 +191,7 @@ const items = [
             // },
         ],
     },
-    // {
-    //     type: 'divider',
-    // },
-    // {
-    //     key: 'study-abroad',
-    //     label: 'Du học',
-    //     children: [
-    //         // { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
-    //         // { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
-    //         { key: 'abroad-china', label: <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025">Du học Trung Quốc</Link> },
-    //     ],
-    // },
+
     {
         type: 'divider',
     },
@@ -370,64 +359,8 @@ export default function Header({ visible }) {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Đức</h4>
-                                <ul>
-                                    <li>
-                                        <Link to="/tieng-duc-online-1-kem-1">Tiếng Đức Online 1 kèm 1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-a1">Tiếng Đức A1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-a2">Tiếng Đức A2</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-b1">Tiếng Đức B1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-b2">Tiếng Đức B2</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Hàn</h4>
-                                <ul>
-                                    <li>
-                                        <Link to="/tieng-han-so-cap-1">Tiếng Hàn sơ cấp 1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-han-so-cap-2">Tiếng Hàn sơ cấp 2</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/luyen-thi-topik-i">Luyện thi TOPIK I</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/luyen-thi-topik-ii">Luyện thi TOPIK II</Link>
-                                    </li>
-                                </ul>
-                            </div> */}
                         </div>
                     </div>
-
-                    {/* Du học */}
-                    {/* <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
-                        Du học nghề Đức
-                    </Link>
-                    <Link to="/du-hoc-han-quoc" className={cx('dropdown-item')}>
-                        Du học Hàn Quốc
-                    </Link> */}
-                    {/* <div className={cx('dropdown')}>
-                        <div className={cx('dropdown-toggle')}>
-                            <span>Du học</span>
-                            <RiArrowDropDownLine size={24} />
-                        </div>
-                        <div className={cx('dropdown-menu')}>
-                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('dropdown-item')}>
-                                Du học Trung Quốc
-                            </Link>
-                        </div>
-                    </div> */}
 
                     {/* Tin tức */}
                     <div className={cx('dropdown')}>
@@ -458,6 +391,7 @@ export default function Header({ visible }) {
                         Liên hệ
                     </NavLink>
                 </nav>
+
                 {/* Search form */}
                 <div className={cx('search-form')}>
                     <Search />

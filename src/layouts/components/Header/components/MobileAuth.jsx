@@ -34,6 +34,9 @@ export default function MobileAuth({ user, onLogout }) {
                         <Link to={config.routes.learning}>Vào học</Link>
                     </li>
                     <li>
+                        <Link to={config.routes.myCourses}>Khóa học của tôi</Link>
+                    </li>
+                    <li>
                         <Link to={config.routes.profile}>Cập nhật hồ sơ</Link>
                     </li>
                     <li>

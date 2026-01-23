@@ -2,6 +2,7 @@ import { Avatar, Badge, Dropdown } from 'antd';
 import { IoMdNotifications } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { getInitial } from '@/utils';
+import config from '@/config';
 import styles from '../Header.module.scss';
 import classNames from 'classnames/bind';
 
@@ -46,8 +47,16 @@ export default function DesktopAuth({ user, onLogout }) {
                         {
                             key: 'learning',
                             label: (
-                                <Link to="/learning" className={cx('link')}>
+                                <Link to={config.routes.learning} className={cx('link')}>
                                     Vào học
+                                </Link>
+                            ),
+                        },
+                        {
+                            key: 'my-courses',
+                            label: (
+                                <Link to={config.routes.myCourses} className={cx('link')}>
+                                    Khóa học của tôi
                                 </Link>
                             ),
                         },
@@ -55,7 +64,7 @@ export default function DesktopAuth({ user, onLogout }) {
                         {
                             key: 'profile',
                             label: (
-                                <Link to="/profile" className={cx('link')}>
+                                <Link to={config.routes.profile} className={cx('link')}>
                                     Cập nhật hồ sơ
                                 </Link>
                             ),

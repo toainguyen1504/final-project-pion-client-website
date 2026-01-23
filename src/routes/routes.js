@@ -22,6 +22,7 @@ import SearchPage from '@/pages/SearchPage';
 // import { StudyAbroadGerman, StudyAbroadChina, StudyAbroadKorean } from '@/pages/StudyAbroad';
 import { StudyAbroadChina } from '@/pages/StudyAbroad';
 import { NewsList, NewsDetail, NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
+import Learning from '@/pages/Learning'; // E-LEARNING
 import { tocDataChina } from '@/data';
 // import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
@@ -33,6 +34,9 @@ const publicRoutes = [
     { path: config.routes.profile, component: ProfilePage, layout: null },
     { path: config.routes.verifyEmail, component: EmailVerifyPage, layout: null },
     { path: config.routes.verifyPhone, component: PhoneVerifyPage, layout: null },
+
+    // E-learning
+    { path: config.routes.learning, component: Learning }, // lấy default layout
 
     // Info Pages
     { path: config.routes.home, component: Home },

@@ -32,7 +32,8 @@ const routes = {
     faq: '/cau-hoi-thuong-gap',
 
     // learning
-    learning: '/hoc-tap',
+    learning: '/learning',
+    myCourses: '/my-courses',
 };
 
 export default routes;
