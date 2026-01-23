@@ -281,7 +281,8 @@ function Footer() {
                 <div>
                     <FaPhoneAlt size={28} className={cx('icon')} />
                     <p>
-                        Hotline đào tạo: 0899.363.369 <br />
+                        Hotline Pion English: 0899.363.369 <br />
+                        Hotline Pion Chinese: 0899.108.678 <br />
                         Hotline du học: 0901.900.677
                     </p>
                 </div>
@@ -296,20 +297,29 @@ function Footer() {
                     <FaFacebookSquare size={28} className={cx('icon')} />
                     <div className={cx('inner')}>
                         <a
+                            href="https://www.facebook.com/tienganhpionhoainhon"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cx('link')}
+                        >
+                            Tiếng Anh Pion
+                        </a>
+                        <a
                             href="https://www.facebook.com/duhocpion"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Trung tâm tiếng Trung
+                            Pion Global Bình Định
                         </a>
+
                         <a
-                            href="https://www.facebook.com/tienganhpionhoainhon/"
+                            href="https://www.facebook.com/duhocpionhcm/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Trung tâm tiếng Anh
+                            Pion Global HCM
                         </a>
                     </div>
                 </div>
