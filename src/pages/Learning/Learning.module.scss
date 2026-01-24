@@ -1,30 +1,7 @@
-.custom-text {
-    color: var(--primary-light);
-}
-
 // =============================
 // Courses
 .courses {
     margin: 24px 0 48px;
-
-    .heading-section {
-        margin-bottom: 16px;
-
-        .title-section {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--text-color-bold);
-
-            a {
-                color: inherit;
-                text-decoration: none;
-
-                &:hover {
-                    color: var(--primary);
-                }
-            }
-        }
-    }
 
     .courses-inner,
     .courses-loading {

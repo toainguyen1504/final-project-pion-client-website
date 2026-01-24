@@ -3,7 +3,7 @@ const eCourses = [
         title: 'Kiến Thức Nhập Môn IT',
         price: 200000,
         button: 'Vào học',
-        image: '',
+        image: '/assets/img/default.jpg',
         link: '/learning/kien-thuc-nhap-mon-it',
         stats: {
             participants: 138361,
