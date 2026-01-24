@@ -1,12 +1,12 @@
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import classNames from 'classnames/bind';
-import { Row, Col } from 'antd';
-
-import styles from './About.module.scss';
-
 import { FaBookOpen, FaHandshake, FaFileInvoiceDollar } from 'react-icons/fa';
 import { GiOpenBook } from 'react-icons/gi';
+import { Row, Col } from 'antd';
+
+import HeadingSection from '@/components/HeadingSection';
+import styles from './About.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -71,9 +71,7 @@ const departments = [
 const Departments = () => {
     return (
         <section className={cx('departments')}>
-            <div className={cx('heading-section')}>
-                <h2 className={cx('title-section', 'uppercase')}>CÁC PHÒNG BAN</h2>
-            </div>
+            <HeadingSection title="CÁC PHÒNG BAN" />
 
             <Row gutter={[24, 24]}>
                 {departments.map((dept, index) => (

@@ -1,0 +1,35 @@
+// Heading section
+.heading-section {
+    position: relative;
+    margin: 28px 0 24px;
+
+    .title-section {
+        display: inline-block;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--white);
+        background: var(--primary);
+        line-height: 1.6;
+        padding: 6px 16px 4px 16px;
+        border-radius: 4px;
+        user-select: none;
+
+        a,
+        a[href] {
+            color: var(--white);
+        }
+
+        &::after {
+            position: absolute;
+            height: 1px;
+            content: '';
+            display: block;
+            width: 100%;
+            z-index: -1;
+            top: 18px;
+            left: 0;
+            background: linear-gradient(to right, #555, #000);
+        }
+    }
+}
