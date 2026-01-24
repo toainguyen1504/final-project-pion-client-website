@@ -61,7 +61,7 @@
 
                         .description-top {
                             .card-title {
-                                font-size: 1.8rem;
+                                font-size: 1.6rem;
                                 font-weight: 600;
                                 color: var(--text-color-bold);
                                 user-select: none;
@@ -75,10 +75,22 @@
                             }
 
                             .course-price {
-                                font-weight: 600;
+                                display: flex;
+                                gap: 8px;
+                                font-size: 1.6rem;
                                 margin-top: 4px;
 
+                                .original-price {
+                                    font-size: 1.4rem;
+                                    text-decoration: line-through;
+                                    color: var(--text-color);
+                                    font-weight: 400;
+                                    margin-right: 8px;
+                                }
+
+                                .discount-price,
                                 &.free {
+                                    font-weight: 600;
                                     color: var(--primary);
                                 }
                             }
