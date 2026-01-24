@@ -7,17 +7,47 @@
     object-position: center;
 }
 
-/* Custom Dots Carousel*/
 :global {
+    // Override carousel
+    .ant-carousel .slick-dots li,
     .ant-carousel .slick-dots li button {
-        background: var(--text-color);
+        width: 32px;
+        height: 8px;
     }
 
-    li.slick-active button {
-        background: var(--text-color-bold);
+    .ant-carousel .slick-dots li button:before {
+        content: '';
+        width: 32px;
+        height: 8px;
+        opacity: 1;
+        border-radius: 50px;
+        margin-right: 12px;
     }
 
-    .ant-carousel .slick-dots li::after {
-        background: var(--text-color-bold);
+    .ant-carousel .slick-dots li.slick-active button:before {
+        width: 50px;
+        height: 8px;
+        background-color: #fff;
+    }
+
+    .ant-carousel .slick-dots li.slick-active,
+    .ant-carousel .slick-dots li.slick-active::after,
+    .ant-carousel .slick-dots li.slick-active button {
+        width: 50px;
+        height: 8px;
+        background-color: #fff;
+    }
+
+    // Mobile
+    @media (max-width: 767px) {
+        .ant-carousel .slick-dots li,
+        .ant-carousel .slick-dots li button,
+        .ant-carousel .slick-dots li button:before,
+        .ant-carousel .slick-dots li.slick-active button:before,
+        .ant-carousel .slick-dots li.slick-active,
+        .ant-carousel .slick-dots li.slick-active::after,
+        .ant-carousel .slick-dots li.slick-active button {
+            height: 6px;
+        }
     }
 }
