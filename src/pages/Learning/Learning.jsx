@@ -1,26 +1,17 @@
-import AOS from 'aos';
 import classNames from 'classnames/bind';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import HeadingSection from '@/components/HeadingSection';
+import eCourses from '@/data/eCourses';
 import ECoursesList from './ECoursesList';
 import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Learning() {
-    // animation
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: true, // animate once
-            easing: 'ease-in-out',
-        });
-        AOS.refresh();
-    }, []);
+    const getProCourses = () => eCourses.filter((course) => course.price > 0);
+    const getFreeCourses = () => eCourses.filter((course) => course.price === 0);
 
     return (
         <>
@@ -38,15 +29,19 @@ function Learning() {
                 </div>
 
                 <div className="inner">
+                    {/* Card text: Tiếp tục học - card đang học gần đây nhất -> có nút Học ngay -> */}
+
                     {/* Banner - sau tối ưu lại như F8 */}
                     {/* <BannerCarousel images={bannerImages} /> */}
 
                     {/* Courses */}
                     <section className={cx('courses')}>
-                        <HeadingSection title="Khóa học miễn phí" />
+                        <HeadingSection title="Khóa học Pro" />
+                        <ECoursesList courses={getProCourses()} />
 
-                        <ECoursesList />
                         {/* khóa học miễn phí - tạo Ecourses ở đây: click thumb hoặc title sẽ vào detail*/}
+                        <HeadingSection title="Khóa học miễn phí" />
+                        <ECoursesList courses={getFreeCourses()} />
                     </section>
                 </div>
             </div>
