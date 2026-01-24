@@ -28,10 +28,13 @@ const ECoursesList = () => {
                               <ECoursesCard
                                   title={course.title}
                                   price={course.price}
+                                  discount_price={course.discount_price}
                                   image={course.image}
                                   link={course.link}
                                   button={course.button}
-                                  stats={course.stats}
+                                  participants={course.participants}
+                                  total_lessons={course.total_lessons}
+                                  duration={course.duration}
                               />
                           </div>
                       ))}
