@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import HeadingSection from '@/components/HeadingSection';
+import LearningBannerCarousel from './LearningBannerCarousel';
 import eCourses from '@/data/eCourses';
 import ECoursesList from './ECoursesList';
 import styles from './Learning.module.scss';
@@ -12,6 +13,15 @@ const cx = classNames.bind(styles);
 function Learning() {
     const getProCourses = () => eCourses.filter((course) => course.price > 0);
     const getFreeCourses = () => eCourses.filter((course) => course.price === 0);
+
+    // fake banners for e-learning
+    const bannerImages = [
+        '/assets/img/banner/new_banner_1.jpg',
+        '/assets/img/banner/new_banner_2.jpg',
+        '/assets/img/banner/banner_5.png',
+        '/assets/img/banner/banner_4.png',
+        '/assets/img/banner/banner_3.png',
+    ];
 
     return (
         <>
@@ -31,8 +41,10 @@ function Learning() {
                 <div className="inner">
                     {/* Card text: Tiếp tục học - card đang học gần đây nhất -> có nút Học ngay -> */}
 
-                    {/* Banner - sau tối ưu lại như F8 */}
-                    {/* <BannerCarousel images={bannerImages} /> */}
+                    {/* Banner */}
+                    <section className={cx('banners')}>
+                        <LearningBannerCarousel images={bannerImages} />
+                    </section>
 
                     {/* Courses */}
                     <section className={cx('courses')}>
