@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Button, Skeleton } from 'antd';
+import { Card, Skeleton } from 'antd';
 import { FaUsers, FaVideo, FaClock } from 'react-icons/fa';
 import classNames from 'classnames/bind';
 
@@ -22,35 +22,34 @@ const ECoursesCard = ({ title, price, button, image, link, loading, stats }) => 
                 {loading ? (
                     <Skeleton active paragraph={{ rows: 3 }} />
                 ) : (
-                    <>
-                        <Card.Meta
-                            title={
-                                <Link to={link} className={cx('card-title')}>
-                                    {title}
-                                </Link>
-                            }
-                            description={
-                                <>
+                    <Card.Meta
+                        title={null}
+                        description={
+                            <div className={cx('meta-wrapper')}>
+                                <div className={cx('description-top')}>
+                                    <Link to={link} className={cx('card-title')}>
+                                        {title}
+                                    </Link>
                                     <p className={cx('course-price', { free: isFree })}>
                                         {isFree ? 'Miễn phí' : `${price.toLocaleString()}đ`}
                                     </p>
-                                    {stats && (
-                                        <ul className={cx('course-stats')}>
-                                            <li>
-                                                <FaUsers /> {Number(stats.participants).toLocaleString()}
-                                            </li>
-                                            <li>
-                                                <FaVideo /> {stats.lessons}
-                                            </li>
-                                            <li>
-                                                <FaClock /> {stats.duration}
-                                            </li>
-                                        </ul>
-                                    )}
-                                </>
-                            }
-                        />
-                    </>
+                                </div>
+                                {stats && (
+                                    <ul className={cx('course-stats')}>
+                                        <li>
+                                            <FaUsers /> {Number(stats.participants).toLocaleString()}
+                                        </li>
+                                        <li>
+                                            <FaVideo /> {stats.lessons}
+                                        </li>
+                                        <li>
+                                            <FaClock /> {stats.duration}
+                                        </li>
+                                    </ul>
+                                )}
+                            </div>
+                        }
+                    />
                 )}
             </Card>
         </article>
