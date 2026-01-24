@@ -1,14 +1,15 @@
 .image-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
-    max-width: 380px;
 
     .card-inner {
-        font-family: inherit;
-        font-weight: inherit;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
         border-radius: 10px;
-        // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         background-color: #fafafa;
         transition: all 0.3s ease-in-out;
 
@@ -26,63 +27,82 @@
 
             .ant-card-cover img {
                 width: 100%;
-                height: 200px;
+                height: 158px;
                 object-fit: cover;
                 object-position: top center;
             }
 
+            .ant-card-body {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
             .ant-card-meta {
-                display: block;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
                 padding: 0 4px;
 
-                .card-title {
-                    font-size: 1.8rem;
-                    font-weight: 600;
-                    color: var(--text-color-bold);
-                    user-select: none;
-
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: normal;
-
-                    transition: color 0.3s ease;
-                }
-
                 .ant-card-meta-description {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
                     font-size: 1.6rem;
                     color: var(--text-color);
                     text-align: left;
 
-                    .course-price {
-                        font-weight: 600;
-                        margin-bottom: 8px;
-
-                        &.free {
-                            color: var(--primary);
-                        }
-                    }
-
-                    .course-stats {
-                        margin-top: 16px;
+                    .meta-wrapper {
+                        flex: 1;
                         display: flex;
+                        flex-direction: column;
                         justify-content: space-between;
-                        flex-wrap: wrap;
-                        gap: 12px;
-                        font-size: 1.5rem;
-                        color: var(--text-color);
 
-                        li {
-                            display: flex;
-                            align-items: center;
-                            gap: 8px;
+                        .description-top {
+                            .card-title {
+                                font-size: 1.8rem;
+                                font-weight: 600;
+                                color: var(--text-color-bold);
+                                user-select: none;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -webkit-line-clamp: 2;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: normal;
+                                transition: color 0.3s ease;
+                            }
+
+                            .course-price {
+                                font-weight: 600;
+                                margin-top: 4px;
+
+                                &.free {
+                                    color: var(--primary);
+                                }
+                            }
                         }
 
-                        svg {
-                            font-size: 1.4rem;
+                        .course-stats {
+                            margin-top: 12px;
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            gap: 12px;
+                            font-size: 1.5rem;
                             color: var(--text-color);
+
+                            li {
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                            }
+
+                            svg {
+                                font-size: 1.4rem;
+                                color: var(--text-color);
+                            }
                         }
                     }
                 }
@@ -96,6 +116,10 @@
         .ant-card-meta {
             max-height: none;
             overflow-y: visible;
+
+            .ant-card-meta-description {
+                height: auto;
+            }
         }
     }
 }
