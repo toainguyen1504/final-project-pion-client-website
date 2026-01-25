@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import Breadcrumb from '@/components/Breadcrumb';
 import HeadingSection from '@/components/HeadingSection';
 import LearningBannerCarousel from './LearningBannerCarousel';
-import eCourses from '@/data/eCourses';
+import { eCourses } from '@/data/eCourses';
 import ECoursesList from './ECoursesList';
 import styles from './Learning.module.scss';
 

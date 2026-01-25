@@ -29,7 +29,7 @@ const ECoursesList = ({ courses }) => {
                                   price={course.price}
                                   discount_price={course.discount_price}
                                   image={course.image}
-                                  link={course.link}
+                                  link={course.link} // courses card component handle dùng to={link} để navigate
                                   button={course.button}
                                   participants={course.participants}
                                   total_lessons={course.total_lessons}
