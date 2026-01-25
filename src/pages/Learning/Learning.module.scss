@@ -22,8 +22,6 @@
 
 // ** E-Course DETAIL **
 .course-detail {
-    padding: 32px;
-    max-width: 1200px;
     margin: 0 auto;
 
     h1,
@@ -38,6 +36,7 @@
         font-size: 2.4rem;
     }
 
+    // BANNER
     .banner {
         display: flex;
         flex-wrap: wrap;
@@ -61,10 +60,24 @@
                 color: #555;
                 margin-bottom: 20px;
                 line-height: 1.6;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: normal;
+            }
+
+            .free,
+            .price .discount {
+                color: #f5222d;
+                font-weight: 600;
+                font-size: 2rem;
             }
 
             .meta {
                 display: flex;
+                align-items: center;
                 flex-wrap: wrap;
                 gap: 12px;
                 margin-bottom: 16px;
@@ -75,14 +88,10 @@
                     gap: 8px;
                     font-size: 1.6rem;
 
-                    .discount {
-                        color: #f5222d;
-                        font-weight: 600;
-                    }
-
                     .original {
                         text-decoration: line-through;
                         color: #999;
+                        font-size: 1.6rem;
                     }
                 }
             }
@@ -96,52 +105,136 @@
         }
     }
 
+    // BENEFITS
     .benefits {
         margin-bottom: 40px;
 
         ul {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px;
+            grid-template-columns: 1fr; // mobile mặc định
+            gap: 16px;
             padding-left: 0;
             list-style: none;
 
+            @media (min-width: 768px) {
+                grid-template-columns: repeat(2, 1fr); // >= tablet
+            }
+
+            // @media (min-width: 1366px) {
+            //     grid-template-columns: repeat(3, 1fr); // desktop
+            // }
+
             li {
+                height: 100%;
                 display: flex;
-                align-items: flex-start;
-                gap: 8px;
+                align-items: center; // icon và text cùng một dòng
+                gap: 10px;
                 font-size: 1.4rem;
                 line-height: 1.6;
-                background-color: #f9f9f9;
-                padding: 8px 12px;
-                border-radius: 6px;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                background-color: #fff;
+                padding: 12px 16px;
+                border-radius: 8px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+                .text {
+                    // cắt bớt nếu quá 1 dòng
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                }
             }
 
             .check-icon {
-                color: var(--primary-highlight);
+                color: var(--primary-highlight, #e53935);
                 font-size: 1.6rem;
-                margin-top: 4px;
                 flex-shrink: 0;
+            }
+
+            span {
+                flex: 1;
+                color: #333;
             }
         }
     }
 
+    // CHAPTERS
     .chapters {
         margin-bottom: 60px;
 
-        ul {
-            padding-left: 20px;
+        .meta {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
             font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-top: -6px;
+            margin-bottom: 28px;
 
-            li {
-                margin-bottom: 6px;
+            .item {
+                position: relative;
+                padding: 0 8px;
+
+                span {
+                    font-weight: 600;
+                    color: var(--text-color-bold);
+                }
+
+                &:not(:last-child)::after {
+                    content: '•';
+                    position: absolute;
+                    top: -4px;
+                    right: -8px;
+                    color: #222;
+                    font-size: 1.8rem;
+                }
             }
         }
 
-        .ant-collapse-header {
-            font-size: 1.5rem;
-            font-weight: 600;
+        :global {
+            .ant-collapse-header {
+                font-size: 1.5rem;
+                font-weight: 600;
+
+                .ant-collapse-arrow {
+                    color: var(--primary);
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .lesson-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 12px;
+
+            li {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+                padding: 6px 0;
+
+                .play-icon {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2rem;
+                    color: var(--primary);
+                    opacity: 0.6;
+                }
+
+                .lesson-title {
+                    flex: 1;
+                    color: #333;
+                }
+            }
         }
     }
 }
