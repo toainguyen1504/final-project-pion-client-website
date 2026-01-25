@@ -1,5 +1,6 @@
 export { default as courses } from './courses';
-export { default as eCourses } from './eCourses';
+export { eCourseDetails, eCourses } from './eCourses';
+
 export { default as jobs } from './jobs';
 export { default as studyAbroad } from './studyAbroad';
 export { default as feedbacks } from './feedbacks';

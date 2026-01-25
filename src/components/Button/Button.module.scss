@@ -8,7 +8,9 @@
     padding: 9px 16px;
     border-radius: 4px;
     background: var(--white);
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
     border: 1px solid transparent;
     flex-shrink: 0;
 
@@ -63,8 +65,8 @@
     border-color: var(--primary);
 
     &:hover {
-        border-color: var(--primary);
-        background: var(--primary-light);
+        border-color: var(--primary-highlight);
+        background: var(--primary-highlight); //custom
         cursor: pointer;
     }
 }

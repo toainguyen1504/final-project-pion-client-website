@@ -27,7 +27,15 @@ const ECoursesCard = ({
         <article className={cx('image-card')}>
             <Card
                 className={cx('card-inner')}
-                cover={loading ? <Skeleton.Image /> : <img alt={title} src={image || DEFAULT_IMAGE} loading="lazy" />}
+                cover={
+                    loading ? (
+                        <Skeleton.Image />
+                    ) : (
+                        <Link to={link} className={cx('card-thumbnail')}>
+                            <img alt={title} src={image || DEFAULT_IMAGE} loading="lazy" />
+                        </Link>
+                    )
+                }
                 loading={loading}
             >
                 {loading ? (
