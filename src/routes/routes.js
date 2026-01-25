@@ -2,7 +2,7 @@ import config from '@/config';
 
 // Layout
 import NotFoundPage from '@/components/NotFoundPage';
-import { BlogLayout, SidebarRightLayout } from '@/layouts';
+import { BlogLayout, SidebarRightLayout, ELearningLayout } from '@/layouts';
 
 import Home from '@/pages/Home';
 import {
@@ -24,6 +24,7 @@ import { StudyAbroadChina } from '@/pages/StudyAbroad';
 import { NewsList, NewsDetail, NewsAvailablePosition, NewsFAQ, JobDetails } from '@/pages/News';
 import Learning from '@/pages/Learning'; // E-LEARNING
 import ECourseDetail from '@/pages/Learning/ECourseDetail'; // E-LEARNING
+import LearningMode from '@/pages/Learning/LearningMode'; // E-LEARNING
 import { tocDataChina } from '@/data';
 // import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
@@ -38,16 +39,18 @@ const publicRoutes = [
 
     // E-learning
     { path: config.routes.learning, component: Learning }, // lấy default layout
-    // {
-    //     path: config.routes.learningMode,
-    //     component: LearningMode,
-    //     layout: null, // tạo layout riêng
-    // },
 
     //E-courses detail - dùng layout default
     {
         path: config.routes.eCourseDetail,
         component: ECourseDetail,
+    },
+
+    // E-LEARNING MODE
+    {
+        path: config.routes.learningMode,
+        component: LearningMode,
+        layout: ELearningLayout, // tạo layout riêng
     },
 
     // Info Pages
