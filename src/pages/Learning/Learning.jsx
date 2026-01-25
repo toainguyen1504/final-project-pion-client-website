@@ -35,7 +35,7 @@ function Learning() {
 
             <div className={cx('wrapper')}>
                 <div className={cx('breadcrumb-wrapper')}>
-                    <Breadcrumb title="E-learning - Khóa học" />
+                    <Breadcrumb title="E-learning" />
                 </div>
 
                 <div className="inner">
