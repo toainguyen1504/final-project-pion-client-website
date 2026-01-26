@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Button, Skeleton } from 'antd';
+import { Card, Button, Skeleton, Tooltip } from 'antd';
 import classNames from 'classnames/bind';
 
 import styles from './ImageCard.module.scss';
@@ -15,7 +14,16 @@ const ImageCard = ({ title, desc, button, image, link, loading }) => {
             <Card
                 className={cx('card-inner')}
                 // eslint-disable-next-line jsx-a11y/img-redundant-alt
-                cover={loading ? <Skeleton.Image /> : <img alt="" src={image || DEFAULT_IMAGE} loading="lazy" />}
+                cover={
+                    loading ? (
+                        <Skeleton.Image />
+                    ) : (
+                        <Link to={link} className={cx('card-thumbnail')}>
+                            <img alt={title} src={image || DEFAULT_IMAGE} loading="lazy" />
+                        </Link>
+                    )
+                }
+                // cover={loading ? <Skeleton.Image /> : <img alt="" src={image || DEFAULT_IMAGE} loading="lazy" />}
                 loading={loading}
             >
                 {loading ? (
@@ -24,9 +32,11 @@ const ImageCard = ({ title, desc, button, image, link, loading }) => {
                     <>
                         <Card.Meta
                             title={
-                                <Link to={link} className={cx('card-title')}>
-                                    {title}
-                                </Link>
+                                <Tooltip title={title}>
+                                    <Link to={link} className={cx('card-title')}>
+                                        {title}
+                                    </Link>
+                                </Tooltip>
                             }
                             description={<p>{desc}</p>}
                         />
