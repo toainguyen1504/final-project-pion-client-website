@@ -13,23 +13,89 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    display: flex;
+    justify-content: space-between;
     height: var(--header-height);
     background-color: #29302b;
     color: #fff;
     padding: 12px 32px;
 
-    .header-inner {
+    .header-inner,
+    .logo-inner,
+    .logo-wrapper {
+        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        // justify-content: space-between;
+    }
+
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        height: var(--header-height);
+        border-radius: 12px;
     }
 
     .logo {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #fff;
+        height: var(--header-height);
+        display: block;
+        margin: 0 auto;
+        padding: 8px;
+        border-radius: 12px;
+    }
+
+    .course-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-left: 16px;
+        color: var(--white-color);
+        overflow: hidden;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+
+    .module-action {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+
+        .progress-bar {
+            display: flex;
+            font-size: 1.4rem;
+            font-weight: 400;
+            gap: 12px;
+
+            .cert-link {
+                color: var(--primary-highlight);
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .note-btn,
+            .help-btn {
+                color: #efeded;
+                background-color: transparent;
+                font-size: 1.4rem;
+                font-weight: 500;
+                padding: 5px 8px;
+
+                &:hover {
+                    color: var(--white-color);
+                    text-decoration: none !important;
+                }
+            }
+        }
     }
 }
+
 .main {
     flex: 1;
     display: flex;

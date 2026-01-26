@@ -53,7 +53,7 @@ const ECourseDetail = () => {
                         )}
                     </div>
 
-                    <Button rounded large primary className={cx('enroll-btn')}>
+                    <Button rounded large primary leftIcon className={cx('enroll-btn')}>
                         Đăng ký học
                     </Button>
                 </div>
