@@ -23,10 +23,54 @@
     background-color: var(--white);
     padding: 16px 32px;
 
-    h1 {
-        font-size: 2.8rem;
+    .title-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 16px;
+
+        .lesson-title {
+            font-size: 2.8rem;
+            margin-bottom: 4px;
+        }
+
+        .lesson-desc {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin-bottom: 16px;
+        }
+    }
+
+    .note-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 16px 12px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        background-color: #ebebeb;
+        border: 1px solid #ebebeb;
+        border-radius: 8px;
+        color: var(--text-color-bold);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #d6d6d6;
+        }
+
+        .note-time {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .note-icon {
+            font-size: 1.6rem;
+            color: var(--primary-highlight);
+        }
     }
 }
+
 // ==============================
 // Animation
 @keyframes fadeScaleIn {

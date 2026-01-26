@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
+import { FaPlus } from 'react-icons/fa6';
 import styles from './LearningMode.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function LearningMode({ sidebarOpen }) {
+export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup }) {
     return (
         <>
             {/* Khu vực xem video */}
@@ -22,7 +23,24 @@ export default function LearningMode({ sidebarOpen }) {
             </div>
 
             <div className={cx('content')}>
-                <h1>Tiêu đề bài học</h1>
+                <div className={cx('title-wrapper')}>
+                    {/* TITLE */}
+                    <div className={cx('title-inner')}>
+                        <h1 className={cx('lesson-title')}>Tiêu đề bài học</h1>
+                        <p className={cx('lesson-desc')}>Cập nhật tháng 1 năm 2026</p>
+                    </div>
+
+                    {/* NOTE */}
+                    {!showNotePopup && (
+                        <button className={cx('note-btn')} onClick={onToggleNote}>
+                            <FaPlus className={cx('note-icon')} />
+                            Thêm ghi chú tại
+                            <p className={cx('note-time')}>03:18</p>
+                        </button>
+                    )}
+                </div>
+
+                {/* CONTENT */}
                 <p>
                     Mô tả ngắn về bài học hoặc nội dung đang học. Lorem ipsum dolor sit amet consectetur, adipisicing
                     elit. Laudantium, quia. Nihil odio dolorem totam, fugiat quo nobis quibusdam non recusandae expedita
