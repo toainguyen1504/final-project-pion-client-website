@@ -46,7 +46,7 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup 
                     elit. Laudantium, quia. Nihil odio dolorem totam, fugiat quo nobis quibusdam non recusandae expedita
                     earum aliquid sit adipisci officia ea. Nemo, hic optio.
                 </p>
-                {Array.from({ length: 100 }).map((_, i) => (
+                {Array.from({ length: 30 }).map((_, i) => (
                     <p key={i}>Dòng mô tả nội dung {i + 1}</p>
                 ))}
             </div>
