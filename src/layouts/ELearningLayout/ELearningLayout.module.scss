@@ -175,7 +175,9 @@
     bottom: var(--footer-e-learning-height);
     right: 0;
     background-color: #fff;
-    padding: 16px 20px;
+    border: 1px solid #ecebeb;
+    padding: 16px 0;
+    margin-left: 2px;
     width: var(--sidebar-e-learning-width);
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -189,19 +191,108 @@
     }
 
     .sidebar-title {
+        padding: 0px 16px;
         font-size: 1.6rem;
         font-weight: 600;
         margin-bottom: 12px;
     }
 
-    .list {
-        padding: 8px 16px;
+    .chapters {
+        margin-bottom: 60px;
+
+        :global {
+            .ant-collapse {
+                border-radius: 0;
+            }
+
+            .ant-collapse .ant-collapse-content > .ant-collapse-content-box {
+                padding: 0 16px;
+                margin-top: -10px;
+            }
+
+            .ant-collapse-header {
+                font-size: 1.6rem;
+                font-weight: 400;
+                // color: var(--text-color-bold);
+
+                .ant-collapse-arrow {
+                    color: var(--black);
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .chapter-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            user-select: none;
+
+            .chapter-title {
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+
+            .chapter-desc {
+                font-size: 1.3rem;
+                font-weight: 400;
+                color: var(--text-color-bold);
+            }
+        }
+
+        .lesson-list {
+            list-style: none;
+            padding-left: 12px;
+            color: var(--text-color-bold);
+            margin-top: 12px;
+
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
+                font-size: 1.4rem;
+                padding: 6px 0;
+
+                .play-icon {
+                    font-size: 2rem;
+                    color: #5db85c;
+                    opacity: 0.6;
+                }
+
+                .lesson-title {
+                    flex: 1;
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    color: var(--text-color-bold);
+                }
+
+                .lesson-desc {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    color: var(--text-color-bold);
+
+                    .lesson-type {
+                        font-size: 1.4rem;
+                        color: var(--bg-gray);
+                    }
+
+                    .lesson-time {
+                        padding-bottom: 2px;
+                    }
+                }
+            }
+        }
     }
 }
 
 .video-area::-webkit-scrollbar,
 .sidebar::-webkit-scrollbar {
-    width: 10px;
+    width: 11px;
 }
 .video-area::-webkit-scrollbar-thumb,
 .sidebar::-webkit-scrollbar-thumb {
