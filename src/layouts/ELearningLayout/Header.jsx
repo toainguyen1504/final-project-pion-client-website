@@ -13,8 +13,8 @@ const cx = classNames.bind(styles);
 // colors for conic gradient progress circle
 const conicColors = {
     '0%': '#87d068',
-    '50%': '#ffe58f',
-    '100%': '#ffccc7',
+    '50%': '#ffccc7',
+    '100%': 'var(--primary-highlight)',
 };
 
 export default function Header() {
@@ -42,9 +42,9 @@ export default function Header() {
             <div className={cx('module-action')}>
                 <div className={cx('progress-bar')}>
                     <div className={cx('progress-circle')}>
-                        <Progress type="circle" percent={99} strokeColor={conicColors} size={36} />
+                        <Progress type="circle" percent={89} strokeColor={conicColors} size={36} />
                     </div>
-                    <p className={cx('completed-msg')}>12/12 bài học</p>
+                    <p className={cx('completed-msg')}>11/12 bài học</p>
                     <a href="#!" className={cx('cert-link')}>
                         Xem chứng chỉ
                     </a>
