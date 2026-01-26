@@ -1,6 +1,7 @@
 :root {
-    --header-height: 52px;
-    --footer-height: 52px;
+    --header-e-learning-height: 52px;
+    --footer-e-learning-height: 52px;
+    --sidebar-e-learning-width: 320px;
 }
 
 .wrapper {
@@ -15,7 +16,7 @@
     z-index: 100;
     display: flex;
     justify-content: space-between;
-    height: var(--header-height);
+    height: var(--header-e-learning-height);
     background-color: #29302b;
     color: #fff;
     padding: 12px 32px;
@@ -51,12 +52,12 @@
     .logo-wrapper {
         display: flex;
         align-items: center;
-        height: var(--header-height);
+        height: var(--header-e-learning-height);
         border-radius: 16px;
     }
 
     .logo {
-        height: var(--header-height);
+        height: var(--header-e-learning-height);
         display: block;
         margin: 0 auto;
         padding: 8px;
@@ -148,16 +149,16 @@
     display: flex;
     gap: 4px;
     align-items: flex-start;
-    height: calc(100vh - var(--header-height) - var(--footer-height));
+    height: calc(100vh - var(--header-e-learning-height) - var(--footer-e-learning-height));
 }
 
 // video + mô tả
 .video-area {
     position: fixed;
-    top: var(--header-height);
-    bottom: var(--footer-height);
+    top: var(--header-e-learning-height);
+    bottom: var(--footer-e-learning-height);
     left: 0;
-    width: calc(100% - 320px); // mặc định trừ sidebar
+    width: calc(100% - var(--sidebar-e-learning-width)); // mặc định trừ sidebar
     overflow-y: auto;
     overscroll-behavior: contain;
     transition: width 0.3s ease; // hiệu ứng mượt
@@ -170,12 +171,12 @@
 // sidebar
 .sidebar {
     position: fixed;
-    top: var(--header-height);
-    bottom: var(--footer-height);
+    top: var(--header-e-learning-height);
+    bottom: var(--footer-e-learning-height);
     right: 0;
     background-color: #fff;
     padding: 16px 20px;
-    width: 320px;
+    width: var(--sidebar-e-learning-width);
     overflow-y: auto;
     overscroll-behavior: contain;
 
@@ -207,7 +208,7 @@
     position: sticky;
     bottom: 0;
     z-index: 100;
-    height: var(--footer-height);
+    height: var(--footer-e-learning-height);
     background-color: #f0f0f0;
     padding: 8px 32px;
     border-top: 1px solid #eee;

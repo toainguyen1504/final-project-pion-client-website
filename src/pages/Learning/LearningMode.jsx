@@ -3,11 +3,11 @@ import styles from './LearningMode.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function LearningMode() {
+export default function LearningMode({ sidebarOpen }) {
     return (
         <>
             {/* Khu vực xem video */}
-            <div className={cx('video')}>
+            <div className={cx('video', { expanded: !sidebarOpen })}>
                 <iframe
                     width="100%"
                     height="100%"
