@@ -32,7 +32,7 @@ export default function MobileAuth({ user, onLogout }) {
                 <ul className={cx('user-menu')}>
                     <li>
                         <Link to={config.routes.learning} className={cx('highlight')}>
-                            E-Learning
+                            Vào học
                         </Link>
                     </li>
                     <li>

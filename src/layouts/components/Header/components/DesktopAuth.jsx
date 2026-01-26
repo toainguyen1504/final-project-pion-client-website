@@ -48,7 +48,7 @@ export default function DesktopAuth({ user, onLogout }) {
                             key: 'learning',
                             label: (
                                 <Link to={config.routes.learning} className={cx('link', 'highlight')}>
-                                    E-Learning
+                                    Vào học
                                 </Link>
                             ),
                         },

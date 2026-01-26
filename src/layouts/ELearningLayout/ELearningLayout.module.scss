@@ -29,6 +29,25 @@
         // justify-content: space-between;
     }
 
+    .back-icon {
+        color: #efeded;
+        font-size: 2.4rem;
+        margin-right: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background-color: transparent;
+        transition: all 0.3s ease;
+        &:hover {
+            color: var(--white-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none !important;
+        }
+    }
+
     .logo-wrapper {
         display: flex;
         align-items: center;
@@ -63,14 +82,29 @@
 
         .progress-bar {
             display: flex;
+            align-items: center;
             font-size: 1.4rem;
             font-weight: 400;
             gap: 12px;
+
+            :global {
+                .ant-progress-text {
+                    color: #fff;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+            }
+
+            .completed-msg {
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
 
             .cert-link {
                 color: var(--primary-highlight);
                 font-size: 1.3rem;
                 font-weight: 400;
+                cursor: pointer;
             }
         }
 
