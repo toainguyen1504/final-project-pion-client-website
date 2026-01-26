@@ -5,6 +5,7 @@ import styles from './ELearningLayout.module.scss';
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
+import LearningMode from '@/pages/Learning/LearningMode';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,10 @@ export default function ELearningLayout({ children }) {
             <Header />
             <main className={cx('main')}>
                 <div className={cx('content')}>
-                    <div className={cx('video-area', { expanded: !sidebarOpen })}>{children}</div>
+                    <div className={cx('video-area', { expanded: !sidebarOpen })}>
+                        {/* Truyền prop sidebarOpen xuống LearningMode */}
+                        <LearningMode sidebarOpen={sidebarOpen} />
+                    </div>
                     <Sidebar isOpen={sidebarOpen} />
                 </div>
             </main>
