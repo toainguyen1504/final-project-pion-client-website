@@ -3,9 +3,9 @@ import styles from './ELearningLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen }) {
     return (
-        <aside className={cx('sidebar')}>
+        <aside className={cx('sidebar', { closed: !isOpen })}>
             <h3>Nội dung khóa học</h3>
             <div className={cx('sidebar-inner')}>
                 <ul className={cx('list')}>

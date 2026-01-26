@@ -52,7 +52,7 @@
         display: flex;
         align-items: center;
         height: var(--header-height);
-        border-radius: 12px;
+        border-radius: 16px;
     }
 
     .logo {
@@ -60,12 +60,12 @@
         display: block;
         margin: 0 auto;
         padding: 8px;
-        border-radius: 12px;
+        border-radius: 16px;
     }
 
     .course-title {
         font-size: 1.4rem;
-        font-weight: 700;
+        font-weight: 600;
         margin-left: 16px;
         color: var(--white-color);
         overflow: hidden;
@@ -85,13 +85,18 @@
             align-items: center;
             font-size: 1.4rem;
             font-weight: 400;
+            color: #e4e4e4;
             gap: 12px;
 
             :global {
                 .ant-progress-text {
-                    color: #fff;
+                    color: #e4e4e4;
                     font-size: 1rem;
                     font-weight: 500;
+                }
+
+                .ant-progress .ant-progress-circle-trail {
+                    stroke: #7a7a7a;
                 }
             }
 
@@ -115,10 +120,10 @@
 
             .note-btn,
             .help-btn {
-                color: #efeded;
+                color: #e4e4e4;
                 background-color: transparent;
                 font-size: 1.4rem;
-                font-weight: 500;
+                font-weight: 400;
                 padding: 5px 8px;
 
                 &:hover {
@@ -146,22 +151,20 @@
     height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
-// cuộn dọc
-// .video-area,
-// .sidebar {
-//     height: 100%; // chiếm toàn bộ chiều cao khung content
-//     overflow-y: auto; // cuộn riêng
-// }
-
 // video + mô tả
 .video-area {
     position: fixed;
     top: var(--header-height);
     bottom: var(--footer-height);
     left: 0;
-    width: calc(100% - 320px); // trừ sidebar
+    width: calc(100% - 320px); // mặc định trừ sidebar
     overflow-y: auto;
     overscroll-behavior: contain;
+    transition: width 0.3s ease; // hiệu ứng mượt
+
+    &.expanded {
+        width: 100%; // khi sidebar đóng, video chiếm toàn bộ chiều rộng
+    }
 }
 
 // sidebar
@@ -175,6 +178,14 @@
     width: 320px;
     overflow-y: auto;
     overscroll-behavior: contain;
+
+    // hiệu ứng trượt
+    transition: transform 0.3s ease;
+    transform: translateX(0); // mặc định mở
+
+    &.closed {
+        transform: translateX(100%); // trượt ra ngoài màn hình bên phải
+    }
 
     .list {
         padding: 8px 16px;
@@ -191,6 +202,7 @@
     border-radius: 8px;
 }
 
+// FOOTER
 .footer {
     position: sticky;
     bottom: 0;
@@ -207,10 +219,57 @@
         gap: 12px;
     }
 
-    .nav-btn {
-        padding: 6px 20px;
-        font-size: 1.4rem;
-        text-transform: uppercase;
-        font-weight: 600;
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+
+        .nav-btn {
+            padding: 6px 20px;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+
+    .chapter-info {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 16px;
+        gap: 16px;
+
+        .chapter-name {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .toggle-btn {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #222;
+            cursor: pointer;
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+
+            &:hover {
+                background-color: #f5f5f5;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+                box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+            }
+        }
     }
 }
