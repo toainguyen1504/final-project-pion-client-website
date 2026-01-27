@@ -52,7 +52,7 @@ export default function Header() {
 
                 <div className={cx('buttons')}>
                     <Button text small leftIcon={<GiNotebook />} className={cx('note-btn')}>
-                        Ghi chú
+                        <p className={cx('note-txt')}>Ghi chú</p>
                     </Button>
                     <Button text small leftIcon={<TbHelpHexagonFilled />} className={cx('help-btn')}>
                         Hướng dẫn

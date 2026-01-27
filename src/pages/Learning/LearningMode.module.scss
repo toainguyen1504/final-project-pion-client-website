@@ -2,7 +2,9 @@
 // ** LearningMode **
 .video {
     width: 100%;
-    height: 74vh;
+    // height: 74vh;
+    aspect-ratio: 16 / 9;
+
     margin-bottom: 24px;
     padding: 0 72px;
     display: flex;
@@ -14,9 +16,6 @@
 
 .video.expanded {
     width: 100%;
-    height: calc(
-        100vh - var(--header-e-learning-height) - var(--footer-e-learning-height) - 24px
-    ); // khi sidebar mở thì full height
 }
 
 .content {
@@ -94,12 +93,88 @@
 
 /* Tablet nhỏ - <= iPad Air */
 @media (min-width: 768px) and (max-width: 1023px) {
+    .video {
+        width: 100%;
+        aspect-ratio: 16 / 6;
+    }
+
+    .video.expanded {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+    }
+
+    .content {
+        background-color: var(--white);
+        padding: 0 20px 28px;
+
+        .title-wrapper {
+            flex-direction: column;
+
+            .lesson-title {
+                font-size: 2.2rem;
+                margin-bottom: 4px;
+            }
+
+            .lesson-desc {
+                font-size: 1.4rem;
+                color: var(--text-color);
+                margin-bottom: 16px;
+            }
+        }
+
+        .note-btn {
+            margin-bottom: 12px;
+        }
+    }
 }
 
 /* Tablet lớn - iPad Pro */
 @media (min-width: 1024px) and (max-width: 1365px) {
+    .video {
+        width: 100%;
+        aspect-ratio: 16 / 8;
+    }
+
+    .video.expanded {
+        width: 100%;
+        aspect-ratio: 16 / 7.5;
+    }
+
+    .content {
+        background-color: var(--white);
+        padding: 0 28px 32px;
+
+        .title-wrapper {
+            margin-bottom: 16px;
+
+            .lesson-title {
+                font-size: 2.2rem;
+                margin-bottom: 4px;
+            }
+
+            .lesson-desc {
+                font-size: 1.4rem;
+                color: var(--text-color);
+                margin-bottom: 16px;
+            }
+        }
+
+        .note-btn {
+            margin-bottom: 12px;
+        }
+    }
 }
 
 /* Desktop */
 @media (min-width: 1366px) {
+    // hanlde video size, chỉ áp dụng desktop, các thiết bị khác thì dùng popup -> nổi lên , tránh chiếm viewport quá nhiều
+    .video {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+    }
+
+    .video.expanded {
+        width: 100%;
+        aspect-ratio: 16 / 6.2;
+    }
 }
