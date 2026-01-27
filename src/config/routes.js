@@ -32,7 +32,10 @@ const routes = {
     faq: '/cau-hoi-thuong-gap',
 
     // learning
-    learning: '/hoc-tap',
+    learning: '/learning', // page home cho E-learning : chưa các khóa học của e-learning
+    learningMode: '/learning/:slug', // Trang để học theo từng bài học (video, ghi chú,...)
+    eCourseDetail: '/e-courses/:slug',
+    myCourses: '/my-courses',
 };
 
 export default routes;

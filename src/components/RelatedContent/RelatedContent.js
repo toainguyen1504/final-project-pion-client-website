@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import { studyAbroad } from '@/data';
 import styles from './RelatedContent.module.scss';
 import ImageCard from '@/components/ImageCard';
+import HeadingSection from '@/components/HeadingSection';
 
 const cx = classNames.bind(styles);
 
@@ -16,11 +17,7 @@ const RelatedContent = () => {
 
     return (
         <aside className={cx('related-content')}>
-            <div className={cx('heading-section')}>
-                <h2 id="noi-dung-lien-quan" className={cx('title-section', 'uppercase')}>
-                    Nội dung liên quan
-                </h2>
-            </div>
+            <HeadingSection title="Nội dung liên quan" />
 
             {relatedStudyAbroads.length > 0 ? (
                 <div className={cx('card-grid')}>

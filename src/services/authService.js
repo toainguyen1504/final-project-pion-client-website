@@ -4,7 +4,10 @@
 
 import axiosInstance from '@/utils/axiosInstance';
 
-// Đăng nhập
+// Đăng nhập - ok, tuy nhiên cần check role -> hoặc backend api chia 2 link api khác nhau, ví dụ: /api/cms/login và /api/client/login
+// admin cms có: super_admin, admin, staff, staffads |||| client có: member | guest | learner
+// PHẢI Chặn ngay login -> super_admin, admin, staff, staffads không được vào trang ui của client,
+// tương tự member | guest | learner cũng không được vào admin cms
 export async function login({ login, password }) {
     const response = await axiosInstance.post('/api/login', { login, password });
     const { token, user } = response.data;
@@ -16,7 +19,7 @@ export async function login({ login, password }) {
     return { token, user };
 }
 
-// Đăng ký
+// Đăng ký - chưa check
 export async function register({ username, email, password }) {
     const response = await axiosInstance.post('/api/register', {
         username,

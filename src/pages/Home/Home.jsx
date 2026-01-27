@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet-async';
 import { feedbacks } from '@/data';
 import BannerCarousel from '@/components/BannerCarousel';
 import FeedbackCard from '@/components/FeedbackCard';
+import HeadingSection from '@/components/HeadingSection';
 import WhyChooseItem from './WhyChooseItem';
 import CourseList from './CourseList';
 import LatestNewsList from './LatestNewsList';
@@ -217,11 +218,8 @@ function Home() {
 
                     {/* Why choose Pion Academy */}
                     <section className={cx('why-choose')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Vì sao nên chọn PION?</a>
-                            </h2>
-                        </div>
+                        <HeadingSection title="Vì sao nên chọn PION?" />
+
                         <div className={cx('grid', 'why-choose-inner')}>
                             {whyChooseData.map((item, index) => (
                                 <div key={index} data-aos="fade-up" data-aos-delay={index * 120}>
@@ -233,22 +231,14 @@ function Home() {
 
                     {/* Courses */}
                     <section className={cx('courses')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Khóa học nổi bật</a>
-                            </h2>
-                        </div>
-
+                        <HeadingSection title="Khóa học nổi bật" />
                         <CourseList />
                     </section>
 
                     {/* Student feedback */}
                     <section id="cam-nhan-ve-hoc-vien" className={cx('feedback')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Cảm nhận về học viên</a>
-                            </h2>
-                        </div>
+                        <HeadingSection title="Cảm nhận về học viên" />
+
                         <div className={cx('feedback-inner')}>
                             {/* <figure className={cx('feedback-media')}>
                             <div
@@ -335,11 +325,7 @@ function Home() {
 
                     {/* News */}
                     <section className={cx('news')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Tin tức mới nhất</a>
-                            </h2>
-                        </div>
+                        <HeadingSection title="Tin tức mới nhất" />
                         <LatestNewsList />
                     </section>
                 </div>

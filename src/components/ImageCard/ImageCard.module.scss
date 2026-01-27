@@ -6,10 +6,8 @@
     .card-inner {
         font-family: inherit !important;
         font-weight: inherit !important;
-
         overflow: hidden;
         border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         background-color: #fff;
         transition: all 0.3s ease-in-out;
 
@@ -32,7 +30,8 @@
             .ant-card-meta {
                 display: block;
                 max-height: 116px;
-                overflow-y: auto;
+                // overflow-y: auto;
+                // overflow: hidden;
                 padding: 0 4px;
 
                 .card-title {
@@ -43,8 +42,8 @@
 
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    line-clamp: 2;
+                    -webkit-line-clamp: 1;
+                    line-clamp: 1;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: wrap;
@@ -111,7 +110,12 @@
         :global {
             .ant-card-meta {
                 max-height: none;
-                overflow-y: visible;
+                // overflow-y: visible;
+
+                .card-title {
+                    -webkit-line-clamp: 2;
+                    line-clamp: 2;
+                }
             }
         }
     }

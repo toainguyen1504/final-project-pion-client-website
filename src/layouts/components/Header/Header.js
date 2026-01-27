@@ -17,7 +17,7 @@ import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
-// Menu items for Header
+// Menu items for Header mobile
 const items = [
     {
         type: 'divider',
@@ -25,7 +25,7 @@ const items = [
     {
         key: 'about',
         label: (
-            <Link to="/gioi-thieu" className="menu-uppercase">
+            <Link to={config.routes.about} className="menu-uppercase">
                 VỀ PION
             </Link>
         ),
@@ -191,18 +191,7 @@ const items = [
             // },
         ],
     },
-    // {
-    //     type: 'divider',
-    // },
-    // {
-    //     key: 'study-abroad',
-    //     label: 'Du học',
-    //     children: [
-    //         // { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
-    //         // { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
-    //         { key: 'abroad-china', label: <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025">Du học Trung Quốc</Link> },
-    //     ],
-    // },
+
     {
         type: 'divider',
     },
@@ -211,13 +200,13 @@ const items = [
         label: 'Tin tức',
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
-            { key: 'news-list', label: <Link to="/tin-tuc">Tất cả tin tức</Link> },
-            // {
-            //     key: 'abroad-china',
-            //     label: <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025">Điều kiện du học Trung Quốc 2025</Link>,
-            // },
-            { key: 'news-recruitment', label: <Link to="/tuyen-dung">Tuyển dụng</Link> },
-            { key: 'news-question', label: <Link to="/cau-hoi-thuong-gap">Câu hỏi thường gặp</Link> },
+            { key: 'news-list', label: <Link to={config.routes.newsList}>Tất cả tin tức</Link> },
+            {
+                key: 'abroad-china',
+                label: <Link to={config.routes.studyAbroadChina}>Điều kiện du học Trung Quốc 2025</Link>,
+            },
+            { key: 'news-recruitment', label: <Link to={config.routes.newsAvailablePosition}>Tuyển dụng</Link> },
+            { key: 'news-question', label: <Link to={config.routes.faq}>Câu hỏi thường gặp</Link> },
         ],
     },
     {
@@ -225,19 +214,26 @@ const items = [
     },
     {
         key: 'contact',
-        label: <Link to="/lien-he">Liên hệ</Link>,
+        label: <Link to={config.routes.contact}>Liên hệ</Link>,
     },
     {
         type: 'divider',
     },
     {
-        key: 'abroad-china',
-        label: (
-            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className="menu-uppercase">
-                Du học Trung Quốc
-            </Link>
-        ),
+        key: 'learning',
+        label: <Link to={config.routes.learning}>Học tập</Link>,
     },
+    {
+        type: 'divider',
+    },
+    // {
+    //     key: 'abroad-china',
+    //     label: (
+    //         <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className="menu-uppercase">
+    //             Du học Trung Quốc
+    //         </Link>
+    //     ),
+    // },
 ];
 
 export default function Header({ visible }) {
@@ -370,64 +366,8 @@ export default function Header({ visible }) {
                                     </li>
                                 </ul>
                             </div>
-                            {/* <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Đức</h4>
-                                <ul>
-                                    <li>
-                                        <Link to="/tieng-duc-online-1-kem-1">Tiếng Đức Online 1 kèm 1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-a1">Tiếng Đức A1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-a2">Tiếng Đức A2</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-b1">Tiếng Đức B1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-b2">Tiếng Đức B2</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Hàn</h4>
-                                <ul>
-                                    <li>
-                                        <Link to="/tieng-han-so-cap-1">Tiếng Hàn sơ cấp 1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-han-so-cap-2">Tiếng Hàn sơ cấp 2</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/luyen-thi-topik-i">Luyện thi TOPIK I</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/luyen-thi-topik-ii">Luyện thi TOPIK II</Link>
-                                    </li>
-                                </ul>
-                            </div> */}
                         </div>
                     </div>
-
-                    {/* Du học */}
-                    {/* <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
-                        Du học nghề Đức
-                    </Link>
-                    <Link to="/du-hoc-han-quoc" className={cx('dropdown-item')}>
-                        Du học Hàn Quốc
-                    </Link> */}
-                    {/* <div className={cx('dropdown')}>
-                        <div className={cx('dropdown-toggle')}>
-                            <span>Du học</span>
-                            <RiArrowDropDownLine size={24} />
-                        </div>
-                        <div className={cx('dropdown-menu')}>
-                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('dropdown-item')}>
-                                Du học Trung Quốc
-                            </Link>
-                        </div>
-                    </div> */}
 
                     {/* Tin tức */}
                     <div className={cx('dropdown')}>
@@ -439,25 +379,36 @@ export default function Header({ visible }) {
                             {/* <Link to="/xuat-khau-lao-dong" className={cx('dropdown-item')}>
                                 Xuất khẩu lao động
                             </Link> */}
-                            <Link to="/tin-tuc" className={cx('dropdown-item')}>
+                            <Link to={config.routes.newsList} className={cx('dropdown-item')}>
                                 Tất cả tin tức
                             </Link>
-                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('dropdown-item')}>
+                            <Link to={config.routes.studyAbroadChina} className={cx('dropdown-item')}>
                                 Điều kiện du học Trung Quốc 2025
                             </Link>
-                            <Link to="/tuyen-dung" className={cx('dropdown-item')}>
+                            <Link to={config.routes.newsAvailablePosition} className={cx('dropdown-item')}>
                                 Tuyển dụng
                             </Link>
-                            <Link to="/cau-hoi-thuong-gap" className={cx('dropdown-item')}>
+                            <Link to={config.routes.faq} className={cx('dropdown-item')}>
                                 Câu hỏi thường gặp
                             </Link>
                         </div>
                     </div>
 
-                    <NavLink to="/lien-he" className={({ isActive }) => cx('nav-link', { active: isActive })}>
+                    <NavLink
+                        to={config.routes.contact}
+                        className={({ isActive }) => cx('nav-link', { active: isActive })}
+                    >
                         Liên hệ
                     </NavLink>
+
+                    <NavLink
+                        to={config.routes.learning}
+                        className={({ isActive }) => cx('nav-link', { active: isActive })}
+                    >
+                        Học tập
+                    </NavLink>
                 </nav>
+
                 {/* Search form */}
                 <div className={cx('search-form')}>
                     <Search />

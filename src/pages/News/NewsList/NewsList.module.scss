@@ -9,18 +9,34 @@
     display: flex;
     justify-content: center;
 }
-
-// Mobile
+// ============RESPONSIVE================
+/* Mobile */
 @media (max-width: 767px) {
     .news-list {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-// Tablet
+/* Tablet nhỏ - <= iPad Air */
 @media (min-width: 768px) and (max-width: 1023px) {
     .news-list {
         grid-template-columns: repeat(2, 1fr);
         gap: 28px;
+    }
+}
+
+/* Tablet lớn - iPad Pro */
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .news-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1366px) {
+    .news-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
     }
 }
