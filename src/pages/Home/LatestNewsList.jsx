@@ -36,7 +36,7 @@ const LatestNewsList = () => {
         const fetchLatestNews = async () => {
             try {
                 const [postsRes, mediaRes] = await Promise.all([
-                    axios.get(`${BASE_URL}/posts`),
+                    axios.get(`${BASE_URL}/client/posts`),
                     axios.get(`${BASE_URL}/media`),
                 ]);
 
