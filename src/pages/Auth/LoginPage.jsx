@@ -20,14 +20,15 @@ export default function LoginPage() {
         try {
             await login({ login: values.login, password: values.password });
 
-            message.success('Đăng nhập thành công!');
-            // chuyển hướng sang home
+            message.success('Đăng nhập thành công.');
             navigate(config.routes.home);
         } catch (err) {
             if (err.response?.status === 401) {
-                message.error('Sai email/username hoặc mật khẩu.');
+                message.error('Sai email/username hoặc mật khẩu!');
+            } else if (err.response?.status === 403) {
+                message.error('Tài khoản không có quyền đăng nhập Client site!');
             } else {
-                message.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                message.error('Có lỗi xảy ra. Vui lòng thử lại sau!');
             }
         }
     };

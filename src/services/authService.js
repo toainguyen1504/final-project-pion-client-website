@@ -9,12 +9,12 @@ import axiosInstance from '@/utils/axiosInstance';
 // PHẢI Chặn ngay login -> super_admin, admin, staff, staffads không được vào trang ui của client,
 // tương tự member | guest | learner cũng không được vào admin cms
 export async function login({ login, password }) {
-    const response = await axiosInstance.post('/api/login', { login, password });
+    const response = await axiosInstance.post('/api/client/login', { login, password });
     const { token, user } = response.data;
 
     // Lưu thông tin vào localStorage
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('authTokenCLient', token);
+    localStorage.setItem('userClient', JSON.stringify(user));
 
     return { token, user };
 }
@@ -31,14 +31,14 @@ export async function register({ username, email, password }) {
 
 // Đăng xuất
 export function logout() {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
+    localStorage.removeItem('authTokenCLient');
+    localStorage.removeItem('userClient');
 }
 
 // Lấy user hiện tại từ localStorage
 export function getCurrentUser() {
     try {
-        return JSON.parse(localStorage.getItem('user'));
+        return JSON.parse(localStorage.getItem('userClient'));
     } catch {
         return null;
     }
@@ -46,7 +46,7 @@ export function getCurrentUser() {
 
 // Lấy token hiện tại
 export function getToken() {
-    return localStorage.getItem('authToken');
+    return localStorage.getItem('authTokenCLient');
 }
 
 // Kiểm tra đã đăng nhập chưa
