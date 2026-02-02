@@ -1,6 +1,6 @@
 import { getAllNews } from '@/services';
 
-// Dữ liệu mặc định (khóa học, trang tĩnh…)
+// Dữ liệu mặc định (chương trình học, trang tĩnh…)
 const defaultSearchData = [
     { id: 1, slug: 'tieng-anh-mam-non', title: 'Tiếng Anh mầm non' },
     { id: 2, slug: 'tieng-anh-tieu-hoc', title: 'Tiếng Anh tiểu học' },
