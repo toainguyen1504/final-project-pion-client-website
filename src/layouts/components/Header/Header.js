@@ -35,10 +35,10 @@ const items = [
     },
     {
         key: 'courses',
-        label: 'Khóa học',
+        label: 'Chương trình học ',
         children: [
             {
-                key: 'courses-english',
+                key: 'program-english',
                 label: 'Tiếng Anh',
                 children: [
                     {
@@ -68,7 +68,7 @@ const items = [
                 ],
             },
             {
-                key: 'courses-chinese',
+                key: 'program-chinese',
                 label: 'Tiếng Trung',
                 children: [
                     {
@@ -106,7 +106,7 @@ const items = [
                 ],
             },
             // {
-            //     key: 'courses-korean',
+            //     key: 'program-korean',
             //     label: 'Tiếng Hàn',
             //     children: [
             //         {
@@ -144,7 +144,7 @@ const items = [
             //     ],
             // },
             // {
-            //     key: 'courses-german',
+            //     key: 'program-german',
             //     label: 'Tiếng Đức',
             //     children: [
             //         {
@@ -328,15 +328,15 @@ export default function Header({ visible }) {
                         VỀ PION
                     </NavLink>
 
-                    {/* Khóa học */}
+                    {/* Chương trình học  */}
                     <div className={cx('dropdown')}>
                         <div className={cx('dropdown-toggle')}>
-                            <span>Khóa học</span>
+                            <span>Chương trình học</span>
                             <RiArrowDropDownLine size={24} />
                         </div>
                         <div className={cx('dropdown-menu', 'customize')}>
                             <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Anh</h4>
+                                <h4>Tiếng Anh</h4>
                                 <ul>
                                     <li>
                                         <Link to="/tieng-anh-mam-non">Tiếng anh mầm non</Link>
@@ -350,7 +350,7 @@ export default function Header({ visible }) {
                                 </ul>
                             </div>
                             <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Trung</h4>
+                                <h4>Tiếng Trung</h4>
                                 <ul>
                                     <li>
                                         <Link to="/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
@@ -401,12 +401,12 @@ export default function Header({ visible }) {
                         Liên hệ
                     </NavLink>
 
-                    <NavLink
+                    {/* <NavLink
                         to={config.routes.learning}
                         className={({ isActive }) => cx('nav-link', { active: isActive })}
                     >
                         Học tập
-                    </NavLink>
+                    </NavLink> */}
                 </nav>
 
                 {/* Search form */}

@@ -34,7 +34,7 @@ function RelatedSidebar() {
 
     return (
         <aside className={cx('wrapper')}>
-            <HeadingSection title="Khóa học liên quan" />
+            <HeadingSection title="Gợi ý" />
 
             <div className={cx('inner')}>
                 {relatedCourses.map((course) => (

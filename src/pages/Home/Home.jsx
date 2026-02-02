@@ -39,8 +39,8 @@ const whyChooseData = [
     },
     {
         icon: <GiBookmarklet size={48} />,
-        title: 'Các khóa học đạt chuẩn quốc tế',
-        description: 'Cung cấp các khóa học tiếng Anh và tiếng Trung giúp bạn sẵn sàng hội nhập.',
+        title: 'Các chương trình học đạt chuẩn quốc tế',
+        description: 'Cung cấp các chương trình học tiếng Anh và tiếng Trung giúp bạn sẵn sàng hội nhập.',
     },
     {
         icon: <FaBookAtlas size={48} />,
@@ -166,10 +166,11 @@ function Home() {
                                         <ul className={cx('content-list')}>
                                             <li className={cx('content-item')}>
                                                 <p>
-                                                    <span>Đào tạo ngôn ngữ chất lượng cao:</span> Cung cấp các khóa học
-                                                    tiếng Anh và tiếng Trung chuẩn quốc tế, áp dụng phương pháp giảng
-                                                    dạy hiện đại, giúp học viên tự tin giao tiếp và phát triển kỹ năng
-                                                    ngôn ngữ, hỗ trợ việc làm tại các doanh nghiệp nước ngoài.
+                                                    <span>Đào tạo ngôn ngữ chất lượng cao:</span> Cung cấp các chương
+                                                    trình học tiếng Anh và tiếng Trung chuẩn quốc tế, áp dụng phương
+                                                    pháp giảng dạy hiện đại, giúp học viên tự tin giao tiếp và phát
+                                                    triển kỹ năng ngôn ngữ, hỗ trợ việc làm tại các doanh nghiệp nước
+                                                    ngoài.
                                                 </p>
                                             </li>
                                             <li className={cx('content-item')}>
@@ -231,7 +232,7 @@ function Home() {
 
                     {/* Courses */}
                     <section className={cx('courses')}>
-                        <HeadingSection title="Khóa học nổi bật" />
+                        <HeadingSection title="Chương trình học nổi bật" />
                         <CourseList />
                     </section>
 

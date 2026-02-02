@@ -36,7 +36,7 @@ function Footer() {
                     </p>
                 </div>
                 <div className={cx('column')}>
-                    <h4>Khóa học Tiếng Anh</h4>
+                    <h4>Tiếng Anh</h4>
                     <ul>
                         <li>
                             <Link to="/tieng-anh-mam-non" className={cx('link')}>
@@ -56,7 +56,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className={cx('column')}>
-                    <h4>Khóa học Tiếng Trung</h4>
+                    <h4>Tiếng Trung</h4>
                     <ul>
                         <li>
                             <Link to="/tieng-trung-giao-tiep" className={cx('link')}>
@@ -82,7 +82,7 @@ function Footer() {
                     </ul>
                 </div>
                 {/* <div className={cx('column')}>
-                    <h4>Thông tin khóa học</h4>
+                    <h4>Thông tin chương trình học</h4>
                     <ul>
                         <li>
                             <Link to="#!" className={cx('link')}>
@@ -173,7 +173,7 @@ function Footer() {
             {/* 
             <div className={cx('top-row-second')}>
                 <div className={cx('column')}>
-                    <h4>Khóa học Tiếng Anh</h4>
+                    <h4>Chương trình học  Tiếng Anh</h4>
                     <ul>
                         <li>
                             <Link to="/tieng-anh-mam-non" className={cx('link')}>
@@ -193,7 +193,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className={cx('column')}>
-                    <h4>Khóa học Tiếng Trung</h4>
+                    <h4>Chương trình học  Tiếng Trung</h4>
                     <ul>
                         <li>
                             <Link to="/tieng-trung-giao-tiep" className={cx('link')}>
@@ -214,7 +214,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className={cx('column')}>
-                    <h4>Khóa học Tiếng Đức</h4>
+                    <h4>Chương trình học  Tiếng Đức</h4>
                     <ul>
                         <li>
                             <Link to="/tieng-duc-online-1-kem-1" className={cx('link')}>
@@ -244,7 +244,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div className={cx('column')}>
-                    <h4>Khóa học Tiếng Hàn</h4>
+                    <h4>Chương trình học  Tiếng Hàn</h4>
                     <ul>
                         <li>
                             <Link to="/tieng-han-so-cap-1" className={cx('link')}>

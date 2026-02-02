@@ -5,18 +5,18 @@ const courses = {
             language: 'english',
             title: 'Tiếng Anh Mầm Non',
             subTitle: 'Little - Dành cho trẻ từ 3 - 6 tuổi',
-            desc: 'Khóa học giúp trẻ phát triển toàn diện về ngôn ngữ, tư duy sáng tạo và kỹ năng xã hội theo tiêu chuẩn Châu Âu.',
+            desc: 'Chương trình học  giúp trẻ phát triển toàn diện về ngôn ngữ, tư duy sáng tạo và kỹ năng xã hội theo tiêu chuẩn Châu Âu.',
             descDetail:
-                'Khóa học Little giúp trẻ làm quen với môi trường tiếng Anh năng động thông qua phương pháp giảng dạy hiện đại, tích hợp công nghệ 4.0 như bảng tương tác, bài tập về nhà online và phản hồi từ giáo viên qua ứng dụng. Trẻ sẽ học tiếng Anh qua trò chơi, truyện, bài hát thú vị và tham gia các buổi học trực tiếp với giáo viên nước ngoài để thực hành từ vựng và mẫu câu theo các chủ đề quen thuộc.',
+                'Chương trình học Little giúp trẻ làm quen với môi trường tiếng Anh năng động thông qua phương pháp giảng dạy hiện đại, tích hợp công nghệ 4.0 như bảng tương tác, bài tập về nhà online và phản hồi từ giáo viên qua ứng dụng. Trẻ sẽ học tiếng Anh qua trò chơi, truyện, bài hát thú vị và tham gia các buổi học trực tiếp với giáo viên nước ngoài để thực hành từ vựng và mẫu câu theo các chủ đề quen thuộc.',
             content: [
-                'Đến với khóa học Little tại Pion, trẻ sẽ được trải nghiệm với chương trình học hoàn hảo theo hướng phát triển năng lực chuẩn Châu Âu bao gồm: Kỹ năng ngôn ngữ, kỹ năng toán học - khoa học, kỹ năng công nghệ máy tính, kỹ năng xã hội, hiểu biết văn hóa đa dạng, tư duy phản biện, kỹ năng tự học và hợp tác nhóm.',
-                'Khóa học Little tại Pion cung cấp nhiều chủ đề hấp dẫn, gần gũi với cuộc sống hàng ngày, giúp trẻ dễ dàng tiếp cận và tiếp thu kiến thức.',
+                'Đến với Chương trình học Little tại Pion, trẻ sẽ được trải nghiệm với chương trình học hoàn hảo theo hướng phát triển năng lực chuẩn Châu Âu bao gồm: Kỹ năng ngôn ngữ, kỹ năng toán học - khoa học, kỹ năng công nghệ máy tính, kỹ năng xã hội, hiểu biết văn hóa đa dạng, tư duy phản biện, kỹ năng tự học và hợp tác nhóm.',
+                'Chương trình học Little tại Pion cung cấp nhiều chủ đề hấp dẫn, gần gũi với cuộc sống hàng ngày, giúp trẻ dễ dàng tiếp cận và tiếp thu kiến thức.',
                 'Trẻ sẽ học qua hình ảnh, câu chuyện và các bài hát, giúp trẻ ghi nhớ từ vựng và mẫu câu nhanh chóng, đồng thời tạo thêm niềm vui và hứng thú trong học tập.',
                 'Các bài học đạo đức được lồng ghép trong mỗi chủ đề, giúp trẻ hình thành nhận thức về bản thân, trách nhiệm với gia đình và xã hội.',
                 'Chương trình học lấy trẻ làm trung tâm, giáo viên là người đồng hành nhằm khơi dậy sự chủ động, sáng tạo ở trẻ. Phương pháp TPR (Total Physical Response) được áp dụng giúp trẻ học thông qua vận động, các hoạt động thủ công, ca hát vui nhộn.',
                 'Chương trình được thiết kế với 50% thời lượng học cùng giáo viên nước ngoài và 50% giáo viên Việt Nam, các bé được tiếp xúc thường xuyên với môi trường tiếng Anh giao tiếp tự nhiên, vừa vui chơi – vừa học hiệu quả. ',
                 'Giáo trình sử dụng là bộ Ferris Wheel (1–3) theo chuẩn Cambridge, được xây dựng phù hợp với tâm lý và khả năng tiếp thu của trẻ. ',
-                'Thời lượng khóa học: 12 tháng/ cấp độ',
+                'Thời lượng chương trình học : 12 tháng/ cấp độ',
             ],
             goals: [
                 'Trẻ sẽ định hình tính cách riêng của bản thân, biết cư xử tử tế và có trách nhiệm trong mọi tình huống.',
@@ -35,17 +35,17 @@ const courses = {
             language: 'english',
             title: 'Tiếng Anh Tiểu Học',
             subTitle: ' Junior Dành cho trẻ từ 7 - 12 tuổi',
-            desc: 'Khóa học giúp học sinh xây dựng nền tảng tiếng Anh vững chắc, phát triển kỹ năng giao tiếp và tư duy ngôn ngữ theo chuẩn quốc tế.',
+            desc: 'Chương trình học  giúp học sinh xây dựng nền tảng tiếng Anh vững chắc, phát triển kỹ năng giao tiếp và tư duy ngôn ngữ theo chuẩn quốc tế.',
             descDetail:
-                'Khóa học Junior giúp trẻ làm quen với môi trường Anh ngữ năng động, ứng dụng công nghệ 4.0 vào lớp học qua bảng tương tác thông minh, chấm điểm tự động và hệ thống bài tập online. Trẻ nhận được nhận xét trực tiếp từ giáo viên thông qua ứng dụng kết nối với phụ huynh. Ở độ tuổi 7–11, đây là giai đoạn vàng để tiếp thu tiếng Anh – trẻ bắt đầu học theo hướng chuyên sâu hơn. Tham gia Junior tại Pion, trẻ được học trong môi trường chuyên nghiệp, phát triển sự tự tin và kỹ năng mềm. Khóa học là bước đệm vững chắc giúp trẻ chinh phục kỳ thi Cambridge YLE với 3 cấp độ: Starters, Movers, Flyers.',
+                'Chương trình học  Junior giúp trẻ làm quen với môi trường Anh ngữ năng động, ứng dụng công nghệ 4.0 vào lớp học qua bảng tương tác thông minh, chấm điểm tự động và hệ thống bài tập online. Trẻ nhận được nhận xét trực tiếp từ giáo viên thông qua ứng dụng kết nối với phụ huynh. Ở độ tuổi 7–11, đây là giai đoạn vàng để tiếp thu tiếng Anh – trẻ bắt đầu học theo hướng chuyên sâu hơn. Tham gia Junior tại Pion, trẻ được học trong môi trường chuyên nghiệp, phát triển sự tự tin và kỹ năng mềm. Chương trình học  là bước đệm vững chắc giúp trẻ chinh phục kỳ thi Cambridge YLE với 3 cấp độ: Starters, Movers, Flyers.',
             content: [
                 'Với mô hình học tập 50% giáo viên nước ngoài và 50% cùng giáo viên Việt Nam, học viên vừa được rèn phát âm chuẩn, vừa củng cố kiến thức ngữ pháp vững chắc, tạo nền tảng vững vàng cho các kỳ thi Cambridge (Starters, Movers, Flyers).',
                 'Chương trình tiếng Anh Tiểu học Junior tại Pion áp dụng Phương pháp PPP ( Giới thiệu ngữ liệu - luyện tập - Củng cố kiến thức) giúp trẻ dễ dàng hiểu và học tiếng Anh theo phương thức tự nhiên và không gò bó.',
                 'Bên cạnh đó cách học ngôn ngữ tích hợp theo chủ đề/ dự án (CLILL - Content Led Integrated Language Learning) từ đó các con được trải nghiệm tiếng Anh qua các chủ đề hấp dẫn và phù hợp với kỳ thi Cambridge YLE: Môi trường, gia đình, thời tiết, văn hóa, xã hội...',
                 'Chương trình tiếng Anh Tiểu học tại Pion thiết kế theo khung chuẩn Châu Âu - CEFR và tương đương với các chứng chỉ Cambridge YLE: Starters (Pre-A1)(7-8 tuổi) / Movers(A1)(9-10 tuổi) / Flyers (A2) (11-12 tuổi).',
                 'Kết quả đầu ra: Trẻ phát triển các khả năng giao tiếp cơ bản nghe-nói-đọc-viết căn bản, có thể nói được các chủ đề đa dạng về toán học, xã hội, khoa học và công nghệ. Các con tự tin để thi các chứng chỉ Cambridge YLE ở các cấp độ khác nhau (Starters/ Movers/ Flyers).',
-                'Thời lượng khóa học: 12 tháng/cấp độ',
-                'Khóa học gồm 7 cấp độ, tương ứng với các trình độ Cambridge từ Pre A1 đến A2:',
+                'Thời lượng chương trình học : 12 tháng/cấp độ',
+                'Chương trình học  gồm 7 cấp độ, tương ứng với các trình độ Cambridge từ Pre A1 đến A2:',
             ],
             goals: [
                 'Trẻ được phát triển hoàn thiện 4 kỹ năng: Nghe, nói, đọc, viết.',
@@ -64,9 +64,9 @@ const courses = {
             language: 'english',
             title: 'Tiếng Anh Giao Tiếp',
             subTitle: 'Prepare dành cho học sinh từ 12-18 tuổi',
-            desc: 'Khóa học trang bị cho học sinh kiến thức và kỹ năng tiếng Anh nâng cao, giúp tự tin giao tiếp và đạt kết quả cao trong các kỳ thi.',
+            desc: 'Chương trình học  trang bị cho học sinh kiến thức và kỹ năng tiếng Anh nâng cao, giúp tự tin giao tiếp và đạt kết quả cao trong các kỳ thi.',
             descDetail:
-                'Khóa học Tiếng Anh Giao tiếp tại trung tâm được xây dựng dành cho học sinh từ THCS đến THPT, giúp người học phát triển toàn diện kỹ năng Nghe – Nói – Đọc – Viết, đặc biệt là khả năng giao tiếp tự nhiên và phản xạ tiếng Anh nhanh chóng. Chương trình sử dụng bộ giáo trình Cambridge Prepare! (P1–P7) – bộ sách hiện đại, chuẩn quốc tế, kết hợp hoàn hảo giữa tiếng Anh giao tiếp thực tế và nền tảng học thuật. Học viên được học trong môi trường 50% thời lượng cùng giáo viên nước ngoài, giúp rèn luyện phát âm chuẩn, ngữ điệu tự nhiên và tự tin nói tiếng Anh trong mọi tình huống.',
+                'Chương trình học  Tiếng Anh Giao tiếp tại trung tâm được xây dựng dành cho học sinh từ THCS đến THPT, giúp người học phát triển toàn diện kỹ năng Nghe – Nói – Đọc – Viết, đặc biệt là khả năng giao tiếp tự nhiên và phản xạ tiếng Anh nhanh chóng. Chương trình sử dụng bộ giáo trình Cambridge Prepare! (P1–P7) – bộ sách hiện đại, chuẩn quốc tế, kết hợp hoàn hảo giữa tiếng Anh giao tiếp thực tế và nền tảng học thuật. Học viên được học trong môi trường 50% thời lượng cùng giáo viên nước ngoài, giúp rèn luyện phát âm chuẩn, ngữ điệu tự nhiên và tự tin nói tiếng Anh trong mọi tình huống.',
             content: [
                 'Giáo trình quốc tế Cambridge – Prepare! Nội dung phong phú, chủ đề gần gũi với lứa tuổi thiếu niên, giúp học viên phát triển toàn diện kỹ năng ngôn ngữ và tư duy toàn cầu.',
                 '50% Giáo viên nước ngoài – 50% Giáo viên Việt Nam: Sự kết hợp hoàn hảo giữa giao tiếp tự nhiên và củng cố ngữ pháp, kỹ năng làm bài thi Cambridge.',
@@ -121,9 +121,9 @@ const courses = {
             language: 'chinese',
             title: 'Tiếng Trung Trẻ Em',
             subTitle: 'Phù hợp với trẻ em từ 4-12 tuổi',
-            desc: 'Khóa học giúp trẻ làm quen với tiếng Trung qua trò chơi, bài hát, câu chuyện và hoạt động tương tác, phù hợp cho trẻ từ 4 đến 12 tuổi.',
+            desc: 'Chương trình học  giúp trẻ làm quen với tiếng Trung qua trò chơi, bài hát, câu chuyện và hoạt động tương tác, phù hợp cho trẻ từ 4 đến 12 tuổi.',
             descDetail:
-                'Khóa học Tiếng Trung Trẻ Em được thiết kế dành cho học sinh từ 4–12 tuổi, giúp các em làm quen và phát triển khả năng nghe – nói – đọc – viết tiếng Trung một cách tự nhiên và hứng thú. Chương trình học theo giáo trình YCT (Youth Chinese Test) – bộ giáo trình quốc tế chuẩn hóa do Hanban/Confucius Institute biên soạn, giúp học viên từng bước đạt được năng lực ngôn ngữ tương ứng các cấp độ thi YCT 1 → YCT 6. Các buổi học được thiết kế sinh động với trò chơi, hình ảnh, bài hát và hội thoại ngắn, giúp trẻ học dễ – nhớ lâu – nói tự nhiên, tạo nền tảng vững chắc cho việc học tiếng Trung lâu dài.',
+                'Chương trình học  Tiếng Trung Trẻ Em được thiết kế dành cho học sinh từ 4–12 tuổi, giúp các em làm quen và phát triển khả năng nghe – nói – đọc – viết tiếng Trung một cách tự nhiên và hứng thú. Chương trình học theo giáo trình YCT (Youth Chinese Test) – bộ giáo trình quốc tế chuẩn hóa do Hanban/Confucius Institute biên soạn, giúp học viên từng bước đạt được năng lực ngôn ngữ tương ứng các cấp độ thi YCT 1 → YCT 6. Các buổi học được thiết kế sinh động với trò chơi, hình ảnh, bài hát và hội thoại ngắn, giúp trẻ học dễ – nhớ lâu – nói tự nhiên, tạo nền tảng vững chắc cho việc học tiếng Trung lâu dài.',
             content: [
                 'Giáo trình YCT quốc tế – bám sát nội dung thi thật, phù hợp độ tuổi thiếu nhi.',
                 'Phương pháp học qua trải nghiệm – kết hợp nghe, nói, hát, kể chuyện, đóng vai giúp bé phản xạ tự nhiên và yêu thích tiếng Trung.',
@@ -149,14 +149,14 @@ const courses = {
             language: 'chinese',
             title: 'HSK(K) Tại Pion',
             subTitle: 'Lộ trình học từ số 0',
-            desc: 'Khóa học HSK với lộ trình rõ ràng từ HSK 1 đến HSK 6, giúp học viên nắm vững kiến thức và kỹ năng làm bài thi một cách hiệu quả.',
+            desc: 'Chương trình học  HSK với lộ trình rõ ràng từ HSK 1 đến HSK 6, giúp học viên nắm vững kiến thức và kỹ năng làm bài thi một cách hiệu quả.',
             descDetail:
                 'Khoá học HSK giúp học viên chuẩn bị vững vàng cho kỳ thi đánh giá năng lực tiếng Trung với lộ trình rõ ràng, từ HSK 1 đến HSK 6. Chương trình giảng dạy bám sát cấu trúc đề thi, tập trung vào các kỹ năng nghe, nói, đọc, viết, kết hợp chiến lược làm bài hiệu quả. Học viên sẽ được hướng dẫn bởi đội ngũ giáo viên giàu kinh nghiệm, thực hành với đề thi thử và nhận phản hồi chi tiết để cải thiện điểm số. Khoá học phù hợp cho những ai muốn đạt chứng chỉ HSK để du học, làm việc hoặc nâng cao trình độ tiếng Trung.',
             content: [
-                'Các khóa học tiếng Trung tại Pion được thiết kế bám sát cấu trúc đề thi quốc tế, giúp học viên vừa thi đỗ chứng chỉ, vừa ứng dụng được trong công việc và giao tiếp thực tế.',
+                'Các chương trình học  tiếng Trung tại Pion được thiết kế bám sát cấu trúc đề thi quốc tế, giúp học viên vừa thi đỗ chứng chỉ, vừa ứng dụng được trong công việc và giao tiếp thực tế.',
                 'Pion mang đến chương trình luyện thi HSK(K) chuyên sâu, kết hợp giữa kiến thức chuẩn quốc tế và ứng dụng thực tế, giúp học viên không chỉ đạt chứng chỉ mà còn sử dụng tiếng Trung thành thạo trong học tập và công việc.',
                 'Giáo trình cập nhật theo tiêu chuẩn HSK/HSKK mới nhất.',
-                'Giáo viên giàu kinh nghiệm, hỗ trợ học viên trong suốt khóa học.',
+                'Giáo viên giàu kinh nghiệm, hỗ trợ học viên trong suốt chương trình học .',
                 'Môi trường học tập tương tác, thực hành trực tiếp qua bài tập và bài kiểm tra.',
                 'Luyện tập với đề thi thật và thi thử định kỳ.',
                 'Hướng dẫn kỹ năng làm bài thi hiệu quả, quản lý thời gian.',
@@ -236,7 +236,7 @@ const courses = {
     //         subTitle: '',
     //         desc: 'Trải nghiệm học 1 kèm 1 cá nhân hóa với phần mềm chuyên dụng; tương tác trực tiếp với giảng viên và nhận phản hồi ngay lập tức. Hỗ trợ thảo luận qua chat và luyện giao tiếp qua trò chơi học thuật.',
     //         descDetail:
-    //             'Khóa học 1 kèm 1 tại Pion mang đến trải nghiệm học tập vượt trội với phần mềm chuyên dụng cho giảng dạy, giúp học viên nâng cao kỹ năng một cách nhanh chóng và hiệu quả. Học viên có thể đặt câu hỏi trực tiếp với giảng viên và nhận phản hồi tức thì về phát âm và ngữ pháp. Ngoài ra, khóa học còn hỗ trợ ghi chú và thảo luận với bạn học qua khung chat trực tuyến, tham gia các nhóm học để rèn luyện khả năng giao tiếp, và ôn tập qua các trò chơi học thuật thú vị. Tài liệu học được gửi trực tiếp từ giảng viên mà không cần phải chờ đến buổi học tiếp theo, giúp học viên tiếp cận kiến thức nhanh chóng và dễ dàng.',
+    //             'Chương trình học  1 kèm 1 tại Pion mang đến trải nghiệm học tập vượt trội với phần mềm chuyên dụng cho giảng dạy, giúp học viên nâng cao kỹ năng một cách nhanh chóng và hiệu quả. Học viên có thể đặt câu hỏi trực tiếp với giảng viên và nhận phản hồi tức thì về phát âm và ngữ pháp. Ngoài ra, chương trình học  còn hỗ trợ ghi chú và thảo luận với bạn học qua khung chat trực tuyến, tham gia các nhóm học để rèn luyện khả năng giao tiếp, và ôn tập qua các trò chơi học thuật thú vị. Tài liệu học được gửi trực tiếp từ giảng viên mà không cần phải chờ đến buổi học tiếp theo, giúp học viên tiếp cận kiến thức nhanh chóng và dễ dàng.',
     //         content: [
     //             'Giáo trình sử dụng : SCHRITTE CẢI TIẾN A1, A2, B1, B2 - Đây được xem là giáo trình mới nhất hiện nay, được soạn thảo và tổng hợp tất cả những ưu điểm từ các giáo trình truyền thống nhằm giúp học viên dễ dàng tiếp thu và nắm bắt ngôn ngữ, tạo hứng thú trong việc học, đáp ứng tốt nhu cầu giao tiếp tiếng Đức nhanh, hiệu quả.',
     //             'Chương trình và lộ trình học được thiết kế theo nhu cầu của bạn.',
@@ -259,7 +259,7 @@ const courses = {
     //         subTitle: '',
     //         desc: 'Nền tảng ngữ âm, từ vựng và ngữ pháp sơ cấp qua bài đọc, nghe và video. Tìm hiểu văn hóa, địa lý và đời sống xã hội của Đức để tự tin giao tiếp hàng ngày.',
     //         descDetail:
-    //             'Khóa học Tiếng Đức A1 cung cấp cho học viên nền tảng vững chắc về ngữ âm, từ vựng và ngữ pháp tiếng Đức ở trình độ sơ cấp. Thông qua các bài đọc, nghe, hình ảnh, video và phim ngắn, học viên không chỉ học ngôn ngữ mà còn được tìm hiểu về văn hóa, địa lý, và đời sống xã hội của Đức cũng như các quốc gia nói tiếng Đức và một số nước ở Châu Âu. Tiếng Đức A1 là bước khởi đầu lý tưởng để bạn khám phá ngôn ngữ và văn hóa Đức, giúp bạn tự tin giao tiếp trong các tình huống đơn giản hàng ngày.',
+    //             'Chương trình học  Tiếng Đức A1 cung cấp cho học viên nền tảng vững chắc về ngữ âm, từ vựng và ngữ pháp tiếng Đức ở trình độ sơ cấp. Thông qua các bài đọc, nghe, hình ảnh, video và phim ngắn, học viên không chỉ học ngôn ngữ mà còn được tìm hiểu về văn hóa, địa lý, và đời sống xã hội của Đức cũng như các quốc gia nói tiếng Đức và một số nước ở Châu Âu. Tiếng Đức A1 là bước khởi đầu lý tưởng để bạn khám phá ngôn ngữ và văn hóa Đức, giúp bạn tự tin giao tiếp trong các tình huống đơn giản hàng ngày.',
     //         content: [
     //             'Giáo viên Việt Nam và bản xứ kết hợp giảng dạy',
     //             'Giáo trình đào tạo (được cung cấp miễn phí): Schritte Plus Neu',
@@ -281,10 +281,10 @@ const courses = {
     //         subTitle: '',
     //         desc: 'Mở rộng vốn từ vựng và ngữ pháp qua bài đọc, nghe và video. Phát triển kỹ năng giao tiếp về các chủ đề quen thuộc trong cuộc sống hàng ngày.',
     //         descDetail:
-    //             'Khóa học Tiếng Đức trình độ A2 cung cấp cho học viên kiến thức về từ vựng và ngữ pháp tiếng Đức ở cấp độ sơ cấp bậc 2. Thông qua các bài đọc, bài nghe, hình ảnh, video và phim ngắn, học viên sẽ được trang bị những hiểu biết về văn hóa, địa lý, và đời sống xã hội của Đức, cũng như các quốc gia nói tiếng Đức và một số nước ở Châu Âu. Khóa học này giúp bạn phát triển các kỹ năng giao tiếp cần thiết để tự tin trò chuyện về bản thân, gia đình và công việc, đồng thời nắm bắt thông tin chính trong các đoạn văn ngắn. Đây là bước khởi đầu tuyệt vời để bạn khám phá thế giới tiếng Đức.',
+    //             'Chương trình học  Tiếng Đức trình độ A2 cung cấp cho học viên kiến thức về từ vựng và ngữ pháp tiếng Đức ở cấp độ sơ cấp bậc 2. Thông qua các bài đọc, bài nghe, hình ảnh, video và phim ngắn, học viên sẽ được trang bị những hiểu biết về văn hóa, địa lý, và đời sống xã hội của Đức, cũng như các quốc gia nói tiếng Đức và một số nước ở Châu Âu. Chương trình học  này giúp bạn phát triển các kỹ năng giao tiếp cần thiết để tự tin trò chuyện về bản thân, gia đình và công việc, đồng thời nắm bắt thông tin chính trong các đoạn văn ngắn. Đây là bước khởi đầu tuyệt vời để bạn khám phá thế giới tiếng Đức.',
     //         content: [
     //             'Học viên sẽ được trang bị những kiến thức về từ vựng và ngữ pháp tiếng Đức ở cấp độ sơ cấp bậc 2, giúp xây dựng nền tảng vững chắc để giao tiếp cơ bản trong các tình huống hàng ngày.',
-    //             'Khóa học giúp học viên phát triển các kỹ năng giao tiếp cần thiết, tự tin trò chuyện về các chủ đề gần gũi như bản thân, gia đình, công việc, và cuộc sống thường nhật.',
+    //             'Chương trình học  giúp học viên phát triển các kỹ năng giao tiếp cần thiết, tự tin trò chuyện về các chủ đề gần gũi như bản thân, gia đình, công việc, và cuộc sống thường nhật.',
     //             'Thông qua các bài đọc, bài nghe, hình ảnh, video và phim ngắn, học viên sẽ có cơ hội khám phá văn hóa, địa lý và đời sống xã hội của Đức cùng các quốc gia nói tiếng Đức.',
     //         ],
     //         goals: [
@@ -303,11 +303,11 @@ const courses = {
     //         subTitle: '',
     //         desc: 'Nâng cao khả năng giao tiếp độc lập trong các tình huống hàng ngày và công việc. Bước đệm quan trọng để phát triển sự nghiệp và hòa nhập môi trường nói tiếng Đức.',
     //         descDetail:
-    //             'Khóa học Tiếng Đức trình độ B1 mở ra cơ hội giao tiếp tự tin với người Đức và khám phá văn hóa, con người Đức một cách sâu sắc. Với trình độ B1, bạn sẽ có nền tảng vững chắc để tham gia vào các cuộc trò chuyện hàng ngày và có thể đối mặt với các tình huống giao tiếp trong công việc, du lịch và cuộc sống xã hội tại Đức. Đây là bước đệm lý tưởng để bạn phát triển sự nghiệp và hòa nhập vào môi trường nói tiếng Đức.',
+    //             'Chương trình học  Tiếng Đức trình độ B1 mở ra cơ hội giao tiếp tự tin với người Đức và khám phá văn hóa, con người Đức một cách sâu sắc. Với trình độ B1, bạn sẽ có nền tảng vững chắc để tham gia vào các cuộc trò chuyện hàng ngày và có thể đối mặt với các tình huống giao tiếp trong công việc, du lịch và cuộc sống xã hội tại Đức. Đây là bước đệm lý tưởng để bạn phát triển sự nghiệp và hòa nhập vào môi trường nói tiếng Đức.',
     //         content: [
-    //             'Khóa học với giáo trình Menschen B1 giúp học viên hiểu và sử dụng các diễn đạt cơ bản liên quan đến những vấn đề quen thuộc trong cuộc sống như công việc, trường học, và các vấn đề xã hội đơn giản, giúp phát triển khả năng giao tiếp trong những tình huống hàng ngày.',
+    //             'Chương trình học  với giáo trình Menschen B1 giúp học viên hiểu và sử dụng các diễn đạt cơ bản liên quan đến những vấn đề quen thuộc trong cuộc sống như công việc, trường học, và các vấn đề xã hội đơn giản, giúp phát triển khả năng giao tiếp trong những tình huống hàng ngày.',
     //             'Học viên sẽ học cách diễn đạt một cách đơn giản và logic về các chủ đề trong cuộc sống xã hội, bao gồm việc chia sẻ kế hoạch và quan điểm cá nhân về những vấn đề quan trọng như tương lai, công việc hay sở thích.',
-    //             'Khóa học trang bị cho học viên khả năng kể về kinh nghiệm và trải nghiệm của bản thân, bao gồm việc miêu tả ước mơ, hy vọng, mục tiêu cá nhân và trình bày những dự định trong cuộc sống một cách rõ ràng và ngắn gọn.',
+    //             'Chương trình học  trang bị cho học viên khả năng kể về kinh nghiệm và trải nghiệm của bản thân, bao gồm việc miêu tả ước mơ, hy vọng, mục tiêu cá nhân và trình bày những dự định trong cuộc sống một cách rõ ràng và ngắn gọn.',
     //             'Học viên có thể sử dụng tiếng Đức để xử lý phần lớn các tình huống gặp phải khi đi du lịch tại các nước nói tiếng Đức, từ việc hỏi đường, đặt phòng khách sạn đến việc giao tiếp cơ bản trong các tình huống du lịch khác.',
     //             'Qua việc học giáo trình Menschen B1, học viên sẽ mở rộng vốn từ vựng và làm quen với các cấu trúc ngữ pháp nâng cao, giúp nâng cao khả năng giao tiếp trong các tình huống phức tạp hơn.',
     //         ],
@@ -328,7 +328,7 @@ const courses = {
     //         subTitle: '',
     //         desc: 'Nâng cao khả năng giao tiếp và biện luận trong các tình huống phức tạp. Tiếp cận chủ đề chuyên sâu, cải thiện kỹ năng diễn đạt logic và sự tự tin khi sử dụng tiếng Đức.',
     //         descDetail:
-    //             'Khóa học Tiếng Đức B2 giúp học viên nâng cao khả năng giao tiếp trong các tình huống phức tạp hơn so với các cấp độ trước đó. Học viên sẽ tiếp cận các chủ đề nâng cao liên quan đến công việc, trường học, các vấn đề xã hội, đồng thời cải thiện khả năng biện luận và phát triển kỹ năng diễn đạt logic trong các tình huống thực tế. Với các bài tập và tình huống thực tế, học viên sẽ phát triển khả năng sử dụng tiếng Đức một cách chính xác và tự tin hơn trong các cuộc giao tiếp chuyên sâu.',
+    //             'Chương trình học  Tiếng Đức B2 giúp học viên nâng cao khả năng giao tiếp trong các tình huống phức tạp hơn so với các cấp độ trước đó. Học viên sẽ tiếp cận các chủ đề nâng cao liên quan đến công việc, trường học, các vấn đề xã hội, đồng thời cải thiện khả năng biện luận và phát triển kỹ năng diễn đạt logic trong các tình huống thực tế. Với các bài tập và tình huống thực tế, học viên sẽ phát triển khả năng sử dụng tiếng Đức một cách chính xác và tự tin hơn trong các cuộc giao tiếp chuyên sâu.',
     //         content: [
     //             'Cung cấp các cấu trúc ngữ pháp và từ vựng nâng cao để học viên có thể tham gia vào các cuộc trò chuyện phức tạp hơn về các chủ đề chuyên môn và xã hội.',
     //             'Học viên sẽ được hướng dẫn cách lập luận, diễn đạt và trình bày quan điểm của mình một cách rõ ràng và thuyết phục trong các cuộc thảo luận.',
@@ -353,9 +353,9 @@ const courses = {
     //         language: 'korean',
     //         title: 'Tiếng Hàn Sơ Cấp 1',
     //         subTitle: '',
-    //         desc: 'Khóa học giúp bạn xây dựng nền tảng tiếng Hàn vững chắc với 700-900 từ vựng và hơn 50 cấu trúc ngữ pháp cơ bản. Học viên có thể viết đoạn văn 100-300 chữ và giao tiếp trong các tình huống quen thuộc.',
+    //         desc: 'Chương trình học  giúp bạn xây dựng nền tảng tiếng Hàn vững chắc với 700-900 từ vựng và hơn 50 cấu trúc ngữ pháp cơ bản. Học viên có thể viết đoạn văn 100-300 chữ và giao tiếp trong các tình huống quen thuộc.',
     //         descDetail:
-    //             'Khóa học sơ cấp 1 giúp bạn xây dựng nền tảng vững chắc về phát âm, từ vựng và ngữ pháp tiếng Hàn. Học viên sẽ nắm vững 700-900 từ vựng, hơn 50 cấu trúc ngữ pháp cơ bản và có thể viết đoạn văn 100-300 chữ về các chủ đề quen thuộc. Khóa học cũng rèn luyện cả 4 kỹ năng Nghe, Nói, Đọc, Viết với các bài kiểm tra định kỳ, giúp học viên tự tin giao tiếp và hiểu các đoạn văn ngắn bằng tiếng Hàn.',
+    //             'Chương trình học  sơ cấp 1 giúp bạn xây dựng nền tảng vững chắc về phát âm, từ vựng và ngữ pháp tiếng Hàn. Học viên sẽ nắm vững 700-900 từ vựng, hơn 50 cấu trúc ngữ pháp cơ bản và có thể viết đoạn văn 100-300 chữ về các chủ đề quen thuộc. Chương trình học  cũng rèn luyện cả 4 kỹ năng Nghe, Nói, Đọc, Viết với các bài kiểm tra định kỳ, giúp học viên tự tin giao tiếp và hiểu các đoạn văn ngắn bằng tiếng Hàn.',
     //         content: [
     //             'Học viên được trang bị các kiến thức của 15 bài sơ cấp 1 (gần 700 từ vựng và 45 ngữ pháp)',
     //             'Học viên được học giao tiếp với các chủ đề trong đời sống như: chào hỏi, mua sắm, thời tiết, điện thoại,…',
@@ -375,9 +375,9 @@ const courses = {
     //         language: 'korean',
     //         title: 'Tiếng Hàn Sơ Cấp 2',
     //         subTitle: '',
-    //         desc: 'Khóa học nâng cao khả năng giao tiếp với 1500-2000 từ vựng, hơn 100 cấu trúc ngữ pháp và rèn luyện toàn diện 4 kỹ năng. Học viên có thể viết đoạn văn 300-500 chữ và chuẩn bị cho kỳ thi Topik 2.',
+    //         desc: 'Chương trình học  nâng cao khả năng giao tiếp với 1500-2000 từ vựng, hơn 100 cấu trúc ngữ pháp và rèn luyện toàn diện 4 kỹ năng. Học viên có thể viết đoạn văn 300-500 chữ và chuẩn bị cho kỳ thi Topik 2.',
     //         descDetail:
-    //             'Khóa học sơ cấp 2 giúp học viên nâng cao khả năng giao tiếp tiếng Hàn với các chủ đề đa dạng về cuộc sống, đô thị và nơi công cộng. Học viên sẽ nắm vững 1500-2000 từ vựng, hơn 100 cấu trúc ngữ pháp và có thể viết đoạn văn 300-500 chữ về nhiều chủ đề khác nhau. Khóa học rèn luyện toàn diện 4 kỹ năng Nghe, Nói, Đọc, Viết, đồng thời trang bị kỹ năng làm bài thi Topik 2. Đặc biệt, sau mỗi 5 bài học, học viên sẽ có một buổi thực hành giao tiếp cùng giáo viên người Hàn.',
+    //             'Chương trình học  sơ cấp 2 giúp học viên nâng cao khả năng giao tiếp tiếng Hàn với các chủ đề đa dạng về cuộc sống, đô thị và nơi công cộng. Học viên sẽ nắm vững 1500-2000 từ vựng, hơn 100 cấu trúc ngữ pháp và có thể viết đoạn văn 300-500 chữ về nhiều chủ đề khác nhau. Chương trình học  rèn luyện toàn diện 4 kỹ năng Nghe, Nói, Đọc, Viết, đồng thời trang bị kỹ năng làm bài thi Topik 2. Đặc biệt, sau mỗi 5 bài học, học viên sẽ có một buổi thực hành giao tiếp cùng giáo viên người Hàn.',
     //         content: [
     //             'Học viên được trang bị các kiến thức của 15 bài sơ cấp 2 (gần 1000 từ vựng và 45 ngữ pháp)',
     //             'Học viên được học giao tiếp với các chủ đề trong những hoàn cảnh cụ thể như: Bệnh viện, thư tín, phim ảnh, kế hoạch,…',
@@ -398,9 +398,9 @@ const courses = {
     //         language: 'korean',
     //         title: 'Ôn Luyện TOPIK I',
     //         subTitle: '',
-    //         desc: 'Khóa học Topik I kết hợp lý thuyết chuyên sâu và thực hành qua bộ đề sát với thực tế, giúp học viên nắm bắt cấu trúc đề thi, từ vựng và ngữ pháp trọng tâm. Với phương pháp giảng dạy tương tác và chiến lược làm bài thông minh, khóa học giúp bạn tự tin vượt qua áp lực thi cử và đạt kết quả cao.',
+    //         desc: 'Chương trình học  Topik I kết hợp lý thuyết chuyên sâu và thực hành qua bộ đề sát với thực tế, giúp học viên nắm bắt cấu trúc đề thi, từ vựng và ngữ pháp trọng tâm. Với phương pháp giảng dạy tương tác và chiến lược làm bài thông minh, chương trình học  giúp bạn tự tin vượt qua áp lực thi cử và đạt kết quả cao.',
     //         descDetail:
-    //             'Khóa học Topik I là sự kết hợp giữa lý thuyết chuyên sâu và thực hành qua bộ đề luyện thi sát với thực tế, giúp học viên nắm bắt cấu trúc đề thi, từ vựng và ngữ pháp trọng tâm một cách hiệu quả. Khóa học được thiết kế với phương pháp giảng dạy tương tác, cá nhân hóa, tạo điều kiện cho học viên rèn luyện toàn diện cả bốn kỹ năng nghe, nói, đọc và viết. Bên cạnh đó, học viên còn được trang bị chiến lược làm bài thông minh, giúp tối ưu hóa thời gian và tự tin vượt qua áp lực thi cử. Với những điểm đặc biệt này, khóa học Topik I hứa hẹn sẽ giúp bạn nhanh chóng nâng cao năng lực và đạt kết quả thi cao.',
+    //             'Chương trình học  Topik I là sự kết hợp giữa lý thuyết chuyên sâu và thực hành qua bộ đề luyện thi sát với thực tế, giúp học viên nắm bắt cấu trúc đề thi, từ vựng và ngữ pháp trọng tâm một cách hiệu quả. Chương trình học  được thiết kế với phương pháp giảng dạy tương tác, cá nhân hóa, tạo điều kiện cho học viên rèn luyện toàn diện cả bốn kỹ năng nghe, nói, đọc và viết. Bên cạnh đó, học viên còn được trang bị chiến lược làm bài thông minh, giúp tối ưu hóa thời gian và tự tin vượt qua áp lực thi cử. Với những điểm đặc biệt này, chương trình học  Topik I hứa hẹn sẽ giúp bạn nhanh chóng nâng cao năng lực và đạt kết quả thi cao.',
     //         content: [
     //             'Học bảng chữ cái Hangul và cách phát âm chuẩn.',
     //             'Nắm vững khoảng 800–1000 từ vựng thông dụng trong TOPIK I.',
@@ -412,7 +412,7 @@ const courses = {
     //             'Tham gia các buổi học tương tác để nâng cao kỹ năng giao tiếp.',
     //         ],
     //         goals: [
-    //             'Đạt chứng chỉ TOPIK I sau khóa học.',
+    //             'Đạt chứng chỉ TOPIK I sau chương trình học .',
     //             'Giao tiếp tiếng Hàn cơ bản thành thạo trong các tình huống hàng ngày.',
     //             'Nắm vững cấu trúc đề thi và kỹ năng làm bài hiệu quả.',
     //             'Chuẩn bị nền tảng vững chắc cho việc học lên trình độ trung cấp.',
@@ -427,9 +427,9 @@ const courses = {
     //         language: 'korean',
     //         title: 'Ôn Luyện TOPIK II',
     //         subTitle: '',
-    //         desc: 'Khóa học Topik II giúp học viên nâng cao kỹ năng Nghe, Đọc, Viết qua lý thuyết cơ bản và luyện tập với bộ đề sát với thực tế, đặc biệt tập trung chiến lược làm bài câu 54. Từ đó, bạn sẽ nắm vững các dạng bài thi và đạt trình độ TOPIK cao nhất chỉ trong 1 khóa học.',
+    //         desc: 'Chương trình học  Topik II giúp học viên nâng cao kỹ năng Nghe, Đọc, Viết qua lý thuyết cơ bản và luyện tập với bộ đề sát với thực tế, đặc biệt tập trung chiến lược làm bài câu 54. Từ đó, bạn sẽ nắm vững các dạng bài thi và đạt trình độ TOPIK cao nhất chỉ trong 1 chương trình học .',
     //         descDetail:
-    //             'Khóa học Topik II được thiết kế dành cho những học viên mong muốn nâng cao kỹ năng Nghe, Đọc, Viết và mở rộng vốn từ vựng qua âm Hán. Học viên sẽ được làm quen với các lý thuyết cơ bản về ba kỹ năng, tiếp cận các dạng bài thi viết (các câu 51, 52, 53) và rèn luyện qua bộ đề 50 câu cho Nghe và Đọc. Đặc biệt, khóa học tập trung luyện tập chuyên sâu về chiến lược làm bài cho câu 54, giúp học viên nắm vững phương pháp học từ vựng Hán - Hàn. Mục tiêu của khóa học là giúp học viên hiểu sâu về kỳ thi Topik II, thành thạo các dạng câu hỏi và cuối cùng đạt được trình độ TOPIK cao nhất chỉ trong 1 khóa học, từ đó tự tin ứng phó với mọi thách thức thi cử.',
+    //             'Chương trình học  Topik II được thiết kế dành cho những học viên mong muốn nâng cao kỹ năng Nghe, Đọc, Viết và mở rộng vốn từ vựng qua âm Hán. Học viên sẽ được làm quen với các lý thuyết cơ bản về ba kỹ năng, tiếp cận các dạng bài thi viết (các câu 51, 52, 53) và rèn luyện qua bộ đề 50 câu cho Nghe và Đọc. Đặc biệt, chương trình học  tập trung luyện tập chuyên sâu về chiến lược làm bài cho câu 54, giúp học viên nắm vững phương pháp học từ vựng Hán - Hàn. Mục tiêu của chương trình học  là giúp học viên hiểu sâu về kỳ thi Topik II, thành thạo các dạng câu hỏi và cuối cùng đạt được trình độ TOPIK cao nhất chỉ trong 1 chương trình học , từ đó tự tin ứng phó với mọi thách thức thi cử.',
 
     //         content: [
     //             'Mở rộng vốn từ vựng và ngữ pháp trung cấp, bao gồm cả Hán Hàn.',
@@ -442,7 +442,7 @@ const courses = {
     //             'Tham gia câu lạc bộ luyện nói và giao lưu với người Hàn Quốc.',
     //         ],
     //         goals: [
-    //             'Đạt chứng chỉ TOPIK II từ cấp 3 đến cấp 6 sau khóa học.',
+    //             'Đạt chứng chỉ TOPIK II từ cấp 3 đến cấp 6 sau chương trình học .',
     //             'Nâng cao kỹ năng Nghe, Đọc, Viết để sử dụng tiếng Hàn thành thạo.',
     //             'Hiểu rõ cấu trúc và yêu cầu của đề thi TOPIK II.',
     //             'Phát triển tư duy viết bài logic và mạch lạc.',
