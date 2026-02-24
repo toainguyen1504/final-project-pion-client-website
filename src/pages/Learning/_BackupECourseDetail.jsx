@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { Tag } from 'antd';
+import { Tag, Collapse } from 'antd';
 import { useParams } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
 import { IoMdPlayCircle } from 'react-icons/io';
@@ -11,6 +11,7 @@ import Button from '@/components/Button'; // import Button custom
 import Breadcrumb from '@/components/Breadcrumb';
 
 const cx = classNames.bind(styles);
+const { Panel } = Collapse;
 
 const ECourseDetail = () => {
     const { slug } = useParams(); // lấy slug từ route
@@ -70,10 +71,15 @@ const ECourseDetail = () => {
                 </ul>
             </div>
 
-            <div className={cx('lesson-list-wrapper')}>
+            {/* Dùng chapters dùng chung, còn việc render thì tùy, 
+            tuy nhiên với language thì nên để là Topics, học theo topics */}
+            <div className={cx('chapters')}>
                 <h2>Nội dung khóa học</h2>
 
                 <div className={cx('meta')}>
+                    <p className={cx('item')}>
+                        <span>{course.chapters.length}</span> chương
+                    </p>
                     <p className={cx('item')}>
                         <span>{course.meta.total_lessons}</span> bài học
                     </p>
@@ -82,27 +88,31 @@ const ECourseDetail = () => {
                     </p>
                 </div>
 
-                {/* danh sách bài học */}
-                <div className={cx('lesson-list-inner')}>
-                    <ul className={cx('lesson-list')}>
-                        {(() => {
-                            let lessonIndex = 1;
-                            return course.lessons.map((lesson) => {
-                                const currentIndex = lessonIndex++;
-                                return (
-                                    <li key={currentIndex}>
-                                        <span className={cx('play-icon')}>
-                                            <IoMdPlayCircle />
-                                        </span>
-                                        <span className={cx('lesson-title')}>
-                                            {currentIndex}. {lesson}
-                                        </span>
-                                    </li>
-                                );
-                            });
-                        })()}
-                    </ul>
-                </div>
+                <Collapse accordion>
+                    {(() => {
+                        let lessonIndex = 1; // khởi tạo biến đếm toàn cục
+
+                        return course.chapters.map((chapter, index) => (
+                            <Panel header={`${index + 1}. ${chapter.title}`} key={index}>
+                                <ul className={cx('lesson-list')}>
+                                    {chapter.lessons.map((lesson, i) => {
+                                        const currentIndex = lessonIndex++;
+                                        return (
+                                            <li key={currentIndex}>
+                                                <span className={cx('play-icon')}>
+                                                    <IoMdPlayCircle />
+                                                </span>
+                                                <span className={cx('lesson-title')}>
+                                                    {currentIndex}. {lesson}
+                                                </span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </Panel>
+                        ));
+                    })()}
+                </Collapse>
             </div>
         </section>
     );

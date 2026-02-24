@@ -12,8 +12,8 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup 
                 <iframe
                     width="100%"
                     height="100%"
-                    // src="https://www.youtube.com/embed/X0QjBKCDBVw?si=2i8KAHVMhjMsQnIO"
-                    src="https://www.youtube.com/embed/bojdCI-dH5g?si=kHH8dTbVCqJo2YWb"
+                    src="https://www.youtube.com/embed/3XIpvrhxkiY"
+                    // src="https://www.youtube.com/embed/bojdCI-dH5g?si=kHH8dTbVCqJo2YWb"
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
