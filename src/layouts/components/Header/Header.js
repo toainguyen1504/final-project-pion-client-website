@@ -201,12 +201,12 @@ const items = [
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
             { key: 'news-list', label: <Link to={config.routes.newsList}>Tất cả tin tức</Link> },
+            { key: 'news-recruitment', label: <Link to={config.routes.newsAvailablePosition}>Tuyển dụng</Link> },
+            { key: 'news-question', label: <Link to={config.routes.faq}>Câu hỏi thường gặp</Link> },
             {
                 key: 'abroad-china',
                 label: <Link to={config.routes.studyAbroadChina}>Điều kiện du học Trung Quốc 2025</Link>,
             },
-            { key: 'news-recruitment', label: <Link to={config.routes.newsAvailablePosition}>Tuyển dụng</Link> },
-            { key: 'news-question', label: <Link to={config.routes.faq}>Câu hỏi thường gặp</Link> },
         ],
     },
     {
@@ -382,14 +382,14 @@ export default function Header({ visible }) {
                             <Link to={config.routes.newsList} className={cx('dropdown-item')}>
                                 Tất cả tin tức
                             </Link>
-                            <Link to={config.routes.studyAbroadChina} className={cx('dropdown-item')}>
-                                Điều kiện du học Trung Quốc 2025
-                            </Link>
                             <Link to={config.routes.newsAvailablePosition} className={cx('dropdown-item')}>
                                 Tuyển dụng
                             </Link>
                             <Link to={config.routes.faq} className={cx('dropdown-item')}>
                                 Câu hỏi thường gặp
+                            </Link>
+                            <Link to={config.routes.studyAbroadChina} className={cx('dropdown-item')}>
+                                Điều kiện du học Trung Quốc 2025
                             </Link>
                         </div>
                     </div>
