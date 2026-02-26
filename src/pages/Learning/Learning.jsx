@@ -1,18 +1,31 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { Helmet } from 'react-helmet-async';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import HeadingSection from '@/components/HeadingSection';
 import LearningBannerCarousel from './LearningBannerCarousel';
-import { eCourses } from '@/data/eCourses';
+// import { eCourses } from '@/data/eCourses';
+import { getAllCourses } from '@/services/coursesService';
 import ECoursesList from './ECoursesList';
 import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
 
 function Learning() {
-    const getProCourses = () => eCourses.filter((course) => course.price > 0);
-    const getFreeCourses = () => eCourses.filter((course) => course.price === 0);
+    const [courses, setCourses] = useState([]);
+    useEffect(() => {
+        async function fetchCourses() {
+            const data = await getAllCourses();
+            console.log('Khóa học nhận từ API:', data);
+            setCourses(data);
+        }
+        fetchCourses();
+    }, []);
+
+    // Tách khóa học có phí và miễn phí để hiển thị ở 2 section khác nhau
+    const getProCourses = () => courses.filter((course) => course.price > 0 && course.is_free === false);
+    const getFreeCourses = () => courses.filter((course) => course.price === 0 || course.is_free === true);
 
     // fake banners for e-learning
     const bannerImages = [
@@ -48,6 +61,7 @@ function Learning() {
 
                     {/* Courses */}
                     <section className={cx('courses')}>
+                        {/* Khóa học có phí - sau này sẽ là các khóa học bên Trung tâm tự quay và bán -> ví dụ: HSK1-6 */}
                         <HeadingSection title="Khóa học Pro" />
                         <ECoursesList courses={getProCourses()} />
 

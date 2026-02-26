@@ -16,27 +16,30 @@ const ECoursesList = ({ courses }) => {
     return (
         <section className={cx('courses')}>
             <div className={cx('courses-inner')}>
-                {loading
-                    ? [...Array(6)].map((_, i) => <ECoursesCard key={i} loading title="Loading..." link="#" />)
-                    : courses.map((course, i) => (
-                          <div
-                              className={cx('course-animate')}
-                              style={{ animationDelay: `${i * 0.16}s` }}
-                              key={course.link}
-                          >
-                              <ECoursesCard
-                                  title={course.title}
-                                  price={course.price}
-                                  discount_price={course.discount_price}
-                                  image={course.image}
-                                  link={course.link} // courses card component handle dùng to={link} để navigate
-                                  button={course.button}
-                                  participants={course.participants}
-                                  total_lessons={course.total_lessons}
-                                  duration={course.duration}
-                              />
-                          </div>
-                      ))}
+                {loading ? (
+                    [...Array(6)].map((_, i) => <ECoursesCard key={i} loading title="Loading..." link="#" />)
+                ) : courses.length === 0 ? (
+                    <p className={cx('empty-text')}>Hiện chưa có khóa học nào.</p>
+                ) : (
+                    courses.map((course, i) => (
+                        <div
+                            className={cx('course-animate')}
+                            style={{ animationDelay: `${i * 0.16}s` }}
+                            key={course.link}
+                        >
+                            <ECoursesCard
+                                title={course.title}
+                                price={course.price}
+                                discount_price={course.discount_price}
+                                image={course.image}
+                                link={course.link}
+                                participants={course.participants}
+                                total_lessons={course.total_lessons}
+                                duration={course.duration}
+                            />
+                        </div>
+                    ))
+                )}
             </div>
         </section>
     );

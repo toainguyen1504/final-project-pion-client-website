@@ -1,28 +1,53 @@
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 import { Tag } from 'antd';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
 import { IoMdPlayCircle } from 'react-icons/io';
 import { Helmet } from 'react-helmet-async';
 
 import styles from './Learning.module.scss';
-import { eCourseDetails } from '@/data/eCourses';
-import Button from '@/components/Button'; // import Button custom
+import { getCourseBySlug, enrollCourse } from '@/services/coursesService';
+import Button from '@/components/Button';
 import Breadcrumb from '@/components/Breadcrumb';
 
 const cx = classNames.bind(styles);
 
 const ECourseDetail = () => {
     const { slug } = useParams(); // lấy slug từ route
-    const course = eCourseDetails[slug]; // lấy đúng course theo slug
+    const [course, setCourse] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        async function fetchCourse() {
+            const data = await getCourseBySlug(slug);
+            console.log('Chi tiết khóa học nhận từ API:', data);
+            setCourse(data);
+            setLoading(false);
+        }
+        fetchCourse();
+    }, [slug]);
+
+    async function handleEnroll() {
+        try {
+            const updatedCourse = await enrollCourse(course.id);
+            setCourse(updatedCourse); // cập nhật lại state với participants mới
+            alert('Đăng ký thành công!');
+        } catch (err) {
+            alert('Có lỗi khi đăng ký: ' + (err.response?.data?.message || err.message));
+        }
+    }
+
+    if (loading) return <div>Đang tải dữ liệu khóa học...</div>;
     if (!course) return <div>Khóa học không tồn tại</div>;
 
     return (
         <section className={cx('course-detail')}>
             <Helmet>
                 <title>{`E-Learning - ${course?.title ?? 'Đang cập nhật'}`} | PION</title>
-                <meta name="description" content={course?.descDetail || 'Thông tin khóa học tại PION'} />
+                <meta name="description" content={course?.description || 'Thông tin khóa học tại PION'} />
             </Helmet>
 
             <div className={cx('breadcrumb-wrapper')}>
@@ -35,26 +60,52 @@ const ECourseDetail = () => {
 
             {/* Thông tin khóa học */}
             <div className={cx('banner')}>
-                <img src={course.thumbnail} alt={course.title} className={cx('thumbnail')} />
+                <img
+                    src={course.thumbnail || '/assets/img/placeholder_img.png'}
+                    alt={course.title}
+                    className={cx('thumbnail')}
+                />
                 <div className={cx('info')}>
                     <h1 className={cx('title')}>{course.title}</h1>
-                    <p className={cx('description')}>{course.meta.description}</p>
+                    <p className={cx('description')}>{course.description}</p>
                     <div className={cx('meta')}>
-                        <Tag color="volcano">{course.level}</Tag>
-                        <Tag color="volcano">{course.meta.participants?.toLocaleString()} học viên đã tham gia</Tag>
+                        <Tag color="volcano">Level {course.level}</Tag>
+                        {course.participants > 0 ? (
+                            <Tag color="volcano">{course.participants.toLocaleString()} học viên đã tham gia</Tag>
+                        ) : (
+                            <Tag color="default">Khóa học mới mở</Tag>
+                        )}
+
                         {course.is_free ? (
                             <span className={cx('free')}>Miễn phí</span>
                         ) : (
                             <div className={cx('price')}>
-                                <span className={cx('discount')}>{course.meta.discount_price?.toLocaleString()}đ</span>
-                                <span className={cx('original')}>{course.meta.price?.toLocaleString()}đ</span>
+                                {course.discount_price > 0 && (
+                                    <span className={cx('discount')}>{course.discount_price?.toLocaleString()}đ</span>
+                                )}
+                                {course.price > 0 && (
+                                    <span className={cx('original')}>{course.price?.toLocaleString()}đ</span>
+                                )}
                             </div>
                         )}
                     </div>
 
-                    <Button rounded large primary leftIcon className={cx('enroll-btn')}>
-                        Đăng ký học
-                    </Button>
+                    {course.enrolled ? (
+                        <Button
+                            rounded
+                            large
+                            primary
+                            leftIcon
+                            className={cx('enroll-btn')}
+                            onClick={() => navigate(`/learning/${course.slug}`)}
+                        >
+                            Vào học ngay
+                        </Button>
+                    ) : (
+                        <Button rounded large primary leftIcon className={cx('enroll-btn')} onClick={handleEnroll}>
+                            Đăng ký học
+                        </Button>
+                    )}
                 </div>
             </div>
 
@@ -75,32 +126,30 @@ const ECourseDetail = () => {
 
                 <div className={cx('meta')}>
                     <p className={cx('item')}>
-                        <span>{course.meta.total_lessons}</span> bài học
+                        <span>{course.total_lessons}</span> bài học
                     </p>
                     <p className={cx('item')}>
-                        Thời lượng <span>{course.meta.duration}</span>
+                        Thời lượng <span>{course.duration}</span>
                     </p>
                 </div>
 
                 {/* danh sách bài học */}
                 <div className={cx('lesson-list-inner')}>
                     <ul className={cx('lesson-list')}>
-                        {(() => {
-                            let lessonIndex = 1;
-                            return course.lessons.map((lesson) => {
-                                const currentIndex = lessonIndex++;
-                                return (
-                                    <li key={currentIndex}>
-                                        <span className={cx('play-icon')}>
-                                            <IoMdPlayCircle />
-                                        </span>
-                                        <span className={cx('lesson-title')}>
-                                            {currentIndex}. {lesson}
-                                        </span>
-                                    </li>
-                                );
-                            });
-                        })()}
+                        {course.lessons && course.lessons.length > 0 ? (
+                            course.lessons.map((lesson, index) => (
+                                <li key={lesson.id || index}>
+                                    <span className={cx('play-icon')}>
+                                        <IoMdPlayCircle />
+                                    </span>
+                                    <span className={cx('lesson-title')}>
+                                        {index + 1}. {lesson.title}
+                                    </span>
+                                </li>
+                            ))
+                        ) : (
+                            <li className={cx('empty-lesson')}>Hiện tại chưa có bài học nào được công khai.</li>
+                        )}
                     </ul>
                 </div>
             </div>

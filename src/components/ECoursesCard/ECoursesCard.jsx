@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Skeleton } from 'antd';
-import { FaUsers, FaVideo, FaClock } from 'react-icons/fa';
+import { FaUsers, FaClock } from 'react-icons/fa';
+import { IoMdPlayCircle } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
 import styles from './ECoursesCard.module.scss';
@@ -66,21 +67,26 @@ const ECoursesCard = ({
                                         </p>
                                     )}
                                 </div>
-                                {(participants || total_lessons || duration) && (
+                                {(participants !== null || total_lessons !== null || duration !== null) && (
                                     <ul className={cx('course-stats')}>
-                                        {participants !== undefined && (
+                                        {participants > 0 ? (
                                             <li>
-                                                <FaUsers /> {Number(participants).toLocaleString('vi-VN')}
+                                                <FaUsers size={16} /> {Number(participants).toLocaleString('vi-VN')}
+                                            </li>
+                                        ) : (
+                                            <li className={cx('new-course')}>
+                                                <FaUsers size={16} /> Mới
                                             </li>
                                         )}
-                                        {total_lessons !== undefined && (
+
+                                        {total_lessons !== null && (
                                             <li>
-                                                <FaVideo /> {total_lessons}
+                                                <IoMdPlayCircle size={19} /> {total_lessons}
                                             </li>
                                         )}
-                                        {duration && (
+                                        {duration !== null && (
                                             <li>
-                                                <FaClock /> {duration}
+                                                <FaClock size={16} /> {duration}
                                             </li>
                                         )}
                                     </ul>
@@ -104,7 +110,7 @@ ECoursesCard.propTypes = {
     loading: PropTypes.bool,
     participants: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     total_lessons: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    duration: PropTypes.string,
+    duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 ECoursesCard.defaultProps = {

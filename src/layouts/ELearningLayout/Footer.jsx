@@ -7,7 +7,7 @@ import styles from './ELearningLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Footer({ currentChapter = '2. Môi trường, con người IT (ví dụ)', onToggleSidebar, isOpen }) {
+export default function Footer({ currentLesson = '1. Family (mock data)', onToggleSidebar, isOpen }) {
     return (
         <footer className={cx('footer')}>
             <div className={cx('footer-inner')}>
@@ -20,10 +20,10 @@ export default function Footer({ currentChapter = '2. Môi trường, con ngư�
                     </Button>
                 </div>
 
-                {/* Hiển thị tên chương và nút toggle */}
-                <div className={cx('chapter-info')}>
+                {/* Hiển thị tên lesson và nút toggle */}
+                <div className={cx('lesson-info')}>
                     {/* optimize: Cần hàm xử lý text ở đây, nếu quá dài thì sẽ bị cắt + Tooltip */}
-                    <span className={cx('chapter-name')}>{currentChapter}</span>
+                    <span className={cx('lesson-name')}>{currentLesson}</span>
 
                     {/* Toggle button */}
                     <button className={cx('toggle-btn')} onClick={onToggleSidebar}>

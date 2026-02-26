@@ -3,18 +3,33 @@ import { IoMdPlayCircle } from 'react-icons/io';
 import { SiGoogledocs } from 'react-icons/si';
 import classNames from 'classnames/bind';
 import styles from './ELearningLayout.module.scss';
-import { eCourseDetails } from '@/data/eCourses';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getLearningCourseBySlug } from '@/services/coursesService';
 
 const cx = classNames.bind(styles);
 
 export default function Sidebar({ isOpen }) {
     const { slug } = useParams();
-    const course = eCourseDetails[slug];
+    const [course, setCourse] = useState(null);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        async function fetchCourse() {
+            try {
+                const data = await getLearningCourseBySlug(slug);
+                setCourse(data);
+            } catch (err) {
+                console.error('Lỗi khi lấy dữ liệu sidebar:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCourse();
+    }, [slug]);
+
+    if (loading) return <aside className={cx('sidebar', { closed: !isOpen })}>Đang tải...</aside>;
     if (!course) return <aside className={cx('sidebar', { closed: !isOpen })}>Khóa học không tồn tại</aside>;
-
-    let lessonIndex = 1;
 
     return (
         <aside className={cx('sidebar', { closed: !isOpen })}>
@@ -22,28 +37,26 @@ export default function Sidebar({ isOpen }) {
                 <h2 className={cx('sidebar-title')}>Nội dung khóa học</h2>
 
                 <ul className={cx('lesson-list')}>
-                    {course.lessons.map((lesson) => {
-                        const currentIndex = lessonIndex++;
-                        return (
-                            <li key={currentIndex} className={cx('lesson-wrapper')}>
-                                <div className={cx('lesson-info')}>
-                                    <h3 className={cx('lesson-title')}>
-                                        {currentIndex}. {lesson}
-                                    </h3>
-                                    <div className={cx('lesson-desc')}>
-                                        <div className={cx('lesson-type')}>
-                                            {/* mock lesson type */}
-                                            {currentIndex % 2 !== 0 ? <IoMdPlayCircle /> : <SiGoogledocs />}
-                                        </div>
-                                        <span className={cx('lesson-time')}>3:09</span>
+                    {course.lessons.map((lesson, index) => (
+                        <li key={lesson.id} className={cx('lesson-wrapper')}>
+                            <div className={cx('lesson-info')}>
+                                <h3 className={cx('lesson-title')}>
+                                    {index + 1}. {lesson.title}
+                                </h3>
+                                <div className={cx('lesson-desc')}>
+                                    <div className={cx('lesson-type')}>
+                                        {lesson.is_quiz ? <SiGoogledocs /> : <IoMdPlayCircle />}
                                     </div>
+                                    <span className={cx('lesson-time')}>
+                                        {lesson.duration ? `${lesson.duration} phút` : '---time---'}
+                                    </span>
                                 </div>
-                                <span className={cx('play-icon')}>
-                                    <MdCheckCircle />
-                                </span>
-                            </li>
-                        );
-                    })}
+                            </div>
+                            <span className={cx('play-icon')}>
+                                <MdCheckCircle />
+                            </span>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </aside>

@@ -1,10 +1,12 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { GiNotebook } from 'react-icons/gi';
 import { TbHelpHexagonFilled } from 'react-icons/tb';
 import { FaAngleLeft } from 'react-icons/fa6';
 import { Tooltip, Progress } from 'antd';
 import config from '@/config';
+import { getLearningCourseBySlug } from '@/services/coursesService';
 import Button from '@/components/Button'; // import Button custom
 import styles from './ELearningLayout.module.scss';
 
@@ -18,6 +20,27 @@ const conicColors = {
 };
 
 export default function Header() {
+    const { slug } = useParams();
+    const [course, setCourse] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchCourse() {
+            try {
+                const data = await getLearningCourseBySlug(slug);
+                setCourse(data);
+            } catch (err) {
+                console.error('Lỗi khi lấy dữ liệu header:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCourse();
+    }, [slug]);
+
+    if (loading) return <header className={cx('header')}>Đang tải...</header>;
+    if (!course) return <header className={cx('header')}>Không tìm thấy khóa học</header>;
+
     return (
         <header className={cx('header')}>
             <div className={cx('header-inner')}>
@@ -36,7 +59,7 @@ export default function Header() {
                         </Link>
                     </Tooltip>
                 </div>
-                <div className={cx('course-title')}>Tên khóa học</div>
+                <div className={cx('course-title')}>{course.title}</div>
             </div>
 
             <div className={cx('module-action')}>
@@ -44,7 +67,9 @@ export default function Header() {
                     <div className={cx('progress-circle')}>
                         <Progress type="circle" percent={89} strokeColor={conicColors} size={36} />
                     </div>
-                    <p className={cx('completed-msg')}>11/12 bài học</p>
+
+                    <p className={cx('completed-msg')}>0/{course.total_lessons} bài học</p>
+
                     <a href="#!" className={cx('cert-link')}>
                         Xem chứng chỉ
                     </a>

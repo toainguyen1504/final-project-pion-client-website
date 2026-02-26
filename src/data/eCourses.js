@@ -192,7 +192,7 @@ export const eCourses = [
     },
 ];
 
-// ** Chi tiết theo slug **
+// ** Chi tiết theo slug - data thực tế thì không có meta **
 export const eCourseDetails = {
     'english-vocabulary-by-topics': {
         title: 'English Vocabulary by Topics',
@@ -205,7 +205,7 @@ export const eCourseDetails = {
             total_lessons: 12,
             duration: '4h05m',
         },
-        level: 'Cơ bản',
+        level: 'Level 1',
         is_free: false,
         thumbnail: '/assets/img/courses/ko_luyen_thi_topik_i.jpg',
         video_intro_url: 'https://youtu.be/gG5rAe5be2s?si=ICNC6x0hmvXJbLJq',
@@ -238,7 +238,7 @@ export const eCourseDetails = {
     'communication-skills': {
         title: 'Communication Skills',
         slug: 'communication-skills',
-        level: 'Cơ bản',
+        level: 'Level 2',
         is_free: true,
         meta: {
             description: 'Rèn luyện kỹ năng giao tiếp hiệu quả trong công việc và cuộc sống.',
