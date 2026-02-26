@@ -1,10 +1,40 @@
 import classNames from 'classnames/bind';
-import { FaPlus } from 'react-icons/fa6';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styles from './LearningMode.module.scss';
+import { getLearningCourseBySlug } from '@/services/coursesService';
+import { FaPlus } from 'react-icons/fa6';
+import dayjs from 'dayjs';
+import 'dayjs/locale/vi'; // để hiển thị tiếng Việt
+dayjs.locale('vi');
 
 const cx = classNames.bind(styles);
 
 export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup }) {
+    const { slug } = useParams();
+    const [course, setCourse] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchCourse() {
+            try {
+                const data = await getLearningCourseBySlug(slug);
+                setCourse(data);
+            } catch (err) {
+                console.error('Lỗi khi lấy dữ liệu học tập:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCourse();
+    }, [slug]);
+
+    if (loading) return <div>Đang tải dữ liệu học tập...</div>;
+    if (!course) return <div>Không tìm thấy khóa học hoặc bạn chưa đăng ký.</div>;
+
+    // Lấy bài học đầu tiên để demo
+    const currentLesson = course.lessons[0] || {};
+
     return (
         <>
             {/* Khu vực xem video */}
@@ -12,25 +42,25 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup 
                 <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/3XIpvrhxkiY"
-                    // src="https://www.youtube.com/embed/bojdCI-dH5g?si=kHH8dTbVCqJo2YWb"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
+                    src={currentLesson.video_url || ''}
+                    title={currentLesson.title || 'Video bài học'}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
                 ></iframe>
             </div>
 
             <div className={cx('content')}>
                 <div className={cx('title-wrapper')}>
-                    {/* TITLE */}
+                    {/* Title */}
                     <div className={cx('title-inner')}>
-                        <h1 className={cx('lesson-title')}>Tiêu đề bài học</h1>
-                        <p className={cx('lesson-desc')}>Cập nhật tháng 1 năm 2026</p>
+                        <h1 className={cx('lesson-title')}>{currentLesson.title}</h1>
+                        <p className={cx('lesson-desc')}>
+                            Cập nhật {dayjs(currentLesson.updated_at).format('MMMM [năm] YYYY')}
+                        </p>
                     </div>
 
-                    {/* NOTE */}
+                    {/* Note */}
                     {!showNotePopup && (
                         <button className={cx('note-btn')} onClick={onToggleNote}>
                             <FaPlus className={cx('note-icon')} />
@@ -40,15 +70,11 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup 
                     )}
                 </div>
 
-                {/* CONTENT */}
-                <p>
-                    Mô tả ngắn về bài học hoặc nội dung đang học. Lorem ipsum dolor sit amet consectetur, adipisicing
-                    elit. Laudantium, quia. Nihil odio dolorem totam, fugiat quo nobis quibusdam non recusandae expedita
-                    earum aliquid sit adipisci officia ea. Nemo, hic optio.
+                <p className={cx('lesson-desc')}>
+                    {currentLesson.intro && currentLesson.intro.trim() !== ''
+                        ? currentLesson.intro
+                        : 'Nội dung đang được cập nhật'}
                 </p>
-                {Array.from({ length: 30 }).map((_, i) => (
-                    <p key={i}>Dòng mô tả nội dung {i + 1}</p>
-                ))}
             </div>
         </>
     );
