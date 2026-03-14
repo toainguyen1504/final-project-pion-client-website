@@ -73,7 +73,7 @@ const teacherData = [
         ],
     },
     {
-        image: '/assets/img/about/teacher_08.jpg',
+        image: '/assets/img/about/teacher_08.png',
         name: 'Cô Ivy Paragama',
         qualifications: [
             'Giáo viên nước ngoài - Philippines',
