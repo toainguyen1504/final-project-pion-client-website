@@ -25,9 +25,15 @@ function Contact() {
                     <article className={cx('contact-info')}>
                         <h3>Thông tin liên hệ</h3>
                         <p>
-                            <span>Hotline đào tạo: </span>
+                            <span>Hotline Pion English: </span>
                             <a href="tel:0899363369" className={cx('link')}>
                                 0899.363.369
+                            </a>
+                        </p>
+                        <p>
+                            <span>Hotline Pion Chinese: </span>
+                            <a href="tel:0899108678" className={cx('link')}>
+                                0899.108.678
                             </a>
                         </p>
                         <p>
@@ -54,7 +60,8 @@ function Contact() {
                             <span>Trụ sở chính: </span> 125 Lê Lợi, P. Bồng Sơn, Tỉnh Gia Lai
                         </p>
                         <p>
-                            <span>Văn phòng HCM: </span> Tòa BS9 Vinhomes Grand Park, Thủ Đức, TP.HCM
+                            <span>Văn phòng HCM: </span> Tầng 1, T10-11, Đường T10, Manhattan, Khu đô thị Vinhomes Grand
+                            Park, P. Long Bình, TP. Thủ Đức, TP.HCM
                         </p>
                     </article>
 
@@ -63,22 +70,34 @@ function Contact() {
                         <ul>
                             <li>
                                 <a
-                                    href="https://www.facebook.com/duhocpion"
-                                    className={cx('link')}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Trung tâm tiếng Trung
-                                </a>
-                            </li>
-                            <li>
-                                <a
                                     href="https://www.facebook.com/tienganhpionhoainhon/"
                                     className={cx('link')}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Trung tâm tiếng Anh
+                                    Tiếng Anh Pion
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    href="https://www.facebook.com/duhocpion"
+                                    className={cx('link')}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Pion Global Bình Định
+                                </a>
+                            </li>
+
+                            <li>
+                                <a
+                                    href="https://www.facebook.com/duhocpionhcm/"
+                                    className={cx('link')}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Pion Global HCM
                                 </a>
                             </li>
                         </ul>

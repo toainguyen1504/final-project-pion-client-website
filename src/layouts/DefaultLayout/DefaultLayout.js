@@ -23,15 +23,20 @@ function DefaultLayout({ children }) {
                 <FloatingButtons
                     zaloUrl="https://zalo.me/3594539674294848476"
                     phoneNumbers={[
-                        { label: 'Hotline đào tạo', number: '0899363369' },
+                        { label: 'Hotline Pion English', number: '0899363369' },
+                        { label: 'Hotline Pion Chinese', number: '0899108678' },
                         { label: 'Hotline du học', number: '0901900677' },
                     ]}
                     facebookPages={[
+                        { name: 'Tiếng Anh Pion', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
                         {
-                            name: 'Trung tâm tiếng Trung',
+                            name: 'Pion Global Bình Định',
                             url: 'https://www.facebook.com/duhocpion',
                         },
-                        { name: 'Trung tâm tiếng Anh', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
+                        {
+                            name: 'Pion Global HCM',
+                            url: 'https://www.facebook.com/duhocpionhcm/',
+                        },
                     ]}
                 />
                 <FloatButton.BackTop visibilityHeight={1000} duration={200} style={{ bottom: 72, right: 16 }} />
