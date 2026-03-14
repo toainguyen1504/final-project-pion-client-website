@@ -47,7 +47,7 @@ jobs:
           protocol: ftp # thử ftp trước, nếu host hỗ trợ FTPS thì đổi sang ftps
           port: 21
           local-dir: build/
-          server-dir: /public_html/
+          server-dir: /
           exclude: |
             **/.git*
             **/.github/**
