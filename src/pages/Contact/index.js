@@ -70,7 +70,7 @@ function Contact() {
                         <ul>
                             <li>
                                 <a
-                                    href="https://www.facebook.com/tienganhpionhoainhon/"
+                                    href="https://www.facebook.com/ngoaingupion"
                                     className={cx('link')}
                                     target="_blank"
                                     rel="noopener noreferrer"
@@ -81,23 +81,23 @@ function Contact() {
 
                             <li>
                                 <a
-                                    href="https://www.facebook.com/duhocpion"
+                                    href="https://www.facebook.com/tiengtrungpion"
                                     className={cx('link')}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Pion Global Bình Định
+                                    Tiếng Trung Pion
                                 </a>
                             </li>
 
                             <li>
                                 <a
-                                    href="https://www.facebook.com/duhocpionhcm/"
+                                    href="https://www.facebook.com/duhocpion/"
                                     className={cx('link')}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Pion Global HCM
+                                    Du học Pion Global
                                 </a>
                             </li>
                         </ul>
