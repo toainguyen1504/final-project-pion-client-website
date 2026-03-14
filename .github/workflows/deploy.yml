@@ -1,4 +1,4 @@
-name: Deploy FE Pion Education to Hosting (pion.edu.vn) -v1.1
+name: Deploy FE Pion Education to Hosting (pion.edu.vn) -v1.2
 
 on:
   push:
