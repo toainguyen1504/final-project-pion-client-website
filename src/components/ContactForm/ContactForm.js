@@ -372,11 +372,12 @@ const ContactForm = ({ onSubmit }) => {
                 </Button>
                 <div className={cx('footer')}>
                     <p>Nhớ kiểm tra lại thông tin trước khi gửi nhé!</p>
-                    <p>
+                    {/* <p>
                         Cần&nbsp;gấp? Gọi&nbsp;ngay&nbsp; <span className={cx('highlight')}>089.9363.369</span> hoặc
                         <span className={cx('highlight')}> 090.1900.677</span>
                         (Hotline/Zalo) để được tư&nbsp;vấn nhanh!
-                    </p>
+                    </p> */}
+                    <p>Cần&nbsp;gấp? Gọi&nbsp;ngay&nbsp; Hotline để được tư&nbsp;vấn nhanh!</p>
                 </div>
             </form>
         </section>
