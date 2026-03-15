@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
+import { useSearchParams, useParams } from 'react-router-dom';
 import styles from './ELearningLayout.module.scss';
 
 import Header from './Header';
@@ -7,12 +8,27 @@ import Footer from './Footer';
 import Sidebar from './Sidebar';
 import LearningMode from '@/pages/Learning/LearningMode';
 import Button from '@/components/Button'; // import Button custom
+import { getLearningCourseBySlug } from '@/services/coursesService';
 
 const cx = classNames.bind(styles);
 
 export default function ELearningLayout({ children }) {
+    const { slug } = useParams(); // slug của khóa học từ URL
+    const [searchParams] = useSearchParams(); // để lấy query param (ví dụ: ?id=123)
+    const currentLessonId = searchParams.get('id'); // id của bài học hiện tại (nếu có)
+
     const [sidebarOpen, setSidebarOpen] = useState(true);
     const [showNotePopup, setShowNotePopup] = useState(false);
+    const [course, setCourse] = useState(null);
+
+    // Fetch course data để truyền xuống các component con (Header, Sidebar, LearningMode)
+    useEffect(() => {
+        async function fetchCourse() {
+            const data = await getLearningCourseBySlug(slug);
+            setCourse(data);
+        }
+        fetchCourse();
+    }, [slug]);
 
     // Sidebar toggle handler
     const handleToggleSidebar = () => {
@@ -21,6 +37,9 @@ export default function ELearningLayout({ children }) {
 
     // Note popup handler
     const handleToggleNote = () => setShowNotePopup((prev) => !prev);
+
+    // Tìm bài học hiện tại dựa trên currentLessonId
+    const currentLesson = course?.lessons.find((lesson) => lesson.id.toString() === currentLessonId);
 
     return (
         <div className={cx('wrapper')}>
@@ -38,7 +57,11 @@ export default function ELearningLayout({ children }) {
                     <Sidebar isOpen={sidebarOpen} />
                 </div>
             </main>
-            <Footer onToggleSidebar={handleToggleSidebar} isOpen={sidebarOpen} />
+            <Footer
+                currentLesson={currentLesson ? `${currentLesson.order}. ${currentLesson.title}` : 'Chưa chọn bài học'}
+                onToggleSidebar={handleToggleSidebar}
+                isOpen={sidebarOpen}
+            />
 
             {showNotePopup && (
                 <div className={cx('note-popup', 'animate')}>

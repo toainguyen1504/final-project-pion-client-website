@@ -60,7 +60,7 @@ const publicRoutes = [
     { path: config.routes.registerProgram, component: RegisterProgram, layout: null },
 
     // Courses
-    { path: config.routes.courseSlug, component: CourseDetail, layout: SidebarRightLayout },
+    { path: config.routes.programSlug, component: CourseDetail, layout: SidebarRightLayout },
 
     {
         path: config.routes.studyAbroadChina,

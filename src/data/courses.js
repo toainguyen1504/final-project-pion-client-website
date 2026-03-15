@@ -27,7 +27,7 @@ const courses = {
                 'Hiểu và sử dụng được hơn 500–700 từ vựng cơ bản.',
             ],
             image: '/assets/img/courses/en_mam_non.png',
-            link: '/tieng-anh-mam-non',
+            link: '/chuong-trinh-hoc/tieng-anh-mam-non',
             slug: 'tieng-anh-mam-non',
         },
         {
@@ -56,7 +56,7 @@ const courses = {
                 'Hiểu và sử dụng thành thạo hơn 1.000–1.500 từ vựng thông dụng.',
             ],
             image: '/assets/img/courses/en_tieu_hoc.png',
-            link: '/tieng-anh-tieu-hoc',
+            link: '/chuong-trinh-hoc/tieng-anh-tieu-hoc',
             slug: 'tieng-anh-tieu-hoc',
         },
         {
@@ -85,7 +85,7 @@ const courses = {
                 'Sẵn sàng bước vào các chương trình học quốc tế hoặc luyện thi IELTS nâng cao.',
             ],
             image: '/assets/img/courses/en_giao_tiep.png',
-            link: '/tieng-anh-giao-tiep',
+            link: '/chuong-trinh-hoc/tieng-anh-giao-tiep',
             slug: 'tieng-anh-giao-tiep',
         },
     ],
@@ -113,7 +113,7 @@ const courses = {
                 'Ứng dụng được tiếng Trung trong công việc, du học, du lịch hoặc giao tiếp đời sống.',
             ],
             image: '/assets/img/courses/ch_giao_tiep.png',
-            link: '/tieng-trung-giao-tiep',
+            link: '/chuong-trinh-hoc/tieng-trung-giao-tiep',
             slug: 'tieng-trung-giao-tiep',
         },
         {
@@ -141,7 +141,7 @@ const courses = {
                 'Tự tin giao tiếp với người bản xứ.',
             ],
             image: '/assets/img/courses/ch_tre_em.png',
-            link: '/tieng-trung-tre-em',
+            link: '/chuong-trinh-hoc/tieng-trung-tre-em',
             slug: 'tieng-trung-tre-em',
         },
         {
@@ -200,7 +200,7 @@ const courses = {
             ],
 
             image: '/assets/img/courses/ch_hskk.png',
-            link: '/hskk-tai-pion',
+            link: '/chuong-trinh-hoc/hskk-tai-pion',
             slug: 'hskk-tai-pion',
         },
         {
@@ -224,7 +224,7 @@ const courses = {
                 'Sẵn sàng học tập tại các đại học Trung Quốc với nền tảng học thuật vững chắc.',
             ],
             image: '/assets/img/courses/ch_csca.png',
-            link: '/csca-tai-pion',
+            link: '/chuong-trinh-hoc/csca-tai-pion',
             slug: 'csca-tai-pion',
         },
     ],

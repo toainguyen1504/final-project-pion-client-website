@@ -1,6 +1,7 @@
 import { MdCheckCircle } from 'react-icons/md';
 import { IoMdPlayCircle } from 'react-icons/io';
 import { SiGoogledocs } from 'react-icons/si';
+import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './ELearningLayout.module.scss';
 import { useParams } from 'react-router-dom';
@@ -13,6 +14,7 @@ export default function Sidebar({ isOpen }) {
     const { slug } = useParams();
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchCourse() {
@@ -37,11 +39,15 @@ export default function Sidebar({ isOpen }) {
                 <h2 className={cx('sidebar-title')}>Nội dung khóa học</h2>
 
                 <ul className={cx('lesson-list')}>
-                    {course.lessons.map((lesson, index) => (
-                        <li key={lesson.id} className={cx('lesson-wrapper')}>
+                    {course.lessons.map((lesson) => (
+                        <li
+                            key={lesson.id}
+                            className={cx('lesson-wrapper')}
+                            onClick={() => navigate(`/learning/${course.slug}?id=${lesson.id}`)}
+                        >
                             <div className={cx('lesson-info')}>
                                 <h3 className={cx('lesson-title')}>
-                                    {index + 1}. {lesson.title}
+                                    {lesson.order}. {lesson.title}
                                 </h3>
                                 <div className={cx('lesson-desc')}>
                                     <div className={cx('lesson-type')}>

@@ -44,7 +44,7 @@ const items = [
                     {
                         key: 'en_1',
                         label: (
-                            <Link to="/tieng-anh-mam-non" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-mam-non" className="menu-normal">
                                 Tiếng Anh mầm non
                             </Link>
                         ),
@@ -52,7 +52,7 @@ const items = [
                     {
                         key: 'en_2',
                         label: (
-                            <Link to="/tieng-anh-tieu-hoc" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc" className="menu-normal">
                                 Tiếng Anh tiểu học
                             </Link>
                         ),
@@ -60,7 +60,7 @@ const items = [
                     {
                         key: 'en_3',
                         label: (
-                            <Link to="/tieng-anh-giao-tiep" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep" className="menu-normal">
                                 Tiếng Anh giao tiếp
                             </Link>
                         ),
@@ -74,7 +74,7 @@ const items = [
                     {
                         key: 'ch_1',
                         label: (
-                            <Link to="/tieng-trung-giao-tiep" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep" className="menu-normal">
                                 Tiếng Trung giao tiếp
                             </Link>
                         ),
@@ -82,7 +82,7 @@ const items = [
                     {
                         key: 'ch_2',
                         label: (
-                            <Link to="/tieng-trung-tre-em" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-trung-tre-em" className="menu-normal">
                                 Tiếng Trung trẻ em
                             </Link>
                         ),
@@ -90,7 +90,7 @@ const items = [
                     {
                         key: 'ch_3',
                         label: (
-                            <Link to="/hskk-tai-pion" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/hskk-tai-pion" className="menu-normal">
                                 HSK(K) Tại Pion
                             </Link>
                         ),
@@ -98,7 +98,7 @@ const items = [
                     {
                         key: 'ch_4',
                         label: (
-                            <Link to="/csca-tai-pion" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/csca-tai-pion" className="menu-normal">
                                 CSCA Tại Pion
                             </Link>
                         ),
@@ -339,13 +339,13 @@ export default function Header({ visible }) {
                                 <h4>Tiếng Anh</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-anh-mam-non">Tiếng anh mầm non</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-mam-non">Tiếng anh mầm non</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -353,16 +353,16 @@ export default function Header({ visible }) {
                                 <h4>Tiếng Trung</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
                                     </li>
                                     <li>
-                                        <Link to="/hskk-tai-pion">HSK(K) Tại Pion</Link>
+                                        <Link to="/chuong-trinh-hoc/hskk-tai-pion">HSK(K) Tại Pion</Link>
                                     </li>
                                     <li>
-                                        <Link to="/csca-tai-pion">CSCA Tại Pion</Link>
+                                        <Link to="/chuong-trinh-hoc/csca-tai-pion">CSCA Tại Pion</Link>
                                     </li>
                                 </ul>
                             </div>

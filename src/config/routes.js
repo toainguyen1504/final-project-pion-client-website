@@ -16,7 +16,7 @@ const routes = {
     registerProgram: '/dang-ky-tham-gia-chuong-trinh',
     search: '/tim-kiem',
     notFound: '/404',
-    courseSlug: '/:slug', // course
+    programSlug: '/chuong-trinh-hoc/:slug', // program
 
     // study abroad
     studyAbroadGerman: '/du-hoc-nghe-duc',
