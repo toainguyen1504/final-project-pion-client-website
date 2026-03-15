@@ -195,7 +195,7 @@
 
         .lesson-list {
             list-style: none;
-            padding-left: 16px;
+            padding-left: 0;
             color: var(--text-color-bold);
             margin-top: 12px;
 
@@ -203,9 +203,11 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                width: 100%;
                 gap: 8px;
                 font-size: 1.4rem;
-                padding: 6px 12px 0 0;
+                padding: 8px 16px;
+                cursor: pointer;
 
                 .play-icon {
                     font-size: 2rem;
@@ -235,6 +237,19 @@
 
                     .lesson-time {
                         padding-bottom: 2px;
+                    }
+                }
+
+                // hiệu ứng hover
+                &:hover {
+                    background-color: #f5f5f5; // xám nhạt
+                }
+
+                // trạng thái active
+                &.active {
+                    background-color: #ffecec; // nền nhạt đỏ
+                    .lesson-type.video {
+                        color: var(--primary) !important;
                     }
                 }
             }

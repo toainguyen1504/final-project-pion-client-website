@@ -1,12 +1,11 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { GiNotebook } from 'react-icons/gi';
 import { TbHelpHexagonFilled } from 'react-icons/tb';
 import { FaAngleLeft } from 'react-icons/fa6';
 import { Tooltip, Progress } from 'antd';
+
 import config from '@/config';
-import { getLearningCourseBySlug } from '@/services/coursesService';
 import Button from '@/components/Button'; // import Button custom
 import styles from './ELearningLayout.module.scss';
 
@@ -19,27 +18,8 @@ const conicColors = {
     '100%': 'var(--primary-highlight)',
 };
 
-export default function Header() {
-    const { slug } = useParams();
-    const [course, setCourse] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchCourse() {
-            try {
-                const data = await getLearningCourseBySlug(slug);
-                setCourse(data);
-            } catch (err) {
-                console.error('Lỗi khi lấy dữ liệu header:', err);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchCourse();
-    }, [slug]);
-
-    if (loading) return <header className={cx('header')}>Đang tải...</header>;
-    if (!course) return <header className={cx('header')}>Không tìm thấy khóa học</header>;
+export default function Header({ course }) {
+    if (!course) return null;
 
     return (
         <header className={cx('header')}>

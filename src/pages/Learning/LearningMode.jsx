@@ -1,8 +1,6 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import styles from './LearningMode.module.scss';
-import { getLearningCourseBySlug } from '@/services/coursesService';
 import { FaPlus } from 'react-icons/fa6';
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi'; // để hiển thị tiếng Việt
@@ -10,30 +8,8 @@ dayjs.locale('vi');
 
 const cx = classNames.bind(styles);
 
-export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup }) {
-    const { slug } = useParams();
-    const [course, setCourse] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchCourse() {
-            try {
-                const data = await getLearningCourseBySlug(slug);
-                setCourse(data);
-            } catch (err) {
-                console.error('Lỗi khi lấy dữ liệu học tập:', err);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchCourse();
-    }, [slug]);
-
-    if (loading) return <div>Đang tải dữ liệu học tập...</div>;
-    if (!course) return <div>Không tìm thấy khóa học hoặc bạn chưa đăng ký.</div>;
-
-    // Lấy bài học đầu tiên để demo
-    const currentLesson = course.lessons[0] || {};
+export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup, currentLesson }) {
+    if (!currentLesson) return null;
 
     return (
         <>
