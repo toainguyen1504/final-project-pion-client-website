@@ -17,15 +17,14 @@ function Learning() {
     useEffect(() => {
         async function fetchCourses() {
             const data = await getAllCourses();
-            console.log('Khóa học nhận từ API:', data);
+            // console.log('Khóa học nhận từ API:', data);
             setCourses(data);
         }
         fetchCourses();
     }, []);
 
-    // Tách khóa học có phí và miễn phí để hiển thị ở 2 section khác nhau
-    const getProCourses = () => courses.filter((course) => course.price > 0 && course.is_free === false);
-    const getFreeCourses = () => courses.filter((course) => course.price === 0 || course.is_free === true);
+    const getProCourses = () => courses.filter((course) => course.is_free === false); // Khóa học có phí
+    const getFreeCourses = () => courses.filter((course) => course.is_free === true); // Khóa học miễn phí
 
     // fake banners for e-learning
     const bannerImages = [

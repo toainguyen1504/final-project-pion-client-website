@@ -14,6 +14,7 @@ const ECoursesCard = ({
     title,
     price,
     discount_price,
+    is_free,
     button,
     image,
     link,
@@ -22,8 +23,6 @@ const ECoursesCard = ({
     total_lessons,
     duration,
 }) => {
-    const isFree = price === 0 && discount_price === 0;
-
     return (
         <article className={cx('image-card')}>
             <Card
@@ -50,19 +49,24 @@ const ECoursesCard = ({
                                     <Link to={link} className={cx('card-title')}>
                                         {title}
                                     </Link>
-                                    {isFree ? (
+
+                                    {is_free ? (
                                         <p className={cx('course-price', 'free')}>Miễn phí</p>
                                     ) : (
                                         <p className={cx('course-price')}>
-                                            {price > 0 && (
-                                                <span className={cx('original-price')}>
-                                                    {`${price.toLocaleString('vi-VN')}đ`}
-                                                </span>
-                                            )}
-                                            {discount_price > 0 && (
-                                                <span className={cx('discount-price')}>
-                                                    {`${discount_price.toLocaleString('vi-VN')}đ`}
-                                                </span>
+                                            {price > 0 ? (
+                                                <>
+                                                    <span className={cx('original-price')}>
+                                                        {`${price.toLocaleString('vi-VN')}đ`}
+                                                    </span>
+                                                    {discount_price && discount_price > 0 && (
+                                                        <span className={cx('discount-price')}>
+                                                            {`${discount_price.toLocaleString('vi-VN')}đ`}
+                                                        </span>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                <span className={cx('updating')}>Đang cập nhật...</span>
                                             )}
                                         </p>
                                     )}
@@ -104,6 +108,7 @@ ECoursesCard.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number,
     discount_price: PropTypes.number,
+    is_free: PropTypes.bool, // thêm prop này
     button: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string.isRequired,
@@ -116,6 +121,7 @@ ECoursesCard.propTypes = {
 ECoursesCard.defaultProps = {
     price: 0,
     discount_price: 0,
+    is_free: false, // mặc định false
     button: null,
     image: DEFAULT_IMAGE,
     loading: false,
