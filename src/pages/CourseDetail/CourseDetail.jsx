@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { DEFAULT_IMAGE } from '@/constants';
 import { courses } from '@/data';
+import config from '@/config';
 import Breadcrumb from '@/components/Breadcrumb';
 import EnglishCourseTable from './EnglishCourseTable';
 import ChinaCourseTable from './ChinaCourseTable';
@@ -71,7 +72,7 @@ function CourseDetail() {
         },
     ];
 
-    if (!course) return <Navigate to="/404" replace />;
+    if (!course) return <Navigate to={config.routes.notFound} replace />;
 
     return (
         <div>

@@ -39,17 +39,17 @@ function Footer() {
                     <h4>Tiếng Anh</h4>
                     <ul>
                         <li>
-                            <Link to="/tieng-anh-mam-non" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-anh-mam-non" className={cx('link')}>
                                 Tiếng anh mầm non
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-anh-tieu-hoc" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc" className={cx('link')}>
                                 Tiếng anh tiểu học
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-anh-giao-tiep" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep" className={cx('link')}>
                                 Tiếng Anh giao tiếp
                             </Link>
                         </li>
@@ -59,23 +59,23 @@ function Footer() {
                     <h4>Tiếng Trung</h4>
                     <ul>
                         <li>
-                            <Link to="/tieng-trung-giao-tiep" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep" className={cx('link')}>
                                 Tiếng Trung giao tiếp
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-trung-tre-em" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-trung-tre-em" className={cx('link')}>
                                 Tiếng Trung trẻ em
                             </Link>
                         </li>
 
                         <li>
-                            <Link to="/hskk-tai-pion" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/hskk-tai-pion" className={cx('link')}>
                                 HSK(K) Tại Pion
                             </Link>
                         </li>
                         <li>
-                            <Link to="/csca-tai-pion" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/csca-tai-pion" className={cx('link')}>
                                 CSCA Tại Pion
                             </Link>
                         </li>
@@ -176,17 +176,17 @@ function Footer() {
                     <h4>Chương trình học  Tiếng Anh</h4>
                     <ul>
                         <li>
-                            <Link to="/tieng-anh-mam-non" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-anh-mam-non" className={cx('link')}>
                                 Tiếng anh mầm non
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-anh-tieu-hoc" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc" className={cx('link')}>
                                 Tiếng anh tiểu học
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-anh-giao-tiep" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep" className={cx('link')}>
                                 Tiếng Anh giao tiếp
                             </Link>
                         </li>
@@ -196,18 +196,18 @@ function Footer() {
                     <h4>Chương trình học  Tiếng Trung</h4>
                     <ul>
                         <li>
-                            <Link to="/tieng-trung-giao-tiep" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep" className={cx('link')}>
                                Tiếng Trung giao tiếp
                             </Link>
                         </li>
                         <li>
-                            <Link to="/tieng-trung-tre-em" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/tieng-trung-tre-em" className={cx('link')}>
                                 Tiếng Trung trẻ em
                             </Link>
                         </li>
 
                         <li>
-                            <Link to="/hskk-tai-pion" className={cx('link')}>
+                            <Link to="/chuong-trinh-hoc/hskk-tai-pion" className={cx('link')}>
                                HSK(K) Tại Pion
                             </Link>
                         </li>

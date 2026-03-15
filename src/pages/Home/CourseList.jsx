@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Tabs } from 'antd';
 
 import { courses } from '@/data';
+import config from '@/config';
 import ImageCard from '@/components/ImageCard';
 import styles from './Home.module.scss';
 
@@ -53,13 +54,13 @@ const CourseList = () => {
                     <div
                         className={cx({ 'course-animate': tab.key === activeTab })}
                         style={{ animationDelay: `${index * 0.16}s` }}
-                        key={course.link}
+                        key={course.slug}
                     >
                         <ImageCard
                             title={course.title}
                             desc={course.desc}
                             image={course.image || '/assets/img/default.jpg'}
-                            link={course.link}
+                            link={`${config.routes.programSlug.replace(':slug', course.slug)}`}
                             button="Xem chi tiết"
                         />
                     </div>
