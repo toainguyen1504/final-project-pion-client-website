@@ -54,8 +54,12 @@ export default function ELearningLayout() {
     // Note popup handler
     const handleToggleNote = () => setShowNotePopup((prev) => !prev);
 
-    // Tìm bài học hiện tại dựa trên currentLessonId
-    const currentLesson = course?.lessons.find((lesson) => lesson.id.toString() === currentLessonId);
+    const currentLesson = course?.lessons.find((lesson) => lesson.id.toString() === currentLessonId); // Tìm bài học hiện tại dựa trên currentLessonId
+    const lessons = [...(course?.lessons || [])].sort((a, b) => a.order - b.order); // sắp xếp bài học theo thứ tự (order) để tìm bài trước/sau chính xác
+    const currentIndex = lessons.findIndex((lesson) => lesson.id.toString() === currentLessonId); // tìm index của bài học hiện tại trong mảng đã sắp xếp
+
+    const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
+    const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
     if (loading) return <div>Đang tải khóa học...</div>;
     if (!course) return <div>Không tìm thấy khóa học</div>;
@@ -75,12 +79,19 @@ export default function ELearningLayout() {
                             showNotePopup={showNotePopup}
                         />
                     </div>
-                    <Sidebar course={course} isOpen={sidebarOpen} />
+                    <Sidebar
+                        lessons={lessons}
+                        currentLessonId={currentLessonId}
+                        courseSlug={course.slug}
+                        isOpen={sidebarOpen}
+                    />
                 </div>
             </main>
             <Footer
-                course={course}
+                courseSlug={course.slug}
                 currentLesson={currentLesson}
+                prevLesson={prevLesson}
+                nextLesson={nextLesson}
                 onToggleSidebar={handleToggleSidebar}
                 isOpen={sidebarOpen}
             />
