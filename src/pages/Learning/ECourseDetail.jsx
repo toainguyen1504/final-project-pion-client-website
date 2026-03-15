@@ -23,7 +23,6 @@ const ECourseDetail = () => {
     useEffect(() => {
         async function fetchCourse() {
             const data = await getCourseBySlug(slug);
-            console.log('Chi tiết khóa học nhận từ API:', data);
             setCourse(data);
             setLoading(false);
         }
@@ -32,11 +31,16 @@ const ECourseDetail = () => {
 
     async function handleEnroll() {
         try {
-            const updatedCourse = await enrollCourse(course.id);
-            setCourse(updatedCourse); // cập nhật lại state với participants mới
-            alert('Đăng ký thành công!');
+            const updatedCourse = await enrollCourse(course.id, course.slug, navigate);
+            setCourse(updatedCourse);
         } catch (err) {
-            alert('Có lỗi khi đăng ký: ' + (err.response?.data?.message || err.message));
+            // Nếu lỗi 422 (đã đăng ký rồi) thì không alert, chỉ điều hướng
+            if (err.response?.status === 422) {
+                navigate(`/learning/${course.slug}`);
+            } else {
+                // Các lỗi khác (ví dụ chưa login, server lỗi) mới alert
+                alert('Có lỗi khi đăng ký: ' + (err.response?.data?.message || err.message));
+            }
         }
     }
 

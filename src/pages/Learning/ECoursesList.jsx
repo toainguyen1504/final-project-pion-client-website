@@ -31,6 +31,7 @@ const ECoursesList = ({ courses }) => {
                                 title={course.title}
                                 price={course.price}
                                 discount_price={course.discount_price}
+                                is_free={course.is_free}
                                 image={course.image}
                                 link={course.link}
                                 participants={course.participants}

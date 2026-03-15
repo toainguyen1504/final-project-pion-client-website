@@ -71,7 +71,7 @@ export async function getCourseBySlug(slug) {
 }
 
 // Đăng ký khóa học (enroll)
-export async function enrollCourse(courseId) {
+export async function enrollCourse(courseId, slug, navigate) {
     try {
         const token = getToken();
         if (!token) {
@@ -83,9 +83,14 @@ export async function enrollCourse(courseId) {
             { headers: { Authorization: `Bearer ${token}` } },
         );
         const course = res.data.data;
+        // Nếu đăng ký thành công thì điều hướng sang learning mode
+        navigate(`/learning/${slug}`);
         return normalizeCourse(course);
     } catch (error) {
-        console.error(`Lỗi khi đăng ký khóa học id=${courseId}:`, error.response?.data || error.message);
+        // Nếu lỗi 422 (đã đăng ký rồi) thì cũng điều hướng sang learning mode
+        if (error.response?.status === 422) {
+            navigate(`/learning/${slug}`);
+        }
         throw error;
     }
 }
