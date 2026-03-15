@@ -7,22 +7,29 @@ function normalizeCourse(course) {
     const priceNum = parseFloat(course.price);
     const discountNum = course.discount_price ? parseFloat(course.discount_price) : null;
 
-    return {
+    const normalized = {
         ...course,
         price: isNaN(priceNum) ? 0 : priceNum,
         discount_price: discountNum,
         participants: Number(course.participants) || 0,
-        enrolled: !!course.enrolled, // thêm flag - !! ép giá trị về kiểu boolean
-        link: `/e-courses/${course.slug}`,
+        enrolled: !!course.enrolled, // ép về boolean
+        link: course.enrolled ? `/learning/${course.slug}` : `/e-courses/${course.slug}`,
     };
+
+    return normalized;
 }
 
 // Lấy tất cả khóa học cho client (không phân trang)
 export async function getAllCourses() {
     try {
+        const token = getToken();
+        console.log('Token gửi lên:', token);
         const res = await axios.get(`${BASE_URL}/client/courses`, {
             params: { per_page: 9999 },
+            headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
+
+        console.log('getAllCourses - API response:', res.data);
 
         const coursesData = res.data.data || res.data;
         return coursesData.map(normalizeCourse);
@@ -35,8 +42,10 @@ export async function getAllCourses() {
 // Lấy danh sách khóa học cho client (có phân trang)
 export async function getAllCoursesWithPagination(page = 1, perPage = 12) {
     try {
+        const token = getToken();
         const res = await axios.get(`${BASE_URL}/client/courses`, {
             params: { page, per_page: perPage },
+            headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
 
         const coursesData = res.data.data || [];
