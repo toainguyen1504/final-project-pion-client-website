@@ -70,9 +70,9 @@ export default function Header() {
 
                     <p className={cx('completed-msg')}>0/{course.total_lessons} bài học</p>
 
-                    <a href="#!" className={cx('cert-link')}>
+                    {/* <a href="#!" className={cx('cert-link')}>
                         Xem chứng chỉ
-                    </a>
+                    </a> */}
                 </div>
 
                 <div className={cx('buttons')}>
