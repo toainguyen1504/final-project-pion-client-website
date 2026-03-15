@@ -1,0 +1,54 @@
+name: Deploy FE Pion Education to Hosting (pion.edu.vn) -v1.2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Cache npm dependencies
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build React project
+      - name: Build project
+        run: npm run build
+        env:
+          CI: false
+
+      # Deploy to Hosting via FTP
+      - name: Deploy to Hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 202.92.4.57 # IP hosting
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp # thử ftp trước, nếu host hỗ trợ FTPS thì đổi sang ftps
+          port: 21
+          local-dir: build/
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
