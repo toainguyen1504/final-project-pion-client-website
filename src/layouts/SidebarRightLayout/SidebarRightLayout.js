@@ -30,14 +30,14 @@ function SidebarRightLayout({ children }) {
                         { label: 'Hotline du học', number: '0901900677' },
                     ]}
                     facebookPages={[
-                        { name: 'Tiếng Anh Pion', url: 'https://www.facebook.com/tienganhpionhoainhon/' },
+                        { name: 'Tiếng Anh Pion', url: 'https://www.facebook.com/ngoaingupion' },
                         {
-                            name: 'Pion Global Bình Định',
-                            url: 'https://www.facebook.com/duhocpion',
+                            name: 'Tiếng Trung Pion',
+                            url: 'https://www.facebook.com/tiengtrungpion',
                         },
                         {
-                            name: 'Pion Global HCM',
-                            url: 'https://www.facebook.com/duhocpionhcm/',
+                            name: 'Du học Pion Global',
+                            url: 'https://www.facebook.com/duhocpion/',
                         },
                     ]}
                 />

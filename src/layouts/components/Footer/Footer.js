@@ -297,7 +297,7 @@ function Footer() {
                     <FaFacebookSquare size={28} className={cx('icon')} />
                     <div className={cx('inner')}>
                         <a
-                            href="https://www.facebook.com/tienganhpionhoainhon"
+                            href="https://www.facebook.com/ngoaingupion"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
@@ -305,21 +305,21 @@ function Footer() {
                             Tiếng Anh Pion
                         </a>
                         <a
-                            href="https://www.facebook.com/duhocpion"
+                            href="https://www.facebook.com/tiengtrungpion"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Pion Global Bình Định
+                            Tiếng Trung Pion
                         </a>
 
                         <a
-                            href="https://www.facebook.com/duhocpionhcm/"
+                            href="https://www.facebook.com/duhocpion/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cx('link')}
                         >
-                            Pion Global HCM
+                            Du học Pion Global
                         </a>
                     </div>
                 </div>
