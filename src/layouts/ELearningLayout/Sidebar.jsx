@@ -2,19 +2,14 @@ import { MdCheckCircle } from 'react-icons/md';
 import { IoMdPlayCircle } from 'react-icons/io';
 import { SiGoogledocs } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './ELearningLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Sidebar({ course, isOpen }) {
+export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen }) {
     const navigate = useNavigate();
-    const [searchParams] = useSearchParams(); // để lấy query param (ví dụ: ?id=123)
-    const currentLessonId = searchParams.get('id'); // id của bài học hiện tại (nếu có)
-
-    if (!course) return null;
 
     return (
         <aside className={cx('sidebar', { closed: !isOpen })}>
@@ -22,11 +17,11 @@ export default function Sidebar({ course, isOpen }) {
                 <h2 className={cx('sidebar-title')}>Nội dung khóa học</h2>
 
                 <ul className={cx('lesson-list')}>
-                    {course.lessons.map((lesson) => (
+                    {lessons.map((lesson) => (
                         <li
                             key={lesson.id}
                             className={cx('lesson-wrapper', { active: currentLessonId === lesson.id.toString() })}
-                            onClick={() => navigate(`/learning/${course.slug}?id=${lesson.id}`)}
+                            onClick={() => navigate(`/learning/${courseSlug}?id=${lesson.id}`)}
                         >
                             <div className={cx('lesson-info')}>
                                 <h3 className={cx('lesson-title')}>
