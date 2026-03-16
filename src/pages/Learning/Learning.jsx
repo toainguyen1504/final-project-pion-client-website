@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { Helmet } from 'react-helmet-async';
 
@@ -14,17 +14,26 @@ const cx = classNames.bind(styles);
 
 function Learning() {
     const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         async function fetchCourses() {
-            const data = await getAllCourses();
-            // console.log('Khóa học nhận từ API:', data);
-            setCourses(data);
+            try {
+                const data = await getAllCourses();
+                setCourses(data);
+            } finally {
+                setLoading(false);
+            }
         }
         fetchCourses();
     }, []);
 
-    const getProCourses = () => courses.filter((course) => course.is_free === false); // Khóa học có phí
-    const getFreeCourses = () => courses.filter((course) => course.is_free === true); // Khóa học miễn phí
+    const proCourses = useMemo(() => courses.filter((c) => !c.is_free), [courses]); // Khóa học có phí
+
+    const freeCourses = useMemo(() => courses.filter((c) => c.is_free), [courses]); // Khóa học miễn phí
+
+    // const proCourses = () => courses.filter((course) => course.is_free === false);
+    // const freeCourses = () => courses.filter((course) => course.is_free === true);
 
     // fake banners for e-learning
     const bannerImages = [
@@ -62,11 +71,11 @@ function Learning() {
                     <section className={cx('courses')}>
                         {/* Khóa học có phí - sau này sẽ là các khóa học bên Trung tâm tự quay và bán -> ví dụ: HSK1-6 */}
                         <HeadingSection title="Khóa học Pro" />
-                        <ECoursesList courses={getProCourses()} />
+                        <ECoursesList courses={proCourses} loading={loading} />
 
                         {/* khóa học miễn phí - tạo Ecourses ở đây: click thumb hoặc title sẽ vào detail*/}
                         <HeadingSection title="Khóa học miễn phí" />
-                        <ECoursesList courses={getFreeCourses()} />
+                        <ECoursesList courses={freeCourses} loading={loading} />
                     </section>
                 </div>
             </div>

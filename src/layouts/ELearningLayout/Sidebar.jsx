@@ -2,14 +2,25 @@ import { MdCheckCircle } from 'react-icons/md';
 import { IoMdPlayCircle } from 'react-icons/io';
 import { SiGoogledocs } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import classNames from 'classnames/bind';
 
 import styles from './ELearningLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen }) {
+export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen, loading }) {
     const navigate = useNavigate();
+
+    if (loading) {
+        return (
+            <aside className={cx('sidebar')}>
+                <Skeleton.Input active style={{ width: '70%', margin: 16 }} />
+
+                <Skeleton active paragraph={{ rows: 10 }} />
+            </aside>
+        );
+    }
 
     return (
         <aside className={cx('sidebar', { closed: !isOpen })}>

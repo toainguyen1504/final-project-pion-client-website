@@ -55,18 +55,15 @@ export default function ELearningLayout() {
     const handleToggleNote = () => setShowNotePopup((prev) => !prev);
 
     const currentLesson = course?.lessons.find((lesson) => lesson.id.toString() === currentLessonId); // Tìm bài học hiện tại dựa trên currentLessonId
-    const lessons = [...(course?.lessons || [])].sort((a, b) => a.order - b.order); // sắp xếp bài học theo thứ tự (order) để tìm bài trước/sau chính xác
+    const lessons = [...(course?.lessons ?? [])].sort((a, b) => a.order - b.order); // sắp xếp bài học theo thứ tự (order) để tìm bài trước/sau chính xác
     const currentIndex = lessons.findIndex((lesson) => lesson.id.toString() === currentLessonId); // tìm index của bài học hiện tại trong mảng đã sắp xếp
 
     const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
     const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
-    if (loading) return <div>Đang tải khóa học...</div>;
-    if (!course) return <div>Không tìm thấy khóa học</div>;
-
     return (
         <div className={cx('wrapper')}>
-            <Header course={course} />
+            <Header course={course} loading={loading} />
             <main className={cx('main')}>
                 <div className={cx('content')}>
                     <div className={cx('video-area', { expanded: !sidebarOpen })}>
@@ -77,18 +74,20 @@ export default function ELearningLayout() {
                             sidebarOpen={sidebarOpen}
                             onToggleNote={handleToggleNote}
                             showNotePopup={showNotePopup}
+                            loading={loading}
                         />
                     </div>
                     <Sidebar
                         lessons={lessons}
                         currentLessonId={currentLessonId}
-                        courseSlug={course.slug}
+                        courseSlug={course?.slug}
                         isOpen={sidebarOpen}
+                        loading={loading}
                     />
                 </div>
             </main>
             <Footer
-                courseSlug={course.slug}
+                courseSlug={course?.slug}
                 currentLesson={currentLesson}
                 prevLesson={prevLesson}
                 nextLesson={nextLesson}

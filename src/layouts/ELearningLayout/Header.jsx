@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { GiNotebook } from 'react-icons/gi';
 import { TbHelpHexagonFilled } from 'react-icons/tb';
 import { FaAngleLeft } from 'react-icons/fa6';
-import { Tooltip, Progress } from 'antd';
+import { Tooltip, Progress, Skeleton } from 'antd';
 
 import config from '@/config';
 import Button from '@/components/Button'; // import Button custom
@@ -18,8 +18,22 @@ const conicColors = {
     '100%': 'var(--primary-highlight)',
 };
 
-export default function Header({ course }) {
+export default function Header({ course, loading }) {
+    // Nếu đang loading dữ liệu, hiển thị skeleton
+    if (loading) {
+        return (
+            <header className={cx('header')}>
+                <Skeleton.Input active size="small" style={{ width: 200 }} />
+            </header>
+        );
+    }
+
     if (!course) return null;
+
+    // Todo: optimize
+    // percent completed lessons - hiện đang hardcode, cần hàm xử lý logic để tính toán dựa trên course.completed_lessons và course.total_lessons
+    // const completedLessons = course.completed_lessons || 0;
+    // const percent = Math.round((completedLessons / course.total_lessons) * 100);
 
     return (
         <header className={cx('header')}>

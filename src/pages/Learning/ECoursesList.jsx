@@ -1,18 +1,10 @@
 import classNames from 'classnames/bind';
-import { useState, useEffect } from 'react';
 import ECoursesCard from '@/components/ECoursesCard';
 import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
 
-const ECoursesList = ({ courses }) => {
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 300);
-        return () => clearTimeout(timer);
-    }, []);
-
+const ECoursesList = ({ courses, loading }) => {
     return (
         <section className={cx('courses')}>
             <div className={cx('courses-inner')}>
