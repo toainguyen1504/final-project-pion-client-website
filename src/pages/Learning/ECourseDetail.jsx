@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import { Tag } from 'antd';
+import { Tag, Empty } from 'antd';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FaCheck } from 'react-icons/fa';
@@ -11,6 +11,7 @@ import { getCourseBySlug, enrollCourse } from '@/services/coursesService';
 import Button from '@/components/Button';
 import { formatDuration } from '@/utils/formatDuration';
 import Breadcrumb from '@/components/Breadcrumb';
+import CourseDetailSkeleton from './CourseDetailSkeleton';
 import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
@@ -45,8 +46,20 @@ const ECourseDetail = () => {
         }
     }
 
-    if (loading) return <div>Đang tải dữ liệu khóa học...</div>;
-    if (!course) return <div>Khóa học không tồn tại</div>;
+    if (loading) return <CourseDetailSkeleton />;
+    if (!course) {
+        return (
+            <section className={cx('course-detail')}>
+                <div className={cx('breadcrumb-wrapper')}>
+                    <Breadcrumb title="Khóa học" parentPath="/learning" parentLabel="E-Learning" />
+                </div>
+
+                <div className={cx('empty-wrapper')} style={{ marginTop: 50, marginBottom: 50 }}>
+                    <Empty description="Khóa học không tồn tại hoặc đã bị xóa" />
+                </div>
+            </section>
+        );
+    }
 
     return (
         <section className={cx('course-detail')}>
