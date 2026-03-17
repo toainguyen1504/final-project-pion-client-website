@@ -7,10 +7,11 @@ import { FaCheck } from 'react-icons/fa';
 import { IoMdPlayCircle } from 'react-icons/io';
 import { Helmet } from 'react-helmet-async';
 
-import styles from './Learning.module.scss';
 import { getCourseBySlug, enrollCourse } from '@/services/coursesService';
 import Button from '@/components/Button';
+import { formatDuration } from '@/utils/formatDuration';
 import Breadcrumb from '@/components/Breadcrumb';
+import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -133,7 +134,7 @@ const ECourseDetail = () => {
                         <span>{course.total_lessons}</span> bài học
                     </p>
                     <p className={cx('item')}>
-                        Thời lượng <span>{course.duration}</span>
+                        <span>{formatDuration(course.duration, 'detail')}</span>
                     </p>
                 </div>
 
