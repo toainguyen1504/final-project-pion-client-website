@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Skeleton } from 'antd';
 import classNames from 'classnames/bind';
 
+import { formatDuration } from '@/utils/formatDuration';
 import styles from './ELearningLayout.module.scss';
 
 const cx = classNames.bind(styles);
@@ -49,7 +50,7 @@ export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen, 
                                     </div>
 
                                     <span className={cx('lesson-time')}>
-                                        {lesson.duration ? `${lesson.duration} phút` : '---time---'}
+                                        {lesson.duration ? formatDuration(lesson.duration, 'lesson') : '------'}
                                     </span>
                                 </div>
                             </div>

@@ -5,6 +5,7 @@ import { FaUsers, FaClock } from 'react-icons/fa';
 import { IoMdPlayCircle } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
+import { formatDuration } from '@/utils/formatDuration';
 import styles from './ECoursesCard.module.scss';
 
 const cx = classNames.bind(styles);
@@ -90,7 +91,7 @@ const ECoursesCard = ({
                                         )}
                                         {duration !== null && (
                                             <li>
-                                                <FaClock size={16} /> {duration}
+                                                <FaClock size={16} /> {formatDuration(duration, 'card')}
                                             </li>
                                         )}
                                     </ul>
