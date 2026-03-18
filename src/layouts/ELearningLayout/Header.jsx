@@ -18,7 +18,7 @@ const conicColors = {
     '100%': 'var(--primary-highlight)',
 };
 
-export default function Header({ course, loading }) {
+export default function Header({ course, loading, progressMap }) {
     // Nếu đang loading dữ liệu, hiển thị skeleton
     if (loading) {
         return (
@@ -27,6 +27,12 @@ export default function Header({ course, loading }) {
             </header>
         );
     }
+
+    const total = course?.lessons?.length || 0;
+
+    const completed = Object.values(progressMap || {}).filter((p) => p.is_completed).length;
+
+    const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 
     if (!course) return null;
 
@@ -59,10 +65,12 @@ export default function Header({ course, loading }) {
             <div className={cx('module-action')}>
                 <div className={cx('progress-bar')}>
                     <div className={cx('progress-circle')}>
-                        <Progress type="circle" percent={89} strokeColor={conicColors} size={36} />
+                        <Progress type="circle" percent={percent} strokeColor={conicColors} size={36} />
                     </div>
 
-                    <p className={cx('completed-msg')}>0/{course.total_lessons} bài học</p>
+                    <p className={cx('completed-msg')}>
+                        {completed}/{total} bài học
+                    </p>
 
                     {/* <a href="#!" className={cx('cert-link')}>
                         Xem chứng chỉ
