@@ -10,9 +10,14 @@ import Sidebar from './Sidebar';
 import LearningMode from '@/pages/Learning/LearningMode';
 import Button from '@/components/Button'; // import Button custom
 import { getLearningCourseBySlug } from '@/services/coursesService';
+import { getLessonProgress } from '@/services/myLearningServices';
 
 const cx = classNames.bind(styles);
 
+// ** Tiếp theo nên làm **
+// 1. Resume video (watched_duration)
+// 2. Auto save progress khi xem video
+// 3. Continue learning (header button)
 export default function ELearningLayout() {
     const { slug } = useParams(); // slug của khóa học từ URL
     const navigate = useNavigate();
@@ -24,6 +29,8 @@ export default function ELearningLayout() {
 
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const [progressMap, setProgressMap] = useState({});
 
     // Fetch course data để truyền xuống các component con (Header, Sidebar, LearningMode)
     useEffect(() => {
@@ -46,6 +53,51 @@ export default function ELearningLayout() {
         fetchCourse();
     }, [slug]);
 
+    const fetchProgress = async () => {
+        if (!course?.lessons) return;
+
+        try {
+            const map = {};
+
+            await Promise.all(
+                course.lessons.map(async (lesson) => {
+                    try {
+                        const res = await getLessonProgress(lesson.id);
+                        if (res) {
+                            map[lesson.id] = res;
+                        }
+                    } catch (err) {
+                        console.error('Progress error:', err);
+                    }
+                }),
+            );
+
+            setProgressMap(map);
+        } catch (err) {
+            console.error('Fetch progress failed:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchProgress();
+    }, [course]);
+
+    useEffect(() => {
+        const handler = (event) => {
+            const { lessonId, progress } = event.detail;
+
+            // update trực tiếp vào map (KHÔNG cần call lại API)
+            setProgressMap((prev) => ({
+                ...prev,
+                [lessonId]: progress,
+            }));
+        };
+
+        window.addEventListener('progress-updated', handler);
+
+        return () => window.removeEventListener('progress-updated', handler);
+    }, []);
+
     // Sidebar toggle handler
     const handleToggleSidebar = () => {
         setSidebarOpen((prev) => !prev);
@@ -63,7 +115,7 @@ export default function ELearningLayout() {
 
     return (
         <div className={cx('wrapper')}>
-            <Header course={course} loading={loading} />
+            <Header course={course} loading={loading} progressMap={progressMap} />
             <main className={cx('main')}>
                 <div className={cx('content')}>
                     <div className={cx('video-area', { expanded: !sidebarOpen })}>
@@ -83,6 +135,7 @@ export default function ELearningLayout() {
                         courseSlug={course?.slug}
                         isOpen={sidebarOpen}
                         loading={loading}
+                        progressMap={progressMap}
                     />
                 </div>
             </main>

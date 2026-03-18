@@ -10,7 +10,7 @@ import styles from './ELearningLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen, loading }) {
+export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen, loading, progressMap }) {
     const navigate = useNavigate();
 
     if (loading) {
@@ -29,36 +29,44 @@ export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen, 
                 <h2 className={cx('sidebar-title')}>Nội dung khóa học</h2>
 
                 <ul className={cx('lesson-list')}>
-                    {lessons.map((lesson) => (
-                        <li
-                            key={lesson.id}
-                            className={cx('lesson-wrapper', { active: currentLessonId === lesson.id.toString() })}
-                            onClick={() => navigate(`/learning/${courseSlug}?id=${lesson.id}`)}
-                        >
-                            <div className={cx('lesson-info')}>
-                                <h3 className={cx('lesson-title')}>
-                                    {lesson.order}. {lesson.title}
-                                </h3>
-                                <div className={cx('lesson-desc')}>
-                                    <div
-                                        className={cx('lesson-type', {
-                                            video: !lesson.is_quiz, // nếu không phải quiz thì là video
-                                            quiz: lesson.is_quiz,
-                                        })}
-                                    >
-                                        {lesson.is_quiz ? <SiGoogledocs /> : <IoMdPlayCircle />}
-                                    </div>
+                    {lessons.map((lesson) => {
+                        const progress = progressMap?.[lesson.id];
 
-                                    <span className={cx('lesson-time')}>
-                                        {lesson.duration ? formatDuration(lesson.duration, 'lesson') : '------'}
-                                    </span>
+                        return (
+                            <li
+                                key={lesson.id}
+                                className={cx('lesson-wrapper', {
+                                    active: currentLessonId === lesson.id.toString(),
+                                    completed: progress?.is_completed,
+                                })}
+                                onClick={() => navigate(`/learning/${courseSlug}?id=${lesson.id}`)}
+                            >
+                                <div className={cx('lesson-info')}>
+                                    <h3 className={cx('lesson-title')}>
+                                        {lesson.order}. {lesson.title}
+                                    </h3>
+
+                                    <div className={cx('lesson-desc')}>
+                                        <div className={cx('lesson-type')}>
+                                            {lesson.is_quiz ? <SiGoogledocs /> : <IoMdPlayCircle />}
+                                        </div>
+
+                                        <span className={cx('lesson-time')}>
+                                            {lesson.duration ? formatDuration(lesson.duration, 'lesson') : '------'}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <span className={cx('play-icon')}>
-                                <MdCheckCircle />
-                            </span>
-                        </li>
-                    ))}
+
+                                <span className={cx('play-icon')}>
+                                    {progress?.is_completed ? (
+                                        <MdCheckCircle className={cx('done')} />
+                                    ) : progress?.watched_duration > 0 ? (
+                                        <span className={cx('in-progress-dot')} />
+                                    ) : null}
+                                </span>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         </aside>

@@ -209,10 +209,30 @@
                 padding: 8px 16px;
                 cursor: pointer;
 
+                // .play-icon {
+                //     font-size: 2rem;
+                //     color: #5db85c;
+                //     opacity: 0.6;
+                // }
                 .play-icon {
-                    font-size: 2rem;
-                    color: #5db85c;
-                    opacity: 0.6;
+                    width: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                // đã học
+                .done {
+                    color: #52c41a;
+                    font-size: 1.8rem;
+                }
+
+                // đang học
+                .in-progress-dot {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #ff4d4f;
+                    border-radius: 50%;
                 }
 
                 .lesson-title {

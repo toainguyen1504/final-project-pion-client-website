@@ -5,6 +5,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/vi'; // để hiển thị tiếng Việt
 import { Skeleton } from 'antd';
 
+import { getLessonProgress, updateLessonProgress } from '@/services/myLearningServices';
+
 import styles from './LearningMode.module.scss';
 dayjs.locale('vi');
 
@@ -26,6 +28,7 @@ function isValidVideoUrl(url) {
 
 export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup, currentLesson, loading }) {
     const [videoError, setVideoError] = useState(false);
+    const [resumeTime, setResumeTime] = useState(0);
 
     useEffect(() => {
         setVideoError(false);
@@ -35,6 +38,86 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
         if (!currentLesson?.updated_at) return '---';
         return dayjs(currentLesson.updated_at).format('MMMM [năm] YYYY');
     }, [currentLesson?.updated_at]);
+
+    // Fetch progress khi đổi lesson
+    useEffect(() => {
+        if (!currentLesson?.id) return;
+
+        let currentTime = resumeTime || 0;
+
+        const interval = setInterval(async () => {
+            currentTime += 5;
+
+            const res = await updateLessonProgress({
+                lesson_id: currentLesson.id,
+                watched_duration: currentTime,
+            });
+
+            window.dispatchEvent(
+                new CustomEvent('progress-updated', {
+                    detail: {
+                        lessonId: currentLesson.id,
+                        progress: res,
+                    },
+                }),
+            );
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [currentLesson?.id, resumeTime]);
+
+    // Tạo interval fake tracking -> sau này sẽ dùng YouTube API
+    useEffect(() => {
+        if (!currentLesson?.id) return;
+
+        let currentTime = resumeTime || 0;
+
+        const interval = setInterval(async () => {
+            currentTime += 5;
+
+            try {
+                const res = await updateLessonProgress({
+                    lesson_id: currentLesson.id,
+                    watched_duration: currentTime,
+                });
+
+                console.log('Auto save:', currentTime);
+
+                // 🔥 QUAN TRỌNG: emit event để layout reload progress
+                window.dispatchEvent(
+                    new CustomEvent('progress-updated', {
+                        detail: {
+                            lessonId: currentLesson.id,
+                            progress: res,
+                        },
+                    }),
+                );
+            } catch (err) {
+                console.error(err);
+            }
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [currentLesson?.id]);
+
+    const validVideo = isValidVideoUrl(currentLesson?.video_url);
+
+    // thêm start nếu có
+    const videoUrl = useMemo(() => {
+        if (!currentLesson?.video_url) return '';
+
+        if (!resumeTime || resumeTime <= 0) {
+            return currentLesson?.video_url;
+        }
+
+        const hasQuery = currentLesson.video_url.includes('?');
+        const joinChar = hasQuery ? '&' : '?';
+
+        return `${currentLesson.video_url}${joinChar}start=${Math.floor(resumeTime)}`;
+    }, [currentLesson?.video_url, resumeTime]);
+
+    console.log('resumeTime:', resumeTime);
+    console.log('videoUrl:', videoUrl);
 
     // Nếu đang loading dữ liệu, hiển thị skeleton
     if (loading) {
@@ -63,8 +146,6 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
 
     if (!currentLesson) return null;
 
-    const validVideo = isValidVideoUrl(currentLesson.video_url);
-
     return (
         <>
             {/* Khu vực xem video */}
@@ -73,7 +154,7 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                     <iframe
                         width="100%"
                         height="100%"
-                        src={currentLesson.video_url}
+                        src={videoUrl}
                         title={currentLesson.title || 'Video bài học'}
                         frameBorder="0"
                         loading="lazy"
