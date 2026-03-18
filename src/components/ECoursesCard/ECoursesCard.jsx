@@ -6,10 +6,10 @@ import { IoMdPlayCircle } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
 import { formatDuration } from '@/utils/formatDuration';
+import { DEFAULT_PLACEHOLDER_IMAGE } from '@/constants';
 import styles from './ECoursesCard.module.scss';
 
 const cx = classNames.bind(styles);
-const DEFAULT_IMAGE = '/assets/img/placeholder_img.png';
 
 const ECoursesCard = ({
     title,
@@ -33,7 +33,7 @@ const ECoursesCard = ({
                         <Skeleton.Image />
                     ) : (
                         <Link to={link} className={cx('card-thumbnail')}>
-                            <img alt={title} src={image || DEFAULT_IMAGE} loading="lazy" />
+                            <img alt={title} src={image || DEFAULT_PLACEHOLDER_IMAGE} loading="lazy" />
                         </Link>
                     )
                 }
@@ -124,7 +124,7 @@ ECoursesCard.defaultProps = {
     discount_price: 0,
     is_free: false, // mặc định false
     button: null,
-    image: DEFAULT_IMAGE,
+    image: DEFAULT_PLACEHOLDER_IMAGE,
     loading: false,
     participants: null,
     total_lessons: null,

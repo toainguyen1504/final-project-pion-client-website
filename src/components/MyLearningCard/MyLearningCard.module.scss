@@ -1,0 +1,56 @@
+.card {
+    height: 100%;
+
+    :global {
+        .ant-card {
+            height: 100%;
+            border-radius: 10px;
+            background-color: #fafafa;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        .ant-card-cover img {
+            width: 100%;
+            height: 158px;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .ant-card-body {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .title {
+        font-weight: 600;
+        font-size: 1.6rem;
+        color: var(--text-color-bold);
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .learning-meta {
+        font-size: 1.3rem;
+        color: #888;
+    }
+
+    .progress {
+        margin-top: 4px;
+    }
+}
