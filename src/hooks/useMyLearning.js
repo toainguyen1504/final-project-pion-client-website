@@ -9,6 +9,7 @@ export default function useMyLearning() {
         async function fetchData() {
             try {
                 const res = await getMyLearningCourses();
+                // console.log('courses:', res.data);
                 setCourses(res.data);
             } catch (err) {
                 console.error('Fetch learning courses failed:', err);

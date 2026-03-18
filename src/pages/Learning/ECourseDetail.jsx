@@ -132,12 +132,14 @@ const ECourseDetail = () => {
             <div className={cx('benefits')}>
                 <h2>Bạn sẽ học được gì?</h2>
                 <ul>
-                    {benefits.map((item, index) => (
-                        <li key={index}>
-                            <FaCheck className={cx('check-icon')} />
-                            <span className={cx('text')}>{item}</span>
-                        </li>
-                    ))}
+                    {benefits &&
+                        benefits.length > 0 &&
+                        benefits.map((item, index) => (
+                            <li key={index}>
+                                <FaCheck className={cx('check-icon')} />
+                                <span className={cx('text')}>{item}</span>
+                            </li>
+                        ))}
                 </ul>
             </div>
 

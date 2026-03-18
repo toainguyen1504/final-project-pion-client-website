@@ -12,6 +12,7 @@ dayjs.extend(relativeTime);
 const cx = classNames.bind(styles);
 
 function MyLearningCard({ course, loading }) {
+    // console.log('course detail: ', course);
     return (
         <div className={cx('card')}>
             <Card
@@ -21,7 +22,7 @@ function MyLearningCard({ course, loading }) {
                     loading ? (
                         <Skeleton.Image />
                     ) : (
-                        <Link to={`/learning/${course.slug}`}>
+                        <Link to={course.slug ? `/learning/${course.slug}` : '#'}>
                             <img
                                 src={course.thumbnail || DEFAULT_PLACEHOLDER_IMAGE}
                                 alt={course.title}
