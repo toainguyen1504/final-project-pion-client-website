@@ -25,6 +25,7 @@ import { NewsList, NewsDetail, NewsAvailablePosition, NewsFAQ, JobDetails } from
 import Learning from '@/pages/Learning'; // E-LEARNING
 import ECourseDetail from '@/pages/Learning/ECourseDetail'; // E-LEARNING
 import LearningMode from '@/pages/Learning/LearningMode'; // E-LEARNING
+import MyLearning from '@/pages/MyLearning'; // My Learning
 import { tocDataChina } from '@/data';
 // import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
@@ -51,6 +52,12 @@ const publicRoutes = [
         path: config.routes.learningMode,
         component: LearningMode,
         layout: ELearningLayout, // tạo layout riêng
+    },
+
+    // My Learning (danh sách các khóa học đang học)
+    {
+        path: config.routes.myCourses,
+        component: MyLearning,
     },
 
     // Info Pages
