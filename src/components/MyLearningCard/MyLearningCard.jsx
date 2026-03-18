@@ -1,9 +1,13 @@
 import { Card, Progress, Skeleton } from 'antd';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 import { DEFAULT_PLACEHOLDER_IMAGE } from '@/constants';
 import styles from './MyLearningCard.module.scss';
+
+dayjs.extend(relativeTime);
 
 const cx = classNames.bind(styles);
 
@@ -34,9 +38,13 @@ function MyLearningCard({ course, loading }) {
                     <div className={cx('content')}>
                         <h3 className={cx('title')}>{course.title}</h3>
 
-                        <p className={cx('learning-meta')}>Tiến độ: {course.progress}%</p>
+                        <p className={cx('learning-meta')}>
+                            {course.last_watched_at
+                                ? `Học cách đây ${dayjs(course.last_watched_at).fromNow()}`
+                                : 'Bạn chưa học khóa này'}
+                        </p>
 
-                        <Progress percent={course.progress} size="small" strokeColor="#ff4d4f" />
+                        <Progress percent={course.progress} size="small" strokeColor="#ff4d4f" showInfo={false} />
                     </div>
                 )}
             </Card>
