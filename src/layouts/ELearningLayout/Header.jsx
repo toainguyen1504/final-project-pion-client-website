@@ -18,7 +18,13 @@ const conicColors = {
     '100%': 'var(--primary-highlight)',
 };
 
-export default function Header({ course, loading, progressMap }) {
+export default function Header({ course, loading, progressMap, onOpenNoteModal }) {
+    const total = course?.lessons?.length || 0;
+
+    const completed = Object.values(progressMap || {}).filter((p) => p.is_completed).length;
+
+    const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
     // Nếu đang loading dữ liệu, hiển thị skeleton
     if (loading) {
         return (
@@ -27,12 +33,6 @@ export default function Header({ course, loading, progressMap }) {
             </header>
         );
     }
-
-    const total = course?.lessons?.length || 0;
-
-    const completed = Object.values(progressMap || {}).filter((p) => p.is_completed).length;
-
-    const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
 
     if (!course) return null;
 
@@ -51,7 +51,7 @@ export default function Header({ course, loading, progressMap }) {
                 </Tooltip>
                 <div className={cx('logo-wrapper')}>
                     <Tooltip title="Quay lại trang chủ">
-                        <Link to={config.routes.home}>
+                        <Link to={config.routes.learning}>
                             <figure className={cx('logo-inner')}>
                                 <img src="/assets/img/logo_gadient.png" alt="Logo" className={cx('logo')} />
                                 {/* <img src="/assets/img/logo_text.png" alt="Logo" className={cx('logo_text')} /> */}
@@ -78,7 +78,7 @@ export default function Header({ course, loading, progressMap }) {
                 </div>
 
                 <div className={cx('buttons')}>
-                    <Button text small leftIcon={<GiNotebook />} className={cx('note-btn')}>
+                    <Button text small leftIcon={<GiNotebook />} className={cx('note-btn')} onClick={onOpenNoteModal}>
                         <p className={cx('note-txt')}>Ghi chú</p>
                     </Button>
                     <Button text small leftIcon={<TbHelpHexagonFilled />} className={cx('help-btn')}>
