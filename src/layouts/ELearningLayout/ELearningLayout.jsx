@@ -9,8 +9,11 @@ import Footer from './Footer';
 import Sidebar from './Sidebar';
 import LearningMode from '@/pages/Learning/LearningMode';
 import Button from '@/components/Button'; // import Button custom
+import NoteModal from './NoteModal';
 import { getLearningCourseBySlug } from '@/services/coursesService';
 import { getLessonProgress } from '@/services/myLearningServices';
+import { createNote } from '@/services/noteService';
+import { formatDuration } from '@/utils/formatDuration';
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +21,7 @@ const cx = classNames.bind(styles);
 // 1. Resume video (watched_duration)
 // 2. Auto save progress khi xem video
 // 3. Continue learning (header button)
+
 export default function ELearningLayout() {
     const { slug } = useParams(); // slug của khóa học từ URL
     const navigate = useNavigate();
@@ -25,12 +29,16 @@ export default function ELearningLayout() {
     const currentLessonId = searchParams.get('id'); // id của bài học hiện tại (nếu có)
 
     const [sidebarOpen, setSidebarOpen] = useState(true);
-    const [showNotePopup, setShowNotePopup] = useState(false);
 
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const [progressMap, setProgressMap] = useState({});
+
+    const [showNotePopup, setShowNotePopup] = useState(false);
+    const [showNoteModal, setShowNoteModal] = useState(false);
+    const [noteTime, setNoteTime] = useState(0); // NOTE lesson
+    const [noteContent, setNoteContent] = useState('');
 
     // Fetch course data để truyền xuống các component con (Header, Sidebar, LearningMode)
     useEffect(() => {
@@ -98,13 +106,41 @@ export default function ELearningLayout() {
         return () => window.removeEventListener('progress-updated', handler);
     }, []);
 
+    // reset content khi đóng popup
+    useEffect(() => {
+        if (!showNotePopup) {
+            setNoteContent('');
+        }
+    }, [showNotePopup]);
+
     // Sidebar toggle handler
     const handleToggleSidebar = () => {
         setSidebarOpen((prev) => !prev);
     };
 
     // Note popup handler
-    const handleToggleNote = () => setShowNotePopup((prev) => !prev);
+    const handleToggleNote = (time = 0) => {
+        setNoteTime(time);
+        setShowNotePopup((prev) => !prev);
+    };
+
+    // Handle save note
+    const handleSaveNote = async () => {
+        if (!noteContent.trim()) return;
+
+        try {
+            await createNote({
+                lesson_id: currentLesson.id,
+                content: noteContent,
+                timestamp: noteTime,
+            });
+
+            setNoteContent('');
+            setShowNotePopup(false);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     const currentLesson = course?.lessons.find((lesson) => lesson.id.toString() === currentLessonId); // Tìm bài học hiện tại dựa trên currentLessonId
     const lessons = [...(course?.lessons ?? [])].sort((a, b) => a.order - b.order); // sắp xếp bài học theo thứ tự (order) để tìm bài trước/sau chính xác
@@ -115,7 +151,12 @@ export default function ELearningLayout() {
 
     return (
         <div className={cx('wrapper')}>
-            <Header course={course} loading={loading} progressMap={progressMap} />
+            <Header
+                course={course}
+                loading={loading}
+                progressMap={progressMap}
+                onOpenNoteModal={() => setShowNoteModal(true)}
+            />
             <main className={cx('main')}>
                 <div className={cx('content')}>
                     <div className={cx('video-area', { expanded: !sidebarOpen })}>
@@ -152,22 +193,36 @@ export default function ELearningLayout() {
                 <div className={cx('note-popup', 'animate')}>
                     <div className={cx('note-header')}>
                         <h3 className={cx('note-title')}>Thêm ghi chú tại</h3>
-                        <span className={cx('note-time')}>03:18</span>
+                        <span className={cx('note-time')}> {formatDuration(noteTime, 'lesson')}</span>
                     </div>
 
                     {/* Sau này chuyển sang Editor nếu cần thiết */}
-                    <textarea className={cx('note-input')} placeholder="Nội dung ghi chú..."></textarea>
+                    <textarea
+                        className={cx('note-input')}
+                        placeholder="Nội dung ghi chú..."
+                        value={noteContent}
+                        onChange={(e) => setNoteContent(e.target.value)}
+                    />
 
                     <div className={cx('note-actions')}>
-                        <Button rounded small className={cx('cancel-btn')} onClick={handleToggleNote}>
+                        <Button rounded small className={cx('cancel-btn')} onClick={() => setShowNotePopup(false)}>
                             HỦY BỎ
                         </Button>
-                        <Button rounded small primary className={cx('save-btn')}>
+                        <Button
+                            rounded
+                            small
+                            primary
+                            className={cx('save-btn')}
+                            onClick={handleSaveNote}
+                            disabled={!noteContent.trim()}
+                        >
                             TẠO GHI ChÚ
                         </Button>
                     </div>
                 </div>
             )}
+
+            <NoteModal open={showNoteModal} onClose={() => setShowNoteModal(false)} lessonId={currentLesson?.id} />
         </div>
     );
 }

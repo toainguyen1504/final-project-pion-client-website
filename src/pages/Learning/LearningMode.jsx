@@ -6,10 +6,10 @@ import 'dayjs/locale/vi';
 import { Skeleton } from 'antd';
 
 import { getLessonProgress, updateLessonProgress } from '@/services/myLearningServices';
-
+import { formatDuration } from '@/utils/formatDuration';
 import styles from './LearningMode.module.scss';
-dayjs.locale('vi');
 
+dayjs.locale('vi');
 const cx = classNames.bind(styles);
 
 // extract videoId từ embed url
@@ -20,17 +20,20 @@ function extractVideoId(url) {
 }
 
 export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup, currentLesson, loading }) {
-    const [videoError, setVideoError] = useState(false);
     const [resumeTime, setResumeTime] = useState(null);
+    const [currentTime, setCurrentTime] = useState(0);
 
     const playerRef = useRef(null);
     const playerContainerRef = useRef(null);
-    const intervalRef = useRef(null);
 
-    // reset error + resumeTime khi đổi lesson
+    // TÁCH RIÊNG 2 INTERVAL
+    const progressIntervalRef = useRef(null); // save progress
+    const timeIntervalRef = useRef(null); // update UI time
+
+    // reset khi đổi lesson
     useEffect(() => {
-        setVideoError(false);
         setResumeTime(null);
+        setCurrentTime(0);
     }, [currentLesson?.id]);
 
     // format date
@@ -39,7 +42,7 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
         return dayjs(currentLesson.updated_at).format('MMMM [năm] YYYY');
     }, [currentLesson?.updated_at]);
 
-    // fetch progress
+    // fetch progress (resume)
     useEffect(() => {
         if (!currentLesson?.id) return;
 
@@ -55,7 +58,7 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
         fetchProgress();
     }, [currentLesson?.id]);
 
-    // load YouTube API 1 lần
+    // load YouTube API
     useEffect(() => {
         if (window.YT) return;
 
@@ -67,24 +70,20 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
     // init player
     useEffect(() => {
         if (!currentLesson?.video_url) return;
-        if (resumeTime === null) return; // (chờ resumeTime)
+        if (resumeTime === null) return;
 
         const videoId = extractVideoId(currentLesson.video_url);
         if (!videoId) return;
 
         const initPlayer = () => {
-            // clear interval cũ
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-                intervalRef.current = null;
-            }
+            // cleanup cũ
+            if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+            if (timeIntervalRef.current) clearInterval(timeIntervalRef.current);
 
-            // destroy player cũ
             if (playerRef.current) {
                 try {
                     playerRef.current.destroy();
                 } catch (e) {}
-                playerRef.current = null;
             }
 
             playerRef.current = new window.YT.Player(playerContainerRef.current, {
@@ -97,7 +96,7 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                     onReady: (event) => {
                         console.log('🎬 Player ready');
 
-                        // delay để chắc chắn video load xong
+                        // resume video
                         if (resumeTime > 0) {
                             setTimeout(() => {
                                 try {
@@ -105,19 +104,30 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                                 } catch (e) {}
                             }, 500);
                         }
+
+                        // update UI time
+                        timeIntervalRef.current = setInterval(() => {
+                            try {
+                                const time = Math.floor(event.target.getCurrentTime());
+                                setCurrentTime(time);
+                            } catch (e) {}
+                        }, 500);
                     },
 
                     onStateChange: (event) => {
+                        // PLAYING → start save progress
                         if (event.data === window.YT.PlayerState.PLAYING) {
-                            if (intervalRef.current) clearInterval(intervalRef.current);
+                            if (progressIntervalRef.current) {
+                                clearInterval(progressIntervalRef.current);
+                            }
 
-                            intervalRef.current = setInterval(async () => {
+                            progressIntervalRef.current = setInterval(async () => {
                                 try {
-                                    const currentTime = Math.floor(event.target.getCurrentTime());
+                                    const time = Math.floor(event.target.getCurrentTime());
 
                                     const res = await updateLessonProgress({
                                         lesson_id: currentLesson.id,
-                                        watched_duration: currentTime,
+                                        watched_duration: time,
                                     });
 
                                     window.dispatchEvent(
@@ -134,10 +144,11 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                             }, 5000);
                         }
 
+                        // PAUSE / END → stop save progress
                         if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
-                            if (intervalRef.current) {
-                                clearInterval(intervalRef.current);
-                                intervalRef.current = null;
+                            if (progressIntervalRef.current) {
+                                clearInterval(progressIntervalRef.current);
+                                progressIntervalRef.current = null;
                             }
                         }
                     },
@@ -152,19 +163,41 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
         }
 
         return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-                intervalRef.current = null;
-            }
+            if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
+            if (timeIntervalRef.current) clearInterval(timeIntervalRef.current);
 
             if (playerRef.current) {
                 try {
                     playerRef.current.destroy();
                 } catch (e) {}
-                playerRef.current = null;
             }
         };
     }, [currentLesson?.id, resumeTime]);
+
+    // handle auto play and pause when open add note modal
+    useEffect(() => {
+        if (!playerRef.current) return;
+
+        try {
+            if (showNotePopup) {
+                playerRef.current.pauseVideo();
+            } else {
+                playerRef.current.playVideo();
+            }
+        } catch (e) {}
+    }, [showNotePopup]);
+
+    useEffect(() => {
+        const handler = (e) => {
+            const time = e.detail.time;
+            if (playerRef.current) {
+                playerRef.current.seekTo(time, true);
+            }
+        };
+
+        window.addEventListener('seek-to-time', handler);
+        return () => window.removeEventListener('seek-to-time', handler);
+    }, []);
 
     // loading
     if (loading) {
@@ -207,10 +240,10 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                     </div>
 
                     {!showNotePopup && (
-                        <button className={cx('note-btn')} onClick={onToggleNote}>
+                        <button className={cx('note-btn')} onClick={() => onToggleNote(currentTime)}>
                             <FaPlus className={cx('note-icon')} />
                             Thêm ghi chú tại
-                            <p className={cx('note-time')}>--:--</p>
+                            <p className={cx('note-time')}>{formatDuration(currentTime, 'lesson')}</p>
                         </button>
                     )}
                 </div>
