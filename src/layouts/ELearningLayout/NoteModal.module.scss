@@ -83,6 +83,7 @@
 .list {
     padding: 16px;
     overflow-y: auto;
+    height: 100%;
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -96,9 +97,38 @@
 
 /* EMPTY */
 .empty {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #888;
-    padding: 40px 0;
+
+    padding: 40px 20px;
+}
+
+/* IMAGE */
+.empty-img {
+    width: 120px;
+    max-width: 80%;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+/* TITLE */
+.empty-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color-bold);
+    margin-bottom: 6px;
+}
+
+/* DESC */
+.empty-desc {
+    font-size: 14px;
+    color: var(--text-color);
+    max-width: 320px;
+    line-height: 1.5;
 }
 
 /* NOTE ITEM */

@@ -167,7 +167,13 @@ export default function NoteModal({ open, onClose, lessonId, courseId }) {
                     {loading ? (
                         <Skeleton active paragraph={{ rows: 3 }} />
                     ) : notes?.length === 0 ? (
-                        <div className={cx('empty')}>Bạn chưa có ghi chú nào</div>
+                        <div className={cx('empty')}>
+                            <img src="/assets/no-note-yet.svg" alt="No note" className={cx('empty-img')} />
+
+                            <h3 className={cx('empty-title')}>Bạn chưa có ghi chú nào</h3>
+
+                            <p className={cx('empty-desc')}>Hãy ghi chép để nhớ những gì bạn đã học!</p>
+                        </div>
                     ) : (
                         notes?.map((note) => (
                             <div key={note.id} className={cx('note-item')}>
