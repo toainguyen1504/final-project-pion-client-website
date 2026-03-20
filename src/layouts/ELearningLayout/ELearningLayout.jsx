@@ -61,6 +61,25 @@ export default function ELearningLayout() {
         fetchCourse();
     }, [slug]);
 
+    useEffect(() => {
+        const handler = (e) => {
+            const { lessonId, time } = e.detail;
+
+            navigate(`/learning/${slug}?id=${lessonId}`);
+
+            setTimeout(() => {
+                window.dispatchEvent(
+                    new CustomEvent('seek-to-time', {
+                        detail: { time },
+                    }),
+                );
+            }, 800);
+        };
+
+        window.addEventListener('navigate-to-note', handler);
+        return () => window.removeEventListener('navigate-to-note', handler);
+    }, [slug]);
+
     const fetchProgress = async () => {
         if (!course?.lessons) return;
 
@@ -222,7 +241,12 @@ export default function ELearningLayout() {
                 </div>
             )}
 
-            <NoteModal open={showNoteModal} onClose={() => setShowNoteModal(false)} lessonId={currentLesson?.id} />
+            <NoteModal
+                open={showNoteModal}
+                onClose={() => setShowNoteModal(false)}
+                lessonId={currentLesson?.id}
+                courseId={course?.id}
+            />
         </div>
     );
 }
