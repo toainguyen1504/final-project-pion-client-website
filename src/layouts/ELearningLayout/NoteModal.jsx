@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames/bind';
 import { RiEdit2Fill } from 'react-icons/ri';
 import { MdDelete } from 'react-icons/md';
-import { Skeleton } from 'antd';
+import { Skeleton, Popconfirm } from 'antd';
 
 import { formatDuration } from '@/utils/formatDuration';
 import { getNotesByCourse, getNotesByLesson, updateNote, deleteNote } from '@/services/noteService';
@@ -22,6 +22,7 @@ export default function NoteModal({ open, onClose, lessonId, courseId }) {
     const cacheRef = useRef({});
     const getKey = () => `${scope}-${lessonId}-${courseId}-${order}`;
 
+    // Get note list
     const fetchNotes = async () => {
         if (scope === 'lesson' && !lessonId) return;
         if (scope === 'course' && !courseId) return;
@@ -58,31 +59,80 @@ export default function NoteModal({ open, onClose, lessonId, courseId }) {
         }
     };
 
+    // auto fetch nếu mở modal
     useEffect(() => {
         if (!open) return;
 
         fetchNotes();
     }, [lessonId, courseId, order, scope, open]);
 
+    // modal auto refresh
+    useEffect(() => {
+        const handler = async () => {
+            // clear cache
+            cacheRef.current = {};
+
+            try {
+                setLoading(true);
+
+                let res;
+
+                if (scope === 'lesson') {
+                    res = await getNotesByLesson(lessonId, order);
+                } else {
+                    res = await getNotesByCourse(courseId, order);
+                }
+
+                const data = res.data || [];
+
+                const key = `${scope}-${lessonId}-${courseId}-${order}`;
+                cacheRef.current[key] = data;
+
+                setNotes(data);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        window.addEventListener('note-created', handler);
+
+        return () => {
+            window.removeEventListener('note-created', handler);
+        };
+    }, []);
+
+    // EDIT
     const handleEdit = (note) => {
         setEditingId(note.id);
         setEditingContent(note.content);
     };
 
+    // SAVE
     const handleSaveEdit = async () => {
         try {
-            await updateNote(editingId, { content: editingContent });
+            // await updateNote(editingId, { content: editingContent });
+            // fetchNotes();
+            const updated = await updateNote(editingId, {
+                content: editingContent,
+            });
+
+            setNotes((prev) => prev.map((n) => (n.id === editingId ? { ...n, content: updated.content } : n))); // update UI ngay
             setEditingId(null);
-            fetchNotes();
+            cacheRef.current = {}; // clear cache
         } catch (err) {
             console.error(err);
         }
     };
 
+    // DELETE
     const handleDelete = async (id) => {
         try {
             await deleteNote(id);
-            fetchNotes();
+            // fetchNotes();
+            setNotes((prev) => prev.filter((n) => n.id !== id)); // update UI ngay
+            cacheRef.current = {}; // clear cache
         } catch (err) {
             console.error(err);
         }
@@ -124,21 +174,9 @@ export default function NoteModal({ open, onClose, lessonId, courseId }) {
                                 {/* HEADER */}
                                 <div className={cx('note-header')}>
                                     <div className={cx('note-info')}>
-                                        <span
-                                            className={cx('time')}
-                                            onClick={() => {
-                                                window.dispatchEvent(
-                                                    new CustomEvent('seek-to-time', {
-                                                        detail: { time: note.timestamp },
-                                                    }),
-                                                );
-                                                onClose();
-                                            }}
-                                        >
-                                            {formatDuration(note.timestamp)}
-                                        </span>
+                                        <span className={cx('time')}>{formatDuration(note.timestamp)}</span>
 
-                                        {/* TITLE (fake link UI) */}
+                                        {/* TITLE ( link to lesson at time) */}
                                         <span
                                             className={cx('title')}
                                             onClick={() => {
@@ -160,7 +198,18 @@ export default function NoteModal({ open, onClose, lessonId, courseId }) {
 
                                     <div className={cx('tools')}>
                                         <RiEdit2Fill onClick={() => handleEdit(note)} />
-                                        <MdDelete onClick={() => handleDelete(note.id)} />
+                                        <Popconfirm
+                                            title="Xóa ghi chú này?"
+                                            description="Hành động này không thể hoàn tác"
+                                            okText="Xóa"
+                                            cancelText="Hủy"
+                                            okType="danger"
+                                            okButtonProps={{ danger: true }}
+                                            placement="left"
+                                            onConfirm={() => handleDelete(note.id)}
+                                        >
+                                            <MdDelete />
+                                        </Popconfirm>
                                     </div>
                                 </div>
 

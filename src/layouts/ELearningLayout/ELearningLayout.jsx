@@ -61,6 +61,7 @@ export default function ELearningLayout() {
         fetchCourse();
     }, [slug]);
 
+    // Navigate lesson theo note
     useEffect(() => {
         const handler = (e) => {
             const { lessonId, time } = e.detail;
@@ -80,6 +81,7 @@ export default function ELearningLayout() {
         return () => window.removeEventListener('navigate-to-note', handler);
     }, [slug]);
 
+    // fetch tiến độ học tập
     const fetchProgress = async () => {
         if (!course?.lessons) return;
 
@@ -105,10 +107,12 @@ export default function ELearningLayout() {
         }
     };
 
+    // auto fetch tiến độ học tập
     useEffect(() => {
         fetchProgress();
     }, [course]);
 
+    // Update tiến độ học tập
     useEffect(() => {
         const handler = (event) => {
             const { lessonId, progress } = event.detail;
@@ -154,6 +158,7 @@ export default function ELearningLayout() {
                 timestamp: noteTime,
             });
 
+            window.dispatchEvent(new Event('note-created')); //clear cache
             setNoteContent('');
             setShowNotePopup(false);
         } catch (err) {

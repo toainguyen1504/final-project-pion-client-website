@@ -96,6 +96,8 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                     onReady: (event) => {
                         console.log('🎬 Player ready');
 
+                        window.dispatchEvent(new CustomEvent('player-ready'));
+
                         // resume video
                         if (resumeTime > 0) {
                             setTimeout(() => {
@@ -188,15 +190,33 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
     }, [showNotePopup]);
 
     useEffect(() => {
-        const handler = (e) => {
+        let pendingSeekTime = null;
+
+        const seekHandler = (e) => {
             const time = e.detail.time;
-            if (playerRef.current) {
+
+            if (playerRef.current && typeof playerRef.current.seekTo === 'function') {
                 playerRef.current.seekTo(time, true);
+            } else {
+                // player chưa ready -> lưu lại
+                pendingSeekTime = time;
             }
         };
 
-        window.addEventListener('seek-to-time', handler);
-        return () => window.removeEventListener('seek-to-time', handler);
+        const readyHandler = () => {
+            if (pendingSeekTime !== null && playerRef.current && typeof playerRef.current.seekTo === 'function') {
+                playerRef.current.seekTo(pendingSeekTime, true);
+                pendingSeekTime = null;
+            }
+        };
+
+        window.addEventListener('seek-to-time', seekHandler);
+        window.addEventListener('player-ready', readyHandler);
+
+        return () => {
+            window.removeEventListener('seek-to-time', seekHandler);
+            window.removeEventListener('player-ready', readyHandler);
+        };
     }, []);
 
     // loading
