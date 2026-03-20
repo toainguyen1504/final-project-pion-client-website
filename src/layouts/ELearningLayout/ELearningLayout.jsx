@@ -18,9 +18,9 @@ import { formatDuration } from '@/utils/formatDuration';
 const cx = classNames.bind(styles);
 
 // ** Tiếp theo nên làm **
-// 1. Resume video (watched_duration)
-// 2. Auto save progress khi xem video
-// 3. Continue learning (header button)
+// 1. Resume video (watched_duration) - ok
+// 2. Auto save progress khi xem video -ok
+// 3. Continue learning (header button) - ok (khóa học của tôi, /my-course)
 
 export default function ELearningLayout() {
     const { slug } = useParams(); // slug của khóa học từ URL
@@ -66,7 +66,9 @@ export default function ELearningLayout() {
         const handler = (e) => {
             const { lessonId, time } = e.detail;
 
-            navigate(`/learning/${slug}?id=${lessonId}`);
+            navigate(`/learning/${slug}?id=${lessonId}`, {
+                state: { fromNote: true, time },
+            }); // gắn flag
 
             setTimeout(() => {
                 window.dispatchEvent(
@@ -191,6 +193,7 @@ export default function ELearningLayout() {
                             sidebarOpen={sidebarOpen}
                             onToggleNote={handleToggleNote}
                             showNotePopup={showNotePopup}
+                            showNoteModal={showNoteModal}
                             loading={loading}
                         />
                     </div>

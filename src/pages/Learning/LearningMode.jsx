@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FaPlus } from 'react-icons/fa6';
 import dayjs from 'dayjs';
@@ -19,7 +20,14 @@ function extractVideoId(url) {
     return match ? match[1] : null;
 }
 
-export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup, currentLesson, loading }) {
+export default function LearningMode({
+    sidebarOpen,
+    onToggleNote,
+    showNotePopup,
+    showNoteModal,
+    currentLesson,
+    loading,
+}) {
     const [resumeTime, setResumeTime] = useState(null);
     const [currentTime, setCurrentTime] = useState(0);
 
@@ -29,6 +37,17 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
     // TÁCH RIÊNG 2 INTERVAL
     const progressIntervalRef = useRef(null); // save progress
     const timeIntervalRef = useRef(null); // update UI time
+
+    const location = useLocation();
+    const fromNote = location.state?.fromNote;
+    const noteTime = location.state?.time;
+
+    // Clear state cho from note
+    useEffect(() => {
+        if (fromNote) {
+            window.history.replaceState({}, document.title);
+        }
+    }, [fromNote]);
 
     // reset khi đổi lesson
     useEffect(() => {
@@ -99,7 +118,9 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
                         window.dispatchEvent(new CustomEvent('player-ready'));
 
                         // resume video
-                        if (resumeTime > 0) {
+                        if (fromNote && noteTime != null) {
+                            event.target.seekTo(noteTime, true);
+                        } else if (resumeTime > 0) {
                             setTimeout(() => {
                                 try {
                                     event.target.seekTo(resumeTime, true);
@@ -176,18 +197,18 @@ export default function LearningMode({ sidebarOpen, onToggleNote, showNotePopup,
         };
     }, [currentLesson?.id, resumeTime]);
 
-    // handle auto play and pause when open add note modal
+    // handle auto play and pause when note modal (add and list)
     useEffect(() => {
         if (!playerRef.current) return;
 
         try {
-            if (showNotePopup) {
+            if (showNotePopup || showNoteModal) {
                 playerRef.current.pauseVideo();
             } else {
                 playerRef.current.playVideo();
             }
         } catch (e) {}
-    }, [showNotePopup]);
+    }, [showNotePopup, showNoteModal]);
 
     useEffect(() => {
         let pendingSeekTime = null;
