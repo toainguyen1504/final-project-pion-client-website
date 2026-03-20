@@ -46,7 +46,7 @@ const ECourseDetail = () => {
         }
     }
 
-    const benefits = course.benefits || [];
+    const benefits = course?.benefits || [];
 
     if (loading) return <CourseDetailSkeleton />;
     if (!course) {
@@ -134,7 +134,7 @@ const ECourseDetail = () => {
                 <ul>
                     {benefits &&
                         benefits.length > 0 &&
-                        benefits.map((item, index) => (
+                        benefits?.map((item, index) => (
                             <li key={index}>
                                 <FaCheck className={cx('check-icon')} />
                                 <span className={cx('text')}>{item}</span>
