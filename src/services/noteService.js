@@ -13,6 +13,14 @@ export const getNotesByLesson = async (lessonId, order = 'desc') => {
     return res.data.data; // trả về object có pagination và data
 };
 
+export const getNotesByCourse = async (courseId, order = 'desc') => {
+    const res = await axiosInstance.get(`/api/client/courses/${courseId}/notes`, {
+        params: { order },
+    });
+
+    return res.data.data;
+};
+
 export const updateNote = async (id, data) => {
     const res = await axiosInstance.put(`/api/client/notes/${id}`, data);
     return res.data.data;
