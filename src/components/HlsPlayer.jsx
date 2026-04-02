@@ -11,8 +11,7 @@ function HlsPlayer({ src, playWithSound = false }) {
         let hls;
 
         const tryPlay = () => {
-            // set volume trước
-            video.volume = 0.8;
+            video.volume = 0.68; // đặt âm lượng mặc định
 
             if (playWithSound) {
                 video.muted = false; // mở tiếng
