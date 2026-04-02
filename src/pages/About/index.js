@@ -156,7 +156,7 @@ function About() {
                             {!isPlaying ? (
                                 <button className={cx('video-thumbnail')} onClick={handlePlay}>
                                     <img
-                                        src="/assets/img/about/thumbnail_v2.jpg"
+                                        src="/assets/img/about/thumbnail_v3.jpg"
                                         alt="Pion"
                                         className={cx('media-thumb')}
                                         loading="lazy"
