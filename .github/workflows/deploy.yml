@@ -32,8 +32,8 @@ jobs:
         run: npm ci
 
       # 5. Fix browserslist warning
-      - name: Update browserslist DB
-        run: npx update-browserslist-db@latest
+      # - name: Update browserslist DB
+      #   run: npx update-browserslist-db@latest
 
       # 6. Build project
       - name: Build project
