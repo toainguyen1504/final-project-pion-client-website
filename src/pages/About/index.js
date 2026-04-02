@@ -177,7 +177,7 @@ function About() {
                             ) : (
                                 <video
                                     id="about-video"
-                                    src="/assets/video/about_us.mp4"
+                                    src="/assets/video/new_about_us.mp4"
                                     controls
                                     autoPlay
                                     loop
