@@ -12,6 +12,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import ContactForm from '@/components/ContactForm';
 import ZigzagSection from '@/components/ZigzagSection';
 import TeacherCard from '@/components/TeacherCard';
+import HlsPlayer from '@/components/HlsPlayer';
 import CoreValuesSlider from './CoreValuesSlider';
 import CeoInfo from './CeoInfo';
 import Departments from './Departments';
@@ -129,15 +130,19 @@ function About() {
     //     // API
     // };
 
+    // const handlePlay = () => {
+    //     setTimeout(() => {
+    //         setIsPlaying(true);
+    //         const videoElement = document.getElementById('about-video');
+    //         if (videoElement) {
+    //             videoElement.muted = false;
+    //             videoElement.play();
+    //         }
+    //     }, 300);
+    // };
+
     const handlePlay = () => {
-        setTimeout(() => {
-            setIsPlaying(true);
-            const videoElement = document.getElementById('about-video');
-            if (videoElement) {
-                videoElement.muted = false;
-                videoElement.play();
-            }
-        }, 300);
+        setIsPlaying(true);
     };
 
     useEffect(() => {
@@ -175,15 +180,18 @@ function About() {
                                     </button>
                                 </div>
                             ) : (
-                                <video
-                                    id="about-video"
-                                    src="https://pion.edu.vn/assets/video/new_about_us.mp4" // hard code tạm thời, sau này sẽ tối ưu
-                                    controls
-                                    autoPlay
-                                    loop
-                                    playsInline
-                                    className={cx('video-element')}
-                                />
+                                // <video
+                                //     id="about-video"
+                                //     preload="metadata"
+                                //     src="/assets/video/about_us.mp4" // hard code tạm thời, sau này sẽ tối ưu
+                                //     controls
+                                //     muted
+                                //     autoPlay={isPlaying}
+                                //     loop
+                                //     playsInline
+                                //     className={cx('video-element')}
+                                // />
+                                <HlsPlayer src="/assets/video/about_us_hls/playlist.m3u8" autoPlayWithSound />
                             )}
                         </figure>
                         <div className={cx('about-content')} data-aos="fade-right" data-aos-delay="200">
