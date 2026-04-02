@@ -53,8 +53,11 @@ jobs:
           local-dir: build/
           server-dir: /public_html/
 
-          # FIX vỡ layout do cache
-          dangerous-clean-slate: true
+          # FIX vỡ layout do cache - false để tắt cache, true để bật cache (mặc định là true)
+          dangerous-clean-slate: false
+
+          # incremental deploy
+          state-name: .ftp-deploy-sync-state.json
 
           exclude: |
             **/.git*
