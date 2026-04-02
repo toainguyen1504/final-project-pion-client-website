@@ -1,4 +1,4 @@
-name: Deploy FE Pion Education (Production) React CRA
+name: Deploy FE Pion Education (Production) React CRA v1
 
 on:
   push:
@@ -54,7 +54,7 @@ jobs:
           server-dir: /
 
           # FIX vỡ layout do cache - false để tắt cache, true để bật cache (mặc định là true)
-          dangerous-clean-slate: false
+          # dangerous-clean-slate: true
 
           # incremental deploy
           state-name: .ftp-deploy-sync-state.json
