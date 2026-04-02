@@ -177,7 +177,7 @@ function About() {
                             ) : (
                                 <video
                                     id="about-video"
-                                    src="/assets/video/new_about_us.mp4"
+                                    src="https://pion.edu.vn/assets/video/new_about_us.mp4" // hard code tạm thời, sau này sẽ tối ưu
                                     controls
                                     autoPlay
                                     loop
