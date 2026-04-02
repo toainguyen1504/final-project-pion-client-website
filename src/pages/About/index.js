@@ -122,24 +122,10 @@ const coreValuesData = [
     },
 ];
 
+const VIDEO_SRC = '/assets/video/about_us_hls/playlist.m3u8';
+
 function About() {
     const [isPlaying, setIsPlaying] = useState(false);
-
-    // const handleContactSubmit = (data) => {
-    //     console.log('Dữ liệu gửi đi:', data);
-    //     // API
-    // };
-
-    // const handlePlay = () => {
-    //     setTimeout(() => {
-    //         setIsPlaying(true);
-    //         const videoElement = document.getElementById('about-video');
-    //         if (videoElement) {
-    //             videoElement.muted = false;
-    //             videoElement.play();
-    //         }
-    //     }, 300);
-    // };
 
     const handlePlay = () => {
         setIsPlaying(true);
@@ -168,30 +154,19 @@ function About() {
                     <div className={cx('about-wrapper')}>
                         <figure className={cx('about-media')} data-aos="fade-left" data-aos-delay="200">
                             {!isPlaying ? (
-                                <div className={cx('video-thumbnail')} onClick={handlePlay}>
+                                <button className={cx('video-thumbnail')} onClick={handlePlay}>
                                     <img
-                                        src="/assets/img/about/thumbnail.jpg"
+                                        src="/assets/img/about/thumbnail_v2.jpg"
                                         alt="Pion"
                                         className={cx('media-thumb')}
                                         loading="lazy"
                                     />
-                                    <button className={cx('btn-play')}>
+                                    <span className={cx('btn-play')}>
                                         <FaCirclePlay size={60} />
-                                    </button>
-                                </div>
+                                    </span>
+                                </button>
                             ) : (
-                                // <video
-                                //     id="about-video"
-                                //     preload="metadata"
-                                //     src="/assets/video/about_us.mp4" // hard code tạm thời, sau này sẽ tối ưu
-                                //     controls
-                                //     muted
-                                //     autoPlay={isPlaying}
-                                //     loop
-                                //     playsInline
-                                //     className={cx('video-element')}
-                                // />
-                                <HlsPlayer src="/assets/video/about_us_hls/playlist.m3u8" autoPlayWithSound />
+                                <HlsPlayer src={VIDEO_SRC} playWithSound={true} />
                             )}
                         </figure>
                         <div className={cx('about-content')} data-aos="fade-right" data-aos-delay="200">

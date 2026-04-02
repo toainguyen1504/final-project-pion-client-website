@@ -1,0 +1,62 @@
+name: Deploy FE Pion Education (Production) React CRA
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3. Cache npm
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 5. Fix browserslist warning
+      - name: Update browserslist DB
+        run: npx update-browserslist-db@latest
+
+      # 6. Build project
+      - name: Build project
+        run: npm run build
+        env:
+          CI: false
+
+      # 7. Deploy via FTP
+      - name: Deploy to Hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: 202.92.4.57
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: build/
+          server-dir: /public_html/
+
+          # FIX vỡ layout do cache
+          dangerous-clean-slate: true
+
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/node_modules/**
