@@ -122,7 +122,7 @@ const coreValuesData = [
     },
 ];
 
-const VIDEO_SRC = '/assets/video/about_us_hls/playlist.m3u8';
+const VIDEO_SRC = '/assets/video/pion_edu_about_us_optimized.mp4';
 
 function About() {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -166,7 +166,10 @@ function About() {
                                     </span>
                                 </button>
                             ) : (
-                                <HlsPlayer src={VIDEO_SRC} playWithSound={true} />
+                                // <HlsPlayer src={VIDEO_SRC} playWithSound={true} />
+                                <video className={cx('media-thumb')} controls playsInline preload="metadata" autoPlay>
+                                    <source src={VIDEO_SRC} type="video/mp4" />
+                                </video>
                             )}
                         </figure>
                         <div className={cx('about-content')} data-aos="fade-right" data-aos-delay="200">
