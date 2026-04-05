@@ -226,8 +226,6 @@ const ContactForm = ({ onSubmit }) => {
             const response = await axios.post(`${BASE_URL}/consultations`, payload, {
                 headers: {
                     'Content-Type': 'application/json',
-                    // Use this if you're working with Sanctum or Passport
-                    //'Authorization': 'Bearer your_token', không sử dụng vì user chưa đăng nhập vẫn submit được
                 },
             });
 
@@ -307,6 +305,8 @@ const ContactForm = ({ onSubmit }) => {
                         {errors.requestContent && <p className={cx('error')}>{errors.requestContent}</p>}
                     </div>
                 </div>
+
+                {/* Capcha */}
                 <div className={cx('captcha')}>
                     <div className={cx('captcha-box')}>
                         <div className={cx('captcha-left')}>
