@@ -51,7 +51,7 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: build/
-          server-dir: /public_html/_pioneducation
+          server-dir: /public_html/_pioneducation/
 
           # FIX vỡ layout do cache - false để tắt cache, true để bật cache (mặc định là true)
           # dangerous-clean-slate: true
