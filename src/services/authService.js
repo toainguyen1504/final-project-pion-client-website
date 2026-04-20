@@ -13,7 +13,7 @@ export async function login({ login, password }) {
     const { token, user } = response.data;
 
     // Lưu thông tin vào localStorage
-    localStorage.setItem('authTokenCLient', token);
+    localStorage.setItem('authTokenClient', token);
     localStorage.setItem('userClient', JSON.stringify(user));
 
     return { token, user };
@@ -31,7 +31,7 @@ export async function register({ username, email, password }) {
 
 // Đăng xuất
 export function logout() {
-    localStorage.removeItem('authTokenCLient');
+    localStorage.removeItem('authTokenClient');
     localStorage.removeItem('userClient');
 }
 
@@ -46,7 +46,7 @@ export function getCurrentUser() {
 
 // Lấy token hiện tại
 export function getToken() {
-    return localStorage.getItem('authTokenCLient');
+    return localStorage.getItem('authTokenClient');
 }
 
 // Kiểm tra đã đăng nhập chưa

@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 
 // Gắn token tự động cho mỗi request
 axiosInstance.interceptors.request.use((config) => {
-    const token = localStorage.getItem('authTokenCLient');
+    const token = localStorage.getItem('authTokenClient');
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
