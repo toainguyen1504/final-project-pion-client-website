@@ -17,7 +17,7 @@ const ECoursesList = ({ courses, loading }) => {
                         <div
                             className={cx('course-animate')}
                             style={{ animationDelay: `${i * 0.16}s` }}
-                            key={course.link}
+                            key={course.id || course.link}
                         >
                             <ECoursesCard
                                 title={course.title}

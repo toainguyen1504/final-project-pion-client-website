@@ -2,6 +2,11 @@ import axios from 'axios';
 import { BASE_URL } from '@/constants';
 import { getToken } from '@/services/authService';
 
+// Hàm lấy ảnh course
+function resolveCourseImage(course) {
+    return course.thumbnail_thumb || course.thumbnail_url || course.thumbnail || '';
+}
+
 // Hàm chuẩn hóa 1 course
 function normalizeCourse(course) {
     const priceNum = parseFloat(course.price);
@@ -9,10 +14,28 @@ function normalizeCourse(course) {
 
     const normalized = {
         ...course,
+
+        // Chuẩn hóa giá
         price: isNaN(priceNum) ? 0 : priceNum,
         discount_price: discountNum,
+
+        // Chuẩn hóa thống kê
         participants: Number(course.participants) || 0,
-        enrolled: !!course.enrolled, // ép về boolean
+        total_lessons: Number(course.total_lessons) || 0,
+        duration: Number(course.duration) || 0,
+
+        // Boolean
+        enrolled: !!course.enrolled,
+        is_free: !!course.is_free,
+
+        // Thumbnail mới
+        image: resolveCourseImage(course),
+        thumbnail_url: course.thumbnail_url || '',
+        thumbnail_thumb: course.thumbnail_thumb || '',
+        thumbnail_og: course.thumbnail_og || '',
+        thumbnail_media_id: course.thumbnail_media_id || null,
+
+        // Route
         link: course.enrolled ? `/learning/${course.slug}` : `/e-courses/${course.slug}`,
     };
 
