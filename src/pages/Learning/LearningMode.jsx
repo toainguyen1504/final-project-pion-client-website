@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
 import { Skeleton } from 'antd';
 
+import LessonFlashcardReview from './LessonFlashcardReview';
 import { getLessonProgress, updateLessonProgress } from '@/services/myLearningServices';
 import { formatDuration } from '@/utils/formatDuration';
 import styles from './LearningMode.module.scss';
@@ -30,6 +31,7 @@ export default function LearningMode({
 }) {
     const [resumeTime, setResumeTime] = useState(null);
     const [currentTime, setCurrentTime] = useState(0);
+    const [activeTab, setActiveTab] = useState('content');
 
     const playerRef = useRef(null);
     const playerContainerRef = useRef(null);
@@ -49,10 +51,11 @@ export default function LearningMode({
         }
     }, [fromNote]);
 
-    // reset khi đổi lesson
+    // reset time and tab khi đổi lesson
     useEffect(() => {
         setResumeTime(null);
         setCurrentTime(0);
+        setActiveTab('content');
     }, [currentLesson?.id]);
 
     // format date
@@ -289,7 +292,33 @@ export default function LearningMode({
                     )}
                 </div>
 
-                <p className={cx('lesson-desc')}>{currentLesson.intro?.trim() || 'Nội dung đang được cập nhật'}</p>
+                <div className={cx('lesson-tabs')}>
+                    <button
+                        className={cx('tab-btn', { active: activeTab === 'content' })}
+                        onClick={() => setActiveTab('content')}
+                    >
+                        Nội dung
+                    </button>
+
+                    <button
+                        className={cx('tab-btn', { active: activeTab === 'flashcards' })}
+                        onClick={() => setActiveTab('flashcards')}
+                    >
+                        Flashcard Review
+                    </button>
+                </div>
+
+                <div className={cx('lesson-tab-panel')}>
+                    {activeTab === 'content' ? (
+                        <div className={cx('lesson-content-panel')}>
+                            <p className={cx('lesson-desc')}>
+                                {currentLesson.intro?.trim() || 'Nội dung đang được cập nhật'}
+                            </p>
+                        </div>
+                    ) : (
+                        <LessonFlashcardReview lessonId={currentLesson?.id} />
+                    )}
+                </div>
             </div>
         </>
     );
