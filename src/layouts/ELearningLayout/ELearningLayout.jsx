@@ -14,6 +14,8 @@ import { getLearningCourseBySlug } from '@/services/coursesService';
 import { getLessonProgress } from '@/services/myLearningServices';
 import { createNote } from '@/services/noteService';
 import { formatDuration } from '@/utils/formatDuration';
+import { Empty, Result, Image } from 'antd';
+import config from '@/config';
 
 const cx = classNames.bind(styles);
 
@@ -35,6 +37,12 @@ export default function ELearningLayout() {
 
     const [progressMap, setProgressMap] = useState({});
 
+    // Bảo vệ khóa học
+    const [accessDenied, setAccessDenied] = useState(false);
+    const [authRequired, setAuthRequired] = useState(false);
+    const [accessMessage, setAccessMessage] = useState('');
+    const [coursePreview, setCoursePreview] = useState(null);
+
     const [showNotePopup, setShowNotePopup] = useState(false);
     const [showNoteModal, setShowNoteModal] = useState(false);
     const [noteTime, setNoteTime] = useState(0); // NOTE lesson
@@ -44,14 +52,31 @@ export default function ELearningLayout() {
     useEffect(() => {
         async function fetchCourse() {
             try {
+                setLoading(true);
+                setAccessDenied(false);
+                setAuthRequired(false);
+                setAccessMessage('');
+                setCourse(null);
+
                 const data = await getLearningCourseBySlug(slug);
                 setCourse(data);
 
-                // nếu URL chưa có id -> redirect sang lesson đầu tiên
-                // OPTIMIZE: Cần hàm xử lý để redirect đến lesson tiếp theo nếu đã hoàn thành bài học hiện tại, thay vì luôn redirect về bài đầu tiên
-                // Tức nếu mới đăng kí và chưa có bài học nào hoàn thành thì redirect về bài đầu tiên, nhưng nếu đã hoàn thành bài 1 thì lần sau vào sẽ redirect đến bài 2 thay vì bài 1
                 if (!currentLessonId && data?.lessons?.length > 0) {
                     navigate(`/learning/${slug}?id=${data.lessons[0].id}`, { replace: true });
+                }
+            } catch (err) {
+                const status = err?.response?.status;
+                const messageFromApi = err?.response?.data?.message || 'Bạn chưa thể truy cập khóa học này.';
+
+                if (status === 401) {
+                    setAuthRequired(true);
+                    setAccessMessage('Bạn cần đăng nhập để truy cập nội dung khóa học.');
+                } else if (status === 403) {
+                    setAccessDenied(true);
+                    setAccessMessage(messageFromApi);
+                } else {
+                    setAccessDenied(true);
+                    setAccessMessage('Không thể tải nội dung khóa học lúc này. Vui lòng thử lại sau.');
                 }
             } finally {
                 setLoading(false);
@@ -59,7 +84,7 @@ export default function ELearningLayout() {
         }
 
         fetchCourse();
-    }, [slug]);
+    }, [slug, currentLessonId, navigate]);
 
     // Navigate lesson theo note
     useEffect(() => {
@@ -174,6 +199,33 @@ export default function ELearningLayout() {
 
     const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
     const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+
+    if (!loading && accessDenied) {
+        return (
+            <div className={cx('access-simple')}>
+                <Empty
+                    image="/assets/no-note-yet.svg"
+                    imageStyle={{ height: 160 }}
+                    description={
+                        <div className={cx('empty-content')}>
+                            <h3>Bạn chưa đăng ký khóa học này</h3>
+                            <p>{accessMessage || 'Vui lòng đăng ký hoặc mua khóa học trước khi vào học.'}</p>
+                        </div>
+                    }
+                >
+                    <div className={cx('empty-actions')}>
+                        <Button primary to={`/e-courses/${slug}`}>
+                            Xem chi tiết khóa học
+                        </Button>
+
+                        <Button className={cx('secondary-btn')} to={config.routes.learning}>
+                            Danh sách khóa học
+                        </Button>
+                    </div>
+                </Empty>
+            </div>
+        );
+    }
 
     return (
         <div className={cx('wrapper')}>

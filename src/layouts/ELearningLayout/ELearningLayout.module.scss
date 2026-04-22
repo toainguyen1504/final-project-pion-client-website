@@ -443,6 +443,47 @@
     }
 }
 
+.access-simple {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    background: #f8fafc;
+}
+
+.empty-content {
+    text-align: center;
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #222;
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: #666;
+    }
+}
+
+.empty-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+
+    &:hover {
+        background: #e2e8f0;
+    }
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
