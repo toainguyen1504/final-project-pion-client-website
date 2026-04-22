@@ -12,6 +12,10 @@ import Button from '@/components/Button';
 import { formatDuration } from '@/utils/formatDuration';
 import Breadcrumb from '@/components/Breadcrumb';
 import CourseDetailSkeleton from './CourseDetailSkeleton';
+import { message } from 'antd';
+import { isAuthenticated } from '@/services/authService';
+import CoursePurchaseModal from '@/components/CoursePurchaseModal';
+import config from '@/config';
 import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
@@ -20,6 +24,7 @@ const ECourseDetail = () => {
     const { slug } = useParams(); // lấy slug từ route
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [purchaseOpen, setPurchaseOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -44,6 +49,17 @@ const ECourseDetail = () => {
                 alert('Có lỗi khi đăng ký: ' + (err.response?.data?.message || err.message));
             }
         }
+    }
+
+    // Xử lý display mua khóa học
+    function handleBuyCourse() {
+        if (!isAuthenticated()) {
+            message.warning('Bạn cần đăng nhập trước khi mua khóa học.');
+            navigate(config.routes.login);
+            return;
+        }
+
+        setPurchaseOpen(true);
     }
 
     const benefits = course?.benefits || [];
@@ -100,11 +116,17 @@ const ECourseDetail = () => {
                             <span className={cx('free')}>Miễn phí</span>
                         ) : (
                             <div className={cx('price')}>
-                                {course.discount_price > 0 && (
-                                    <span className={cx('discount')}>{course.discount_price?.toLocaleString()}đ</span>
-                                )}
-                                {course.price > 0 && (
-                                    <span className={cx('original')}>{course.price?.toLocaleString()}đ</span>
+                                {course.discount_price > 0 ? (
+                                    <>
+                                        <span className={cx('discount')}>
+                                            {course.discount_price?.toLocaleString()}đ
+                                        </span>
+                                        <span className={cx('original')}>{course.price?.toLocaleString()}đ</span>
+                                    </>
+                                ) : course.price > 0 ? (
+                                    <span className={cx('current')}>{course.price?.toLocaleString()}đ</span>
+                                ) : (
+                                    <span className={cx('updating')}>Đang cập nhật...</span>
                                 )}
                             </div>
                         )}
@@ -121,9 +143,13 @@ const ECourseDetail = () => {
                         >
                             Vào học ngay
                         </Button>
-                    ) : (
+                    ) : course.is_free ? (
                         <Button rounded large primary leftIcon className={cx('enroll-btn')} onClick={handleEnroll}>
                             Đăng ký học
+                        </Button>
+                    ) : (
+                        <Button rounded large primary leftIcon className={cx('enroll-btn')} onClick={handleBuyCourse}>
+                            Mua khóa học
                         </Button>
                     )}
                 </div>
@@ -175,6 +201,9 @@ const ECourseDetail = () => {
                     </ul>
                 </div>
             </div>
+
+            {/* Modal thanh toán */}
+            <CoursePurchaseModal open={purchaseOpen} onClose={() => setPurchaseOpen(false)} course={course} />
         </section>
     );
 };

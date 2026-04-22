@@ -4,7 +4,7 @@ import styles from './Learning.module.scss';
 
 const cx = classNames.bind(styles);
 
-const ECoursesList = ({ courses, loading, onBuy }) => {
+const ECoursesList = ({ courses, loading }) => {
     return (
         <section className={cx('courses')}>
             <div className={cx('courses-inner')}>
@@ -20,7 +20,6 @@ const ECoursesList = ({ courses, loading, onBuy }) => {
                             key={course.id || course.link}
                         >
                             <ECoursesCard
-                                course={course}
                                 title={course.title}
                                 price={course.price}
                                 discount_price={course.discount_price}
@@ -30,7 +29,6 @@ const ECoursesList = ({ courses, loading, onBuy }) => {
                                 participants={course.participants}
                                 total_lessons={course.total_lessons}
                                 duration={course.duration}
-                                onBuy={onBuy}
                             />
                         </div>
                     ))

@@ -23,8 +23,6 @@ const ECoursesCard = ({
     participants,
     total_lessons,
     duration,
-    onBuy,
-    course,
 }) => {
     return (
         <article className={cx('image-card')}>
@@ -100,14 +98,6 @@ const ECoursesCard = ({
                                         )}
                                     </ul>
                                 )}
-
-                                {!is_free && typeof onBuy === 'function' && (
-                                    <div className={cx('card-actions')}>
-                                        <button type="button" className={cx('buy-btn')} onClick={() => onBuy(course)}>
-                                            Mua khóa học
-                                        </button>
-                                    </div>
-                                )}
                             </div>
                         }
                     />
@@ -129,8 +119,6 @@ ECoursesCard.propTypes = {
     participants: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     total_lessons: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onBuy: PropTypes.func,
-    course: PropTypes.object,
 };
 
 ECoursesCard.defaultProps = {
@@ -143,8 +131,6 @@ ECoursesCard.defaultProps = {
     participants: null,
     total_lessons: null,
     duration: null,
-    onBuy: null,
-    course: null,
 };
 
 export default ECoursesCard;
