@@ -89,7 +89,8 @@
                                 }
 
                                 .discount-price,
-                                &.free {
+                                &.free,
+                                .current-price {
                                     font-weight: 600;
                                     color: var(--primary);
                                 }

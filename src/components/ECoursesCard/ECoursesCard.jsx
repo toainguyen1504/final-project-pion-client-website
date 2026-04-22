@@ -57,17 +57,19 @@ const ECoursesCard = ({
                                         <p className={cx('course-price', 'free')}>Miễn phí</p>
                                     ) : (
                                         <p className={cx('course-price')}>
-                                            {price > 0 ? (
+                                            {discount_price && discount_price > 0 ? (
                                                 <>
                                                     <span className={cx('original-price')}>
                                                         {`${price.toLocaleString('vi-VN')}đ`}
                                                     </span>
-                                                    {discount_price && discount_price > 0 && (
-                                                        <span className={cx('discount-price')}>
-                                                            {`${discount_price.toLocaleString('vi-VN')}đ`}
-                                                        </span>
-                                                    )}
+                                                    <span className={cx('discount-price')}>
+                                                        {`${discount_price.toLocaleString('vi-VN')}đ`}
+                                                    </span>
                                                 </>
+                                            ) : price > 0 ? (
+                                                <span className={cx('current-price')}>
+                                                    {`${price.toLocaleString('vi-VN')}đ`}
+                                                </span>
                                             ) : (
                                                 <span className={cx('updating')}>Đang cập nhật...</span>
                                             )}
