@@ -37,10 +37,17 @@ export async function register({ name, email, password, confirmPassword }) {
     return response.data;
 }
 
+// Gửi lại email xác thực
+export async function resendVerifyEmail() {
+    const response = await axiosInstance.post('/api/client/email/resend');
+    return response.data;
+}
+
 // Đăng xuất
 export function logout() {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
+    window.dispatchEvent(new CustomEvent('auth-user-updated', { detail: null }));
 }
 
 // Lấy user hiện tại từ localStorage
@@ -52,6 +59,12 @@ export function getCurrentUser() {
     }
 }
 
+// Cập nhật localStorage user sau khi verify thành công ở FE
+export function updateCurrentUser(nextUser) {
+    localStorage.setItem(USER_KEY, JSON.stringify(nextUser));
+    window.dispatchEvent(new CustomEvent('auth-user-updated', { detail: nextUser }));
+}
+
 // Lấy token hiện tại
 export function getToken() {
     return localStorage.getItem(TOKEN_KEY);
@@ -60,4 +73,10 @@ export function getToken() {
 // Kiểm tra đã đăng nhập chưa
 export function isAuthenticated() {
     return !!getToken();
+}
+
+// Check email verified từ local user
+export function isEmailVerified(user) {
+    if (!user) return false;
+    return !!user.email_verified_at || Number(user.status) === 1;
 }

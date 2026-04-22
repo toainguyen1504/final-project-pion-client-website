@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form, Input, message } from 'antd';
 import classNames from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,11 +16,16 @@ import { FaFacebook } from 'react-icons/fa';
 const cx = classNames.bind(styles);
 
 export default function RegisterPage() {
+    const [submitting, setSubmitting] = useState(false);
     const navigate = useNavigate();
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
+        if (submitting) return;
+
         try {
+            setSubmitting(true);
+
             const res = await register({
                 name: values.name,
                 email: values.email,
@@ -27,8 +33,8 @@ export default function RegisterPage() {
                 confirmPassword: values.confirmPassword,
             });
 
-            message.success(res?.message || 'Đăng ký thành công.');
-            navigate(config.routes.home);
+            message.success(res?.message || 'Đăng ký thành công. Vui lòng kiểm tra email để xác thực.');
+            navigate(config.routes.verifyEmail);
         } catch (err) {
             const status = err.response?.status;
             const apiMessage = err.response?.data?.message;
@@ -38,6 +44,8 @@ export default function RegisterPage() {
             } else {
                 message.error(apiMessage || 'Có lỗi xảy ra. Vui lòng thử lại sau!');
             }
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -117,8 +125,8 @@ export default function RegisterPage() {
                         </Form.Item>
                     </div>
 
-                    <Button primary full htmlType="submit">
-                        Đăng ký
+                    <Button primary full htmlType="submit" disabled={submitting}>
+                        {submitting ? 'Đang đăng ký...' : 'Đăng ký'}
                     </Button>
                 </Form>
 
