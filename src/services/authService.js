@@ -1,44 +1,52 @@
 // 1. api đăng nhập, đăng kí
 // 2. api quên mật khẩu
 // 3. api xác minh email và số diện thoại
-
 import axiosInstance from '@/utils/axiosInstance';
 
-// Đăng nhập - ok, tuy nhiên cần check role -> hoặc backend api chia 2 link api khác nhau, ví dụ: /api/cms/login và /api/client/login
-// admin cms có: super_admin, admin, staff, staffads |||| client có: member | guest | learner
-// PHẢI Chặn ngay login -> super_admin, admin, staff, staffads không được vào trang ui của client,
-// tương tự member | guest | learner cũng không được vào admin cms
+const TOKEN_KEY = 'authTokenClient';
+const USER_KEY = 'userClient';
+
+// Đăng nhập
 export async function login({ login, password }) {
     const response = await axiosInstance.post('/api/client/login', { login, password });
     const { token, user } = response.data;
 
-    // Lưu thông tin vào localStorage
-    localStorage.setItem('authTokenClient', token);
-    localStorage.setItem('userClient', JSON.stringify(user));
+    localStorage.setItem(TOKEN_KEY, token);
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
 
     return { token, user };
 }
 
-// Đăng ký - chưa check
-export async function register({ username, email, password }) {
-    const response = await axiosInstance.post('/api/register', {
-        username,
+// Đăng ký
+export async function register({ name, email, password, confirmPassword }) {
+    const response = await axiosInstance.post('/api/client/register', {
+        name,
         email,
         password,
+        password_confirmation: confirmPassword,
     });
+
+    const { token, user } = response.data;
+
+    // auto login ngay sau đăng ký
+    if (token && user) {
+        localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(USER_KEY, JSON.stringify(user));
+    }
+
     return response.data;
 }
 
 // Đăng xuất
 export function logout() {
-    localStorage.removeItem('authTokenClient');
-    localStorage.removeItem('userClient');
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
 }
 
 // Lấy user hiện tại từ localStorage
 export function getCurrentUser() {
     try {
-        return JSON.parse(localStorage.getItem('userClient'));
+        return JSON.parse(localStorage.getItem(USER_KEY));
     } catch {
         return null;
     }
@@ -46,7 +54,7 @@ export function getCurrentUser() {
 
 // Lấy token hiện tại
 export function getToken() {
-    return localStorage.getItem('authTokenClient');
+    return localStorage.getItem(TOKEN_KEY);
 }
 
 // Kiểm tra đã đăng nhập chưa
