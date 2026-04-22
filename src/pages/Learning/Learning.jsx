@@ -1,6 +1,10 @@
 import { useEffect, useState, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
+import { message } from 'antd';
+import { isAuthenticated } from '@/services/authService';
+import CoursePurchaseModal from '@/components/CoursePurchaseModal';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import HeadingSection from '@/components/HeadingSection';
@@ -13,6 +17,9 @@ import styles from './Learning.module.scss';
 const cx = classNames.bind(styles);
 
 function Learning() {
+    const navigate = useNavigate();
+    const [selectedCourse, setSelectedCourse] = useState(null);
+    const [purchaseOpen, setPurchaseOpen] = useState(false);
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -32,8 +39,17 @@ function Learning() {
 
     const freeCourses = useMemo(() => courses.filter((c) => c.is_free), [courses]); // Khóa học miễn phí
 
-    // const proCourses = () => courses.filter((course) => course.is_free === false);
-    // const freeCourses = () => courses.filter((course) => course.is_free === true);
+    // handle buy course
+    const handleBuyCourse = (course) => {
+        if (!isAuthenticated()) {
+            message.warning('Bạn cần đăng nhập trước khi mua khóa học.');
+            navigate('/login');
+            return;
+        }
+
+        setSelectedCourse(course);
+        setPurchaseOpen(true);
+    };
 
     // fake banners for e-learning
     const bannerImages = [
@@ -71,7 +87,7 @@ function Learning() {
                     <section className={cx('courses')}>
                         {/* Khóa học có phí - sau này sẽ là các khóa học bên Trung tâm tự quay và bán -> ví dụ: HSK1-6 */}
                         <HeadingSection title="Khóa học Pro" />
-                        <ECoursesList courses={proCourses} loading={loading} />
+                        <ECoursesList courses={proCourses} loading={loading} onBuy={handleBuyCourse} />
 
                         {/* khóa học miễn phí - tạo Ecourses ở đây: click thumb hoặc title sẽ vào detail*/}
                         <HeadingSection title="Khóa học miễn phí" />
@@ -79,6 +95,16 @@ function Learning() {
                     </section>
                 </div>
             </div>
+
+            {/* Modal mua khóa học */}
+            <CoursePurchaseModal
+                open={purchaseOpen}
+                onClose={() => {
+                    setPurchaseOpen(false);
+                    setSelectedCourse(null);
+                }}
+                course={selectedCourse}
+            />
         </>
     );
 }

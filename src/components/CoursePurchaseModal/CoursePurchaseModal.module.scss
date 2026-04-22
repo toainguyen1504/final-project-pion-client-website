@@ -1,0 +1,152 @@
+.purchase-modal {
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 24px;
+}
+
+.left {
+    padding-right: 8px;
+}
+
+.right {
+    border-left: 1px solid #eee;
+    padding-left: 24px;
+}
+
+.course-header {
+    display: flex;
+    align-items: center; // canh giữa title với image
+    gap: 18px;
+}
+
+.thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.course-info {
+    flex: 1;
+    min-width: 0; // bắt buộc để line-clamp hoạt động ổn
+    display: flex;
+    align-items: center; // title nằm giữa theo chiều dọc với image
+}
+
+.title {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #111;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // giới hạn 2 dòng
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.desc {
+    margin-top: 12px;
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.4rem;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4; // nếu muốn desc gọn hơn
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.benefits {
+    margin-top: 20px;
+    font-size: 1.4rem;
+
+    h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #222;
+    }
+
+    ul {
+        padding-left: 18px;
+        margin: 0;
+    }
+
+    li {
+        margin-bottom: 8px;
+        font-size: 1.4rem;
+        line-height: 1.7;
+        color: #333;
+    }
+}
+
+.payment-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.divider {
+    height: 1px;
+    background: #eee;
+    margin: 14px 0 18px;
+}
+
+.summary-row,
+.total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.original {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.total-row {
+    margin-bottom: 24px;
+
+    strong {
+        font-size: 2rem;
+        color: #111;
+    }
+}
+
+.summary-row .highlight,
+.total-row .highlight {
+    font-weight: 600;
+}
+
+.note {
+    margin-top: 16px;
+    color: #777;
+    line-height: 1.5;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .right {
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}

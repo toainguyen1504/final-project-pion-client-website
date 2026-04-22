@@ -26,6 +26,10 @@ import Learning from '@/pages/Learning'; // E-LEARNING
 import ECourseDetail from '@/pages/Learning/ECourseDetail'; // E-LEARNING
 import LearningMode from '@/pages/Learning/LearningMode'; // E-LEARNING
 import MyLearning from '@/pages/MyLearning'; // My Learning
+
+import PaymentMomoQr from '@/pages/PaymentMomoQr';
+import PaymentMomoResult from '@/pages/PaymentMomoResult';
+
 import { tocDataChina } from '@/data';
 // import { tocDataKorean, tocDataGerman, tocDataChina, tocDataLaborExport } from '@/data';
 
@@ -45,6 +49,18 @@ const publicRoutes = [
     {
         path: config.routes.eCourseDetail,
         component: ECourseDetail,
+    },
+
+    // Payment Momo
+    {
+        path: config.routes.paymentMomoQr,
+        component: PaymentMomoQr,
+        layout: null,
+    },
+    {
+        path: config.routes.paymentMomoResult,
+        component: PaymentMomoResult,
+        layout: null,
     },
 
     // E-LEARNING MODE

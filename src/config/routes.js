@@ -36,6 +36,10 @@ const routes = {
     learningMode: '/learning/:slug', // Trang để học theo từng bài học (video, ghi chú,...)
     eCourseDetail: '/e-courses/:slug',
     myCourses: '/my-courses',
+
+    // payment momo
+    paymentMomoQr: '/payment/momo/qr',
+    paymentMomoResult: '/payment/momo/result',
 };
 
 export default routes;
