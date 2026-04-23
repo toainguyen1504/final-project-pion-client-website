@@ -89,9 +89,9 @@ export default function RegisterPage() {
                         <Input size="large" placeholder="Nhập email" />
                     </Form.Item>
 
-                    <Form.Item label="Số điện thoại" name="phone">
+                    {/* <Form.Item label="Số điện thoại" name="phone">
                         <Input size="large" placeholder="Nhập số điện thoại (chưa bắt buộc)" />
-                    </Form.Item>
+                    </Form.Item> */}
 
                     <div className={cx('password-group')}>
                         <Form.Item

@@ -17,7 +17,7 @@ export async function login({ login, password }) {
     return { token, user };
 }
 
-// Đăng ký
+// Đăng ký - chưa có phone (cũng chưa cần thiết cho hàm đăng ký)
 export async function register({ name, email, password, confirmPassword }) {
     const response = await axiosInstance.post('/api/client/register', {
         name,
@@ -79,4 +79,22 @@ export function isAuthenticated() {
 export function isEmailVerified(user) {
     if (!user) return false;
     return !!user.email_verified_at || Number(user.status) === 1;
+}
+
+// Update profile - basic
+export async function updateProfile({ display_name, email, phone }) {
+    const response = await axiosInstance.put('/api/client/profile', {
+        display_name,
+        email,
+        phone,
+    });
+
+    const { user } = response.data;
+
+    if (user) {
+        localStorage.setItem(USER_KEY, JSON.stringify(user));
+        window.dispatchEvent(new CustomEvent('auth-user-updated', { detail: user }));
+    }
+
+    return response.data;
 }

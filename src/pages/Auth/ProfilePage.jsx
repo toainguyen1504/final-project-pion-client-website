@@ -2,13 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { MdOutlineVerified } from 'react-icons/md';
 import classNames from 'classnames/bind';
 import { Link, NavLink } from 'react-router-dom';
-import { Form, Input, Avatar, Checkbox, DatePicker, Select, Radio, Tag } from 'antd';
+import { Form, Input, Avatar, Checkbox, DatePicker, Select, Radio, Tag, message } from 'antd';
 import { CameraOutlined } from '@ant-design/icons';
 
 import Button from '@/components/Button';
 import config from '@/config';
 import { getInitial } from '@/utils';
-import { getCurrentUser, logout, isEmailVerified } from '@/services/authService';
+import { getCurrentUser, logout, isEmailVerified, updateProfile } from '@/services/authService';
 
 import styles from './AuthForm.module.scss';
 
@@ -16,6 +16,7 @@ const cx = classNames.bind(styles);
 
 export default function ProfilePage() {
     const [user, setUser] = useState(getCurrentUser());
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         // đọc lại localStorage để cập nhật state -> re-render
@@ -23,7 +24,7 @@ export default function ProfilePage() {
             setUser(getCurrentUser());
         };
 
-        window.addEventListener('auth-user-updated', syncUser); // event từ service
+        window.addEventListener('auth-user-updated', syncUser);
         window.addEventListener('focus', syncUser);
 
         return () => {
@@ -34,8 +35,23 @@ export default function ProfilePage() {
 
     const verified = useMemo(() => isEmailVerified(user), [user]);
 
-    const onFinish = (values) => {
-        console.log('Profile:', values);
+    const onFinish = async (values) => {
+        try {
+            setLoading(true);
+
+            const res = await updateProfile({
+                display_name: values.name,
+                email: values.email || null,
+                phone: values.phone || null,
+            });
+
+            message.success(res?.message || 'Cập nhật hồ sơ thành công.');
+            setUser(getCurrentUser());
+        } catch (error) {
+            message.error(error?.response?.data?.message || 'Không thể cập nhật hồ sơ.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -87,27 +103,24 @@ export default function ProfilePage() {
                 </div>
 
                 <Form
-                    key={`${user?.email || ''}-${user?.email_verified_at || user?.status || ''}`}
+                    key={`${user?.email || ''}-${user?.email_verified_at || user?.status || ''}-${user?.phone || ''}`}
                     layout="vertical"
                     onFinish={onFinish}
                     initialValues={{
                         name: user?.display_name || '',
                         email: user?.email || '',
+                        phone: user?.phone || '',
                     }}
                 >
-                    <Form.Item label="Họ tên" name="name" rules={[{ required: true }]}>
+                    <Form.Item label="Họ tên" name="name" rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}>
                         <Input size="large" placeholder="Nhập họ tên" />
                     </Form.Item>
 
+                    {/* EMAIL */}
                     <Form.Item label="Email" className={cx('verify-group')}>
                         <div className={cx('verify-wrapper')}>
-                            <Form.Item name="email" rules={[{ required: true }]} noStyle>
-                                <Input
-                                    size="large"
-                                    disabled
-                                    placeholder="Nhập email"
-                                    style={{ paddingRight: '150px' }}
-                                />
+                            <Form.Item name="email" rules={[{ type: 'email', message: 'Email không hợp lệ' }]} noStyle>
+                                <Input size="large" placeholder="Nhập email" style={{ paddingRight: '150px' }} />
                             </Form.Item>
 
                             {verified ? (
@@ -123,9 +136,16 @@ export default function ProfilePage() {
                         </div>
                     </Form.Item>
 
-                    <Form.Item label="Số điện thoại" name="phone" className={cx('verify-group')}>
+                    {/* PHONE */}
+                    <Form.Item label="Số điện thoại" className={cx('verify-group')}>
                         <div className={cx('verify-wrapper')}>
-                            <Input size="large" placeholder="Nhập số điện thoại" style={{ paddingRight: '120px' }} />
+                            <Form.Item name="phone" noStyle>
+                                <Input
+                                    size="large"
+                                    placeholder="Nhập số điện thoại"
+                                    style={{ paddingRight: '120px' }}
+                                />
+                            </Form.Item>
 
                             <Link to={config.routes.verifyPhone} className={cx('verify-btn')}>
                                 Xác minh
@@ -176,8 +196,8 @@ export default function ProfilePage() {
                     </div>
 
                     <div className={cx('button-spacing')}>
-                        <Button primary htmlType="submit">
-                            Cập nhật
+                        <Button primary htmlType="submit" disabled={loading}>
+                            {loading ? 'Đang cập nhật...' : 'Cập nhật'}
                         </Button>
 
                         <Button primary to={config.routes.home}>
