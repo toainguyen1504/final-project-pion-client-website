@@ -7,6 +7,29 @@
 
     .course-wrapper {
         margin: 40px 0;
+
+        .empty-wrapper {
+            grid-column: 1 / -1;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .empty-content {
+            h3 {
+                font-size: 2.4rem;
+                font-weight: 700;
+                color: var(--text-color-bold);
+                margin-bottom: 8px;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: var(--text-color);
+                margin-bottom: 16px;
+            }
+        }
     }
 }
 

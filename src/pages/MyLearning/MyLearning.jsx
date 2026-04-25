@@ -4,6 +4,9 @@ import { Helmet } from 'react-helmet-async';
 import useMyLearning from '@/hooks/useMyLearning';
 import MyLearningCard from '@/components/MyLearningCard';
 import Breadcrumb from '@/components/Breadcrumb';
+import { Empty } from 'antd';
+import Button from '@/components/Button';
+import config from '@/config';
 import styles from './MyLearning.module.scss';
 
 const cx = classNames.bind(styles);
@@ -30,15 +33,44 @@ function MyLearning() {
                 <div className={cx('course-wrapper')}>
                     <div className={cx('courses')}>
                         <div className={cx('courses-inner')}>
-                            {(loading ? [...Array(8)] : courses).map((course, i) => (
-                                <div
-                                    className={cx('course-animate')}
-                                    style={{ animationDelay: `${i * 0.1}s` }}
-                                    key={course?.course_id || i}
-                                >
-                                    <MyLearningCard course={course} loading={loading} />
+                            {loading ? (
+                                [...Array(8)].map((_, i) => (
+                                    <div
+                                        className={cx('course-animate')}
+                                        style={{ animationDelay: `${i * 0.1}s` }}
+                                        key={i}
+                                    >
+                                        <MyLearningCard loading />
+                                    </div>
+                                ))
+                            ) : courses.length > 0 ? (
+                                courses.map((course, i) => (
+                                    <div
+                                        className={cx('course-animate')}
+                                        style={{ animationDelay: `${i * 0.1}s` }}
+                                        key={course?.course_id || i}
+                                    >
+                                        <MyLearningCard course={course} />
+                                    </div>
+                                ))
+                            ) : (
+                                <div className={cx('empty-wrapper')}>
+                                    <Empty
+                                        image="/assets/no-note-yet.svg"
+                                        imageStyle={{ height: 160 }}
+                                        description={
+                                            <div className={cx('empty-content')}>
+                                                <h3>Bạn chưa có khóa học nào đang học</h3>
+                                                <p>Hãy khám phá các khóa học phù hợp và bắt đầu học ngay hôm nay.</p>
+                                            </div>
+                                        }
+                                    >
+                                        <Button primary to={config.routes.learning}>
+                                            Khám phá khóa học
+                                        </Button>
+                                    </Empty>
                                 </div>
-                            ))}
+                            )}
                         </div>
                     </div>
                 </div>

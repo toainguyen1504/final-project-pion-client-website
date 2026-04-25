@@ -72,7 +72,8 @@ export default function ELearningLayout() {
                     setAccessMessage(messageFromApi);
                 } else {
                     setAccessDenied(true);
-                    setAccessMessage('Không thể tải nội dung khóa học lúc này. Vui lòng thử lại sau.');
+                    // setAccessMessage('Không thể tải nội dung khóa học lúc này. Vui lòng thử lại sau.');
+                    setAccessMessage(messageFromApi);
                 }
             } finally {
                 setLoading(false);
@@ -216,6 +217,8 @@ export default function ELearningLayout() {
     const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
     if (!loading && accessDenied) {
+        const isMissingLearnerProfile = accessMessage?.includes('hồ sơ học viên');
+
         return (
             <div className={cx('access-simple')}>
                 <Empty
@@ -223,8 +226,17 @@ export default function ELearningLayout() {
                     imageStyle={{ height: 160 }}
                     description={
                         <div className={cx('empty-content')}>
-                            <h3>Bạn chưa đăng ký khóa học này</h3>
-                            <p>{accessMessage || 'Vui lòng đăng ký hoặc mua khóa học trước khi vào học.'}</p>
+                            <h3>
+                                {isMissingLearnerProfile
+                                    ? 'Bạn chưa phải là học viên'
+                                    : 'Bạn chưa đăng ký khóa học này'}
+                            </h3>
+
+                            <p>
+                                {isMissingLearnerProfile
+                                    ? 'Vui lòng liên hệ Admin để được hỗ trợ trước khi vào học.'
+                                    : accessMessage || 'Vui lòng đăng ký hoặc mua khóa học trước khi vào học.'}
+                            </p>
                         </div>
                     }
                 >
