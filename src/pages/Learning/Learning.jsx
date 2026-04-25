@@ -32,13 +32,34 @@ function Learning() {
 
     const freeCourses = useMemo(() => courses.filter((c) => c.is_free), [courses]); // Khóa học miễn phí
 
-    // fake banners for e-learning
-    const bannerImages = [
-        '/assets/img/banner/new_banner_1.jpg',
-        '/assets/img/banner/new_banner_2.jpg',
-        '/assets/img/banner/banner_5.png',
-        '/assets/img/banner/banner_4.png',
-        '/assets/img/banner/banner_3.png',
+    const banners = [
+        {
+            title: 'Tiếng Anh Mầm Non',
+            desc: 'Làm quen tiếng Anh từ sớm qua bài hát, trò chơi và hoạt động tương tác. Phát triển tự nhiên kỹ năng Nghe – Nói.',
+            cta: 'Xem lộ trình',
+            image: '/assets/img/banner/en-mam-non.png',
+            bgColor: '#f6783c',
+            gradient:
+                'linear-gradient(90deg, rgba(246,120,60,1) 0%, rgba(246,120,60,1) 52%, rgba(246,120,60,0.96) 58%, rgba(246,120,60,0.82) 64%, rgba(246,120,60,0.58) 70%, rgba(246,120,60,0.32) 76%, rgba(246,120,60,0.14) 84%, rgba(246,120,60,0.04) 92%, rgba(246,120,60,0.015) 100%)',
+        },
+        {
+            title: 'Tiếng Anh Tiểu Học',
+            desc: 'Xây dựng nền tảng vững chắc 4 kỹ năng Nghe – Nói – Đọc – Viết, phát triển tư duy và giao tiếp tự tin.',
+            cta: 'Khám phá khóa học',
+            image: '/assets/img/banner/en-tieu-hoc.png',
+            bgColor: '#1f6aa5',
+            gradient:
+                'linear-gradient(90deg, rgba(31,106,165,1) 0%, rgba(31,106,165,1) 52%, rgba(31,106,165,0.96) 58%, rgba(31,106,165,0.82) 64%, rgba(31,106,165,0.58) 70%, rgba(31,106,165,0.32) 76%, rgba(31,106,165,0.14) 84%, rgba(31,106,165,0.04) 92%, rgba(31,106,165,0.015) 100%)',
+        },
+        {
+            title: 'PION trên Youtube',
+            desc: 'Cập nhật kiến thức tiếng Anh, mẹo học hiệu quả và video bài giảng từ PION. Học mọi lúc, mọi nơi cùng lộ trình rõ ràng.',
+            cta: 'Đăng ký kênh',
+            image: '/assets/img/banner/youtube.png',
+            bgColor: '#ff416c',
+            gradient:
+                'linear-gradient(90deg, rgba(255,65,108,1) 0%, rgba(255,65,108,1) 52%, rgba(255,65,108,0.96) 58%, rgba(255,65,108,0.82) 64%, rgba(255,65,108,0.58) 70%, rgba(255,65,108,0.32) 76%, rgba(255,65,108,0.14) 84%, rgba(255,65,108,0.04) 92%, rgba(255,65,108,0.015) 100%)',
+        },
     ];
 
     return (
@@ -61,7 +82,7 @@ function Learning() {
 
                     {/* Banner */}
                     <section className={cx('banners')}>
-                        <LearningBannerCarousel images={bannerImages} />
+                        <LearningBannerCarousel banners={banners} />
                     </section>
 
                     {/* Courses */}

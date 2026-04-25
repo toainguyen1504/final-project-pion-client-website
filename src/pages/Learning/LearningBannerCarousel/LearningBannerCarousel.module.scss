@@ -1,3 +1,78 @@
+.banner-slide {
+    height: 270px;
+    position: relative;
+    overflow: hidden;
+    background: var(--banner-bg);
+}
+
+.banner-slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--banner-gradient);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.banner-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48%;
+    height: 100%;
+    background-image: var(--banner-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.96;
+    z-index: 0;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    width: 46%;
+    height: 100%;
+    padding: 42px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+
+    h2 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 12px;
+    }
+
+    p {
+        font-size: 1.55rem;
+        line-height: 1.65;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+
+    button {
+        width: fit-content;
+        padding: 8px 20px;
+        border-radius: 999px;
+        border: 2px solid #fff;
+        background: transparent;
+        color: #fff;
+        font-size: 1.35rem;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+            background: #fff;
+            color: var(--primary-highlight);
+        }
+    }
+}
+
 :global {
     .banner-wrapper {
         .carousel-img {
