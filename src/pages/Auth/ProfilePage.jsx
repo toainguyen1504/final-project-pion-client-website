@@ -196,12 +196,12 @@ export default function ProfilePage() {
                     </div>
 
                     <div className={cx('button-spacing')}>
-                        <Button primary htmlType="submit" disabled={loading}>
-                            {loading ? 'Đang cập nhật...' : 'Cập nhật'}
+                        <Button outline to={config.routes.home} className={cx('btn-back')}>
+                            Quay lại
                         </Button>
 
-                        <Button primary to={config.routes.home}>
-                            Truy cập
+                        <Button primary htmlType="submit" disabled={loading}>
+                            {loading ? 'Đang cập nhật...' : 'Cập nhật'}
                         </Button>
                     </div>
                 </Form>
