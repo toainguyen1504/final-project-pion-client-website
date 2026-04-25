@@ -60,10 +60,6 @@ export default function ELearningLayout() {
 
                 const data = await getLearningCourseBySlug(slug);
                 setCourse(data);
-
-                if (!currentLessonId && data?.lessons?.length > 0) {
-                    navigate(`/learning/${slug}?id=${data.lessons[0].id}`, { replace: true });
-                }
             } catch (err) {
                 const status = err?.response?.status;
                 const messageFromApi = err?.response?.data?.message || 'Bạn chưa thể truy cập khóa học này.';
@@ -84,7 +80,14 @@ export default function ELearningLayout() {
         }
 
         fetchCourse();
-    }, [slug, currentLessonId, navigate]);
+    }, [slug, navigate]);
+
+    //auto redirect bài đầu tiên
+    useEffect(() => {
+        if (!loading && course?.lessons?.length > 0 && !currentLessonId) {
+            navigate(`/learning/${slug}?id=${course.lessons[0].id}`, { replace: true });
+        }
+    }, [loading, course, currentLessonId, slug, navigate]);
 
     // Navigate lesson theo note
     useEffect(() => {

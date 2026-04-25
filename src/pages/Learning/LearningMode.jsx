@@ -14,11 +14,40 @@ import styles from './LearningMode.module.scss';
 dayjs.locale('vi');
 const cx = classNames.bind(styles);
 
-// extract videoId từ embed url
 function extractVideoId(url) {
     if (!url) return null;
-    const match = url.match(/embed\/([^\?]+)/);
-    return match ? match[1] : null;
+
+    const embedMatch = url.match(/embed\/([^?&]+)/);
+    if (embedMatch) return embedMatch[1];
+
+    const watchMatch = url.match(/[?&]v=([^?&]+)/);
+    if (watchMatch) return watchMatch[1];
+
+    const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+    if (shortMatch) return shortMatch[1];
+
+    return null;
+}
+
+function loadYouTubeApi() {
+    return new Promise((resolve) => {
+        if (window.YT && window.YT.Player) {
+            resolve(window.YT);
+            return;
+        }
+
+        const existingScript = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+
+        window.onYouTubeIframeAPIReady = () => {
+            resolve(window.YT);
+        };
+
+        if (!existingScript) {
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.body.appendChild(tag);
+        }
+    });
 }
 
 export default function LearningMode({
@@ -34,17 +63,33 @@ export default function LearningMode({
     const [activeTab, setActiveTab] = useState('content');
 
     const playerRef = useRef(null);
-    const playerContainerRef = useRef(null);
+    const playerMountRef = useRef(null);
 
-    // TÁCH RIÊNG 2 INTERVAL
     const progressIntervalRef = useRef(null); // save progress
     const timeIntervalRef = useRef(null); // update UI time
+    const isMountedRef = useRef(true);
 
     const location = useLocation();
     const fromNote = location.state?.fromNote;
     const noteTime = location.state?.time;
 
-    // Clear state cho from note
+    const videoId = useMemo(() => {
+        return extractVideoId(currentLesson?.video_url);
+    }, [currentLesson?.video_url]);
+
+    const updatedDate = useMemo(() => {
+        if (!currentLesson?.updated_at) return '---';
+        return dayjs(currentLesson.updated_at).format('MMMM [năm] YYYY');
+    }, [currentLesson?.updated_at]);
+
+    useEffect(() => {
+        isMountedRef.current = true;
+
+        return () => {
+            isMountedRef.current = false;
+        };
+    }, []);
+
     useEffect(() => {
         if (fromNote) {
             window.history.replaceState({}, document.title);
@@ -58,80 +103,110 @@ export default function LearningMode({
         setActiveTab('content');
     }, [currentLesson?.id]);
 
-    // format date
-    const updatedDate = useMemo(() => {
-        if (!currentLesson?.updated_at) return '---';
-        return dayjs(currentLesson.updated_at).format('MMMM [năm] YYYY');
-    }, [currentLesson?.updated_at]);
-
     // fetch progress (resume)
     useEffect(() => {
         if (!currentLesson?.id) return;
 
-        const fetchProgress = async () => {
+        let cancelled = false;
+
+        async function fetchProgress() {
             try {
                 const res = await getLessonProgress(currentLesson.id);
-                setResumeTime(res?.watched_duration ?? 0);
+
+                if (!cancelled) {
+                    setResumeTime(res?.watched_duration ?? 0);
+                }
             } catch (err) {
                 console.error(err);
+
+                if (!cancelled) {
+                    setResumeTime(0);
+                }
             }
-        };
+        }
 
         fetchProgress();
+
+        return () => {
+            cancelled = true;
+        };
     }, [currentLesson?.id]);
 
     // load YouTube API
     useEffect(() => {
-        if (window.YT) return;
-
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        document.body.appendChild(tag);
-    }, []);
-
-    // init player
-    useEffect(() => {
-        if (!currentLesson?.video_url) return;
-        if (resumeTime === null) return;
-
-        const videoId = extractVideoId(currentLesson.video_url);
+        if (!currentLesson?.id) return;
         if (!videoId) return;
+        if (resumeTime === null) return;
+        if (!playerMountRef.current) return;
 
-        const initPlayer = () => {
-            // cleanup cũ
-            if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-            if (timeIntervalRef.current) clearInterval(timeIntervalRef.current);
+        let cancelled = false;
+
+        const clearTimers = () => {
+            if (progressIntervalRef.current) {
+                clearInterval(progressIntervalRef.current);
+                progressIntervalRef.current = null;
+            }
+
+            if (timeIntervalRef.current) {
+                clearInterval(timeIntervalRef.current);
+                timeIntervalRef.current = null;
+            }
+        };
+
+        const destroyPlayer = () => {
+            clearTimers();
 
             if (playerRef.current) {
                 try {
                     playerRef.current.destroy();
                 } catch (e) {}
-            }
 
-            playerRef.current = new window.YT.Player(playerContainerRef.current, {
+                playerRef.current = null;
+            }
+        };
+
+        async function initPlayer() {
+            await loadYouTubeApi();
+
+            if (cancelled || !isMountedRef.current || !playerMountRef.current) return;
+
+            destroyPlayer();
+
+            // Quan trọng:
+            // Tạo node con thủ công, không để YouTube replace trực tiếp node do React quản lý.
+            playerMountRef.current.innerHTML = '';
+
+            const playerNode = document.createElement('div');
+            playerNode.id = `youtube-player-${currentLesson.id}-${Date.now()}`;
+            playerMountRef.current.appendChild(playerNode);
+
+            playerRef.current = new window.YT.Player(playerNode, {
                 videoId,
+                width: '100%',
+                height: '100%',
                 playerVars: {
                     autoplay: 1,
                     controls: 1,
+                    rel: 0,
+                    modestbranding: 1,
+                    start: fromNote && noteTime != null ? Math.floor(noteTime) : Math.floor(resumeTime || 0),
                 },
                 events: {
                     onReady: (event) => {
-                        console.log('🎬 Player ready');
+                        if (cancelled) return;
 
                         window.dispatchEvent(new CustomEvent('player-ready'));
 
-                        // resume video
-                        if (fromNote && noteTime != null) {
-                            event.target.seekTo(noteTime, true);
-                        } else if (resumeTime > 0) {
+                        const targetTime = fromNote && noteTime != null ? noteTime : resumeTime;
+
+                        if (targetTime > 0) {
                             setTimeout(() => {
                                 try {
-                                    event.target.seekTo(resumeTime, true);
+                                    event.target.seekTo(targetTime, true);
                                 } catch (e) {}
                             }, 500);
                         }
 
-                        // update UI time
                         timeIntervalRef.current = setInterval(() => {
                             try {
                                 const time = Math.floor(event.target.getCurrentTime());
@@ -141,7 +216,8 @@ export default function LearningMode({
                     },
 
                     onStateChange: (event) => {
-                        // PLAYING → start save progress
+                        if (!window.YT?.PlayerState) return;
+
                         if (event.data === window.YT.PlayerState.PLAYING) {
                             if (progressIntervalRef.current) {
                                 clearInterval(progressIntervalRef.current);
@@ -170,35 +246,57 @@ export default function LearningMode({
                             }, 5000);
                         }
 
-                        // PAUSE / END → stop save progress
-                        if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+                        // PAUSE / END -> stop save progress
+                        if (event.data === window.YT.PlayerState.PAUSED) {
                             if (progressIntervalRef.current) {
                                 clearInterval(progressIntervalRef.current);
                                 progressIntervalRef.current = null;
                             }
                         }
+
+                        if (event.data === window.YT.PlayerState.ENDED) {
+                            if (progressIntervalRef.current) {
+                                clearInterval(progressIntervalRef.current);
+                                progressIntervalRef.current = null;
+                            }
+
+                            try {
+                                const duration = Math.floor(event.target.getDuration());
+
+                                updateLessonProgress({
+                                    lesson_id: currentLesson.id,
+                                    watched_duration: duration,
+                                    is_completed: true,
+                                }).then((res) => {
+                                    window.dispatchEvent(
+                                        new CustomEvent('progress-updated', {
+                                            detail: {
+                                                lessonId: currentLesson.id,
+                                                progress: res,
+                                            },
+                                        }),
+                                    );
+                                });
+                            } catch (err) {
+                                console.error(err);
+                            }
+                        }
                     },
                 },
             });
-        };
-
-        if (window.YT && window.YT.Player) {
-            initPlayer();
-        } else {
-            window.onYouTubeIframeAPIReady = initPlayer;
         }
 
-        return () => {
-            if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
-            if (timeIntervalRef.current) clearInterval(timeIntervalRef.current);
+        initPlayer();
 
-            if (playerRef.current) {
-                try {
-                    playerRef.current.destroy();
-                } catch (e) {}
+        return () => {
+            cancelled = true;
+            destroyPlayer();
+
+            if (playerMountRef.current) {
+                playerMountRef.current.innerHTML = '';
             }
         };
-    }, [currentLesson?.id, resumeTime]);
+    }, [currentLesson?.id, videoId, resumeTime, fromNote, noteTime]);
 
     // handle auto play and pause when note modal (add and list)
     useEffect(() => {
@@ -220,16 +318,22 @@ export default function LearningMode({
             const time = e.detail.time;
 
             if (playerRef.current && typeof playerRef.current.seekTo === 'function') {
-                playerRef.current.seekTo(time, true);
+                try {
+                    playerRef.current.seekTo(time, true);
+                } catch (err) {
+                    pendingSeekTime = time;
+                }
             } else {
-                // player chưa ready -> lưu lại
-                pendingSeekTime = time;
+                pendingSeekTime = time; // player chưa ready -> lưu lại
             }
         };
 
         const readyHandler = () => {
             if (pendingSeekTime !== null && playerRef.current && typeof playerRef.current.seekTo === 'function') {
-                playerRef.current.seekTo(pendingSeekTime, true);
+                try {
+                    playerRef.current.seekTo(pendingSeekTime, true);
+                } catch (err) {}
+
                 pendingSeekTime = null;
             }
         };
@@ -243,7 +347,6 @@ export default function LearningMode({
         };
     }, []);
 
-    // loading
     if (loading) {
         return (
             <>
@@ -269,13 +372,18 @@ export default function LearningMode({
     if (!currentLesson) return null;
 
     return (
-        <>
-            {/* VIDEO */}
+        <div>
             <div className={cx('video', { expanded: !sidebarOpen })}>
-                <div ref={playerContainerRef} style={{ width: '100%', height: '100%' }} />
+                {videoId ? (
+                    <div ref={playerMountRef} style={{ width: '100%', height: '100%' }} />
+                ) : (
+                    <div className={cx('video-error')}>
+                        <h3>Không có video</h3>
+                        <p>Bài học này chưa có video.</p>
+                    </div>
+                )}
             </div>
 
-            {/* CONTENT */}
             <div className={cx('content')}>
                 <div className={cx('title-wrapper')}>
                     <div className={cx('title-inner')}>
@@ -320,6 +428,6 @@ export default function LearningMode({
                     )}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
