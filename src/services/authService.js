@@ -98,3 +98,14 @@ export async function updateProfile({ display_name, email, phone }) {
 
     return response.data;
 }
+
+// Đổi mật khẩu
+export async function changePassword({ current_password, password, password_confirmation }) {
+    const response = await axiosInstance.put('/api/client/change-password', {
+        current_password,
+        password,
+        password_confirmation,
+    });
+
+    return response.data;
+}

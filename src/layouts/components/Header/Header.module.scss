@@ -458,6 +458,14 @@
     }
 }
 
+:global {
+    .auth-dropdown {
+        .ant-dropdown-menu-item-disabled {
+            cursor: default !important;
+        }
+    }
+}
+
 /* ================= USER collapse for mobile ================= */
 .user-collapse {
     background-color: transparent;

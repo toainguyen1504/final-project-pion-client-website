@@ -12,6 +12,7 @@ import {
     ProfilePage,
     EmailVerifyPage,
     PhoneVerifyPage,
+    ChangePasswordPage,
 } from '@/pages/Auth';
 
 import About from '@/pages/About';
@@ -41,6 +42,7 @@ const publicRoutes = [
     { path: config.routes.profile, component: ProfilePage, layout: null },
     { path: config.routes.verifyEmail, component: EmailVerifyPage, layout: null },
     { path: config.routes.verifyPhone, component: PhoneVerifyPage, layout: null },
+    { path: config.routes.changePassword, component: ChangePasswordPage, layout: null },
 
     // E-learning
     { path: config.routes.learning, component: Learning }, // lấy default layout
