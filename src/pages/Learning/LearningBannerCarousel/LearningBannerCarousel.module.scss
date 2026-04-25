@@ -206,3 +206,66 @@
         }
     }
 }
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .banner-slide {
+        height: 250px;
+    }
+
+    .banner-slide::after {
+        width: 60%;
+        opacity: 0.35;
+    }
+
+    .banner-content {
+        width: 65%;
+        padding: 34px 36px;
+
+        h2 {
+            font-size: 2.8rem;
+        }
+
+        p {
+            font-size: 1.45rem;
+        }
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .banner-slide {
+        height: 250px;
+    }
+
+    // Ẩn ảnh bên phải
+    .banner-slide::after {
+        display: none;
+    }
+
+    // Phủ màu full banner
+    .banner-slide::before {
+        background: var(--banner-bg);
+    }
+
+    .banner-content {
+        width: 100%;
+        padding: 28px 24px;
+
+        h2 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        button {
+            font-size: 1.3rem;
+            padding: 8px 18px;
+        }
+    }
+}
