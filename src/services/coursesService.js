@@ -137,6 +137,7 @@ function normalizeLearningCourse(course) {
         participants: Number(course.participants) || 0,
         enrolled: !!course.enrolled,
         lessons: course.lessons || [],
+        continue_lesson_id: course.continue_lesson_id || null,
         link: `/learning/${course.slug}`,
     };
 }

@@ -82,10 +82,22 @@ export default function ELearningLayout() {
         fetchCourse();
     }, [slug, navigate]);
 
-    //auto redirect bài đầu tiên
+    // ** auto redirect bài học khi mới vào **
+    // Ưu tiên 1: bài đang học dở mới nhất, is_completed = 0
+    // Ưu tiên 2: nếu không có bài dở, lấy bài xem gần đây nhất
+    // Ưu tiên 3: nếu chưa có progress, lấy bài đầu tiên theo order
     useEffect(() => {
-        if (!loading && course?.lessons?.length > 0 && !currentLessonId) {
-            navigate(`/learning/${slug}?id=${course.lessons[0].id}`, { replace: true });
+        if (loading || !course?.lessons?.length) return;
+
+        const lessons = [...course.lessons].sort((a, b) => a.order - b.order);
+
+        // check id trên URL có tồn tại trong course hay không
+        const isValidLesson = lessons.some((lesson) => lesson.id.toString() === currentLessonId);
+
+        if (!currentLessonId || !isValidLesson) {
+            const targetLessonId = course.continue_lesson_id || lessons[0].id; // fallback bài học đầu tiên
+
+            navigate(`/learning/${slug}?id=${targetLessonId}`, { replace: true });
         }
     }, [loading, course, currentLessonId, slug, navigate]);
 
