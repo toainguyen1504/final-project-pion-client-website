@@ -71,6 +71,7 @@ function NewsList() {
                         <Pagination
                             current={meta.current_page}
                             total={meta.total}
+                            responsive
                             pageSize={meta.per_page}
                             onChange={(page) => {
                                 setCurrentPage(page);
