@@ -6,7 +6,7 @@ import { processContentAndGenerateToc } from '@/utils/generateToc';
 export async function getAllNews() {
     try {
         const [postsRes, mediaRes] = await Promise.all([
-            axios.get(`${BASE_URL}/posts`),
+            axios.get(`${BASE_URL}/client/posts`),
             axios.get(`${BASE_URL}/media`),
         ]);
 
@@ -56,7 +56,7 @@ export async function getAllNews() {
 export async function getNewsWithPagination(page = 1, perPage = 12, sort = 'publish_at', order = 'desc', search = '') {
     try {
         const [postsRes, mediaRes] = await Promise.all([
-            axios.get(`${BASE_URL}/posts`, {
+            axios.get(`${BASE_URL}/client/posts`, {
                 params: { page, per_page: perPage, sort, order, search }, // dùng per_page
             }),
             axios.get(`${BASE_URL}/media`),
@@ -115,12 +115,12 @@ export async function getNewsWithPagination(page = 1, perPage = 12, sort = 'publ
 }
 
 export async function getNewsBySlug(slug) {
-    const postsRes = await axios.get(`${BASE_URL}/posts`);
+    const postsRes = await axios.get(`${BASE_URL}/client/posts`);
     const posts = postsRes.data.data || postsRes.data;
     const found = posts.find((item) => item.slug === slug);
     if (!found) return null;
 
-    const detailRes = await axios.get(`${BASE_URL}/posts/${found.id}`);
+    const detailRes = await axios.get(`${BASE_URL}/client/posts/${found.id}`);
     const rawPost = detailRes.data.data || detailRes.data;
 
     const rawHtml = rawPost.content?.content_html || '';

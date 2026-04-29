@@ -16,7 +16,7 @@ const routes = {
     registerProgram: '/dang-ky-tham-gia-chuong-trinh',
     search: '/tim-kiem',
     notFound: '/404',
-    courseSlug: '/:slug', // course
+    programSlug: '/chuong-trinh-hoc/:slug', // program
 
     // study abroad
     studyAbroadGerman: '/du-hoc-nghe-duc',
@@ -36,6 +36,10 @@ const routes = {
     learningMode: '/learning/:slug', // Trang để học theo từng bài học (video, ghi chú,...)
     eCourseDetail: '/e-courses/:slug',
     myCourses: '/my-courses',
+
+    // payment momo
+    paymentMomoQr: '/payment/momo/qr',
+    paymentMomoResult: '/payment/momo/result',
 };
 
 export default routes;

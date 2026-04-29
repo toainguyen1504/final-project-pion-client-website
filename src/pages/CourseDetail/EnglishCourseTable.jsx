@@ -23,7 +23,7 @@ const tableConfigs = {
             {
                 key: 1,
                 level: '1',
-                curriculum: 'Share It S',
+                curriculum: 'Share It 0',
                 equivalent: 'Starters',
                 duration: '12 tháng',
                 objective: 'Làm quen tiếng Anh, phản xạ nghe – nói tự nhiên',

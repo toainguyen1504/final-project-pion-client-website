@@ -1,28 +1,62 @@
-import { Form, Input, Avatar, Checkbox, DatePicker, Select, Radio } from 'antd';
-import { CameraOutlined } from '@ant-design/icons';
+import { useEffect, useMemo, useState } from 'react';
 import { MdOutlineVerified } from 'react-icons/md';
 import classNames from 'classnames/bind';
 import { Link, NavLink } from 'react-router-dom';
+import { Form, Input, Avatar, Checkbox, DatePicker, Select, Radio, Tag, message } from 'antd';
+import { CameraOutlined } from '@ant-design/icons';
 
-import Button from '@/components/Button'; // import Button custom
+import Button from '@/components/Button';
 import config from '@/config';
 import { getInitial } from '@/utils';
-import { FAKE_USER } from '@/constants';
+import { getCurrentUser, logout, isEmailVerified, updateProfile } from '@/services/authService';
 
 import styles from './AuthForm.module.scss';
 
 const cx = classNames.bind(styles);
 
 export default function ProfilePage() {
-    const onFinish = (values) => {
-        console.log('Profile:', values);
+    const [user, setUser] = useState(getCurrentUser());
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        // đọc lại localStorage để cập nhật state -> re-render
+        const syncUser = () => {
+            setUser(getCurrentUser());
+        };
+
+        window.addEventListener('auth-user-updated', syncUser);
+        window.addEventListener('focus', syncUser);
+
+        return () => {
+            window.removeEventListener('auth-user-updated', syncUser);
+            window.removeEventListener('focus', syncUser);
+        };
+    }, []);
+
+    const verified = useMemo(() => isEmailVerified(user), [user]);
+
+    const onFinish = async (values) => {
+        try {
+            setLoading(true);
+
+            const res = await updateProfile({
+                display_name: values.name,
+                email: values.email || null,
+                phone: values.phone || null,
+            });
+
+            message.success(res?.message || 'Cập nhật hồ sơ thành công.');
+            setUser(getCurrentUser());
+        } catch (error) {
+            message.error(error?.response?.data?.message || 'Không thể cập nhật hồ sơ.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className={cx('auth-wrapper', 'profile-page')}>
-            {/* Logo Pion linking to home page + Navigation (Profile + Forgot Password + Logout) */}
             <nav className={cx('nav')}>
-                {/* Logo */}
                 <div className={cx('logo')}>
                     <Link to={config.routes.home}>
                         <figure>
@@ -31,7 +65,6 @@ export default function ProfilePage() {
                     </Link>
                 </div>
 
-                {/* Navigation */}
                 <div className={cx('nav-actions')}>
                     <NavLink
                         to={config.routes.profile}
@@ -47,53 +80,73 @@ export default function ProfilePage() {
                         Đổi mật khẩu
                     </NavLink>
 
-                    {/* logout: đăng xuất + navigation đến trang đăng nhập */}
-                    <Link className={cx('logout')}>Đăng xuất</Link>
+                    <Link
+                        className={cx('logout')}
+                        onClick={() => {
+                            logout();
+                            window.location.href = config.routes.login;
+                        }}
+                    >
+                        Đăng xuất
+                    </Link>
                 </div>
             </nav>
 
             <div className={cx('auth-box')}>
-                {/* Avatar */}
                 <div className={cx('avatar-wrapper')}>
-                    {FAKE_USER.avatarUrl ? (
-                        <Avatar src={FAKE_USER.avatarUrl} size={80} />
-                    ) : (
-                        <Avatar size={80} style={{ backgroundColor: 'var(--primary)', fontSize: '32px' }}>
-                            {getInitial(FAKE_USER.name)}
-                        </Avatar>
-                    )}
+                    <Avatar size={80} style={{ backgroundColor: 'var(--primary)', fontSize: '32px' }}>
+                        {getInitial(user?.display_name || 'U')}
+                    </Avatar>
                     <div className={cx('camera-button')}>
                         <CameraOutlined />
                     </div>
                 </div>
 
-                <Form layout="vertical" onFinish={onFinish}>
-                    <Form.Item label="Họ tên" name="name" rules={[{ required: true }]}>
+                <Form
+                    key={`${user?.email || ''}-${user?.email_verified_at || user?.status || ''}-${user?.phone || ''}`}
+                    layout="vertical"
+                    onFinish={onFinish}
+                    initialValues={{
+                        name: user?.display_name || '',
+                        email: user?.email || '',
+                        phone: user?.phone || '',
+                    }}
+                >
+                    <Form.Item label="Họ tên" name="name" rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}>
                         <Input size="large" placeholder="Nhập họ tên" />
                     </Form.Item>
 
-                    <Form.Item label="Email" name="email" rules={[{ required: true }]} className={cx('verify-group')}>
+                    {/* EMAIL */}
+                    <Form.Item label="Email" className={cx('verify-group')}>
                         <div className={cx('verify-wrapper')}>
-                            <Input size="large" placeholder="Nhập email" style={{ paddingRight: '120px' }} />
+                            <Form.Item name="email" rules={[{ type: 'email', message: 'Email không hợp lệ' }]} noStyle>
+                                <Input size="large" placeholder="Nhập email" style={{ paddingRight: '150px' }} />
+                            </Form.Item>
 
-                            {/* to link : xac-minh-email */}
-                            <Link to={config.routes.verifyEmail} className={cx('verify-btn')}>
-                                Xác minh
-                                <MdOutlineVerified />
-                            </Link>
+                            {verified ? (
+                                <span className={cx('verify-btn')} style={{ pointerEvents: 'none' }}>
+                                    <Tag color="success">Đã xác thực</Tag>
+                                </span>
+                            ) : (
+                                <Link to={config.routes.verifyEmail} className={cx('verify-btn')}>
+                                    Xác minh
+                                    <MdOutlineVerified />
+                                </Link>
+                            )}
                         </div>
                     </Form.Item>
 
-                    <Form.Item
-                        label="Số điện thoại"
-                        name="phone"
-                        rules={[{ required: true }]}
-                        className={cx('verify-group')}
-                    >
+                    {/* PHONE */}
+                    <Form.Item label="Số điện thoại" className={cx('verify-group')}>
                         <div className={cx('verify-wrapper')}>
-                            <Input size="large" placeholder="Nhập số điện thoại" style={{ paddingRight: '120px' }} />
+                            <Form.Item name="phone" noStyle>
+                                <Input
+                                    size="large"
+                                    placeholder="Nhập số điện thoại"
+                                    style={{ paddingRight: '120px' }}
+                                />
+                            </Form.Item>
 
-                            {/* to link : xac-minh-so-dien-thoai */}
                             <Link to={config.routes.verifyPhone} className={cx('verify-btn')}>
                                 Xác minh
                                 <MdOutlineVerified />
@@ -102,13 +155,7 @@ export default function ProfilePage() {
                     </Form.Item>
 
                     <div className={cx('form-group', 'grid-2x2')}>
-                        {/* Cột trái */}
-                        <Form.Item
-                            label="Quốc gia"
-                            name="country"
-                            rules={[{ required: true }]}
-                            className={cx('col-left')}
-                        >
+                        <Form.Item label="Quốc gia" name="country" className={cx('col-left')}>
                             <Select size="large" placeholder="Chọn quốc gia">
                                 <Select.Option value="vn">Việt Nam</Select.Option>
                                 <Select.Option value="us">Hoa Kỳ</Select.Option>
@@ -116,13 +163,7 @@ export default function ProfilePage() {
                             </Select>
                         </Form.Item>
 
-                        {/* Cột phải */}
-                        <Form.Item
-                            label="Tỉnh thành"
-                            name="province"
-                            rules={[{ required: true }]}
-                            className={cx('col-right')}
-                        >
+                        <Form.Item label="Tỉnh thành" name="province" className={cx('col-right')}>
                             <Select size="large" placeholder="Chọn tỉnh thành">
                                 <Select.Option value="hcm">TP. Hồ Chí Minh</Select.Option>
                                 <Select.Option value="hn">Hà Nội</Select.Option>
@@ -130,8 +171,7 @@ export default function ProfilePage() {
                             </Select>
                         </Form.Item>
 
-                        {/* Cột trái */}
-                        <Form.Item label="Ngày sinh" name="dob" rules={[{ required: true }]} className={cx('col-left')}>
+                        <Form.Item label="Ngày sinh" name="dob" className={cx('col-left')}>
                             <DatePicker
                                 size="large"
                                 format="DD/MM/YYYY"
@@ -140,13 +180,7 @@ export default function ProfilePage() {
                             />
                         </Form.Item>
 
-                        {/* Cột phải */}
-                        <Form.Item
-                            label="Giới tính"
-                            name="gender"
-                            rules={[{ required: true }]}
-                            className={cx('col-right')}
-                        >
+                        <Form.Item label="Giới tính" name="gender" className={cx('col-right')}>
                             <Radio.Group>
                                 <Radio value="male">Nam</Radio>
                                 <Radio value="female">Nữ</Radio>
@@ -161,14 +195,13 @@ export default function ProfilePage() {
                         </Form.Item>
                     </div>
 
-                    {/* Nút Cập nhật và Truy cập*/}
                     <div className={cx('button-spacing')}>
-                        {/* submit */}
-                        <Button primary>Cập nhật </Button>
+                        <Button outline to={config.routes.home} className={cx('btn-back')}>
+                            Quay lại
+                        </Button>
 
-                        {/* Sau này đổi thành /learning */}
-                        <Button primary to={config.routes.home}>
-                            Truy cập
+                        <Button primary htmlType="submit" disabled={loading}>
+                            {loading ? 'Đang cập nhật...' : 'Cập nhật'}
                         </Button>
                     </div>
                 </Form>

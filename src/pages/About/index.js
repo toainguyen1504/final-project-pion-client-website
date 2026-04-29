@@ -67,9 +67,18 @@ const teacherData = [
         image: '/assets/img/about/teacher_07.png',
         name: 'Cô Cleo Edelyn Larot',
         qualifications: [
-            'Giáo viên nước ngoài Philippines',
+            'Giáo viên nước ngoài - Philippines',
             'Cử nhân Giáo dục Tiểu học, chuyên ngành Giáo dục học & TESOL',
             'Kinh nghiệm: 3 năm',
+        ],
+    },
+    {
+        image: '/assets/img/about/teacher_08.png',
+        name: 'Cô Ivy Paragama',
+        qualifications: [
+            'Giáo viên nước ngoài - Philippines',
+            'Cử nhân Giáo dục Tiểu học & Chứng chỉ TESOL',
+            'Kinh nghiệm: 4 năm',
         ],
     },
 ];

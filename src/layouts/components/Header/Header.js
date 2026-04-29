@@ -35,16 +35,16 @@ const items = [
     },
     {
         key: 'courses',
-        label: 'Khóa học',
+        label: 'Chương trình học ',
         children: [
             {
-                key: 'courses-english',
+                key: 'program-english',
                 label: 'Tiếng Anh',
                 children: [
                     {
                         key: 'en_1',
                         label: (
-                            <Link to="/tieng-anh-mam-non" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-mam-non" className="menu-normal">
                                 Tiếng Anh mầm non
                             </Link>
                         ),
@@ -52,7 +52,7 @@ const items = [
                     {
                         key: 'en_2',
                         label: (
-                            <Link to="/tieng-anh-tieu-hoc" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc" className="menu-normal">
                                 Tiếng Anh tiểu học
                             </Link>
                         ),
@@ -60,7 +60,7 @@ const items = [
                     {
                         key: 'en_3',
                         label: (
-                            <Link to="/tieng-anh-giao-tiep" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep" className="menu-normal">
                                 Tiếng Anh giao tiếp
                             </Link>
                         ),
@@ -68,13 +68,13 @@ const items = [
                 ],
             },
             {
-                key: 'courses-chinese',
+                key: 'program-chinese',
                 label: 'Tiếng Trung',
                 children: [
                     {
                         key: 'ch_1',
                         label: (
-                            <Link to="/tieng-trung-giao-tiep" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep" className="menu-normal">
                                 Tiếng Trung giao tiếp
                             </Link>
                         ),
@@ -82,7 +82,7 @@ const items = [
                     {
                         key: 'ch_2',
                         label: (
-                            <Link to="/tieng-trung-tre-em" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-trung-tre-em" className="menu-normal">
                                 Tiếng Trung trẻ em
                             </Link>
                         ),
@@ -90,7 +90,7 @@ const items = [
                     {
                         key: 'ch_3',
                         label: (
-                            <Link to="/hskk-tai-pion" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/hskk-tai-pion" className="menu-normal">
                                 HSK(K) Tại Pion
                             </Link>
                         ),
@@ -98,7 +98,7 @@ const items = [
                     {
                         key: 'ch_4',
                         label: (
-                            <Link to="/csca-tai-pion" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/csca-tai-pion" className="menu-normal">
                                 CSCA Tại Pion
                             </Link>
                         ),
@@ -106,7 +106,7 @@ const items = [
                 ],
             },
             // {
-            //     key: 'courses-korean',
+            //     key: 'program-korean',
             //     label: 'Tiếng Hàn',
             //     children: [
             //         {
@@ -144,7 +144,7 @@ const items = [
             //     ],
             // },
             // {
-            //     key: 'courses-german',
+            //     key: 'program-german',
             //     label: 'Tiếng Đức',
             //     children: [
             //         {
@@ -201,12 +201,12 @@ const items = [
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
             { key: 'news-list', label: <Link to={config.routes.newsList}>Tất cả tin tức</Link> },
+            { key: 'news-recruitment', label: <Link to={config.routes.newsAvailablePosition}>Tuyển dụng</Link> },
+            { key: 'news-question', label: <Link to={config.routes.faq}>Câu hỏi thường gặp</Link> },
             {
                 key: 'abroad-china',
                 label: <Link to={config.routes.studyAbroadChina}>Điều kiện du học Trung Quốc 2025</Link>,
             },
-            { key: 'news-recruitment', label: <Link to={config.routes.newsAvailablePosition}>Tuyển dụng</Link> },
-            { key: 'news-question', label: <Link to={config.routes.faq}>Câu hỏi thường gặp</Link> },
         ],
     },
     {
@@ -328,41 +328,41 @@ export default function Header({ visible }) {
                         VỀ PION
                     </NavLink>
 
-                    {/* Khóa học */}
+                    {/* Chương trình học  */}
                     <div className={cx('dropdown')}>
                         <div className={cx('dropdown-toggle')}>
-                            <span>Khóa học</span>
+                            <span>Chương trình học</span>
                             <RiArrowDropDownLine size={24} />
                         </div>
                         <div className={cx('dropdown-menu', 'customize')}>
                             <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Anh</h4>
+                                <h4>Tiếng Anh</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-anh-mam-non">Tiếng anh mầm non</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-mam-non">Tiếng anh mầm non</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Trung</h4>
+                                <h4>Tiếng Trung</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
                                     </li>
                                     <li>
-                                        <Link to="/hskk-tai-pion">HSK(K) Tại Pion</Link>
+                                        <Link to="/chuong-trinh-hoc/hskk-tai-pion">HSK(K) Tại Pion</Link>
                                     </li>
                                     <li>
-                                        <Link to="/csca-tai-pion">CSCA Tại Pion</Link>
+                                        <Link to="/chuong-trinh-hoc/csca-tai-pion">CSCA Tại Pion</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -382,14 +382,14 @@ export default function Header({ visible }) {
                             <Link to={config.routes.newsList} className={cx('dropdown-item')}>
                                 Tất cả tin tức
                             </Link>
-                            <Link to={config.routes.studyAbroadChina} className={cx('dropdown-item')}>
-                                Điều kiện du học Trung Quốc 2025
-                            </Link>
                             <Link to={config.routes.newsAvailablePosition} className={cx('dropdown-item')}>
                                 Tuyển dụng
                             </Link>
                             <Link to={config.routes.faq} className={cx('dropdown-item')}>
                                 Câu hỏi thường gặp
+                            </Link>
+                            <Link to={config.routes.studyAbroadChina} className={cx('dropdown-item')}>
+                                Điều kiện du học Trung Quốc 2025
                             </Link>
                         </div>
                     </div>
@@ -401,12 +401,12 @@ export default function Header({ visible }) {
                         Liên hệ
                     </NavLink>
 
-                    <NavLink
+                    {/* <NavLink
                         to={config.routes.learning}
                         className={({ isActive }) => cx('nav-link', { active: isActive })}
                     >
                         Học tập
-                    </NavLink>
+                    </NavLink> */}
                 </nav>
 
                 {/* Search form */}

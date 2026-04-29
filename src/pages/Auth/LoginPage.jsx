@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form, Input, Checkbox, message } from 'antd';
 import classNames from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,21 +15,27 @@ import styles from './AuthForm.module.scss';
 const cx = classNames.bind(styles);
 
 export default function LoginPage() {
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const onFinish = async (values) => {
         try {
+            setLoading(true);
+
             await login({ login: values.login, password: values.password });
 
-            message.success('Đăng nhập thành công!');
-            // chuyển hướng sang home
+            message.success('Đăng nhập thành công.');
             navigate(config.routes.home);
         } catch (err) {
             if (err.response?.status === 401) {
-                message.error('Sai email/username hoặc mật khẩu.');
+                message.error('Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại.');
+            } else if (err.response?.status === 403) {
+                message.error('Tài khoản của bạn không có quyền truy cập hệ thống.');
             } else {
-                message.error('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                message.error('Đã xảy ra lỗi. Vui lòng thử lại sau.');
             }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -50,11 +57,19 @@ export default function LoginPage() {
             <div className={cx('auth-box')}>
                 <h2 className={cx('title')}>Đăng nhập</h2>
                 <Form layout="vertical" onFinish={onFinish}>
-                    <Form.Item label="Email / Username" name="login" rules={[{ required: true }]}>
+                    <Form.Item
+                        label="Email / Username"
+                        name="login"
+                        rules={[{ required: true, message: 'Vui lòng nhập email hoặc username' }]}
+                    >
                         <Input size="large" placeholder="Nhập email hoặc username" />
                     </Form.Item>
 
-                    <Form.Item label="Mật khẩu" name="password" rules={[{ required: true }]}>
+                    <Form.Item
+                        label="Mật khẩu"
+                        name="password"
+                        rules={[{ required: true, message: 'Vui lòng nhập mật khẩu' }]}
+                    >
                         <Input.Password size="large" placeholder="Nhập mật khẩu" />
                     </Form.Item>
 
@@ -67,8 +82,8 @@ export default function LoginPage() {
                     </div>
 
                     {/* Nút đăng nhập*/}
-                    <Button primary full htmlType="submit">
-                        Đăng nhập
+                    <Button primary full htmlType="submit" disabled={loading}>
+                        {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
                     </Button>
 
                     <p className={cx('register-text')}>

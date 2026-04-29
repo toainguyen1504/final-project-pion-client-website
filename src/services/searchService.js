@@ -1,14 +1,14 @@
 import { getAllNews } from '@/services';
 
-// Dữ liệu mặc định (khóa học, trang tĩnh…)
+// Dữ liệu mặc định (chương trình học, trang tĩnh…)
 const defaultSearchData = [
-    { id: 1, slug: 'tieng-anh-mam-non', title: 'Tiếng Anh mầm non' },
-    { id: 2, slug: 'tieng-anh-tieu-hoc', title: 'Tiếng Anh tiểu học' },
-    { id: 3, slug: 'tieng-anh-giao-tiep', title: 'Tiếng Anh giao tiếp' },
-    { id: 4, slug: 'tieng-trung-giao-tiep', title: 'Tiếng Trung giao tiếp' },
-    { id: 5, slug: 'tieng-trung-tre-em', title: 'Tiếng Trung trẻ em' },
-    { id: 6, slug: 'hskk-tai-pion', title: 'HSK(K) Tại Pion' },
-    { id: 7, slug: 'csca-tai-pion', title: 'CSCA Tại Pion' },
+    { id: 1, slug: 'chuong-trinh-hoc/tieng-anh-mam-non', title: 'Tiếng Anh mầm non' },
+    { id: 2, slug: 'chuong-trinh-hoc/tieng-anh-tieu-hoc', title: 'Tiếng Anh tiểu học' },
+    { id: 3, slug: 'chuong-trinh-hoc/tieng-anh-giao-tiep', title: 'Tiếng Anh giao tiếp' },
+    { id: 4, slug: 'chuong-trinh-hoc/tieng-trung-giao-tiep', title: 'Tiếng Trung giao tiếp' },
+    { id: 5, slug: 'chuong-trinh-hoc/tieng-trung-tre-em', title: 'Tiếng Trung trẻ em' },
+    { id: 6, slug: 'chuong-trinh-hoc/hskk-tai-pion', title: 'HSK(K) Tại Pion' },
+    { id: 7, slug: 'chuong-trinh-hoc/csca-tai-pion', title: 'CSCA Tại Pion' },
     {
         id: 10,
         slug: 'tin-tuc/dieu-kien-du-hoc-trung-quoc-2025',

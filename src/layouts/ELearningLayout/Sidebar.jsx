@@ -1,79 +1,73 @@
-import { Collapse } from 'antd';
 import { MdCheckCircle } from 'react-icons/md';
 import { IoMdPlayCircle } from 'react-icons/io';
 import { SiGoogledocs } from 'react-icons/si';
+import { useNavigate } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import classNames from 'classnames/bind';
+
+import { formatDuration } from '@/utils/formatDuration';
 import styles from './ELearningLayout.module.scss';
-import { eCourseDetails } from '@/data/eCourses';
-import { useParams } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-const { Panel } = Collapse;
 
-export default function Sidebar({ isOpen }) {
-    const { slug } = useParams();
-    const course = eCourseDetails[slug];
+export default function Sidebar({ lessons, currentLessonId, courseSlug, isOpen, loading, progressMap }) {
+    const navigate = useNavigate();
 
-    if (!course) return <aside className={cx('sidebar', { closed: !isOpen })}>Khóa học không tồn tại</aside>;
+    if (loading) {
+        return (
+            <aside className={cx('sidebar')}>
+                <Skeleton.Input active style={{ width: '70%', margin: 16 }} />
 
-    let lessonIndex = 1;
+                <Skeleton active paragraph={{ rows: 10 }} />
+            </aside>
+        );
+    }
 
     return (
         <aside className={cx('sidebar', { closed: !isOpen })}>
-            <div className={cx('chapters')}>
+            <div className={cx('sidebar-inner')}>
                 <h2 className={cx('sidebar-title')}>Nội dung khóa học</h2>
-                <Collapse accordion expandIconPosition="end">
-                    {course.chapters.map((chapter, index) => {
-                        const completedCount = chapter.lessons.length; // mock completed lessons
-                        const totalCount = chapter.lessons.length;
-                        const duration = chapter.duration || '00:00';
+
+                <ul className={cx('lesson-list')}>
+                    {lessons.map((lesson) => {
+                        const progress = progressMap?.[lesson.id];
 
                         return (
-                            <Panel
-                                key={index}
-                                header={
-                                    <div className={cx('chapter-header')}>
-                                        <span className={cx('chapter-title')}>
-                                            {index + 1}. {chapter.title}
-                                        </span>
-                                        <span className={cx('chapter-desc')}>
-                                            {completedCount}/{totalCount} | {duration}
+                            <li
+                                key={lesson.id}
+                                className={cx('lesson-wrapper', {
+                                    active: currentLessonId === lesson.id.toString(),
+                                    completed: progress?.is_completed,
+                                })}
+                                onClick={() => navigate(`/learning/${courseSlug}?id=${lesson.id}`)}
+                            >
+                                <div className={cx('lesson-info')}>
+                                    <h3 className={cx('lesson-title')}>
+                                        {lesson.order}. {lesson.title}
+                                    </h3>
+
+                                    <div className={cx('lesson-desc')}>
+                                        <div className={cx('lesson-type')}>
+                                            {lesson.is_quiz ? <SiGoogledocs /> : <IoMdPlayCircle />}
+                                        </div>
+
+                                        <span className={cx('lesson-time')}>
+                                            {lesson.duration ? formatDuration(lesson.duration, 'lesson') : '------'}
                                         </span>
                                     </div>
-                                }
-                            >
-                                <ul className={cx('lesson-list')}>
-                                    {chapter.lessons.map((lesson, i) => {
-                                        const currentIndex = lessonIndex++;
-                                        return (
-                                            <li key={currentIndex} className={cx('lesson-wrapper')}>
-                                                <div className={cx('lesson-info')}>
-                                                    <h3 className={cx('lesson-title')}>
-                                                        {currentIndex}. {lesson}
-                                                    </h3>
-                                                    <div className={cx('lesson-desc')}>
-                                                        <div className={cx('lesson-type')}>
-                                                            {/* mock lesson type */}
-                                                            {currentIndex % 2 !== 0 ? (
-                                                                <IoMdPlayCircle />
-                                                            ) : (
-                                                                <SiGoogledocs />
-                                                            )}
-                                                        </div>
-                                                        <span className={cx('lesson-time')}>3:09</span>
-                                                    </div>
-                                                </div>
-                                                <span className={cx('play-icon')}>
-                                                    <MdCheckCircle />
-                                                </span>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </Panel>
+                                </div>
+
+                                <span className={cx('play-icon')}>
+                                    {progress?.is_completed ? (
+                                        <MdCheckCircle className={cx('done')} />
+                                    ) : progress?.watched_duration > 0 ? (
+                                        <span className={cx('in-progress-dot')} />
+                                    ) : null}
+                                </span>
+                            </li>
                         );
                     })}
-                </Collapse>
+                </ul>
             </div>
         </aside>
     );

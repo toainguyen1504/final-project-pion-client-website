@@ -190,60 +190,12 @@
         transform: translateX(100%); // trượt ra ngoài màn hình bên phải
     }
 
-    .sidebar-title {
-        padding: 0px 16px;
-        font-size: 1.6rem;
-        font-weight: 600;
-        margin-bottom: 12px;
-    }
-
-    .chapters {
+    .sidebar-inner {
         margin-bottom: 60px;
-
-        :global {
-            .ant-collapse {
-                border-radius: 0;
-            }
-
-            .ant-collapse .ant-collapse-content > .ant-collapse-content-box {
-                padding: 0 16px;
-                margin-top: -10px;
-            }
-
-            .ant-collapse-header {
-                font-size: 1.6rem;
-                font-weight: 400;
-                // color: var(--text-color-bold);
-
-                .ant-collapse-arrow {
-                    color: var(--black);
-                    font-size: 16px;
-                }
-            }
-        }
-
-        .chapter-header {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            user-select: none;
-
-            .chapter-title {
-                font-size: 1.6rem;
-                font-weight: 600;
-            }
-
-            .chapter-desc {
-                font-size: 1.3rem;
-                font-weight: 400;
-                color: var(--text-color-bold);
-            }
-        }
 
         .lesson-list {
             list-style: none;
-            padding-left: 12px;
+            padding-left: 0;
             color: var(--text-color-bold);
             margin-top: 12px;
 
@@ -251,14 +203,36 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                width: 100%;
                 gap: 8px;
                 font-size: 1.4rem;
-                padding: 6px 0;
+                padding: 8px 16px;
+                cursor: pointer;
 
+                // .play-icon {
+                //     font-size: 2rem;
+                //     color: #5db85c;
+                //     opacity: 0.6;
+                // }
                 .play-icon {
-                    font-size: 2rem;
-                    color: #5db85c;
-                    opacity: 0.6;
+                    width: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                // đã học
+                .done {
+                    color: #52c41a;
+                    font-size: 1.8rem;
+                }
+
+                // đang học
+                .in-progress-dot {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #ff4d4f;
+                    border-radius: 50%;
                 }
 
                 .lesson-title {
@@ -285,8 +259,28 @@
                         padding-bottom: 2px;
                     }
                 }
+
+                // hiệu ứng hover
+                &:hover {
+                    background-color: #f5f5f5; // xám nhạt
+                }
+
+                // trạng thái active
+                &.active {
+                    background-color: #ffecec; // nền nhạt đỏ
+                    .lesson-type.video {
+                        color: var(--primary) !important;
+                    }
+                }
             }
         }
+    }
+
+    .sidebar-title {
+        padding: 0px 16px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 12px;
     }
 }
 
@@ -331,14 +325,14 @@
         }
     }
 
-    .chapter-info {
+    .lesson-info {
         display: flex;
         align-items: center;
         position: absolute;
         right: 16px;
         gap: 16px;
 
-        .chapter-name {
+        .lesson-name {
             font-size: 1.4rem;
             font-weight: 500;
             color: #333;
@@ -446,6 +440,47 @@
         &:hover {
             background-color: var(--primary);
         }
+    }
+}
+
+.access-simple {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    background: #f8fafc;
+}
+
+.empty-content {
+    text-align: center;
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #222;
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: #666;
+    }
+}
+
+.empty-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+
+    &:hover {
+        background: #e2e8f0;
     }
 }
 

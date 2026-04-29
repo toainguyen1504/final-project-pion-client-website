@@ -69,7 +69,8 @@
             }
 
             .free,
-            .price .discount {
+            .price .discount,
+            .current {
                 color: #f5222d;
                 font-weight: 600;
                 font-size: 2rem;
@@ -161,13 +162,12 @@
     }
 
     // CHAPTERS
-    .chapters {
+    .lesson-list-wrapper {
         margin-bottom: 60px;
 
         .meta {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
             flex-wrap: wrap;
             gap: 12px;
             font-size: 1.4rem;
@@ -192,18 +192,6 @@
                     right: -8px;
                     color: #222;
                     font-size: 1.8rem;
-                }
-            }
-        }
-
-        :global {
-            .ant-collapse-header {
-                font-size: 1.5rem;
-                font-weight: 600;
-
-                .ant-collapse-arrow {
-                    color: var(--primary);
-                    font-size: 14px;
                 }
             }
         }

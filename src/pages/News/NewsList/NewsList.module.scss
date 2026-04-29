@@ -8,12 +8,116 @@
     margin: 60px auto;
     display: flex;
     justify-content: center;
+
+    :global(.ant-pagination) {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    :global(.ant-pagination-item),
+    :global(.ant-pagination-prev),
+    :global(.ant-pagination-next) {
+        border-radius: 8px;
+        min-width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    // ===== màu default =====
+    :global(.ant-pagination-item a) {
+        color: var(--primary);
+    }
+
+    // ===== active =====
+    :global(.ant-pagination-item-active) {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    :global(.ant-pagination-item-active a) {
+        color: #fff;
+    }
+
+    // ===== hover bình thường =====
+    :global(.ant-pagination-item:hover),
+    :global(.ant-pagination-prev:hover),
+    :global(.ant-pagination-next:hover) {
+        background: var(--bg-primary) !important;
+        border-color: var(--primary);
+    }
+
+    // ===== FIX: active KHÔNG đổi khi hover =====
+    :global(.ant-pagination-item-active:hover) {
+        background: var(--primary) !important;
+        border-color: var(--primary) !important;
+    }
+
+    :global(.ant-pagination-item-active:hover a) {
+        color: #fff !important;
+    }
+
+    :global(.ant-pagination-item:hover a),
+    :global(.ant-pagination-prev:hover .ant-pagination-item-link),
+    :global(.ant-pagination-next:hover .ant-pagination-item-link) {
+        color: var(--primary);
+    }
+
+    // ===== prev / next default =====
+    :global(.ant-pagination-prev .ant-pagination-item-link),
+    :global(.ant-pagination-next .ant-pagination-item-link) {
+        color: var(--primary) !important;
+        background: transparent !important;
+        border-color: var(--primary) !important;
+    }
+
+    // ===== prev / next hover =====
+    :global(.ant-pagination-prev:hover .ant-pagination-item-link),
+    :global(.ant-pagination-next:hover .ant-pagination-item-link) {
+        color: var(--primary) !important;
+        background: var(--bg-primary) !important;
+        border-color: var(--primary) !important;
+    }
+
+    // ===== fix icon svg bị trắng =====
+    :global(.ant-pagination-prev .anticon),
+    :global(.ant-pagination-next .anticon),
+    :global(.ant-pagination-prev svg),
+    :global(.ant-pagination-next svg) {
+        color: var(--primary) !important;
+        fill: currentColor !important;
+    }
+
+    // ===== disabled thì để xám nhạt, không hover primary =====
+    // ===== disabled =====
+    :global(.ant-pagination-disabled),
+    :global(.ant-pagination-disabled .ant-pagination-item-link),
+    :global(.ant-pagination-disabled:hover),
+    :global(.ant-pagination-disabled:hover .ant-pagination-item-link) {
+        color: #bfbfbf !important;
+        background: transparent !important;
+        border-color: #d9d9d9 !important;
+        cursor: default !important;
+        pointer-events: none; //
+    }
 }
 // ============RESPONSIVE================
 /* Mobile */
 @media (max-width: 767px) {
     .news-list {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .pagination-wrapper {
+        justify-content: center;
+        overflow-x: hidden;
+    }
+
+    .pagination-wrapper :global(.ant-pagination) {
+        gap: 6px;
     }
 }
 
@@ -22,6 +126,10 @@
     .news-list {
         grid-template-columns: repeat(2, 1fr);
         gap: 28px;
+    }
+
+    .pagination-wrapper :global(.ant-pagination) {
+        gap: 12px;
     }
 }
 

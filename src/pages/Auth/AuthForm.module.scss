@@ -230,6 +230,7 @@
     .password-group {
         display: flex;
         gap: 16px;
+        margin-bottom: 16px;
 
         @media (max-width: 767px) {
             flex-direction: column;
@@ -335,6 +336,22 @@
         @media (max-width: 767px) {
             min-width: 160px;
             margin-left: 20px;
+        }
+    }
+
+    // custom button for Button component
+    .button-spacing {
+        a:first-child,
+        button.btn-back {
+            border: 1.5px solid #d1d5db !important; // xám nhẹ
+            color: var(--text-color) !important; // text secondary
+            background: #fff !important;
+
+            &:hover {
+                background: #f9fafb !important;
+                border-color: #9ca3af !important;
+                // color: #374151 !important;
+            }
         }
     }
 

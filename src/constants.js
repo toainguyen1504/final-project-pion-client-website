@@ -1,5 +1,6 @@
 export const DEFAULT_IMAGE = '/assets/img/default.jpg';
 export const DEFAULT_AVATAR_IMAGE = '/assets/img/avatar_default.jpg';
+export const DEFAULT_PLACEHOLDER_IMAGE = '/assets/img/placeholder_img.png';
 
 // Cấu hình BASE_URL theo môi trường
 export const BASE_URL =

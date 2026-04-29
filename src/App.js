@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from '@/routes';
+import { Navigate } from 'react-router-dom';
 import DefaultLayout from '@/layouts';
 import ScrollToTop from '@/components/ScrollToTop';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -17,10 +18,6 @@ function App() {
 
                         if (route.layout === null) {
                             Layout = Fragment;
-                        } else if (typeof route.layout === 'function') {
-                            return (
-                                <Route key={index} path={route.path} element={route.layout({ children: <Page /> })} />
-                            );
                         } else if (route.layout) {
                             Layout = route.layout;
                         }
@@ -37,6 +34,9 @@ function App() {
                             />
                         );
                     })}
+
+                    {/* Fallback route */}
+                    <Route path="*" element={<Navigate to="/404" replace />} />
                 </Routes>
             </div>
         </Router>

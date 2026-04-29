@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Skeleton } from 'antd';
-import { FaUsers, FaVideo, FaClock } from 'react-icons/fa';
+import { FaUsers, FaClock } from 'react-icons/fa';
+import { IoMdPlayCircle } from 'react-icons/io';
 import classNames from 'classnames/bind';
 
+import { formatDuration } from '@/utils/formatDuration';
+import { DEFAULT_PLACEHOLDER_IMAGE } from '@/constants';
 import styles from './ECoursesCard.module.scss';
 
 const cx = classNames.bind(styles);
-const DEFAULT_IMAGE = '/assets/img/placeholder_img.png';
 
 const ECoursesCard = ({
     title,
     price,
     discount_price,
+    is_free,
     button,
     image,
     link,
@@ -21,8 +24,6 @@ const ECoursesCard = ({
     total_lessons,
     duration,
 }) => {
-    const isFree = price === 0 && discount_price === 0;
-
     return (
         <article className={cx('image-card')}>
             <Card
@@ -32,7 +33,7 @@ const ECoursesCard = ({
                         <Skeleton.Image />
                     ) : (
                         <Link to={link} className={cx('card-thumbnail')}>
-                            <img alt={title} src={image || DEFAULT_IMAGE} loading="lazy" />
+                            <img alt={title} src={image || DEFAULT_PLACEHOLDER_IMAGE} loading="lazy" />
                         </Link>
                     )
                 }
@@ -49,38 +50,50 @@ const ECoursesCard = ({
                                     <Link to={link} className={cx('card-title')}>
                                         {title}
                                     </Link>
-                                    {isFree ? (
+
+                                    {is_free ? (
                                         <p className={cx('course-price', 'free')}>Miễn phí</p>
                                     ) : (
                                         <p className={cx('course-price')}>
-                                            {price > 0 && (
-                                                <span className={cx('original-price')}>
+                                            {discount_price && discount_price > 0 ? (
+                                                <>
+                                                    <span className={cx('original-price')}>
+                                                        {`${price.toLocaleString('vi-VN')}đ`}
+                                                    </span>
+                                                    <span className={cx('discount-price')}>
+                                                        {`${discount_price.toLocaleString('vi-VN')}đ`}
+                                                    </span>
+                                                </>
+                                            ) : price > 0 ? (
+                                                <span className={cx('current-price')}>
                                                     {`${price.toLocaleString('vi-VN')}đ`}
                                                 </span>
-                                            )}
-                                            {discount_price > 0 && (
-                                                <span className={cx('discount-price')}>
-                                                    {`${discount_price.toLocaleString('vi-VN')}đ`}
-                                                </span>
+                                            ) : (
+                                                <span className={cx('updating')}>Đang cập nhật...</span>
                                             )}
                                         </p>
                                     )}
                                 </div>
-                                {(participants || total_lessons || duration) && (
+                                {(participants !== null || total_lessons !== null || duration !== null) && (
                                     <ul className={cx('course-stats')}>
-                                        {participants !== undefined && (
+                                        {participants > 0 ? (
                                             <li>
-                                                <FaUsers /> {Number(participants).toLocaleString('vi-VN')}
+                                                <FaUsers size={16} /> {Number(participants).toLocaleString('vi-VN')}
+                                            </li>
+                                        ) : (
+                                            <li className={cx('new-course')}>
+                                                <FaUsers size={16} /> Mới
                                             </li>
                                         )}
-                                        {total_lessons !== undefined && (
+
+                                        {total_lessons !== null && (
                                             <li>
-                                                <FaVideo /> {total_lessons}
+                                                <IoMdPlayCircle size={19} /> {total_lessons}
                                             </li>
                                         )}
-                                        {duration && (
+                                        {duration !== null && (
                                             <li>
-                                                <FaClock /> {duration}
+                                                <FaClock size={16} /> {formatDuration(duration, 'card')}
                                             </li>
                                         )}
                                     </ul>
@@ -98,20 +111,22 @@ ECoursesCard.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number,
     discount_price: PropTypes.number,
+    is_free: PropTypes.bool, // thêm prop này
     button: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string.isRequired,
     loading: PropTypes.bool,
     participants: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     total_lessons: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    duration: PropTypes.string,
+    duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 ECoursesCard.defaultProps = {
     price: 0,
     discount_price: 0,
+    is_free: false, // mặc định false
     button: null,
-    image: DEFAULT_IMAGE,
+    image: DEFAULT_PLACEHOLDER_IMAGE,
     loading: false,
     participants: null,
     total_lessons: null,
