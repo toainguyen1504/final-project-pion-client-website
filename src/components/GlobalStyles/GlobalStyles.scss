@@ -4,15 +4,18 @@
 :root {
     --primary: #ce232d;
     --primary-light: #d2343e;
+    --primary-highlight: #f5222d;
     --black: #171717;
     --white: #fff;
     --text-color-bold: #1f201f;
     --text-color: #545455;
+    --bg-gray: #707070;
     --bg-primary: rgba(206, 35, 45, 0.12);
     --bg-primary-light: rgba(206, 35, 45, 0.04);
+    --bg-black-light: rgba(160, 156, 156, 0.04);
 
     // Default Layout
-    --default-layout-header-height: 60px;
+    --default-layout-header-height: 56px;
     --default-layout-nav-top-height: 40px;
     --default-layout-width: 1248px;
     --default-layout-horizontal-space: 24px;
@@ -85,44 +88,9 @@ a[href] {
     margin-bottom: 24px;
 }
 
-// Heading section
-.heading-section {
-    position: relative;
-    margin: 28px 0 24px;
-
-    .title-section {
-        display: inline-block;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--white);
-        background: var(--primary);
-        line-height: 1.6;
-        padding: 6px 16px 4px 16px;
-        border-radius: 4px;
-        user-select: none;
-
-        a,
-        a[href] {
-            color: var(--white);
-        }
-
-        &::after {
-            position: absolute;
-            height: 1px;
-            content: '';
-            display: block;
-            width: 100%;
-            z-index: -1;
-            top: 18px;
-            left: 0;
-            background: linear-gradient(to right, #555, #000);
-        }
-    }
-}
-
+// uppercase style for text
 .uppercase {
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 }
 
 /* Scrollbar css */
@@ -159,7 +127,7 @@ html *::-webkit-scrollbar-track {
 
 /* tab underline */
 .ant-tabs-ink-bar {
-    background-color: #ce232d !important;
+    background-color: var(--primary) !important;
 }
 
 // .ant-tabs-tab-active div,
@@ -181,8 +149,144 @@ html *::-webkit-scrollbar-track {
 }
 
 .ant-tabs-tab-active .tab-label {
-    background-color: #ce232d !important;
+    background-color: var(--primary) !important;
     color: var(--white) !important;
+}
+
+// overide ant design input
+.ant-input-outlined,
+.ant-input-password {
+    &:hover {
+        border-color: var(--black) !important;
+    }
+    &:focus,
+    &:focus-within {
+        border-color: var(--black) !important;
+        box-shadow: 0 0 0 2px var(--bg-black-light) !important;
+    }
+}
+
+// overide ant design checkbox
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--black) !important;
+    border-color: var(--black) !important;
+}
+.ant-checkbox-inner {
+    border-color: var(--black) !important;
+}
+.ant-checkbox-checked::after {
+    border: 1px solid var(--black) !important;
+}
+
+// overide ant design form label
+.ant-form-item-label > label,
+.ant-checkbox-label {
+    font-weight: 500 !important;
+    font-size: 1.4rem;
+}
+
+/* Pagination override — dùng màu chủ đạo */
+.ant-pagination {
+    /* màu chữ mặc định */
+    color: var(--primary);
+
+    /* item mặc định */
+    .ant-pagination-item {
+        border-color: var(--primary);
+
+        a {
+            color: var(--primary);
+        }
+
+        /* hover (khi chưa active) */
+        &:not(.ant-pagination-item-active):hover {
+            border-color: var(--primary);
+            a {
+                color: var(--primary);
+            }
+        }
+
+        /* focus-visible (keyboard) */
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 30%, transparent);
+        }
+    }
+
+    /* item active */
+    .ant-pagination-item-active {
+        background: var(--primary);
+        border-color: var(--primary);
+
+        a {
+            color: #fff;
+        }
+
+        &:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    /* prev/next arrows */
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+        border-color: var(--primary);
+        color: var(--primary);
+
+        &:hover {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 30%, transparent);
+        }
+    }
+
+    /* disabled */
+    .ant-pagination-disabled .ant-pagination-item-link,
+    .ant-pagination-disabled .ant-pagination-item {
+        border-color: color-mix(in srgb, var(--primary) 30%, #ccc);
+        color: #999;
+
+        &:hover {
+            background: transparent;
+            color: #999;
+            border-color: color-mix(in srgb, var(--primary) 30%, #ccc);
+        }
+    }
+
+    /* ellipsis (…) */
+    .ant-pagination-item-ellipsis {
+        color: var(--primary);
+    }
+
+    /* quick jumper / size changer (nếu dùng) */
+    .ant-pagination-options {
+        .ant-select-selector {
+            border-color: var(--primary);
+
+            &:hover {
+                border-color: var(--primary);
+            }
+        }
+
+        .ant-input {
+            border-color: var(--primary);
+
+            &:hover,
+            &:focus {
+                border-color: var(--primary);
+                box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 30%, transparent);
+            }
+        }
+    }
 }
 
 /* =============== RESPONSIVE ================ */

@@ -14,9 +14,10 @@ import { Helmet } from 'react-helmet-async';
 import { feedbacks } from '@/data';
 import BannerCarousel from '@/components/BannerCarousel';
 import FeedbackCard from '@/components/FeedbackCard';
+import HeadingSection from '@/components/HeadingSection';
 import WhyChooseItem from './WhyChooseItem';
 import CourseList from './CourseList';
-import NewsList from './NewsList';
+import LatestNewsList from './LatestNewsList';
 import styles from './Home.module.scss';
 
 const cx = classNames.bind(styles);
@@ -38,8 +39,8 @@ const whyChooseData = [
     },
     {
         icon: <GiBookmarklet size={48} />,
-        title: 'Các khóa học đạt chuẩn quốc tế',
-        description: 'Cung cấp các khóa học tiếng Anh và tiếng Trung giúp bạn sẵn sàng hội nhập.',
+        title: 'Các chương trình học đạt chuẩn quốc tế',
+        description: 'Cung cấp các chương trình học tiếng Anh và tiếng Trung giúp bạn sẵn sàng hội nhập.',
     },
     {
         icon: <FaBookAtlas size={48} />,
@@ -165,10 +166,11 @@ function Home() {
                                         <ul className={cx('content-list')}>
                                             <li className={cx('content-item')}>
                                                 <p>
-                                                    <span>Đào tạo ngôn ngữ chất lượng cao:</span> Cung cấp các khóa học
-                                                    tiếng Anh và tiếng Trung chuẩn quốc tế, áp dụng phương pháp giảng
-                                                    dạy hiện đại, giúp học viên tự tin giao tiếp và phát triển kỹ năng
-                                                    ngôn ngữ, hỗ trợ việc làm tại các doanh nghiệp nước ngoài.
+                                                    <span>Đào tạo ngôn ngữ chất lượng cao:</span> Cung cấp các chương
+                                                    trình học tiếng Anh và tiếng Trung chuẩn quốc tế, áp dụng phương
+                                                    pháp giảng dạy hiện đại, giúp học viên tự tin giao tiếp và phát
+                                                    triển kỹ năng ngôn ngữ, hỗ trợ việc làm tại các doanh nghiệp nước
+                                                    ngoài.
                                                 </p>
                                             </li>
                                             <li className={cx('content-item')}>
@@ -217,11 +219,8 @@ function Home() {
 
                     {/* Why choose Pion Academy */}
                     <section className={cx('why-choose')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Vì sao nên chọn PION?</a>
-                            </h2>
-                        </div>
+                        <HeadingSection title="Vì sao nên chọn PION?" />
+
                         <div className={cx('grid', 'why-choose-inner')}>
                             {whyChooseData.map((item, index) => (
                                 <div key={index} data-aos="fade-up" data-aos-delay={index * 120}>
@@ -233,22 +232,14 @@ function Home() {
 
                     {/* Courses */}
                     <section className={cx('courses')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Khóa học nổi bật</a>
-                            </h2>
-                        </div>
-
+                        <HeadingSection title="Chương trình học nổi bật" />
                         <CourseList />
                     </section>
 
                     {/* Student feedback */}
                     <section id="cam-nhan-ve-hoc-vien" className={cx('feedback')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Cảm nhận về học viên</a>
-                            </h2>
-                        </div>
+                        <HeadingSection title="Cảm nhận về học viên" />
+
                         <div className={cx('feedback-inner')}>
                             {/* <figure className={cx('feedback-media')}>
                             <div
@@ -335,12 +326,8 @@ function Home() {
 
                     {/* News */}
                     <section className={cx('news')}>
-                        <div className={cx('heading-section')}>
-                            <h2 className={cx('title-section', 'uppercase')}>
-                                <a href="#!">Tin tức mới nhất</a>
-                            </h2>
-                        </div>
-                        <NewsList />
+                        <HeadingSection title="Tin tức mới nhất" />
+                        <LatestNewsList />
                     </section>
                 </div>
             </div>

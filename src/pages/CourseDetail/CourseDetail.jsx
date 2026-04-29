@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 
 import { DEFAULT_IMAGE } from '@/constants';
 import { courses } from '@/data';
+import config from '@/config';
 import Breadcrumb from '@/components/Breadcrumb';
 import EnglishCourseTable from './EnglishCourseTable';
 import ChinaCourseTable from './ChinaCourseTable';
@@ -71,17 +72,17 @@ function CourseDetail() {
         },
     ];
 
-    if (!course) return <Navigate to="/404" replace />;
+    if (!course) return <Navigate to={config.routes.notFound} replace />;
 
     return (
         <div>
             <Helmet>
-                <title>{`Khóa Học - ${course?.title ?? 'Đang cập nhật'}`} | PION</title>
-                <meta name="description" content={course?.descDetail || 'Thông tin khóa học tại PION'} />
+                <title>{`Chương trình học - ${course?.title ?? 'Đang cập nhật'}`} | PION</title>
+                <meta name="description" content={course?.descDetail || 'Thông tin chương trình học tại PION'} />
             </Helmet>
 
             <div className={cx('breadcrumb-wrapper')}>
-                <Breadcrumb title={`Khóa Học - ${course?.title ?? 'Đang cập nhật...'}`} />
+                <Breadcrumb title={`Chương trình học - ${course?.title ?? 'Đang cập nhật...'}`} />
             </div>
 
             <section className={cx('course')}>
@@ -95,12 +96,13 @@ function CourseDetail() {
                     </div>
                     <div className={cx('info')}>
                         <h2 className={cx('title')}>
-                            <span>Khóa học: </span> {course?.title ?? 'Đang cập nhật...'}
+                            {/* <span>Khóa học: </span>  */}
+                            {course?.title ?? 'Đang cập nhật...'}
                         </h2>
                         <p className={cx('sub-title')}>{course?.subTitle ?? 'Đang cập nhật...'}</p>
 
                         <p className={cx('description')}>
-                            <span className={cx('highlight')}>Điểm đặc biệt của khoá học: </span>
+                            <span className={cx('highlight')}>Điểm đặc biệt của chương trình học: </span>
                             {course?.descDetail ?? 'Đang cập nhật...'}
                         </p>
                     </div>

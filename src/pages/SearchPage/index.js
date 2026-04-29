@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { RiQuillPenFill } from 'react-icons/ri';
 import { Helmet } from 'react-helmet-async';
@@ -12,7 +13,14 @@ const cx = classNames.bind(styles);
 const SearchPage = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
-    const results = searchItems(query || '');
+    const [results, setResults] = useState([]);
+    useEffect(() => {
+        const fetchResults = async () => {
+            const data = await searchItems(query || '');
+            setResults(data);
+        };
+        fetchResults();
+    }, [query]);
 
     return (
         <>

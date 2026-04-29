@@ -1,0 +1,796 @@
+:root {
+    --header-e-learning-height: 52px;
+    --footer-e-learning-height: 52px;
+    --sidebar-e-learning-width: 320px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    height: var(--header-e-learning-height);
+    background-color: #29302b;
+    color: #fff;
+    padding: 12px 32px;
+
+    .header-inner,
+    .logo-inner,
+    .logo-wrapper {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+    }
+
+    .back-icon {
+        color: #efeded;
+        font-size: 2.4rem;
+        margin-right: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background-color: transparent;
+        transition: all 0.3s ease;
+        &:hover {
+            color: var(--white-color);
+            background-color: rgba(255, 255, 255, 0.1);
+            text-decoration: none !important;
+        }
+    }
+
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        height: var(--header-e-learning-height);
+        border-radius: 16px;
+    }
+
+    .logo {
+        height: var(--header-e-learning-height);
+        display: block;
+        margin: 0 auto;
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    .course-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-left: 16px;
+        color: var(--white-color);
+        overflow: hidden;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+
+    .module-action {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+
+        .progress-bar {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #e4e4e4;
+            gap: 12px;
+
+            :global {
+                .ant-progress-text {
+                    color: #e4e4e4;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+
+                .ant-progress .ant-progress-circle-trail {
+                    stroke: #7a7a7a;
+                }
+            }
+
+            .completed-msg {
+                font-size: 1.3rem;
+                font-weight: 400;
+            }
+
+            .cert-link {
+                color: var(--primary-highlight);
+                font-size: 1.3rem;
+                font-weight: 400;
+                cursor: pointer;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .note-btn,
+            .help-btn {
+                color: #e4e4e4;
+                background-color: transparent;
+                font-size: 1.4rem;
+                font-weight: 400;
+                padding: 5px 8px;
+
+                &:hover {
+                    color: var(--white-color);
+                    text-decoration: none !important;
+                }
+            }
+        }
+    }
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+// đây là body, chứa video và sidebar
+.content {
+    flex: 1;
+    display: flex;
+    gap: 4px;
+    align-items: flex-start;
+    height: calc(100vh - var(--header-e-learning-height) - var(--footer-e-learning-height));
+}
+
+// video + mô tả
+.video-area {
+    position: fixed;
+    top: var(--header-e-learning-height);
+    bottom: var(--footer-e-learning-height);
+    left: 0;
+    width: calc(100% - var(--sidebar-e-learning-width)); // mặc định trừ sidebar
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition: width 0.3s ease; // hiệu ứng mượt
+
+    &.expanded {
+        width: 100%; // khi sidebar đóng, video chiếm toàn bộ chiều rộng
+    }
+}
+
+// sidebar
+.sidebar {
+    position: fixed;
+    top: var(--header-e-learning-height);
+    bottom: var(--footer-e-learning-height);
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ecebeb;
+    padding: 16px 0;
+    margin-left: 2px;
+    width: var(--sidebar-e-learning-width);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    // hiệu ứng trượt
+    transition: transform 0.3s ease;
+    transform: translateX(0); // mặc định mở
+
+    &.closed {
+        transform: translateX(100%); // trượt ra ngoài màn hình bên phải
+    }
+
+    .sidebar-inner {
+        margin-bottom: 60px;
+
+        .lesson-list {
+            list-style: none;
+            padding-left: 0;
+            color: var(--text-color-bold);
+            margin-top: 12px;
+
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                gap: 8px;
+                font-size: 1.4rem;
+                padding: 8px 16px;
+                cursor: pointer;
+
+                // .play-icon {
+                //     font-size: 2rem;
+                //     color: #5db85c;
+                //     opacity: 0.6;
+                // }
+                .play-icon {
+                    width: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                // đã học
+                .done {
+                    color: #52c41a;
+                    font-size: 1.8rem;
+                }
+
+                // đang học
+                .in-progress-dot {
+                    width: 8px;
+                    height: 8px;
+                    background-color: #ff4d4f;
+                    border-radius: 50%;
+                }
+
+                .lesson-title {
+                    flex: 1;
+                    font-size: 1.4rem;
+                    font-weight: 500;
+                    color: var(--text-color-bold);
+                }
+
+                .lesson-desc {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    color: var(--text-color-bold);
+
+                    .lesson-type {
+                        font-size: 1.4rem;
+                        color: var(--bg-gray);
+                    }
+
+                    .lesson-time {
+                        padding-bottom: 2px;
+                    }
+                }
+
+                // hiệu ứng hover
+                &:hover {
+                    background-color: #f5f5f5; // xám nhạt
+                }
+
+                // trạng thái active
+                &.active {
+                    background-color: #ffecec; // nền nhạt đỏ
+                    .lesson-type.video {
+                        color: var(--primary) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .sidebar-title {
+        padding: 0px 16px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+}
+
+.video-area::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar {
+    width: 11px;
+}
+.video-area::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.36);
+    border-radius: 8px;
+}
+
+// FOOTER
+.footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    height: var(--footer-e-learning-height);
+    background-color: #f0f0f0;
+    padding: 8px 32px;
+    border-top: 1px solid #eee;
+
+    .footer-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+
+        .nav-btn {
+            padding: 6px 20px;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+    }
+
+    .lesson-info {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 16px;
+        gap: 16px;
+
+        .lesson-name {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .toggle-btn {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #222;
+            cursor: pointer;
+            transition:
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+
+            &:hover {
+                background-color: #f5f5f5;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+                box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+}
+
+// NOTE POPUP
+.note-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: calc(100% - var(--sidebar-e-learning-width));
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 16px 72px 32px;
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+.note-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 4px 0 16px;
+
+    .note-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--text-color-bold);
+    }
+
+    .note-time {
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 2px 8px;
+        background-color: var(--primary);
+        color: #fff;
+        border-radius: 4px;
+    }
+}
+
+.note-input {
+    width: 100%;
+    min-height: 100px;
+    font-size: 1.4rem;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    resize: vertical;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    &:focus {
+        border-color: var(--bg-gray);
+        outline: none;
+    }
+}
+
+.note-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    // custom từ component Button
+    .cancel-btn,
+    .save-btn {
+        padding: 8px 16px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .save-btn {
+        background-color: var(--primary-highlight);
+
+        &:hover {
+            background-color: var(--primary);
+        }
+    }
+}
+
+.access-simple {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    background: #f8fafc;
+}
+
+.empty-content {
+    text-align: center;
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #222;
+    }
+
+    p {
+        font-size: 1.4rem;
+        color: #666;
+    }
+}
+
+.empty-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+
+    &:hover {
+        background: #e2e8f0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUpLeft {
+    from {
+        transform: translate(50%, 50%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+// ============RESPONSIVE================
+/* Mobile */
+
+@media (max-width: 767px) {
+    // Header
+    .header {
+        // justify-content: space-between;
+        padding: 8px 16px !important;
+
+        .logo-wrapper,
+        .cert-link,
+        .help-btn {
+            display: none !important;
+        }
+
+        .module-action {
+            justify-content: end;
+            gap: 4px !important; // thu hẹp khoảng cách
+
+            .progress-bar {
+                .completed-msg {
+                    display: none;
+                }
+
+                .cert-link {
+                    display: none;
+                }
+            }
+
+            .buttons {
+                .help-btn {
+                    display: none; // ẩn btn help
+                }
+
+                .note-btn {
+                    min-width: 40px !important;
+                }
+
+                .note-btn svg {
+                    margin-left: 4px;
+                }
+
+                .note-btn .note-txt {
+                    display: none; // ẩn text, chỉ giữ icon
+                }
+            }
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            margin-left: 8px;
+            -webkit-line-clamp: 1;
+        }
+    }
+
+    // Sidebar
+    .sidebar {
+        width: 100%;
+        overflow-y: none !important;
+        // overscroll-behavior: contain;
+
+        &.closed {
+            transform: translateX(100%); // trượt ra ngoài màn hình bên phải
+        }
+
+        .sidebar-title {
+            padding: 0px 16px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .chapters {
+            margin-bottom: 60px;
+
+            :global {
+                .ant-collapse {
+                    border-radius: 0;
+                }
+
+                .ant-collapse .ant-collapse-content > .ant-collapse-content-box {
+                    padding: 0 16px;
+                    margin-top: -10px;
+                }
+
+                .ant-collapse-header {
+                    font-size: 1.6rem;
+                    font-weight: 400;
+                    // color: var(--text-color-bold);
+
+                    .ant-collapse-arrow {
+                        color: var(--black);
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .chapter-header {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                user-select: none;
+
+                .chapter-title {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                }
+
+                .chapter-desc {
+                    font-size: 1.3rem;
+                    font-weight: 400;
+                    color: var(--text-color-bold);
+                }
+            }
+
+            .lesson-list {
+                list-style: none;
+                padding-left: 12px;
+                color: var(--text-color-bold);
+                margin-top: 12px;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    font-size: 1.4rem;
+                    padding: 6px 0;
+
+                    .play-icon {
+                        font-size: 2rem;
+                        color: #5db85c;
+                        opacity: 0.6;
+                    }
+
+                    .lesson-title {
+                        flex: 1;
+                        font-size: 1.4rem;
+                        font-weight: 500;
+                        color: var(--text-color-bold);
+                    }
+
+                    .lesson-desc {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        color: var(--text-color-bold);
+
+                        .lesson-type {
+                            font-size: 1.4rem;
+                            color: var(--bg-gray);
+                        }
+
+                        .lesson-time {
+                            padding-bottom: 2px;
+                        }
+                    }
+                }
+            }
+        }
+
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        //hiệu ứng trượt
+        transition: transform 0.3s ease;
+        -webkit-transition: transform 0.3s ease;
+        -moz-transition: transform 0.3s ease;
+        -ms-transition: transform 0.3s ease;
+        -o-transition: transform 0.3s ease;
+    }
+
+    // Footer
+    .footer {
+        padding: 4px 16px 8px !important;
+        .footer-inner {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .chapter-info {
+            display: flex;
+            align-items: center;
+            position: static;
+            gap: 0;
+        }
+
+        .chapter-info .toggle-btn {
+            order: -1; /* toggle nằm bên trái */
+            margin-right: auto;
+        }
+        .chapter-name {
+            display: none;
+        }
+
+        .buttons {
+            order: 3;
+            justify-content: flex-end;
+            flex: 1;
+            gap: 8px;
+
+            .nav-btn {
+                min-width: 40px;
+                padding: 5px 12px;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+/* Tablet nhỏ - <= iPad Air */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header {
+        padding: 8px 16px !important;
+
+        .cert-link,
+        .help-btn {
+            display: none !important;
+        }
+    }
+
+    // Sidebar
+    .sidebar {
+        width: calc(var(--sidebar-e-learning-width) - 2px);
+    }
+
+    .footer {
+        .footer-inner {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .chapter-info {
+            display: flex;
+            align-items: center;
+            position: static;
+            gap: 16px;
+        }
+
+        .chapter-info .toggle-btn {
+            order: -1; /* toggle nằm bên trái */
+            margin-right: auto;
+        }
+        .buttons {
+            order: 3;
+            justify-content: flex-end;
+            flex: 1;
+        }
+    }
+}
+
+/* Tablet lớn - iPad Pro */
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .footer {
+        .footer-inner {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .chapter-info {
+            display: flex;
+            align-items: center;
+            position: static;
+            gap: 16px;
+        }
+
+        .chapter-info .toggle-btn {
+            order: -1; /* toggle nằm bên trái */
+            margin-right: auto;
+        }
+        .buttons {
+            order: 3;
+            justify-content: flex-end;
+            flex: 1;
+        }
+    }
+}
+
+/* Desktop */
+@media (min-width: 1366px) {
+}

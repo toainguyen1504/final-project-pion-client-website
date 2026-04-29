@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { courses } from '@/data';
 // jobs
 import ImageCard from '@/components/ImageCard';
+import HeadingSection from '@/components/HeadingSection';
 import styles from './RelatedSidebar.module.scss';
 
 const cx = classNames.bind(styles);
@@ -33,9 +34,8 @@ function RelatedSidebar() {
 
     return (
         <aside className={cx('wrapper')}>
-            <div className={cx('heading-section')}>
-                <h2 className={cx('title-section', 'uppercase')}>Khóa học liên quan</h2>
-            </div>
+            <HeadingSection title="Gợi ý" />
+
             <div className={cx('inner')}>
                 {relatedCourses.map((course) => (
                     <ImageCard

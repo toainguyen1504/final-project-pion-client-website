@@ -8,10 +8,16 @@ import classNames from 'classnames/bind';
 
 import Search from '@/layouts/components/Search';
 import config from '@/config';
+import useAuth from '@/hooks/useAuth';
+import AuthButtons from './components/AuthButtons';
+import DesktopAuth from './components/DesktopAuth';
+import MobileAuth from './components/MobileAuth';
+
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
+// Menu items for Header mobile
 const items = [
     {
         type: 'divider',
@@ -19,7 +25,7 @@ const items = [
     {
         key: 'about',
         label: (
-            <Link to="/gioi-thieu" className="menu-uppercase">
+            <Link to={config.routes.about} className="menu-uppercase">
                 VỀ PION
             </Link>
         ),
@@ -29,16 +35,16 @@ const items = [
     },
     {
         key: 'courses',
-        label: 'Khóa học',
+        label: 'Chương trình học ',
         children: [
             {
-                key: 'courses-english',
+                key: 'program-english',
                 label: 'Tiếng Anh',
                 children: [
                     {
                         key: 'en_1',
                         label: (
-                            <Link to="/tieng-anh-mam-non" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-mam-non" className="menu-normal">
                                 Tiếng Anh mầm non
                             </Link>
                         ),
@@ -46,7 +52,7 @@ const items = [
                     {
                         key: 'en_2',
                         label: (
-                            <Link to="/tieng-anh-tieu-hoc" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc" className="menu-normal">
                                 Tiếng Anh tiểu học
                             </Link>
                         ),
@@ -54,7 +60,7 @@ const items = [
                     {
                         key: 'en_3',
                         label: (
-                            <Link to="/tieng-anh-giao-tiep" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep" className="menu-normal">
                                 Tiếng Anh giao tiếp
                             </Link>
                         ),
@@ -62,13 +68,13 @@ const items = [
                 ],
             },
             {
-                key: 'courses-chinese',
+                key: 'program-chinese',
                 label: 'Tiếng Trung',
                 children: [
                     {
                         key: 'ch_1',
                         label: (
-                            <Link to="/tieng-trung-giao-tiep" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep" className="menu-normal">
                                 Tiếng Trung giao tiếp
                             </Link>
                         ),
@@ -76,7 +82,7 @@ const items = [
                     {
                         key: 'ch_2',
                         label: (
-                            <Link to="/tieng-trung-tre-em" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/tieng-trung-tre-em" className="menu-normal">
                                 Tiếng Trung trẻ em
                             </Link>
                         ),
@@ -84,7 +90,7 @@ const items = [
                     {
                         key: 'ch_3',
                         label: (
-                            <Link to="/hskk-tai-pion" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/hskk-tai-pion" className="menu-normal">
                                 HSK(K) Tại Pion
                             </Link>
                         ),
@@ -92,7 +98,7 @@ const items = [
                     {
                         key: 'ch_4',
                         label: (
-                            <Link to="/csca-tai-pion" className="menu-normal">
+                            <Link to="/chuong-trinh-hoc/csca-tai-pion" className="menu-normal">
                                 CSCA Tại Pion
                             </Link>
                         ),
@@ -100,7 +106,7 @@ const items = [
                 ],
             },
             // {
-            //     key: 'courses-korean',
+            //     key: 'program-korean',
             //     label: 'Tiếng Hàn',
             //     children: [
             //         {
@@ -138,7 +144,7 @@ const items = [
             //     ],
             // },
             // {
-            //     key: 'courses-german',
+            //     key: 'program-german',
             //     label: 'Tiếng Đức',
             //     children: [
             //         {
@@ -185,18 +191,7 @@ const items = [
             // },
         ],
     },
-    // {
-    //     type: 'divider',
-    // },
-    // {
-    //     key: 'study-abroad',
-    //     label: 'Du học',
-    //     children: [
-    //         // { key: 'abroad-germany', label: <Link to="/du-hoc-nghe-duc">Du học nghề Đức</Link> },
-    //         // { key: 'abroad-korea', label: <Link to="/du-hoc-han-quoc">Du học Hàn Quốc</Link> },
-    //         { key: 'abroad-china', label: <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025">Du học Trung Quốc</Link> },
-    //     ],
-    // },
+
     {
         type: 'divider',
     },
@@ -205,13 +200,13 @@ const items = [
         label: 'Tin tức',
         children: [
             // { key: 'news-germany', label: <Link to="/xuat-khau-lao-dong">Xuất khẩu lao động</Link> },
-            { key: 'news-list', label: <Link to="/tin-tuc">Tất cả tin tức</Link> },
-            // {
-            //     key: 'abroad-china',
-            //     label: <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025">Điều kiện du học Trung Quốc 2025</Link>,
-            // },
-            { key: 'news-recruitment', label: <Link to="/tuyen-dung">Tuyển dụng</Link> },
-            { key: 'news-question', label: <Link to="/cau-hoi-thuong-gap">Câu hỏi thường gặp</Link> },
+            { key: 'news-list', label: <Link to={config.routes.newsList}>Tất cả tin tức</Link> },
+            { key: 'news-recruitment', label: <Link to={config.routes.newsAvailablePosition}>Tuyển dụng</Link> },
+            { key: 'news-question', label: <Link to={config.routes.faq}>Câu hỏi thường gặp</Link> },
+            {
+                key: 'abroad-china',
+                label: <Link to={config.routes.studyAbroadChina}>Điều kiện du học Trung Quốc 2025</Link>,
+            },
         ],
     },
     {
@@ -219,28 +214,36 @@ const items = [
     },
     {
         key: 'contact',
-        label: <Link to="/lien-he">Liên hệ</Link>,
+        label: <Link to={config.routes.contact}>Liên hệ</Link>,
     },
     {
         type: 'divider',
     },
     {
-        key: 'abroad-china',
-        label: (
-            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className="menu-uppercase">
-                Du học Trung Quốc
-            </Link>
-        ),
+        key: 'learning',
+        label: <Link to={config.routes.learning}>Học tập</Link>,
     },
+    {
+        type: 'divider',
+    },
+    // {
+    //     key: 'abroad-china',
+    //     label: (
+    //         <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className="menu-uppercase">
+    //             Du học Trung Quốc
+    //         </Link>
+    //     ),
+    // },
 ];
 
 export default function Header({ visible }) {
+    const { isAuth, user, logout } = useAuth(); // hooks useAuth
     const [menuVisible, setMenuVisible] = useState(false);
     const [openKeys, setOpenKeys] = useState([]);
 
     const onOpenChange = (keys) => {
         const parentKeys = items.map((item) => item.key); // get list menu parent
-        const latestOpenKey = keys.find((key) => !openKeys.includes(key)); // find new key
+        const latestOpenKey = keys.find((key) => !openKeys.includes(key)); // find new key`
 
         if (latestOpenKey) {
             if (parentKeys.includes(latestOpenKey)) {
@@ -274,6 +277,10 @@ export default function Header({ visible }) {
                     <button className={cx('close-button')} onClick={handleCloseMenu}>
                         ✖
                     </button>
+
+                    {/* Auth buttons mobile */}
+                    {isAuth && user ? <MobileAuth user={user} onLogout={logout} /> : <AuthButtons />}
+
                     <Menu
                         mode="inline"
                         items={items}
@@ -305,7 +312,6 @@ export default function Header({ visible }) {
                         </figure>
                     </Link>
                 </div>
-
                 {/* Button MENU */}
                 <div className={cx('menu-toggle')}>
                     <button className={cx('menu-icon')} onClick={handleMenuToggle}>
@@ -322,102 +328,46 @@ export default function Header({ visible }) {
                         VỀ PION
                     </NavLink>
 
-                    {/* Khóa học */}
+                    {/* Chương trình học  */}
                     <div className={cx('dropdown')}>
                         <div className={cx('dropdown-toggle')}>
-                            <span>Khóa học</span>
+                            <span>Chương trình học</span>
                             <RiArrowDropDownLine size={24} />
                         </div>
                         <div className={cx('dropdown-menu', 'customize')}>
                             <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Anh</h4>
+                                <h4>Tiếng Anh</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-anh-mam-non">Tiếng anh mầm non</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-mam-non">Tiếng anh mầm non</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-tieu-hoc">Tiếng anh tiểu học</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-anh-giao-tiep">Tiếng Anh giao tiếp</Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Trung</h4>
+                                <h4>Tiếng Trung</h4>
                                 <ul>
                                     <li>
-                                        <Link to="/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-trung-giao-tiep">Tiếng Trung giao tiếp</Link>
                                     </li>
                                     <li>
-                                        <Link to="/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
+                                        <Link to="/chuong-trinh-hoc/tieng-trung-tre-em">Tiếng Trung trẻ em</Link>
                                     </li>
                                     <li>
-                                        <Link to="/hskk-tai-pion">HSK(K) Tại Pion</Link>
+                                        <Link to="/chuong-trinh-hoc/hskk-tai-pion">HSK(K) Tại Pion</Link>
                                     </li>
                                     <li>
-                                        <Link to="/csca-tai-pion">CSCA Tại Pion</Link>
+                                        <Link to="/chuong-trinh-hoc/csca-tai-pion">CSCA Tại Pion</Link>
                                     </li>
                                 </ul>
                             </div>
-                            {/* <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Đức</h4>
-                                <ul>
-                                    <li>
-                                        <Link to="/tieng-duc-online-1-kem-1">Tiếng Đức Online 1 kèm 1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-a1">Tiếng Đức A1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-a2">Tiếng Đức A2</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-b1">Tiếng Đức B1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-duc-b2">Tiếng Đức B2</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className={cx('dropdown-column')}>
-                                <h4>Khóa học Tiếng Hàn</h4>
-                                <ul>
-                                    <li>
-                                        <Link to="/tieng-han-so-cap-1">Tiếng Hàn sơ cấp 1</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/tieng-han-so-cap-2">Tiếng Hàn sơ cấp 2</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/luyen-thi-topik-i">Luyện thi TOPIK I</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/luyen-thi-topik-ii">Luyện thi TOPIK II</Link>
-                                    </li>
-                                </ul>
-                            </div> */}
                         </div>
                     </div>
-
-                    {/* Du học */}
-                    {/* <Link to="/du-hoc-nghe-duc" className={cx('dropdown-item')}>
-                        Du học nghề Đức
-                    </Link>
-                    <Link to="/du-hoc-han-quoc" className={cx('dropdown-item')}>
-                        Du học Hàn Quốc
-                    </Link> */}
-                    {/* <div className={cx('dropdown')}>
-                        <div className={cx('dropdown-toggle')}>
-                            <span>Du học</span>
-                            <RiArrowDropDownLine size={24} />
-                        </div>
-                        <div className={cx('dropdown-menu')}>
-                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('dropdown-item')}>
-                                Du học Trung Quốc
-                            </Link>
-                        </div>
-                    </div> */}
 
                     {/* Tin tức */}
                     <div className={cx('dropdown')}>
@@ -429,30 +379,45 @@ export default function Header({ visible }) {
                             {/* <Link to="/xuat-khau-lao-dong" className={cx('dropdown-item')}>
                                 Xuất khẩu lao động
                             </Link> */}
-                            <Link to="/tin-tuc" className={cx('dropdown-item')}>
+                            <Link to={config.routes.newsList} className={cx('dropdown-item')}>
                                 Tất cả tin tức
                             </Link>
-                            <Link to="/tin-tuc/dieu-kien-du-hoc-trung-quoc-2025" className={cx('dropdown-item')}>
-                                Điều kiện du học Trung Quốc 2025
-                            </Link>
-                            <Link to="/tuyen-dung" className={cx('dropdown-item')}>
+                            <Link to={config.routes.newsAvailablePosition} className={cx('dropdown-item')}>
                                 Tuyển dụng
                             </Link>
-                            <Link to="/cau-hoi-thuong-gap" className={cx('dropdown-item')}>
+                            <Link to={config.routes.faq} className={cx('dropdown-item')}>
                                 Câu hỏi thường gặp
+                            </Link>
+                            <Link to={config.routes.studyAbroadChina} className={cx('dropdown-item')}>
+                                Điều kiện du học Trung Quốc 2025
                             </Link>
                         </div>
                     </div>
 
-                    <NavLink to="/lien-he" className={({ isActive }) => cx('nav-link', { active: isActive })}>
+                    <NavLink
+                        to={config.routes.contact}
+                        className={({ isActive }) => cx('nav-link', { active: isActive })}
+                    >
                         Liên hệ
                     </NavLink>
+
+                    {/* <NavLink
+                        to={config.routes.learning}
+                        className={({ isActive }) => cx('nav-link', { active: isActive })}
+                    >
+                        Học tập
+                    </NavLink> */}
                 </nav>
+
                 {/* Search form */}
                 <div className={cx('search-form')}>
                     <Search />
                 </div>
-                {/* Hero */}
+
+                {/* Auth buttons desktop */}
+                <div className={cx('auth-desktop')}>
+                    {isAuth && user ? <DesktopAuth user={user} onLogout={logout} /> : <AuthButtons />}
+                </div>
             </div>
 
             {/* Render Menu mobile */}

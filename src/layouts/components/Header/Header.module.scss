@@ -76,7 +76,9 @@
     font-size: 1.6rem;
     color: var(--text-color-bold);
     text-decoration: none;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
 
     &:hover {
         color: var(--primary);
@@ -99,7 +101,9 @@
     font-size: 1.6rem;
     color: var(--text-color-bold);
     cursor: default;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
 
     &:hover {
         color: var(--primary);
@@ -119,12 +123,14 @@
     color: var(--white);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-transform: capitalize;
-
-    /* Animation */
+    /*Animation*/
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .dropdown-menu::after {
@@ -153,7 +159,9 @@
     flex-shrink: 0;
     white-space: nowrap;
     padding: 8px 16px;
-    transition: color 0.3s, background-color 0.3s;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
 }
 
 .dropdown-item + .dropdown-item {
@@ -277,7 +285,9 @@
         }
     }
 
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
 }
 
 .close-button {
@@ -286,14 +296,241 @@
     background: none;
     border: none;
     font-size: 2rem;
-    color: var(--primary);
+    color: var(--black);
     padding: 12px 20px;
     cursor: pointer;
 }
 
+// ==== AUTH ==== //
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    .btn {
+        flex-shrink: 0;
+        padding: 8px 16px;
+        border-radius: 99px;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        cursor: pointer;
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        color: var(--text-color-bold);
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    .btn-primary {
+        padding: 8px 24px;
+        background-color: var(--primary);
+        color: white;
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+}
+
+/* ================= USER MODAL ================= */
+
+// overide antd dropdown menu padding
+:global {
+    .custom-dropdown .ant-dropdown-menu,
+    .ant-dropdown-menu {
+        margin-top: 12px !important;
+        padding: 8px 12px 16px !important;
+        border-radius: 12px;
+    }
+
+    /* Dropdown container for auth component */
+    .auth-dropdown {
+        min-width: 260px;
+
+        .ant-dropdown-menu-item {
+            padding: 10px 12px;
+            font-size: 14px;
+        }
+
+        .link {
+            margin: 0 6px !important;
+        }
+    }
+}
+
+.avatar-border {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px; // độ dày viền
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        #ea4335,
+        #ea4335 90deg,
+        #4285f4 90deg,
+        #4285f4 180deg,
+        #34a853 180deg,
+        #34a853 270deg,
+        #fbbc04 270deg,
+        #fbbc04 360deg
+    );
+}
+
+/* Avatar trigger */
+.trigger-avatar {
+    cursor: pointer;
+    background-color: var(--primary);
+    box-shadow: 0 0 0 2px #fff; // đảm bảo viền trắng rõ ràng
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background-color: var(--primary);
+    box-shadow: 0 0 0 2px #fff; // đảm bảo viền trắng rõ ràng
+}
+
+/* Logout */
+.logout {
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--bg-gray);
+    margin-top: 12px;
+    height: 36px;
+    width: 36px;
+}
+
+/* ================= USER info desktop ================= */
+.auth-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* User info header */
+.user-info-desktop,
+.user-info-mobile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 4px;
+
+    .user-text {
+        display: flex;
+        flex-direction: column;
+        padding: 0 6px;
+    }
+
+    .display-name {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--text-color-bold);
+        line-height: 1.2;
+    }
+
+    .username {
+        padding-top: 4px;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--text-color);
+        margin: 0;
+    }
+}
+
+:global {
+    .auth-dropdown {
+        .ant-dropdown-menu-item-disabled {
+            cursor: default !important;
+        }
+    }
+}
+
+/* ================= USER collapse for mobile ================= */
+.user-collapse {
+    background-color: transparent;
+    margin-bottom: 20px;
+
+    // overide antd collapse icon position
+    :global {
+        .ant-collapse-expand-icon {
+            margin: auto 0 !important;
+        }
+    }
+
+    .user-info-mobile {
+        gap: 12px;
+        padding: 0 16px;
+        text-transform: capitalize;
+    }
+
+    .user-menu {
+        list-style: none;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        li {
+            font-size: 16px;
+            padding: 6px 0;
+            font-weight: 500;
+            color: var(--text-color);
+
+            a {
+                color: var(--text-color);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            // nếu dùng Link thay vì button thì xóa phần này
+            button {
+                display: block;
+                all: unset;
+                width: 100%;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                margin-top: 8px;
+                padding-top: 12px;
+
+                color: var(--text-color);
+                font-weight: 500;
+                font-size: 16px;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
 /* ==== MEDIA QUERIES ==== */
 
-/* Desktop */
+/* ================= DESKTOP ================= */
 @media (min-width: 1025px) {
     .dropdown-menu {
         display: flex;
@@ -313,8 +550,7 @@
     }
 }
 
-/* Tablet & Mobile */
-
+/* ================= TABLET & MOBILE ================= */
 @media (max-width: 1024px) {
     .inner {
         padding: 8px 16px;
@@ -334,9 +570,25 @@
     .search-form {
         display: none;
     }
+
+    /* Auth buttons inside mobile menu */
+    .auth-desktop {
+        display: none;
+    }
+
+    .mobile-menu-content {
+        .auth-buttons {
+            display: flex;
+            // flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+            margin: 16px 0;
+            padding: 16px 24px;
+        }
+    }
 }
 
-/* only Tablet */
+/* ================= ONLY TABLET ================= */
 @media (min-width: 768px) and (max-width: 1024px) {
     .mobile-menu {
         .mobile-menu-content {

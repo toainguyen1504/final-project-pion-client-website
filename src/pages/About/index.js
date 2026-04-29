@@ -1,7 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import classNames from 'classnames/bind';
-// import { Image } from 'antd';
 import { useEffect, useState } from 'react';
 import { FaHandshake, FaBalanceScale, FaHandHoldingHeart } from 'react-icons/fa';
 import { GiHumanTarget } from 'react-icons/gi';
@@ -13,6 +12,7 @@ import ContactForm from '@/components/ContactForm';
 import ZigzagSection from '@/components/ZigzagSection';
 import TeacherCard from '@/components/TeacherCard';
 import HlsPlayer from '@/components/HlsPlayer';
+import HeadingSection from '@/components/HeadingSection';
 import CoreValuesSlider from './CoreValuesSlider';
 import CeoInfo from './CeoInfo';
 import Departments from './Departments';
@@ -195,17 +195,13 @@ function About() {
 
                 {/* CEO Info*/}
                 <section className={cx('ceo-info')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>CEO</h2>
-                    </div>
+                    <HeadingSection title="CEO" />
                     <CeoInfo />
                 </section>
 
                 {/* Teachers*/}
                 <section className={cx('teachers')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>Đội ngũ giáo viên</h2>
-                    </div>
+                    <HeadingSection title="Đội ngũ giáo viên" />
 
                     <div className={cx('teacher-list')}>
                         {teacherData.map((teacher, index) => (
@@ -225,18 +221,13 @@ function About() {
 
                 {/*  VisionMission */}
                 <section>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>Tầm Nhìn và Sứ mệnh</h2>
-                    </div>
+                    <HeadingSection title="Tầm Nhìn và Sứ mệnh" />
                     <ZigzagSection items={visionMissionData} />
                 </section>
 
                 {/* Core Values */}
                 <section className={cx('slider-wrapper')}>
-                    <div className={cx('heading-section')}>
-                        <h2 className={cx('title-section', 'uppercase')}>Giá trị cốt lõi</h2>
-                    </div>
-
+                    <HeadingSection title="Giá trị cốt lõi" />
                     <CoreValuesSlider data={coreValuesData} interval={6000} />
                 </section>
 

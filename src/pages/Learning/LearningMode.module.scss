@@ -1,0 +1,498 @@
+// =============================
+// ** LearningMode **
+.video {
+    width: 100%;
+    // height: 74vh;
+    aspect-ratio: 16 / 9;
+
+    margin-bottom: 24px;
+    padding: 0 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000 !important;
+    transition: height 0.3s ease;
+}
+
+.video-error {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    h3 {
+        font-size: 1.8rem;
+        color: #fff;
+    }
+
+    p {
+        font-size: 1.4rem;
+        opacity: 0.7;
+    }
+}
+
+.video.expanded {
+    width: 100%;
+}
+
+.content {
+    background-color: var(--white);
+    padding: 16px 32px;
+    margin-bottom: 50px;
+
+    .title-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 16px;
+
+        .lesson-title {
+            font-size: 2.8rem;
+            margin-bottom: 4px;
+        }
+
+        .lesson-desc {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin-bottom: 16px;
+        }
+    }
+
+    .note-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 16px 12px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        background-color: #ebebeb;
+        border: 1px solid #ebebeb;
+        border-radius: 8px;
+        color: var(--text-color-bold);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #d6d6d6;
+        }
+
+        .note-time {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .note-icon {
+            font-size: 1.6rem;
+            color: var(--primary-highlight);
+        }
+    }
+}
+
+.lesson-tabs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0 20px;
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 12px;
+
+    .tab-btn {
+        min-width: 150px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid #e6e6e6;
+        background: #f7f7f7;
+        color: var(--text-color-bold);
+        font-size: 1.4rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.25s ease;
+
+        &:hover {
+            background: #efefef;
+        }
+
+        &.active {
+            background: var(--primary-highlight);
+            border-color: var(--primary-highlight);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(206, 35, 45, 0.16);
+        }
+    }
+}
+
+.lesson-tab-panel {
+    min-height: 240px;
+}
+
+.lesson-content-panel {
+    animation: fadeScaleIn 0.25s ease-out forwards;
+}
+
+.flashcard-panel {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    animation: fadeScaleIn 0.25s ease-out forwards;
+}
+
+.flashcard-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.flashcard-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #f6f6f6;
+    color: #555;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.flashcard-progress {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-color-bold);
+}
+
+.flashcard-start,
+.flashcard-summary {
+    text-align: center;
+    padding: 10px 0;
+
+    .flashcard-start-title,
+    .flashcard-summary-title {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--text-color-bold);
+        margin: 16px 0 10px;
+    }
+
+    .flashcard-start-desc {
+        max-width: 720px;
+        margin: 0 auto 24px;
+        font-size: 1.5rem;
+        line-height: 1.7;
+        color: var(--text-color);
+    }
+}
+
+.flashcard-empty {
+    padding: 32px 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    background: #fff;
+    border-radius: 12px;
+}
+
+.flashcard-review-card {
+    width: 100%;
+}
+
+.flashcard-review-inner {
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid #f0f0f0;
+    min-height: 360px;
+    padding: 28px 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.035);
+    transition: all 0.25s ease;
+}
+
+.flashcard-face {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.flashcard-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #7a7a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+.flashcard-vocabulary {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--text-color-bold);
+    margin-bottom: 12px;
+}
+
+.flashcard-phonetic {
+    font-size: 2rem;
+    color: #6b7280;
+    margin-bottom: 28px;
+}
+
+.flashcard-translation {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--text-color-bold);
+    margin-bottom: 18px;
+}
+
+.flashcard-answer-block {
+    margin-bottom: 18px;
+}
+
+.flashcard-example,
+.flashcard-example-translation {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.flashcard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.review-actions {
+    margin-top: 22px;
+}
+
+.forget-btn {
+    background: #fff1f2 !important;
+    color: #d91f26 !important;
+    border: 1px solid #ffd5d8 !important;
+
+    &:hover {
+        background: #ffe5e8 !important;
+    }
+}
+
+.hard-btn {
+    background: #fff7ed !important;
+    color: #ea580c !important;
+    border: 1px solid #fed7aa !important;
+
+    &:hover {
+        background: #ffedd5 !important;
+    }
+}
+
+.normal-btn {
+    background: #f0fdf4 !important;
+    color: #15803d !important;
+    border: 1px solid #bbf7d0 !important;
+
+    &:hover {
+        background: #dcfce7 !important;
+    }
+}
+
+.flashcard-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.summary-item {
+    padding: 18px 16px;
+    border-radius: 14px;
+    background: #fafafa;
+    border: 1px solid #efefef;
+
+    .summary-label {
+        display: block;
+        font-size: 1.3rem;
+        color: var(--text-color);
+        margin-bottom: 8px;
+    }
+
+    .summary-value {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--text-color-bold);
+    }
+
+    &.forgot {
+        background: #fff1f2;
+        border-color: #ffd5d8;
+    }
+
+    &.hard {
+        background: #fff7ed;
+        border-color: #fed7aa;
+    }
+
+    &.normal {
+        background: #f0fdf4;
+        border-color: #bbf7d0;
+    }
+}
+
+.flashcard-summary-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .lesson-tabs {
+        flex-wrap: wrap;
+
+        .tab-btn {
+            min-width: unset;
+            width: 100%;
+        }
+    }
+
+    .flashcard-summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .flashcard-vocabulary {
+        font-size: 2.4rem;
+    }
+
+    .flashcard-phonetic {
+        font-size: 1.7rem;
+    }
+
+    .flashcard-translation {
+        font-size: 2.1rem;
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .flashcard-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+// ==============================
+// Animation
+@keyframes fadeScaleIn {
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeScaleIn 0.4s ease-out forwards;
+    -webkit-animation: fadeScaleIn 0.4s ease-out forwards;
+}
+
+// ============RESPONSIVE================
+/* Mobile */
+@media (max-width: 767px) {
+}
+
+/* Tablet nhỏ - <= iPad Air */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .video {
+        width: 100%;
+        aspect-ratio: 16 / 6;
+    }
+
+    .video.expanded {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+    }
+
+    .content {
+        background-color: var(--white);
+        padding: 0 20px 28px;
+
+        .title-wrapper {
+            flex-direction: column;
+
+            .lesson-title {
+                font-size: 2.2rem;
+                margin-bottom: 4px;
+            }
+
+            .lesson-desc {
+                font-size: 1.4rem;
+                color: var(--text-color);
+                margin-bottom: 16px;
+            }
+        }
+
+        .note-btn {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+/* Tablet lớn - iPad Pro */
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .video {
+        width: 100%;
+        aspect-ratio: 16 / 8;
+    }
+
+    .video.expanded {
+        width: 100%;
+        aspect-ratio: 16 / 7.5;
+    }
+
+    .content {
+        background-color: var(--white);
+        padding: 0 28px 32px;
+
+        .title-wrapper {
+            margin-bottom: 16px;
+
+            .lesson-title {
+                font-size: 2.2rem;
+                margin-bottom: 4px;
+            }
+
+            .lesson-desc {
+                font-size: 1.4rem;
+                color: var(--text-color);
+                margin-bottom: 16px;
+            }
+        }
+
+        .note-btn {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+/* Desktop */
+@media (min-width: 1366px) {
+    // hanlde video size, chỉ áp dụng desktop, các thiết bị khác thì dùng popup -> nổi lên , tránh chiếm viewport quá nhiều
+    .video {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+    }
+
+    .video.expanded {
+        width: 100%;
+        aspect-ratio: 16 / 6.2;
+    }
+}
