@@ -11,7 +11,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import ContactForm from '@/components/ContactForm';
 import ZigzagSection from '@/components/ZigzagSection';
 import TeacherCard from '@/components/TeacherCard';
-import HlsPlayer from '@/components/HlsPlayer';
 import HeadingSection from '@/components/HeadingSection';
 import CoreValuesSlider from './CoreValuesSlider';
 import CeoInfo from './CeoInfo';
