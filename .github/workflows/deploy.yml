@@ -1,4 +1,4 @@
-name: Deploy FE Pion Education (Production) React CRA v1
+name: Deploy FE Pion Education (Production) React CRA v3
 
 on:
   push:
@@ -40,18 +40,20 @@ jobs:
         run: npm run build
         env:
           CI: false
+          NODE_OPTIONS: --max_old_space_size=4096
+          GENERATE_SOURCEMAP: false
 
       # 7. Deploy via FTP
       - name: Deploy to Hosting
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 202.92.4.57
+          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
           local-dir: build/
-          server-dir: /public_html/_pioneducation/
+          server-dir: /
 
           # FIX vỡ layout do cache - false để tắt cache, true để bật cache (mặc định là true)
           # dangerous-clean-slate: true
